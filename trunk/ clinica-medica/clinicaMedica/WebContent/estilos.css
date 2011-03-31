@@ -1,0 +1,15 @@
+.Base {text="#000000";
+background-color:#FFFFFF;
+font-family: Calibri;
+color: #41477E; 
+font-size: 11pt;
+}
+
+.BaseTablas {text="#000000";
+	background-color:#FFFFFF;
+	font-family: Calibri;
+	color: #000000;
+	font-size: 11pt;
+	scrollbar-base-color:#CCCCCC;
+	scrollbar-arrow-color:#CCCCCC;
+}

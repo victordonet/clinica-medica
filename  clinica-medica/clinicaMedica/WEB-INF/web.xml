@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app
+PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+<!-->context-param>
+	<param-name>SERVER-RMI</param-name>
+	<param-value>//localhost:1099/</param-value>
+	<description>Server RMI</description>
+</context-param-->
+<servlet>
+	<servlet-name>ProxyFachada</servlet-name>
+	<servlet-class>logica.fachada.ProxyFachadaLogicaWeb</servlet-class>
+  	<init-param>
+      <param-name>SERVER-RMI</param-name>
+      <param-value>//localhost:1099/</param-value>
+    </init-param>
+	<load-on-startup>1</load-on-startup>
+</servlet> 
+<servlet>
+	<servlet-name>Ingreso</servlet-name>
+	<servlet-class>vista.web.servlet.svtIngreso</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>AltaEspecialidad</servlet-name>
+	<servlet-class>vista.web.servlet.svtAltaEspecialidad</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>ListadoEspecialidades</servlet-name>
+	<servlet-class>vista.web.servlet.svtListadoEspecialidades</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Ingreso</servlet-name>
+	<url-pattern>/WebContent/ingreso.jsp</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>AltaEspecialidad</servlet-name>
+	<url-pattern>/WebContent/aplicarAlta.jsp</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>ListadoEspecialidades</servlet-name>
+	<url-pattern>/WebContent/listadoEspecialidades.jsp</url-pattern>
+</servlet-mapping>
+    <session-config>
+      <session-timeout>15</session-timeout>    <!-- 15 minutes -->
+</session-config>
+</web-app>

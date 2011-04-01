@@ -57,28 +57,34 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 	}
 	
 	public void altaEsp (String IdEsp, String desc, String monto){
-		int idEspecialidad = Integer.parseInt(IdEsp);
-		double montoBase = Double.parseDouble(monto);
-		DataEsp datEsp = new DataEsp(idEspecialidad, desc, montoBase);
+		
+		
 		try {
+			int idEspecialidad = Integer.parseInt(IdEsp);
+			double montoBase = Double.parseDouble(monto);
+			DataEsp datEsp = new DataEsp(idEspecialidad, desc, montoBase);
 			mod.altaEspecialidades(datEsp);
 			JOptionPane.showMessageDialog(null,"Alta ok");
+			actionCerrar();
+			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server ");
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null,e.getMessage());
+			JOptionPane.showMessageDialog(null,"Error en el acceso a los datos");
 			e.printStackTrace();
 		} catch (EspecialidadException e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null,"El campo Codigo y monto no pueden estar vacios ");
+			e.printStackTrace();
 		}
 		
-		actionCerrar();
+		
+		//actionCerrar();
 	}
 
 	@Override

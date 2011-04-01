@@ -46,7 +46,9 @@ public class CdorMantEsp extends CdorManejoVentanas {
 
 	@Override
 	public void cerrar() {
+		
 		ventana.dispose();
+		
 
 	}
 

@@ -51,9 +51,11 @@ public class MainServidorPrototipo
 			e.printStackTrace();
 		} catch (LogicaException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,"No es posible iniciar el servidor logica mal configurada");
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,"No es posible iniciar el persistencia mal configurada");
 			e.printStackTrace();
 		}
 	}

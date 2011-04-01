@@ -4,6 +4,8 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import excepciones.PersistenciaException;
 
 import logica.fachada.IfachadaLogica;
@@ -59,10 +61,11 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 			modelo = new ModeloTablaListEsp(hs);
 			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+			
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
 			e.printStackTrace();
 		}
 		return modelo;

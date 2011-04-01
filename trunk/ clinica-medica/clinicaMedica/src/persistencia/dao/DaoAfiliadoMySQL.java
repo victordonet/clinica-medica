@@ -3,11 +3,12 @@ package persistencia.dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Vector;
 import java.sql.Date;
-import java.util.Hashtable;
 
 import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
 public class DaoAfiliadoMySQL implements IDaoAfiliado {
@@ -49,30 +50,43 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		System.out.println("Modificando afiliado: "+ idAfil);
 		PreparedStatement pst;
 		pst = trn.preparedStatement("update Afiliados set id=?, nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=?, estado=?");
-		pst.setString (1, idAfil);
-		pst.setString(2, nom);
-		pst.setString(3, apel);
-		pst.setString(4, ci);
-		pst.setString(5, mail);
-		pst.setString(6, dir);
-		pst.setString(7, tel);
+		try {
+			pst.setString (1, idAfil);
+			pst.setString(2, nom);
+			pst.setString(3, apel);
+			pst.setString(4, ci);
+			pst.setString(5, mail);
+			pst.setString(6, dir);
+			pst.setString(7, tel);
+			Date dt = new Date (ing.getTimeInMillis());
+			pst.setDate (8, dt);
+			pst.setBoolean(9, fon);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 		
-		pst.setString(8, ing);
-		pst.setBoolean(9, afil.isFonasa());
-		pst.setString(10, afil.getEstado());
-		pst.executeUpdate();
+	}
+
+	@Override
+	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException {
+		
+		System.out.println("Doy de baja el afiliado: "+ id);
+		PreparedStatement pst;
+		pst = trn.preparedStatement("update Afiliados set estado=? WHERE id="+id);
+		try {
+			// I = inactivo
+			pst.setString(1,"I");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 
 	}
 
 	@Override
-	public void bajaAfil(Transaccion trn, String id)
-			throws PersistenciaException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Hashtable listarAfiliados(Transaccion trn)
+	public Vector listarAfiliados(Transaccion trn)
 			throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return null;
@@ -94,6 +108,13 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	@Override
 	public Afiliado getAfiliado(String idAfil, Transaccion trn)
+			throws PersistenciaException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public VosLogin getDataAfiliado(Transaccion trn, String id)
 			throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return null;

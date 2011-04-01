@@ -1,6 +1,7 @@
 package persistencia.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
@@ -8,6 +9,8 @@ import java.sql.Date;
 
 import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataEsp;
 import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
@@ -86,10 +89,33 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	@Override
-	public Vector listarAfiliados(Transaccion trn)
-			throws PersistenciaException {
-		// TODO Auto-generated method stub
-		return null;
+	public Vector listarAfiliados(Transaccion trn) throws PersistenciaException {
+		System.out.println("Listando afiliados");
+		Vector <DataAfiliado> resultado = new Vector();
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados");
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				int id = rst.getInt("Id");
+				String nombre = rst.getString("nombre");
+				String apellido = rst.getString("apellido");
+				int ci = rst.getInt("ci");
+				String mail = rst.getString("mail");
+				String direccion = rst.getString("direccion");
+				String telefono = rst.getString("telefono");
+				Date fechaIngreso = rst.getDate("fechaingreso");
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(fechaIngreso);
+				Boolean fonasa = rst.getBoolean("fonsasa");
+				String estado = rst.getString("estado");
+				DataAfiliado dataAfil = new DataAfiliado (id, ci, nombre, apellido,  mail, direccion, telefono, estado, cal, fonasa);
+				resultado.add(dataAfil);
+			}
+			return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 	}
 
 	@Override

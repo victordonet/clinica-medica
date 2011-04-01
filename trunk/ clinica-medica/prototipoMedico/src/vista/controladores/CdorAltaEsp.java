@@ -24,7 +24,7 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			mod = new ProxyFachadaLogica();
 			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion");
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();
 			
 		} catch (LogicaException e) {

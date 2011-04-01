@@ -30,7 +30,7 @@ public interface IfachadaLogica extends IObservable{
 	public Vector<Afiliado> listarAfiliados() throws PersistenciaException, RemoteException;
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException;
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException;
-	public Vector<Examen> listarExPend(int idAfil) throws PersistenciaException, RemoteException;
+	public Vector<Examen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
 	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES

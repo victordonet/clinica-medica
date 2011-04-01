@@ -78,7 +78,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.validarAfil(idAfil);
 	}
-	public Vector listarExPend(int idAfil) throws PersistenciaException, RemoteException {
+	public Vector listarExPend(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.listarExPend(idAfil);
 	}
 	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {

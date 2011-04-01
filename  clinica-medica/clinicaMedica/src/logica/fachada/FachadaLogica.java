@@ -211,7 +211,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Vector<Examen> listarExPend(int idAfil) throws PersistenciaException, RemoteException {
+	public Vector<Examen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = this.getTrn();
 		Vector<Examen> resultado = null;
 		try {

@@ -129,7 +129,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
-			fachada.altaEspecialidades(datEsp);
+			fachada.altaEspecialidad(datEsp);
 	}
 	public Vector listarEspecialidades() throws PersistenciaException, RemoteException {
 		return fachada.listarEspecialidades();
@@ -162,7 +162,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public Vector listarMedico()  throws PersistenciaException, RemoteException {
  		return fachada.listarMedico();
  	}
- 	public Vector listarMedEsp(int idEsp,Transaccion trn)  throws PersistenciaException, RemoteException {
+ 	public Vector listarMedEsp(int idEsp)  throws PersistenciaException, RemoteException {
  		return fachada.listarMedEsp(idEsp);
  	}
  	public Medico getMedico(String id)  throws PersistenciaException, RemoteException {
@@ -183,7 +183,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public Vector calcSalarioTotal(Calendar fDesde, Calendar fHasta)  throws PersistenciaException, RemoteException {
  		return fachada.calcSalarioTotal(fDesde, fHasta);
  	}
- 	public Vector listarDispMed(DataMed dataMed,Transaccion trn)  throws PersistenciaException, RemoteException {
+ 	public Vector listarDispMed(DataMed dataMed)  throws PersistenciaException, RemoteException {
  		return fachada.listarDispMed(dataMed);
  	}
  	public void cargaConsultasProxMes(String id, Calendar fecha)  throws PersistenciaException, RemoteException {

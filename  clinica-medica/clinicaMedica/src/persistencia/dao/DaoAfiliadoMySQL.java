@@ -156,10 +156,21 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	@Override
-	public VosLogin getDataAfiliado(Transaccion trn, String id)
-			throws PersistenciaException {
-		// TODO Auto-generated method stub
-		return null;
+	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
+		
+		PreparedStatement pst = trn.preparedStatement("Select nombre, apellido from Afiliados WHERE id="+id);
+		ResultSet rs = pst.executeQuery();
+		VosLogin vosLogin = new VosLogin();
+		vosLogin.setNombre(rs.getString(1));
+		vosLogin.setApellido(rs.getString(2));
+		pst.close();
+		
+		PreparedStatement pst1 = trn.preparedStatement("Select contrasena, tipo from Usuarios WHERE id="+id);
+		ResultSet rs1 = pst1.executeQuery();
+		vosLogin.setPass(rs.getString(1));
+		vosLogin.setTipo(rs.getString(2));
+		
+		return vosLogin;
 	}
 
 }

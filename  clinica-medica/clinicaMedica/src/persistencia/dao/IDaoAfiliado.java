@@ -16,7 +16,7 @@ public interface IDaoAfiliado {
 	public Vector listarAfiliados(Transaccion trn)throws PersistenciaException;
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException;
 	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException;
-	public Vector listarExPend(Transaccion trn, int idAfil) throws PersistenciaException;
+	public Vector listarExPend(Transaccion trn, String idAfil) throws PersistenciaException;
 	public Afiliado getAfiliado(String idAfil, Transaccion trn) throws PersistenciaException;
 	
 }

@@ -1,11 +1,6 @@
 package persistencia.mains;
 
 import java.util.Calendar;
-import java.util.Vector;
-import vista.dataobjet.DataEsp;
-import vista.dataobjet.VosLogin;
-import logica.Especialidad;
-import logica.Afiliado;
 import logica.Examen;
 import logica.TipoExamen;
 import logica.fachada.IfachadaLogica;

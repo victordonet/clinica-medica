@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Vector;
 import vista.dataobjet.VosLogin;
 import logica.AdminGen;
-import logica.Afiliado;
 import logica.Examen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;

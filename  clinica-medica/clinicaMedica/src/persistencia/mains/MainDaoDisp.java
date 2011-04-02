@@ -2,7 +2,6 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
-
 import vista.dataobjet.VoDispo;
 import vista.dataobjet.VosLogin;
 import logica.AdminGen;
@@ -11,7 +10,7 @@ import logica.Examen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
-public class MainDaoAdmin {
+public class MainDaoDisp {
 
 	public static void main(String[] args) throws IllegalAccessException, Exception, Throwable {
 		

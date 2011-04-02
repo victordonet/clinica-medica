@@ -368,16 +368,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaconsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
+	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
 		Transaccion trn = this.getTrn();
-		Calendar fecha = cons.getFecha();
-		int horario = cons.getHorario();
-		int dia = cons.getDia();
-		Afiliado afil = cons.getAfil();
-		int turno = cons.getTurno();
-		//Medico med = cons.get;
 		try {
-			//iDaoC.altaConsulta(trn, fecha, horario, dia, afil, turno, med);
+			iDaoC.altaConsultaProxMes(trn, cons);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

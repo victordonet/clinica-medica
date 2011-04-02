@@ -2,7 +2,10 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import vista.dataobjet.DataMed;
 import vista.dataobjet.VosLogin;
+import logica.Consulta;
 import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
@@ -11,7 +14,7 @@ import logica.Examen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
-public class MainDaomedin {
+public class MainDaoMedico {
 
 	public static void main(String[] args) throws IllegalAccessException, Exception, Throwable {
 		
@@ -83,12 +86,28 @@ public class MainDaomedin {
 			System.out.println("Listado Medicos premiados, Nombre = "+medic.getNombre());
 		}
 		
-		
-		//listar Ex. Pend
-		Vector exPend = fachada.listarExPend(med.getId());
-		for (int i = 0; i < exPend.size(); i++) {
-			Examen ex = (Examen) exPend.get(i);
-			System.out.println("Listado examenes, FechaIni. = "+ex.getFechaInicio());
+		//Listar Disponibilidad
+		DataMed voM = new DataMed();
+		Vector vDisp = fachada.listarDispMed(voM);
+		for (int i = 0; i < vDisp.size(); i++) {
+			Disponibilidad dispo = (Disponibilidad) vDisp.get(i);
+			System.out.println("Lista dispo, dia = "+dispo.getDia()+", horario = "+dispo.getHorario());
 		}
+		
+		//Carga Consultas prox mes
+		Calendar fecha = Calendar.getInstance();
+		fDesde.set(2010, 02, 01);
+		fachada.cargaConsultasProxMes(med.getId(), fecha);
+		
+		//listar Consultas Disp.
+		Vector vCons = fachada.listarConsultasDisp();
+		for (int i = 0; i < vCons.size(); i++) {
+			Consulta cons = (Consulta) vCons.get(i);
+			System.out.println("Listado consultas disp = "+cons.getDia());
+		}
+		
+		//Alta Consulta
+		Afiliado af = fachada.getAfiliado("1001");
+		fachada.altaConsulta(fecha, med.getId(), 3, af, 1);
 	}
 }

@@ -150,7 +150,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//ESPECIALIDADES
-	public void altaEspecialidades(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
+	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
 			fachada.altaEspecialidades(datEsp);
 	}
 	public Vector listarEspecialidades() throws PersistenciaException, RemoteException {

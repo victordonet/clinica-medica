@@ -52,7 +52,7 @@ public interface IfachadaLogica extends IObservable{
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException;
 	
 	//ESPECIALIDADES
-	public void altaEspecialidades(DataEsp datEsp) throws PersistenciaException, RemoteException, EspecialidadException;
+	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException, EspecialidadException;
 	public Vector<Especialidad> listarEspecialidades() throws PersistenciaException, RemoteException;
 	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	

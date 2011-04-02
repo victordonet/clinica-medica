@@ -19,7 +19,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 	}
 
 	@Override
-	public void altaconsultaProxMes(Transaccion trn, Consulta cons)
+	public void altaConsultaProxMes(Transaccion trn, Consulta cons)
 			throws PersistenciaException {
 		// TODO Auto-generated method stub
 

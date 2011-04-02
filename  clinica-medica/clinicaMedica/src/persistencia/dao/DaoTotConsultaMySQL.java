@@ -9,7 +9,7 @@ import excepciones.PersistenciaException;
 public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 
 	@Override
-	public int getCantConsult(Transaccion trn, String x)
+	public int getCantConsult(Transaccion trn, String idAfi)
 			throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return 0;
@@ -34,6 +34,13 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void elimConsulta(Transaccion trn, String idAfi)
+			throws PersistenciaException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

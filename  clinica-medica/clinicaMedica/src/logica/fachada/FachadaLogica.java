@@ -411,6 +411,17 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
+	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {
+		Transaccion trn = this.getTrn();
+		try {
+			iDaoC.elimConsultasAfil(trn, idAfil);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			e.printStackTrace();
+		}
+	}
 	
 	//DISPONIBILIDAD
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException {
@@ -431,7 +442,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Especialidad esp = new Especialidad(datEsp.getCodigo(), datEsp.getDescripcion(), datEsp.getMontoBase());
 		try {
 			if (iDaoEsp.obtenerEspecialidad(trn, esp.getIdEspecialidad())==null){
-			iDaoEsp.agregar(trn, esp);
+			iDaoEsp.altaEspecialidad(trn, esp);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
@@ -828,6 +839,17 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw e;
 		}
 		return resultado;
+	}
+	public void elimConsulta(String idAfil) throws PersistenciaException, RemoteException {
+		Transaccion trn = this.getTrn();
+		try {
+			iDaoTC.elimConsulta(trn, idAfil);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			e.printStackTrace();
+		}
 	}
 	
 	//USUARIOS

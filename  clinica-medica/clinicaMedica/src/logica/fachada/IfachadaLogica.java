@@ -3,6 +3,8 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
+import persistencia.transacciones.Transaccion;
 import logica.AdminGen;
 import logica.Afiliado;
 import logica.Consulta;
@@ -47,6 +49,7 @@ public interface IfachadaLogica extends IObservable{
 	public void altaconsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException;
 	public Vector<Consulta> listarConsultasDisp() throws PersistenciaException, RemoteException;
 	public void altaConsulta(Calendar fecha, String horario, int dia, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException;
+	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException;
@@ -87,6 +90,7 @@ public interface IfachadaLogica extends IObservable{
 	public int getCantConsultasPagas(Calendar fDesde,Calendar fHasta) throws PersistenciaException, RemoteException;
 	public Vector<TotConsulta> listarConsultasAfi(String id) throws PersistenciaException, RemoteException;
 	public Vector<TotConsulta> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException;
+	public void elimConsulta(String idAfi) throws PersistenciaException, RemoteException;
 	
 	//USUARIOS
 	public void altaUsuario(Usuario usu) throws PersistenciaException, RemoteException;

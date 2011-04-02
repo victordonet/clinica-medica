@@ -112,8 +112,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
 		return fachada.getCantidadConsultas(fDesde, fHasta);
 	}
-	public void altaconsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
-		fachada.altaconsultaProxMes(cons);
+	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
+		fachada.altaConsultaProxMes(cons);
 	}
 	public Vector listarConsultasDisp() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultasDisp();

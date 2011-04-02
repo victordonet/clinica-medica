@@ -151,7 +151,29 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	@Override
 	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
-		// TODO Auto-generated method stub
+		
+		// VER CON PELADO!!!
+		
+		PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados WHERE id="+idAfil);
+		ResultSet rst = pst.executeQuery();
+		while(rst.next()){
+			int id = rst.getInt("Id");
+			String nombre = rst.getString("nombre");
+			String apellido = rst.getString("apellido");
+			int ci = rst.getInt("ci");
+			String mail = rst.getString("mail");
+			String direccion = rst.getString("direccion");
+			String telefono = rst.getString("telefono");
+			Date fechaIngreso = rst.getDate("fechaingreso");
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(fechaIngreso);
+			Boolean fonasa = rst.getBoolean("fonsasa");
+			String estado = rst.getString("estado");
+		}
+		pst.close();
+		
+		
+			
 		return null;
 	}
 
@@ -161,16 +183,26 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		PreparedStatement pst = trn.preparedStatement("Select nombre, apellido from Afiliados WHERE id="+id);
 		ResultSet rs = pst.executeQuery();
 		VosLogin vosLogin = new VosLogin();
-		vosLogin.setNombre(rs.getString(1));
-		vosLogin.setApellido(rs.getString(2));
-		pst.close();
+		
+		try{
+			vosLogin.setNombre(rs.getString(1));
+			vosLogin.setApellido(rs.getString(2));
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");			
+		}
 		
 		PreparedStatement pst1 = trn.preparedStatement("Select contrasena, tipo from Usuarios WHERE id="+id);
 		ResultSet rs1 = pst1.executeQuery();
-		vosLogin.setPass(rs.getString(1));
-		vosLogin.setTipo(rs.getString(2));
+		try{
+			vosLogin.setPass(rs.getString(1));
+			vosLogin.setTipo(rs.getString(2));
+			return vosLogin;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		
-		return vosLogin;
 	}
-
+	}
 }

@@ -426,7 +426,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//ESPECIALIDADES
-	public void altaEspecialidades(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
+	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
 		Transaccion trn = this.getTrn();
 		Especialidad esp = new Especialidad(datEsp.getCodigo(), datEsp.getDescripcion(), datEsp.getMontoBase());
 		try {

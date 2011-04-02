@@ -8,6 +8,7 @@ import java.util.Vector;
 import java.sql.Date;
 
 import logica.Afiliado;
+import persistencia.EntradaPersistencia;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
@@ -119,22 +120,37 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	@Override
-	public boolean validarAfil(Transaccion trn, String idAfil)
-			throws PersistenciaException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException {
+		
+		PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id="+idAfil);
+		ResultSet rst = pst.executeQuery();
+		Boolean validar;
+		try {
+			if(rst.next()){
+				if(rst.getString(1)== "I")
+					validar = false;
+				else
+					validar = true;
+			}
+			else{
+				validar = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+		return validar;
 	}
 
 	@Override
-	public Hashtable listarExPend(Transaccion trn, int idAfil)
-			throws PersistenciaException {
-		// TODO Auto-generated method stub
+	public Vector listarExPend(Transaccion trn, int idAfil) throws PersistenciaException {
+		
+		
 		return null;
 	}
 
 	@Override
-	public Afiliado getAfiliado(String idAfil, Transaccion trn)
-			throws PersistenciaException {
+	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return null;
 	}

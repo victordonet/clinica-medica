@@ -40,4 +40,11 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 
 	}
 
+	@Override
+	public void elimConsultasAfil(Transaccion trn, String idAfil)
+			throws PersistenciaException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

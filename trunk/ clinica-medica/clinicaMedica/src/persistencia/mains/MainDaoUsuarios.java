@@ -16,11 +16,13 @@ public class MainDaoUsuarios {
 		//Alta
 		Usuario usuAdm = new AdminGen("JLOPEZ","111","A","A","Jorge","1");
 		fachada.altaUsuario(usuAdm);
+		
 		//Validacion	
 		String clave = "JLOPEZ";
 		String pass = "111";
 		boolean resultado = fachada.validarUsuario(clave, pass);
 		System.out.println("Restultado= "+resultado);
+		
 		//Modificacion Contraseña
 		clave = "JLOPEZ";
 		pass = "123";

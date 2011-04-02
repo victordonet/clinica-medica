@@ -2,7 +2,6 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
-
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VosLogin;
 import logica.Consulta;
@@ -10,7 +9,6 @@ import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
 import logica.Afiliado;
-import logica.Examen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 

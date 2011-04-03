@@ -2,7 +2,7 @@ package vista.dataobjet;
 
 public class VoDispo {
 	
-	private int dia,horario;
+	private int dia,horario, idMed;
 
 	public VoDispo() {
 		super();
@@ -23,6 +23,14 @@ public class VoDispo {
 
 	public void setHorario(int horario) {
 		this.horario = horario;
+	}
+
+	public void setIdMed(int idMed) {
+		this.idMed = idMed;
+	}
+
+	public int getIdMed() {
+		return idMed;
 	}
 	
 	

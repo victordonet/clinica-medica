@@ -20,7 +20,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	@Override
 	public void altaAfiliado(Transaccion trn, Afiliado afil) throws PersistenciaException {
 
-		System.out.println("Insertando afiliado: "+ afil.getId());
+		System.out.println("Insertando afiliado: "+ afil.getId()+"");
 		PreparedStatement pst;
 
 		try {
@@ -78,7 +78,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 		System.out.println("Doy de baja el afiliado: "+ id);
 		PreparedStatement pst;
-		pst = trn.preparedStatement("update Afiliados set estado=? WHERE id="+id);
+		pst = trn.preparedStatement("update Afiliados set estado=? WHERE id="+id+"");
 		try {
 			// I = inactivo
 			pst.setString(1,"I");
@@ -122,7 +122,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	@Override
 	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException {
 		
-		PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id="+idAfil);
+		PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id="+idAfil+"");
 		ResultSet rst = pst.executeQuery();
 		Boolean validar;
 		try {
@@ -154,7 +154,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 		// VER CON PELADO!!!
 		
-		PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados WHERE id="+idAfil);
+		PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados WHERE id="+idAfil+"");
 		ResultSet rst = pst.executeQuery();
 		while(rst.next()){
 			int id = rst.getInt("Id");
@@ -180,7 +180,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	@Override
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
 		
-		PreparedStatement pst = trn.preparedStatement("Select nombre, apellido from Afiliados WHERE id="+id);
+		PreparedStatement pst = trn.preparedStatement("Select nombre, apellido from Afiliados WHERE id="+id+"");
 		ResultSet rs = pst.executeQuery();
 		VosLogin vosLogin = new VosLogin();
 		
@@ -193,7 +193,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 		
-		PreparedStatement pst1 = trn.preparedStatement("Select contrasena, tipo from Usuarios WHERE id="+id);
+		PreparedStatement pst1 = trn.preparedStatement("Select contrasena, tipo from Usuarios WHERE id="+id+"");
 		ResultSet rs1 = pst1.executeQuery();
 		try{
 			vosLogin.setPass(rs.getString(1));

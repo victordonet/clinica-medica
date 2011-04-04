@@ -7,10 +7,16 @@
 <title>Alta de Especialidad</title>
 </head>
 
+<SCRIPT language="javascript" type="text/javascript">
+function validar(form) {
+return f_numeros(form.id, "Identificación") && f_msg(form.descripcion, "Descripcion") && f_numeros(form.montoBase, "Monto Base");
+}
+</SCRIPT>
+
 <%
 String msg = (String) request.getParameter("msg");
 if (msg==null)
-msg="";
+	msg="";
 String id = (String) session.getValue("id");
 if (id==null)
 	id="";
@@ -23,7 +29,7 @@ if (monto==null)
 %>
 
 <body class="Base" background="imagenes/fondoGrl.jpg" OnLoad="document.form.id.focus();">
-<form name="form" method="get" action="aplicarAlta.jsp">
+<form name="form" method="get" onSubmit="return validar(document.form)" action="aplicarAlta.jsp">
 <center>
 
 <table align="center" width="99%">
@@ -70,17 +76,17 @@ if (monto==null)
 			<tr>
 				<td width="18%" height="20">Identificaci&oacute;n</td>
 				<td width="82%" height="20"><input type="text" name="id"
-					value="<%=id%>" size="15"></td>
+					value="<%=id%>" size="15" maxlength="3"></td>
 			</tr>
 			<tr>
 				<td height="20">Descripci&oacute;n</td>
 				<td height="20"><input type="text" name="descripcion"
-					value="<%=desc%>" size="50"></td>
+					value="<%=desc%>" size="50" maxlength="40"></td>
 			</tr>
 			<tr>
 				<td height="20">Monto base</td>
 				<td height="20"><input type="text" name="montoBase"
-					value="<%=monto%>" size="20"></td>
+					value="<%=monto%>" size="20" maxlength="15"></td>
 			</tr>
 		</table>
 		</td>

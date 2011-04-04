@@ -8,42 +8,47 @@
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
 <script language="javascript" type="text/javascript" src="funciones.js"></script>
 <title>Ingreso al sistema</title>
-
-<SCRIPT LANGUAGE="Javascript">
- function Permut (flag,img) {
-    if (document.images) {
-         if (document.images[img].permloaded) {
-             if (flag==1) document.images[img].src = document.images[img].perm.src
-             else document.images[img].src = document.images[img].perm.oldsrc
-         }
-    }
- }
- function preloadPermut (img,adresse) {
-    if (document.images) {
-         img.onload = null;
-         img.perm = new Image ();
-         img.perm.oldsrc = img.src;
-         img.perm.src = adresse;
-         img.permloaded = true;
-    }
- }
-</SCRIPT>
-
 </head>
 
-<%
-String usu = (String) session.getValue("usu");
-if (usu==null)
-	usu="";
-
-String msg = (String) request.getParameter("msg");
-if (msg==null)
-	msg="";
-%>
+    <SCRIPT>
+     function Permut (flag,img) {
+        if (document.images) {
+             if (document.images[img].permloaded) {
+                 if (flag==1) document.images[img].src = document.images[img].perm.src
+                 else document.images[img].src = document.images[img].perm.oldsrc
+             }
+        }
+     }
+     function preloadPermut (img,adresse) {
+        if (document.images) {
+             img.onload = null;
+             img.perm = new Image ();
+             img.perm.oldsrc = img.src;
+             img.perm.src = adresse;
+             img.permloaded = true;
+        }
+     }
+    </SCRIPT>
+    
+    <SCRIPT language="javascript" type="text/javascript">
+    function validar(form) {
+    	return f_msg(form.usuario, "Usuario") && f_msg(form.pass, "Contraseña");
+    }
+    </SCRIPT>
+    
+    <%
+    String usu = (String) session.getValue("usu");
+    if (usu==null)
+        usu="";
+    
+    String msg = (String) request.getParameter("msg");
+    if (msg==null)
+        msg="";
+    %>
 
 <body class="Base" background="imagenes/login.jpg" OnLoad="document.form.usuario.focus();">
-
-	<form name="form" method="get" action="ingreso.jsp">
+	
+	<form name="form" method="get" action="ingreso.jsp" onSubmit="return validar(document.form)">
 		<center>
 
 		<table align="center" width="100%">
@@ -93,7 +98,7 @@ if (msg==null)
 										<tr>
 											<td width="190" height="24" align="right">Usuario:</td>
 											<td width="174" align="right"><input type="text"
-												name="usuario" value="<%=usu%>">
+												name="usuario" value="<%=usu%>"  maxlength="30">
 											</td>
 											<td width="25">&nbsp;</td>
 										</tr>
@@ -105,7 +110,7 @@ if (msg==null)
 										<tr>
 											<td width="190" height="24" align="right">Contraseña:</td>
 											<td width="174" align="right"><input type="password"
-												name="pass"
+												name="pass"  maxlength="15"
 												onKeyUp="this.form.passEncript.value = MD5(this.form.pass.value)">
 											</td>
 											<td width="25" align="left"><input type="submit"

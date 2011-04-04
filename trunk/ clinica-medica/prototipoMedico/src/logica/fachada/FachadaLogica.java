@@ -71,7 +71,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Especialidad esp = new Especialidad(datEsp.getCodigo(), datEsp.getDescripcion(), datEsp.getMontoBase());
 		try {
 			if (IDaoE.obtenerEspecialidad(trn, esp.getIdEspecialidad())==null){
-			JOptionPane.showMessageDialog(null,esp.getIdEspecialidad());
+			//JOptionPane.showMessageDialog(null,esp.getIdEspecialidad());
 			IDaoE.agregar(trn, esp);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);

@@ -26,6 +26,6 @@ public interface IDaoMedico {
  	public Vector listarDispMed(DataMed dataMed,Transaccion trn) throws PersistenciaException;
  	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException;
  	public Vector listarConsultasDisp(Transaccion trn) throws PersistenciaException;
-	public void altaConsulta(Transaccion trn, Calendar fecha,String id,int dia, Afiliado afil, int conult) throws PersistenciaException;
+	public void altaConsulta(Transaccion trn, Calendar fecha,String id,int dia, Afiliado afil, int consult) throws PersistenciaException;
 	
 }

@@ -17,7 +17,7 @@ import excepciones.PersistenciaException;
 public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	public void altaAfiliado(Transaccion trn, Afiliado afil) throws PersistenciaException {
-		System.out.println("Insertando afiliado: "+ afil.getId()+"");
+		System.out.println("Insertando afiliado: "+afil.getId());
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?,?,?,?,?,?,?)");
@@ -77,7 +77,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	public Vector<DataAfiliado> listarAfiliados(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando afiliados");
-		Vector<DataAfiliado> resultado = new Vector();
+		Vector<DataAfiliado> resultado = new Vector<DataAfiliado>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados");
 			ResultSet rst = pst.executeQuery();
@@ -126,9 +126,9 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		return validar;
 	}
 
-	public Vector listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
+	public Vector<Examen> listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
 		System.out.println("Listando examenes pendientes de resolución");
-		Vector<Examen> resultado = new Vector();
+		Vector<Examen> resultado = new Vector<Examen>();
 		Date  fechaInicio, fechaResultado;
 		Calendar fechaIni = Calendar.getInstance();
 		Calendar fechaRes = Calendar.getInstance();
@@ -165,13 +165,13 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
 		//BUSCO AFILIADO c/USUARIOS
-		String id = null, pass = null, tipo = null, nombre = null, apellido = null, ci = null, email = null, direccion = null, telefono = null, estado = null;
+		String pass = null, tipo = null, nombre = null, apellido = null, ci = null, email = null, direccion = null, telefono = null, estado = null;
 		Date fechaIngreso;
 		Calendar fechaIng = Calendar.getInstance();
 		Boolean fonasa = null;
 		Afiliado af = null;
 		
-		PreparedStatement pst = trn.preparedStatement("SELECT U.ID, U.CONTRASENA, U.TIPO, A.NOMBRE, A.APELLIDO, A.CI, " +
+		PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, A.NOMBRE, A.APELLIDO, A.CI, " +
 													"A.MAIL, A.DIRECCION, A.TELEFONO, A.FECHAINGRESO, A.FONASA, A.ESTADO " +
 													"FROM AFILIADOS A, USUARIOS U " +
 													"WHERE A.ID=U.ID AND ID="+idAfil+"");
@@ -179,7 +179,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		try {
 			rst = pst.executeQuery();
 			while(rst.next()){
-				id = rst.getString("ID");
 				pass = rst.getString("CONTRASENA");
 				tipo = rst.getString("TIPO");
 				nombre = rst.getString("NOMBRE");
@@ -195,10 +194,9 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			}
 			pst.close();
 			IDaoExamen daoEx = new DaoExamenMySQL();
-			af = new Afiliado(id, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
+			af = new Afiliado(idAfil, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return af;

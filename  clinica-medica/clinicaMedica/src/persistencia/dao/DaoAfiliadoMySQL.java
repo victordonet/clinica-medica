@@ -6,23 +6,19 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
-
 import logica.Afiliado;
-import persistencia.EntradaPersistencia;
+import logica.Examen;
+import logica.TipoExamen;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
-import vista.dataobjet.DataEsp;
 import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
 public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
-	@Override
 	public void altaAfiliado(Transaccion trn, Afiliado afil) throws PersistenciaException {
-
 		System.out.println("Insertando afiliado: "+ afil.getId()+"");
 		PreparedStatement pst;
-
 		try {
 			pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?,?,?,?,?,?,?)");
 			pst.setString (1, afil.getId());
@@ -43,42 +39,33 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	@Override
-	public void modifAfil(Transaccion trn, String idAfil, String nom,
-			String apel, String ci, String mail, String dir, String tel,
-			Calendar ing, boolean fon) throws PersistenciaException {
-		
+	public void modifAfil(Transaccion trn, String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException {
 		System.out.println("Modificando afiliado: "+ idAfil);
 		PreparedStatement pst;
-		pst = trn.preparedStatement("update Afiliados set id=?, nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=?, estado=?");
+		pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=? where id="+idAfil);
 		try {
-			pst.setString (1, idAfil);
-			pst.setString(2, nom);
-			pst.setString(3, apel);
-			pst.setString(4, ci);
-			pst.setString(5, mail);
-			pst.setString(6, dir);
-			pst.setString(7, tel);
+			pst.setString (1, nom);
+			pst.setString(2, apel);
+			pst.setString(3, ci);
+			pst.setString(4, mail);
+			pst.setString(5, dir);
+			pst.setString(6, tel);
 			Date dt = new Date (ing.getTimeInMillis());
-			pst.setDate (8, dt);
-			pst.setBoolean(9, fon);
+			pst.setDate (7, dt);
+			pst.setBoolean(8, fon);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
-		
 	}
 
-	@Override
-	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException {
-		
-		System.out.println("Doy de baja el afiliado: "+ id);
+	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException {	
+		System.out.println("Baja del afiliado: "+id);
 		PreparedStatement pst;
-		pst = trn.preparedStatement("update Afiliados set estado=? WHERE id="+id+"");
+		pst = trn.preparedStatement("update Afiliados set estado=? WHERE id="+id);
 		try {
 			// I = inactivo
 			pst.setString(1,"I");
@@ -86,21 +73,19 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
-
 	}
 
-	@Override
-	public Vector listarAfiliados(Transaccion trn) throws PersistenciaException {
+	public Vector<DataAfiliado> listarAfiliados(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando afiliados");
-		Vector <DataAfiliado> resultado = new Vector();
+		Vector<DataAfiliado> resultado = new Vector();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados");
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				int id = rst.getInt("Id");
+				String id = rst.getString("Id");
 				String nombre = rst.getString("nombre");
 				String apellido = rst.getString("apellido");
-				int ci = rst.getInt("ci");
+				String ci = rst.getString("ci");
 				String mail = rst.getString("mail");
 				String direccion = rst.getString("direccion");
 				String telefono = rst.getString("telefono");
@@ -119,13 +104,12 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		}
 	}
 
-	@Override
 	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException {
-		
-		PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id="+idAfil+"");
-		ResultSet rst = pst.executeQuery();
 		Boolean validar;
 		try {
+			PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id="+idAfil+"");
+			ResultSet rst = pst.executeQuery();
+	
 			if(rst.next()){
 				if(rst.getString(1)== "I")
 					validar = false;
@@ -135,74 +119,131 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			else{
 				validar = false;
 			}
-		} catch (SQLException e) {
+		}catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
 	}
 
-	@Override
-	public Vector listarExPend(Transaccion trn, int idAfil) throws PersistenciaException {
+	public Vector listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
+		System.out.println("Listando examenes pendientes de resolución");
+		Vector<Examen> resultado = new Vector();
+		Date  fechaInicio, fechaResultado;
+		Calendar fechaIni = Calendar.getInstance();
+		Calendar fechaRes = Calendar.getInstance();
+		int tipoEx;
+		boolean enviaMail, cobroTimbre;
 		
-		
-		return null;
-	}
-
-	@Override
-	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
-		
-		// VER CON PELADO!!!
-		
-		PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, fechaingreso, fonasa, estado from Afiliados WHERE id="+idAfil+"");
+		try {
+			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
+				"E.COBRATIMBRE, E.FECHARESULTADO " +
+				"FROM EXAMENES E, TIPOEXAMENES T " +
+				"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAfil+" AND E.FECHARESULTADO=NULL");
 		ResultSet rst = pst.executeQuery();
 		while(rst.next()){
-			int id = rst.getInt("Id");
-			String nombre = rst.getString("nombre");
-			String apellido = rst.getString("apellido");
-			int ci = rst.getInt("ci");
-			String mail = rst.getString("mail");
-			String direccion = rst.getString("direccion");
-			String telefono = rst.getString("telefono");
-			Date fechaIngreso = rst.getDate("fechaingreso");
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(fechaIngreso);
-			Boolean fonasa = rst.getBoolean("fonsasa");
-			String estado = rst.getString("estado");
+			fechaInicio = rst.getDate("FECHAINICIO");
+			fechaIni.setTime(fechaInicio);
+			//Tipo de Examen
+			tipoEx = rst.getInt("IDTIPOEXAMEN");
+			String descTipoEx = rst.getString("DESC_EXAMEN");
+			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+			//----
+			enviaMail = rst.getBoolean("ENVIAMAIL");
+			cobroTimbre = rst.getBoolean("COBRATIMBRE");
+			fechaResultado = rst.getDate("FECHARESULTADO");
+			fechaRes.setTime(fechaResultado);
+			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+			resultado.add(ex);
 		}
-		pst.close();
-		
-		
-			
-		return null;
+		return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 	}
 
-	@Override
-	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
+	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
+		//BUSCO AFILIADO c/USUARIOS
+		String id = null, pass = null, tipo = null, nombre = null, apellido = null, ci = null, email = null, direccion = null, telefono = null, estado = null;
+		Date fechaIngreso;
+		Calendar fechaIng = Calendar.getInstance();
+		Boolean fonasa = null;
+		Afiliado af = null;
 		
-		PreparedStatement pst = trn.preparedStatement("Select nombre, apellido from Afiliados WHERE id="+id+"");
-		ResultSet rs = pst.executeQuery();
-		VosLogin vosLogin = new VosLogin();
-		
-		try{
-			vosLogin.setNombre(rs.getString(1));
-			vosLogin.setApellido(rs.getString(2));
+		PreparedStatement pst = trn.preparedStatement("SELECT U.ID, U.CONTRASENA, U.TIPO, A.NOMBRE, A.APELLIDO, A.CI, " +
+													"A.MAIL, A.DIRECCION, A.TELEFONO, A.FECHAINGRESO, A.FONASA, A.ESTADO " +
+													"FROM AFILIADOS A, USUARIOS U " +
+													"WHERE A.ID=U.ID AND ID="+idAfil+"");
+		ResultSet rst;
+		try {
+			rst = pst.executeQuery();
+			while(rst.next()){
+				id = rst.getString("ID");
+				pass = rst.getString("CONTRASENA");
+				tipo = rst.getString("TIPO");
+				nombre = rst.getString("NOMBRE");
+				apellido = rst.getString("APELLIDO");
+				ci = rst.getString("CI");
+				email = rst.getString("MAIL");
+				direccion = rst.getString("DIRECCION");
+				telefono = rst.getString("TELEFONO");
+				fechaIngreso = rst.getDate("FECHAINGRESO");
+				fechaIng.setTime(fechaIngreso);
+				fonasa = rst.getBoolean("FONASA");
+				estado = rst.getString("ESTADO");
+			}
 			pst.close();
+			IDaoExamen daoEx = new DaoExamenMySQL();
+			af = new Afiliado(id, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return af;
+		//BUSCO EXAMENES DEL AFILIADO
+		
+		/*Date  fechaInicio, fechaResultado;
+		Calendar fechaIni = Calendar.getInstance();
+		Calendar fechaRes = Calendar.getInstance();
+		int tipoEx;
+		boolean enviaMail, cobroTimbre;
+		
+		PreparedStatement pst2 = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
+				"E.COBRATIMBRE, E.FECHARESULTADO " +
+				"FROM EXAMENES E, TIPOEXAMENES T " +
+				"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAfil+"");
+		ResultSet rst2 = pst2.executeQuery();
+		while(rst2.next()){
+			fechaInicio = rst2.getDate("FECHAINICIO");
+			fechaIni.setTime(fechaInicio);
+			//Tipo de Examen
+			tipoEx = rst2.getInt("IDTIPOEXAMEN");
+			String descTipoEx = rst2.getString("DESC_EXAMEN");
+			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+			//----
+			enviaMail = rst2.getBoolean("ENVIAMAIL");
+			cobroTimbre = rst2.getBoolean("COBRATIMBRE");
+			fechaResultado = rst2.getDate("FECHARESULTADO");
+			fechaRes.setTime(fechaResultado);
+			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+		}
+		pst2.close();*/
+		
+		//af.setDaoExamen(daoExamen);
+	}
+
+	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
+		try{
+			PreparedStatement pst = trn.preparedStatement("Select A.nombre, A.apellido, U.contrasena, U.tipo from Afiliados A, Usuarios U WHERE A.id=U.id and id="+id+"");
+			ResultSet rs = pst.executeQuery();
+			VosLogin vosLogin = new VosLogin(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+			pst.close();
+			return vosLogin;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
-		
-		PreparedStatement pst1 = trn.preparedStatement("Select contrasena, tipo from Usuarios WHERE id="+id+"");
-		ResultSet rs1 = pst1.executeQuery();
-		try{
-			vosLogin.setPass(rs.getString(1));
-			vosLogin.setTipo(rs.getString(2));
-			return vosLogin;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new PersistenciaException("Error de conexion con la base de datos");
-		
-	}
 	}
 }

@@ -15,7 +15,7 @@ public interface IDaoMedico {
  	public void altaMedico(Transaccion trn, Medico med) throws PersistenciaException;
  	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, Especialidad esp)  throws PersistenciaException;
  	public void bajarMedico(Transaccion trn, String id) throws PersistenciaException;
- 	public Vector listarMedico(Transaccion trn) throws PersistenciaException;
+ 	public Vector listarMedicos(Transaccion trn) throws PersistenciaException;
  	public Vector listarMedEsp(int idEsp,Transaccion trn) throws PersistenciaException;
  	public Medico getMedico(Transaccion trn, String id) throws PersistenciaException;
  	public VosLogin getDataMedico(Transaccion trn, String id) throws PersistenciaException;

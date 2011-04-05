@@ -64,7 +64,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public Vector<DataAdmin> listarAdmin(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando Administrativos");
-		Vector<DataAdmin> resultado = new Vector();
+		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, cargo from Administrativos");
 			ResultSet rst = pst.executeQuery();
@@ -139,7 +139,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public Vector<Examen> listarExPend(Transaccion trn, int idAdmin) throws PersistenciaException {
 		System.out.println("Listando examenes pendientes de resolución");
-		Vector<Examen> resultado = new Vector();
+		Vector<Examen> resultado = new Vector<Examen>();
 		Date  fechaInicio, fechaResultado;
 		Calendar fechaIni = Calendar.getInstance();
 		Calendar fechaRes = Calendar.getInstance();

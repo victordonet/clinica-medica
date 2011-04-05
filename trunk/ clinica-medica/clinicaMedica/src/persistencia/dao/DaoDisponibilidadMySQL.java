@@ -17,7 +17,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 		int horario = vo.getHorario();
 		int idMed = vo.getIdMed();
 		int cantConsultas;
-		int nuevaConsulta;
+		int nuevaConsulta = 0;
 		PreparedStatement pst = trn.preparedStatement("Select count (idconsultorio) as cantConsultas FROM Disponibilidad WHERE dia="+dia+" & horario="+horario+" & idmedico="+idMed+"");
 		try {
 			ResultSet rst = pst.executeQuery();

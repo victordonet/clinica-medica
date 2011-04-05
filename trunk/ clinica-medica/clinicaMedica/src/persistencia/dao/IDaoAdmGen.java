@@ -17,6 +17,6 @@ public interface IDaoAdmGen {
 	public VosLogin getDataAdmin(Transaccion trn, String id) throws PersistenciaException;
 	public boolean validarAdmin(Transaccion trn, String id) throws PersistenciaException;
 	public void modifEx(Transaccion trn,String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException;
-	public Vector listarExPend(Transaccion trn,int idAfil) throws PersistenciaException;
+	public Vector listarExPend(Transaccion trn,int idAdmin) throws PersistenciaException;
 	
 }

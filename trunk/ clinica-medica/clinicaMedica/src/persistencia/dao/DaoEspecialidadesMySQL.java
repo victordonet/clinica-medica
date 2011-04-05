@@ -5,10 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Hashtable;
 import java.util.Vector;
-
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner.DateEditor;
-
 import logica.Especialidad;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
@@ -17,7 +15,7 @@ import excepciones.PersistenciaException;
 public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 
 	
-	public void agregar(Transaccion trn, Especialidad esp) throws PersistenciaException {
+	public void altaEspecialidad(Transaccion trn, Especialidad esp) throws PersistenciaException {
 
 		System.out.println("Insertando especialidad: "+ esp.getDescripcion());
 		PreparedStatement pst;
@@ -79,5 +77,4 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
-
 }

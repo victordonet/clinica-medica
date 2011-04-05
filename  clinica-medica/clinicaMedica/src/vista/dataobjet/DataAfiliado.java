@@ -5,12 +5,11 @@ import java.util.Calendar;
 
 public class DataAfiliado implements Serializable {
 	
-	private int id, ci;
-	private String nombre, apellido, mail, direccion, tel, estado;
+	private String id, nombre, apellido, ci, mail, direccion, tel, estado;
 	private Calendar fechaIngreso;
 	private Boolean fonasa;
 	
-	public DataAfiliado(int id, int ci, String nombre, String apellido,
+	public DataAfiliado(String id, String ci, String nombre, String apellido,
 			String mail, String direccion, String tel, String estado,
 			Calendar fechaIngreso, Boolean fonasa) {
 		super();
@@ -26,19 +25,19 @@ public class DataAfiliado implements Serializable {
 		this.fonasa = fonasa;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getCi() {
+	public String getCi() {
 		return ci;
 	}
 
-	public void setCi(int ci) {
+	public void setCi(String ci) {
 		this.ci = ci;
 	}
 
@@ -105,8 +104,4 @@ public class DataAfiliado implements Serializable {
 	public void setFonasa(Boolean fonasa) {
 		this.fonasa = fonasa;
 	}
-	
-	
-	
-
 }

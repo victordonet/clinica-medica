@@ -4,8 +4,12 @@ public class VosLogin {
 	
 	private String nombre, apellido, tipo, pass;
 
-	public VosLogin() {
+	public VosLogin(String nombre, String apellido, String tipo, String pass) {
 		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipo = tipo;
+		this.pass = pass;
 	}
 
 	public String getNombre() {
@@ -39,8 +43,4 @@ public class VosLogin {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	
-	
-	
-
 }

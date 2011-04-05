@@ -16,12 +16,12 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	public int getCantConsult(Transaccion trn, String idAfi) throws PersistenciaException{
 		PreparedStatement pst;
 		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count (idafiliado) from consultas where idafiliado = ?");
+		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where idafiliado = ?");
 		try {
 			pst.setString (1, idAfi);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				cantidadConsulta = rst.getInt("idafiliado");
+				cantidadConsulta = rst.getInt("cantidad");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,7 +35,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			Calendar fHasta) throws PersistenciaException {
 		PreparedStatement pst;
 		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count (idafiliado) from consultas where fehca between ? and ? and timbre = 'S'");
+		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where fecha between ? and ? and timbre = 'S'");
 		Date desde = new java.sql.Date(fDesde.getTimeInMillis());
 		Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
 		
@@ -44,7 +44,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			pst.setDate (2,hasta);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				cantidadConsulta = rst.getInt("idafiliado");
+				cantidadConsulta = rst.getInt("cantidad");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,6 +56,20 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	@Override
 	public Vector listarConsultasAfi(Transaccion trn, String id)
 			throws PersistenciaException {
+		PreparedStatement pst;
+		int cantidadConsulta = 0;
+		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where idafiliado = ?");
+		try {
+			pst.setString (1, idAfi);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				cantidadConsulta = rst.getInt("cantidad");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		return cantidadConsulta;
 		// TODO Auto-generated method stub
 		return null;
 	}

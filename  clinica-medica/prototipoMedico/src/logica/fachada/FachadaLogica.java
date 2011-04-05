@@ -82,6 +82,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}

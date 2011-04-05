@@ -29,6 +29,7 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 		try {
 			modelo = listarEspecialidades();
 			ventana = new FrmListadoEspecialidades(modelo,this);
+			mod1.addObserver(ventana);
 			
 		} catch (Throwable e) {
 	

@@ -22,7 +22,7 @@ public class MainDaoExam {
 		
 		TipoExamen tex = new TipoExamen(1, "Ecografia");
 		Examen ex = new Examen(fechaI, fechaR, true, true, tex);
-		fachada.regEx(ex);
+		fachada.regEx(ex, "1001");
 
 		//Cant Ex. pagos
 		int cantP = fachada.getCantExPagos(fechaI, fechaR);

@@ -30,7 +30,7 @@ public class MainDaoMedico {
 		fachada.altaMedico(med2);
 
 		//Listar
-		Vector<Medico> listMed = fachada.listarMedico();
+		Vector<Medico> listMed = fachada.listarMedicos();
 		for (int i = 0; i < listMed.size(); i++) {
 			Medico me = listMed.get(i);
 			System.out.println("Listado medicos, Nombre = "+me.getNombre());
@@ -85,7 +85,7 @@ public class MainDaoMedico {
 		}
 		
 		//Listar Disponibilidad
-		DataMed voM = new DataMed();
+		DataMed voM = new DataMed(med.getId(), med.getNombre(), med.getApellido(), med.getCi(), med.getTel(), med.getEsp().getIdEspecialidad());
 		Vector vDisp = fachada.listarDispMed(voM);
 		for (int i = 0; i < vDisp.size(); i++) {
 			Disponibilidad dispo = (Disponibilidad) vDisp.get(i);

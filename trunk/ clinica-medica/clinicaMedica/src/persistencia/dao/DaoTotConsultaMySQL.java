@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Vector;
 
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataConsAfi;
+import vista.dataobjet.DataConsFecha;
 import excepciones.PersistenciaException;
 
 public class DaoTotConsultaMySQL implements IDaoTotConsulta {
@@ -30,7 +32,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return cantidadConsulta;
 	}
 
-	@Override
+	
 	public int getCantConsultasPagas(Transaccion trn, Calendar fDesde,
 			Calendar fHasta) throws PersistenciaException {
 		PreparedStatement pst;
@@ -53,38 +55,82 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return cantidadConsulta;
 	}
 
-	@Override
-	public Vector listarConsultasAfi(Transaccion trn, String id)
+	
+	public Vector <DataConsAfi> listarConsultasAfi(Transaccion trn, String id)
 			throws PersistenciaException {
 		PreparedStatement pst;
-		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where idafiliado = ?");
+		
+		Vector <DataConsAfi> consultas  = new Vector <DataConsAfi>();
+		pst = trn.preparedStatement("select c.fecha, m.nombre, m.apellido from consultas c, medicos m where c.idmedico = m.id and c.idafiliado = ?");
 		try {
-			pst.setString (1, idAfi);
+			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				cantidadConsulta = rst.getInt("cantidad");
+				Date fecha = rst.getDate("fecha");
+				String nom = rst.getString("nombre");
+				String ape = rst.getString("apellido");
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(fecha);
+				DataConsAfi data = new DataConsAfi(cal, nom, ape);
+				consultas.add(data);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
-		return cantidadConsulta;
-		// TODO Auto-generated method stub
-		return null;
+		return consultas;
 	}
 
-	@Override
-	public Vector listarConsFecha(Transaccion trn, Calendar fecha)
+	
+	public Vector <DataConsFecha> listarConsFecha(Transaccion trn, Calendar fecha)
 			throws PersistenciaException {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement pst;
+		
+		Vector <DataConsFecha> consultas  = new Vector <DataConsFecha>();
+		
+		pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
+				"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliado a, medicos m " +
+				"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ?");
+		try {
+			Date dia = new java.sql.Date(fecha.getTimeInMillis());
+			pst.setDate (1, dia);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				String nomMed = rst.getString("nomMed");
+				String apeMed = rst.getString("apeMed");
+				String nomAfi = rst.getString("nomAfi");
+				String apeAfi = rst.getString("apeAfi");
+				int consultorio = rst.getInt("idconsultorio");
+				int turno = rst.getInt("turno");
+				
+				DataConsFecha data = new DataConsFecha(fecha, nomMed, apeMed, nomAfi, apeAfi, consultorio, turno);
+				consultas.add(data);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		return consultas;
 	}
 
-	@Override
+	
 	public void elimConsulta(Transaccion trn, String idAfi)
 			throws PersistenciaException {
-		// TODO Auto-generated method stub
+		System.out.println("Baja del las consultas pendientes del afiliado ="+ idAfi);
+		PreparedStatement pst;
+		pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
+		try {
+			pst.setString(1,idAfi);
+			Calendar hoy = Calendar.getInstance(); 
+			Date dia = new java.sql.Date(hoy.getTimeInMillis());
+			pst.setDate(2, dia);
+			pst.executeUpdate();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+		
 		
 	}
 

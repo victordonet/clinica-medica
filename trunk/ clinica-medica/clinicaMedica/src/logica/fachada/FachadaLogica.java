@@ -479,10 +479,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//EXAMENES
-	public void regEx(Examen ex) throws PersistenciaException, RemoteException {
+	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = this.getTrn();
 		try {
-			iDaoEx.regEx(trn, ex);
+			iDaoEx.regEx(trn, ex, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -570,11 +570,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
- 	public Vector<Medico> listarMedico() throws PersistenciaException, RemoteException {
+ 	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException {
  		Transaccion trn = this.getTrn();
 		Vector<Medico> resultado = null;
 		try {
-			resultado = iDaoM.listarMedico(trn);
+			resultado = iDaoM.listarMedicos(trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

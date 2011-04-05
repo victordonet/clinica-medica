@@ -60,7 +60,7 @@ public interface IfachadaLogica extends IObservable{
 	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	
 	//EXAMENES
-	public void regEx(Examen ex) throws PersistenciaException, RemoteException;
+	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException;
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException;
 	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException;
 	
@@ -68,7 +68,7 @@ public interface IfachadaLogica extends IObservable{
  	public void altaMedico(Medico med) throws PersistenciaException, RemoteException;
  	public void modifMedico(String id, String nom, String apell, String ci, String tel, Especialidad esp) throws PersistenciaException, RemoteException;
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException;
- 	public Vector<Medico> listarMedico() throws PersistenciaException, RemoteException;
+ 	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException;
  	public Vector<Medico> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;
  	public Medico getMedico(String id) throws PersistenciaException, RemoteException;
  	public VosLogin getDataMedico(String id) throws PersistenciaException, RemoteException;

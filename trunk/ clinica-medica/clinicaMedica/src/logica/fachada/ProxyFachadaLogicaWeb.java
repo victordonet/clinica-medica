@@ -164,8 +164,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//EXAMENES
-	public void regEx(Examen ex) throws PersistenciaException, RemoteException {
-		fachada.regEx(ex);
+	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException {
+		fachada.regEx(ex, idAfil);
 	}
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException {
 		return fachada.getCantExPagos(fini, ffin);
@@ -184,8 +184,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
  	public void bajarMedico(String id)  throws PersistenciaException, RemoteException {
  		fachada.bajarMedico(id);
  	}
- 	public Vector listarMedico()  throws PersistenciaException, RemoteException {
- 		return fachada.listarMedico();
+ 	public Vector listarMedicos()  throws PersistenciaException, RemoteException {
+ 		return fachada.listarMedicos();
  	}
  	public Vector listarMedEsp(int idEsp)  throws PersistenciaException, RemoteException {
  		return fachada.listarMedEsp(idEsp);

@@ -77,9 +77,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			this.notificar();
 			}
-			else
+			else{
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
 				throw new EspecialidadException("La especialidad ya existe");
-		} catch (PersistenciaException e) {
+			}
+			} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);

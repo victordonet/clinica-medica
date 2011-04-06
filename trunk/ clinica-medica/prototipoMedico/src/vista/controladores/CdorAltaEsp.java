@@ -68,11 +68,11 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			actionCerrar();
 			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexión con el server ");
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null,"Error en el acceso a los datos");
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		} catch (EspecialidadException e) {
 			// TODO Auto-generated catch block

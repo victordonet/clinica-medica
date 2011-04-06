@@ -106,11 +106,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException{
 		boolean resultado = false;
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			Transaccion trn = pool.obtenerTrn(8);
 			resultado = IDaoU.validarUsuario(clave, pass, trn);
+			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			// TODO Auto-generated catch block
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return resultado;

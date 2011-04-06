@@ -67,9 +67,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			nivelTrn = 8;
 			fabrica = (IabsFactory) Class.forName(fb).newInstance();
 			pool = new Pool(conf);
+			iDaoAdmin = fabrica.crearDaoAdminGen();
+			iDaoAfil = fabrica.crearDaoAfil();
+			iDaoC = fabrica.crearDaoConsultas();
+			iDaoD = fabrica.crearDaoDisp();
+			iDaoEsp = fabrica.crearDaoEspecialidades();
+			iDaoEx = fabrica.crearDaoEx();
+			iDaoM = fabrica.crearDaoMed();
+			iDaoTE = fabrica.crearDaoTEx();
+			iDaoTC = fabrica.crearDaoTConsultas();
+			iDaoU = fabrica.crearDaoUsuarios();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
-			throw new LogicaException("No es posible crear la instancia necesaria para persistir");
+			throw new LogicaException("No es poSsible crear la instancia necesaria para persistir");
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 			throw new LogicaException("Sin acceso a la persistencia");
@@ -80,16 +90,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 			throw new PersistenciaException("Exception Throwable");
 		} 
-		iDaoAdmin = fabrica.crearDaoAdminGen();
-		iDaoAfil = fabrica.crearDaoAfil();
-		iDaoC = fabrica.crearDaoConsultas();
-		iDaoD = fabrica.crearDaoDisp();
-		iDaoEsp = fabrica.crearDaoEspecialidades();
-		iDaoEx = fabrica.crearDaoEx();
-		iDaoM = fabrica.crearDaoMed();
-		iDaoTE = fabrica.crearDaoTEx();
-		iDaoTC = fabrica.crearDaoTConsultas();
-		iDaoU = fabrica.crearDaoUsuarios();
+
 	}
 	
 	public static FachadaLogica getInstance()throws LogicaException, PersistenciaException, RemoteException{

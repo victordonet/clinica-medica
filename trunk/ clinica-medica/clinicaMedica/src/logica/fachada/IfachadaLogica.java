@@ -52,7 +52,7 @@ public interface IfachadaLogica extends IObservable{
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD
-	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException;
+	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException;
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException, EspecialidadException;

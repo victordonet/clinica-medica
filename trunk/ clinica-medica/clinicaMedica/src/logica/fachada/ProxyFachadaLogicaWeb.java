@@ -148,7 +148,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//DISPONIBILIDAD
-	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException {
+	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException {
 		fachada.updateDisponibilidad(vo);
 	}
 	

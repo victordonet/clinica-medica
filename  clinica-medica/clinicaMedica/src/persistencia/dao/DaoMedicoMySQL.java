@@ -142,8 +142,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			Especialidad esp = new Especialidad(idEsp, desc, monto);
 			IDaoConsultas daoConsultas = new DaoConsultasMySQL();
-			//DISPONIBILIDAD ????????
-			med = new Medico(id, pass, tipo, estado, nombre, apellido, ci, tel, esp, null, daoConsultas);
+			IDaoDisponibilidad daoDisp = new DaoDisponibilidadMySQL();
+			med = new Medico(id, pass, tipo, estado, nombre, apellido, ci, tel, esp, daoDisp, daoConsultas);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -197,16 +197,18 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		System.out.println("Listando salarios");
 		Vector<DataSalario> resultado = new Vector<DataSalario>();
 		IDaoConsultas daoCon = null;
-		int cant = daoCon.getCantidadConsultas(trn, fDesde, fHasta);
 		
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select M.id, M.nombre, M.apellido, E.montoBase*"+cant+" as salarioMed from Medicos M, Especialidades E where M.idEspecialidad=E.id");
+			PreparedStatement pst = trn.preparedStatement("Select M.id, M.nombre, M.apellido, E.montoBase " +
+															"from Medicos M, Especialidades E where M.idEspecialidad=E.id");
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
+				int cant = daoCon.getCantidadConsultas(trn, fDesde, fHasta, id);
 				String nombre = rst.getString("nombre");
 				String apellido = rst.getString("apellido");
-				double salarioMed = rst.getDouble("salarioMed");
+				double montoBase = rst.getDouble("montoBase");
+				double salarioMed = cant*montoBase;
 				DataSalario dtSalario = new DataSalario(id, nombre, apellido, salarioMed);
 				resultado.add(dtSalario);
 			}
@@ -228,7 +230,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public Vector listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
 		Vector<VoMedEsp> resultado = new Vector<VoMedEsp>();
-		try {
+		/*try {
 			PreparedStatement pst = trn.preparedStatement("Select dia, horario, idConsultorio from Disponibilidad where idMedico="+dataMed.getId());
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -242,7 +244,9 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		}
+		}*/
+		Medico med = this.getMedico(trn, dataMed.getId());
+		return med.litarDisp();
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException {

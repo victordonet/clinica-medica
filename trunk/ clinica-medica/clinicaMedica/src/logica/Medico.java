@@ -1,17 +1,18 @@
 package logica;
 
 import persistencia.dao.IDaoConsultas;
+import persistencia.dao.IDaoDisponibilidad;
 
 public class Medico extends Usuario {
 
 	private String nombre,apellido,ci,tel;
 	private Especialidad esp;
-	private Disponibilidad disp;
+	private IDaoDisponibilidad disp;
 	private IDaoConsultas daoConsultas;
 	
 	public Medico(String id, String contrasena, String tipo, String estado,
 			String nombre, String apellido, String ci, String tel,
-			Especialidad esp, Disponibilidad disp, IDaoConsultas daoConsultas) {
+			Especialidad esp, IDaoDisponibilidad disp, IDaoConsultas daoConsultas) {
 		super(id, contrasena, tipo, estado);
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -64,11 +65,11 @@ public class Medico extends Usuario {
 		this.esp = esp;
 	}
 
-	public Disponibilidad getDisp() {
+	public IDaoDisponibilidad getDisp() {
 		return disp;
 	}
 
-	public void setDisp(Disponibilidad disp) {
+	public void setDisp(IDaoDisponibilidad disp) {
 		this.disp = disp;
 	}
 
@@ -80,6 +81,9 @@ public class Medico extends Usuario {
 		this.daoConsultas = daoConsultas;
 	}
 
+	public vector listarDisp(){
+		return disp.listar(id);
+	}
 	
 	
 }

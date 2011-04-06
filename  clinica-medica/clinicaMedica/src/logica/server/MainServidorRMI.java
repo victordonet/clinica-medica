@@ -15,7 +15,7 @@ import excepciones.PersistenciaException;
 
 
 
-public class MainServidorPrototipo 
+public class MainServidorRMI 
 {
 	public static void main(String[] args) 
 	{

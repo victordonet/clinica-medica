@@ -24,7 +24,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?)");
 			pst.setString (1, adm.getId());
 			pst.setString(2, adm.getNombre());
-			pst.setString(3, adm.getCargo());
+			pst.setInt(3, adm.getCargo());
 			pst.setString(4, adm.getEstado());
 			pst.executeUpdate();
 		} catch (SQLException e) {

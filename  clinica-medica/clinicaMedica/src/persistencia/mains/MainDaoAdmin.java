@@ -17,10 +17,10 @@ public class MainDaoAdmin {
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
-		AdminGen adm = new AdminGen("FGonzales", "admin", "AD", "A", "Fernando", "Gerente");
+		AdminGen adm = new AdminGen("FGonzales", "admin", "AD","A" , "Fernando",1);
 		fachada.altaAdmin(adm);
 
-		AdminGen adm2 = new AdminGen("RPerez", "13", "AD", "A", "Ruso", "Perez");
+		AdminGen adm2 = new AdminGen("RPerez", "13", "AD", "A", "Ruso", 1);
 		fachada.altaAdmin(adm2);
 
 		//Listar

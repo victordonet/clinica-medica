@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -14,7 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 import logica.AdminGen;
 import logica.Afiliado;
 import logica.Consulta;
@@ -24,7 +25,6 @@ import logica.Medico;
 import logica.TipoExamen;
 import logica.Usuario;
 import logica.observer.IObserver;
-import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;

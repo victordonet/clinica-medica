@@ -130,8 +130,5 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
-		
-		
 	}
-
 }

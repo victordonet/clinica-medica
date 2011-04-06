@@ -3,14 +3,14 @@ package persistencia.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.Vector;
+import logica.Disponibilidad;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.VoDispo;
 import excepciones.PersistenciaException;
 
 public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 
-	@Override
 	public void updateDisponibilidad(VoDispo vo, Transaccion trn) throws PersistenciaException {
 		
 		int dia = vo.getDia();
@@ -29,7 +29,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			
 			if (cantConsultas<5)
 				nuevaConsulta = cantConsultas + 1;
-				PreparedStatement pst1 = trn.preparedStatement("update Disponibilidad set idmedico=?, dia=?, horario=?, idconsultorio=?");
+				PreparedStatement pst1 = trn.preparedStatement("update Disponibilidad set dia=?, horario=?, idconsultorio=? where idmedico=?");
 				pst1.setInt(1, idMed);
 				pst1.setInt(2, dia);
 				pst1.setInt(3, horario);
@@ -39,8 +39,23 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
-		
-		
 	}
 
+	public Vector<Disponibilidad> listarDispMedico(String idMed, Transaccion trn) throws PersistenciaException {
+		Vector<Disponibilidad> resultado = new Vector<Disponibilidad>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select dia, horario from Disponibilidad where idMedico="+idMed);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				int dia = rst.getInt("dia");
+				int horario = rst.getInt("horario");
+				Disponibilidad disp = new Disponibilidad(dia, horario);
+				resultado.add(disp);
+			}
+			return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+	}
 }

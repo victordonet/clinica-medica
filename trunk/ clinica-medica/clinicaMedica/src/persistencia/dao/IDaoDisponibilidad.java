@@ -1,5 +1,9 @@
 package persistencia.dao;
 
+import java.util.Vector;
+
+import logica.Disponibilidad;
+
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.VoDispo;
@@ -7,6 +11,6 @@ import vista.dataobjet.VoDispo;
 public interface IDaoDisponibilidad {
 
 	public void updateDisponibilidad(VoDispo vo, Transaccion trn) throws PersistenciaException;
-	public void listarDispMedico(String idMed) throws PersistenciaException;
-	
+	public Vector<Disponibilidad> listarDispMedico(String idMed, Transaccion trn) throws PersistenciaException;
+
 }

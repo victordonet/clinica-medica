@@ -200,36 +200,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			e.printStackTrace();
 		}
 		return af;
-		//BUSCO EXAMENES DEL AFILIADO
-		
-		/*Date  fechaInicio, fechaResultado;
-		Calendar fechaIni = Calendar.getInstance();
-		Calendar fechaRes = Calendar.getInstance();
-		int tipoEx;
-		boolean enviaMail, cobroTimbre;
-		
-		PreparedStatement pst2 = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
-				"E.COBRATIMBRE, E.FECHARESULTADO " +
-				"FROM EXAMENES E, TIPOEXAMENES T " +
-				"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAfil+"");
-		ResultSet rst2 = pst2.executeQuery();
-		while(rst2.next()){
-			fechaInicio = rst2.getDate("FECHAINICIO");
-			fechaIni.setTime(fechaInicio);
-			//Tipo de Examen
-			tipoEx = rst2.getInt("IDTIPOEXAMEN");
-			String descTipoEx = rst2.getString("DESC_EXAMEN");
-			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
-			//----
-			enviaMail = rst2.getBoolean("ENVIAMAIL");
-			cobroTimbre = rst2.getBoolean("COBRATIMBRE");
-			fechaResultado = rst2.getDate("FECHARESULTADO");
-			fechaRes.setTime(fechaResultado);
-			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
-		}
-		pst2.close();*/
-		
-		//af.setDaoExamen(daoExamen);
 	}
 
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {

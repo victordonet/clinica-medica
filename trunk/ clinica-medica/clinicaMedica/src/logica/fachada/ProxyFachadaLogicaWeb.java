@@ -131,17 +131,17 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//CONSULTAS
-	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
-		return fachada.getCantidadConsultas(fDesde, fHasta);
+	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
+		return fachada.getCantidadConsultas(fDesde, fHasta, idMed);
 	}
-	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
-		fachada.altaConsultaProxMes(cons);
+	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException {
+		fachada.altaConsultaProxMes(cons, idMed);
 	}
-	public Vector listarConsultasDisp() throws PersistenciaException, RemoteException {
-		return fachada.listarConsultasDisp();
+	public Vector listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
+		return fachada.listarConsultasDisp(idMed);
 	}
-	public void altaConsulta(Calendar fecha, String horario, int dia, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
-		fachada.altaConsulta(fecha, horario, dia, afil, turno, med);
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
+		fachada.altaConsulta(fecha, horario, dia, idConsultorio, timbre, afil, turno, med);
 	}
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {	
 		fachada.elimConsultasAfil(idAfil);

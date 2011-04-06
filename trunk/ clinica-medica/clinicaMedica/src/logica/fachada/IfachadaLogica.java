@@ -45,10 +45,10 @@ public interface IfachadaLogica extends IObservable{
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException;
 	
 	//CONSULTAS
-	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
-	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException;
-	public Vector<Consulta> listarConsultasDisp() throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha, String horario, int dia, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException;
+	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
+	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException;
+	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException;
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException;
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD

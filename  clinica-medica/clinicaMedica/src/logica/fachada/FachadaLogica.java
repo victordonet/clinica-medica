@@ -78,7 +78,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw new LogicaException("Error en configuracion de la persistencia");
 		} catch (Throwable e) {
 			e.printStackTrace();
-			throw new PersistenciaException("No tengo idea que mensaje dar");
+			throw new PersistenciaException("Exception Throwable");
 		} 
 		iDaoAdmin = fabrica.crearDaoAdminGen();
 		iDaoAfil = fabrica.crearDaoAfil();
@@ -100,27 +100,28 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return INSTANCE;
 	}
 	
-	public int getNivelTrn() {
-		return nivelTrn;
-	}
+//	public int getNivelTrn() {
+//		return nivelTrn;
+//	}
+//
+//	public void setNivelTrn(int nivelTrn) {
+//		this.nivelTrn = nivelTrn;
+//	}
 
-	public void setNivelTrn(int nivelTrn) {
-		this.nivelTrn = nivelTrn;
-	}
-
-	public Transaccion getTrn() {
-		Transaccion trn = null;
-		try {
-			trn = pool.obtenerTrn(nivelTrn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
-		return trn;
-	}
+//	public Transaccion getTrn() {
+//		Transaccion trn = null;
+//		try {
+//			trn = pool.obtenerTrn(nivelTrn);
+//		} catch (PersistenciaException e) {
+//			e.printStackTrace();
+//		}
+//		return trn;
+//	}
 
 	//AFILIADOS
 	public void altaAfiliado(Afiliado afil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		pool.obtenerTrn(8);
+		Transaccion trn = pool.obtenerTrn(8);
 		String idAfil = afil.getId();
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
@@ -132,11 +133,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El afiliado ya existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
 				throw new PersistenciaException("El afiliado no existe");
@@ -148,11 +150,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
 				throw new PersistenciaException("El afiliado no existe");
@@ -164,11 +167,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public Vector<Afiliado> listarAfiliados() throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Afiliado> resultado = null;
 		try {
 			resultado = iDaoAfil.listarAfiliados(trn);
@@ -183,7 +187,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		VosLogin vosL = null;
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
@@ -196,23 +200,25 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return vosL;
 	}
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = false;
 		try {
 			resultado = iDaoAfil.validarAfil(trn, idAfil);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return resultado;
 	}
 	public Vector<Examen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Examen> resultado = null;
 		try {
 			resultado = iDaoAfil.listarExPend(trn, idAfil);
@@ -227,7 +233,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Afiliado af = null;
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
@@ -240,6 +246,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return af;
@@ -247,7 +254,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//ADMINS-GERENTES
 	public void altaAdmin(AdminGen adm) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		String idAdm = adm.getId();
 		try {
 			if (iDaoAdmin.validarAdmin(trn, idAdm)==false){
@@ -259,11 +266,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El administrativo ya existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)){
 			iDaoAdmin.modificarAdmin(trn, id, nom, cargo);
@@ -274,11 +282,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El administrativo no existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)){
 			iDaoAdmin.bajaAdmin(trn, id);
@@ -289,11 +298,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El administrativo no existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public Vector<AdminGen> listarAdmin() throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<AdminGen> resultado = null;
 		try {
 			resultado = iDaoAdmin.listarAdmin(trn);
@@ -308,7 +318,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		VosLogin vosL = null;
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)==false){
@@ -321,23 +331,25 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return vosL;
 	}
 	public boolean validarAdmin(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = false;
 		try {
 			resultado = iDaoAdmin.validarAdmin(trn, id);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return resultado;
 	}
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAdmin.validarAdmin(trn, idAfil)){
 			iDaoAdmin.modifEx(trn, idAfil, fIni, idTex, fRes);
@@ -348,13 +360,14 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El administrativo no existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
 			resultado = iDaoC.getCantidadConsultas(trn, fDesde, fHasta);
@@ -369,18 +382,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoC.altaConsultaProxMes(trn, cons);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public Vector<Consulta> listarConsultasDisp() throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Consulta> resultado = null;
 		try {
 			resultado = iDaoC.listarConsultasDisp(trn);
@@ -395,44 +409,47 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public void altaConsulta(Calendar fecha, String horario, int dia, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoC.altaConsulta(trn, fecha, horario, dia, afil, turno, med);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoC.elimConsultasAfil(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	
 	//DISPONIBILIDAD
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoD.updateDisponibilidad(vo, trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Especialidad esp = new Especialidad(datEsp.getCodigo(), datEsp.getDescripcion(), datEsp.getMontoBase());
 		try {
 			if (iDaoEsp.obtenerEspecialidad(trn, esp.getIdEspecialidad())==null){
@@ -444,11 +461,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new EspecialidadException("La especialidad ya existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public Vector<Especialidad> listarEspecialidades() throws RemoteException, PersistenciaException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Especialidad> resultado = null;
 		try {
 			resultado = iDaoEsp.listarEspecialidades(trn);
@@ -463,7 +481,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Especialidad es = null;
 		try {
 			es = iDaoEsp.obtenerEspecialidad(trn, idEsp);
@@ -480,18 +498,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//EXAMENES
 	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoEx.regEx(trn, ex, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
 			resultado = iDaoEx.getCantExPagos(trn, fini, ffin);
@@ -506,7 +525,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
 			resultado = iDaoEx.getCantExam(trn, fecha);
@@ -523,7 +542,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//MEDICOS
 	public void altaMedico(Medico med) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		String idMed = med.getId();
 		try {
 			if (iDaoM.validarMed(trn, idMed)==false){
@@ -535,11 +554,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El médico ya existe");
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
  	public void modifMedico(String id, String nom, String apell, String ci, String tel, Especialidad esp) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
 				throw new PersistenciaException("El médico no existe");
@@ -551,11 +571,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
  	}
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
 				throw new PersistenciaException("El médico no existe");
@@ -567,11 +588,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
  	}
  	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Medico> resultado = null;
 		try {
 			resultado = iDaoM.listarMedicos(trn);
@@ -586,7 +608,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public Vector<Medico> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Medico> resultado = null;
 		try {
 			resultado = iDaoM.listarMedEsp(idEsp, trn);
@@ -601,7 +623,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public Medico getMedico(String id) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Medico med = null;
 		try {
 			med = iDaoM.getMedico(trn, id);
@@ -616,7 +638,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return med;
  	}
  	public VosLogin getDataMedico(String id) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		VosLogin vosL = null;
 		try {
 			vosL = iDaoM.getDataMedico(trn, id);
@@ -631,18 +653,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return vosL;
  	}
  	public boolean validarMed(String id) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = false;
 		try {
 			resultado = iDaoM.validarMed(trn, id);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return resultado;
  	}
  	public Vector listarSalarios(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector resultado = null;
 		try {
 			resultado = iDaoM.listarSalarios(trn, fDesde, fHasta);
@@ -657,7 +680,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public Vector<Medico> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Medico> resultado = null;
 		try {
 			resultado = iDaoM.listarMedPremiado(trn, fDesde, fHasta);
@@ -672,7 +695,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public Vector calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector resultado = null;
 		try {
 			resultado = iDaoM.calcSalarioTotal(trn, fDesde, fHasta);
@@ -687,7 +710,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Disponibilidad> resultado = null;
 		try {
 			resultado = iDaoM.listarDispMed(dataMed, trn);
@@ -702,7 +725,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
  	}
  	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException {
- 		Transaccion trn = this.getTrn();
+ 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
 				throw new PersistenciaException("El médico no existe");
@@ -714,11 +737,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
  	}
 	public void altaConsulta(Calendar fecha,String id, int dia, Afiliado afil, int conult) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
 				throw new PersistenciaException("El médico no existe");
@@ -736,29 +760,31 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//TIPO DE EXAMEN
 	public void agregar(TipoExamen tex) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoTE.agregar(trn, tex);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public void modificar(TipoExamen tex) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoTE.modificar(trn, tex);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public Vector<TipoExamen> listarTipoEx() throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<TipoExamen> resultado = null;
 		try {
 			resultado = iDaoTE.listarTipoEx(trn);
@@ -775,7 +801,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//TOTAL CONSULTAS
 	public int getCantConsult(String x) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
 			resultado = iDaoTC.getCantConsult(trn, x);
@@ -790,7 +816,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public int getCantConsultasPagas(Calendar fDesde,Calendar fHasta) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
 			resultado = iDaoTC.getCantConsultasPagas(trn, fDesde, fHasta);
@@ -805,7 +831,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public Vector<TotConsulta> listarConsultasAfi(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<TotConsulta> resultado = null;
 		try {
 			resultado = iDaoTC.listarConsultasAfi(trn, id);
@@ -820,7 +846,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public Vector<TotConsulta> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		Vector<TotConsulta> resultado = null;
 		try {
 			resultado = iDaoTC.listarConsFecha(trn, fecha);
@@ -835,47 +861,51 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 	}
 	public void elimConsulta(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoTC.elimConsulta(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	
 	//USUARIOS
 	public void altaUsuario(Usuario usu) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoU.altaUsuario(trn, usu);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException{
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = false;
 		try {
 			resultado = iDaoU.validarUsuario(clave, pass, trn);
 		} catch (PersistenciaException e) {
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 		return resultado;
 	}
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
-		Transaccion trn = this.getTrn();
+		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoU.modifContrasena(clave, pass, trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}

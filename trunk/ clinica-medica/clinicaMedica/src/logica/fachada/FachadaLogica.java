@@ -131,7 +131,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			}
 			else
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado ya existe");
+				
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -142,6 +145,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
@@ -159,6 +164,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
@@ -192,6 +199,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		VosLogin vosL = null;
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
@@ -238,6 +247,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Afiliado af = null;
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
@@ -263,8 +274,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo ya existe");
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -279,8 +293,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
+				}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -295,8 +312,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -323,6 +343,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		VosLogin vosL = null;
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 			}
 			else{
@@ -357,8 +379,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -458,8 +483,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new EspecialidadException("La especialidad ya existe");
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -551,8 +579,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
+			else{
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico ya existe");
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -563,6 +594,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
@@ -580,6 +613,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
@@ -658,6 +693,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoM.validarMed(trn, id);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -729,6 +766,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
@@ -746,6 +785,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
@@ -754,6 +795,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				pool.liberarTrn(trn);
 			}
 		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
 			trn.finalizarTrn(false);
 			e.printStackTrace();
 		}
@@ -892,6 +935,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoU.validarUsuario(clave, pass, trn);
+			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			pool.liberarTrn(trn);
 			e.printStackTrace();

@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class AdminGen extends Usuario {
 
-	private String nombre,cargo;
+	private String nombre;
+	int cargo;
 
 	public AdminGen(String id, String contrasena, String tipo, String estado,
-		String nombre, String cargo) {
+		String nombre, Integer cargo) {
 		super(id, contrasena, tipo, estado);
 		this.nombre = nombre;
 		this.cargo = cargo;
@@ -21,11 +22,11 @@ public class AdminGen extends Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getCargo() {
+	public int getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
+	public void setCargo(int cargo) {
 		this.cargo = cargo;
 	}	
 }

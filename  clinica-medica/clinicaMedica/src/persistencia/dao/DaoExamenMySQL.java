@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Vector;
 import persistencia.transacciones.Transaccion;
 import logica.Examen;
+import logica.TipoExamen;
 import excepciones.PersistenciaException;
 
 public class DaoExamenMySQL implements IDaoExamen {
@@ -60,6 +62,43 @@ public class DaoExamenMySQL implements IDaoExamen {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public Vector<Examen> listarExamAfil(String idAfil, Transaccion trn) throws PersistenciaException {
+		//BUSCO EXAMENES DEL AFILIADO
+		Vector<Examen> resultado = new Vector<Examen>();
+		Date  fechaInicio, fechaResultado;
+		Calendar fechaIni = Calendar.getInstance();
+		Calendar fechaRes = Calendar.getInstance();
+		int tipoEx;
+		boolean enviaMail, cobroTimbre;
+		try {
+		PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
+														"E.COBRATIMBRE, E.FECHARESULTADO " +
+														"FROM EXAMENES E, TIPOEXAMENES T " +
+														"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAfil+"");
+		ResultSet rst = pst.executeQuery();
+		while(rst.next()){
+			fechaInicio = rst.getDate("FECHAINICIO");
+			fechaIni.setTime(fechaInicio);
+			//Tipo de Examen
+			tipoEx = rst.getInt("IDTIPOEXAMEN");
+			String descTipoEx = rst.getString("DESC_EXAMEN");
+			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+			//----
+			enviaMail = rst.getBoolean("ENVIAMAIL");
+			cobroTimbre = rst.getBoolean("COBRATIMBRE");
+			fechaResultado = rst.getDate("FECHARESULTADO");
+			fechaRes.setTime(fechaResultado);
+			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+			resultado.add(ex);
+		}
+		pst.close();
+		return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 }

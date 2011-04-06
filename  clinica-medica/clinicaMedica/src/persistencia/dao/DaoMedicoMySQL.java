@@ -229,24 +229,10 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	public Vector listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
-		Vector<VoMedEsp> resultado = new Vector<VoMedEsp>();
-		/*try {
-			PreparedStatement pst = trn.preparedStatement("Select dia, horario, idConsultorio from Disponibilidad where idMedico="+dataMed.getId());
-			ResultSet rst = pst.executeQuery();
-			while(rst.next()){
-				String dia = rst.getString("dia");
-				int horario = rst.getInt("horario");
-				int idConsultorio = rst.getInt("idConsultorio");
-				//VoMedEsp voMed = new VoMedEsp(id, nombre, apellido);
-				//resultado.add(voMed);
-			}
-			return resultado;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new PersistenciaException("Error de conexion con la base de datos");
-		}*/
+
 		Medico med = this.getMedico(trn, dataMed.getId());
-		return med.litarDisp();
+		IDaoDisponibilidad disp = med.getDisp();
+		return disp.listarDispMedico(dataMed.getId(), trn);
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException {

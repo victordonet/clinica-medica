@@ -366,11 +366,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//CONSULTAS
-	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
-			resultado = iDaoC.getCantidadConsultas(trn, fDesde, fHasta);
+			resultado = iDaoC.getCantidadConsultas(trn, fDesde, fHasta, idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -381,10 +381,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsultaProxMes(Consulta cons) throws PersistenciaException, RemoteException {
+	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoC.altaConsultaProxMes(trn, cons);
+			iDaoC.altaConsultaProxMes(trn, cons, idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -393,11 +393,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<Consulta> listarConsultasDisp() throws PersistenciaException, RemoteException {
+	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<Consulta> resultado = null;
 		try {
-			resultado = iDaoC.listarConsultasDisp(trn);
+			resultado = iDaoC.listarConsultasDisp(trn, idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -408,10 +408,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsulta(Calendar fecha, String horario, int dia, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoC.altaConsulta(trn, fecha, horario, dia, afil, turno, med);
+			iDaoC.altaConsulta(trn, fecha, horario, dia, idConsultorio, timbre, afil, turno, med);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

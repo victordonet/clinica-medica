@@ -4,12 +4,13 @@ import java.util.Calendar;
 import java.util.Vector;
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.VosLogin;
 import logica.Afiliado;
 
 public interface IDaoAfiliado {
 
-	public void altaAfiliado(Transaccion trn, Afiliado afil) throws PersistenciaException;
+	public void altaAfiliado(Transaccion trn, DataAfiliado afil) throws PersistenciaException;
 	public void modifAfil(Transaccion trn,String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException;
 	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException;
 	public Vector listarAfiliados(Transaccion trn)throws PersistenciaException;

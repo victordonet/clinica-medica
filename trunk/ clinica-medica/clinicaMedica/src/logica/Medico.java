@@ -1,11 +1,13 @@
 package logica;
 
+import java.util.Vector;
+
 import persistencia.dao.IDaoConsultas;
 import persistencia.dao.IDaoDisponibilidad;
 
 public class Medico extends Usuario {
 
-	private String nombre,apellido,ci,tel;
+	private String id,nombre,apellido,ci,tel;
 	private Especialidad esp;
 	private IDaoDisponibilidad disp;
 	private IDaoConsultas daoConsultas;
@@ -23,7 +25,13 @@ public class Medico extends Usuario {
 		this.daoConsultas = daoConsultas;
 	}
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -80,10 +88,4 @@ public class Medico extends Usuario {
 	public void setDaoConsultas(IDaoConsultas daoConsultas) {
 		this.daoConsultas = daoConsultas;
 	}
-
-	public vector listarDisp(){
-		return disp.listar(id);
-	}
-	
-	
 }

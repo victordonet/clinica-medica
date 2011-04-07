@@ -6,20 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import excepciones.PersistenciaException;
 
 public class DaoTotConsultaMySQL implements IDaoTotConsulta {
-
 	
 	public int getCantConsult(Transaccion trn, String idAfi) throws PersistenciaException{
-		PreparedStatement pst;
 		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where idafiliado = ?");
 		try {
+			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas where idafiliado = ?");
 			pst.setString (1, idAfi);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -32,16 +29,14 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return cantidadConsulta;
 	}
 
-	
 	public int getCantConsultasPagas(Transaccion trn, Calendar fDesde,
-			Calendar fHasta) throws PersistenciaException {
-		PreparedStatement pst;
+		Calendar fHasta) throws PersistenciaException {
 		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas where fecha between ? and ? and timbre = 'S'");
-		Date desde = new java.sql.Date(fDesde.getTimeInMillis());
-		Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
-		
 		try {
+			PreparedStatement pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas " +
+															"where fecha between ? and ? and timbre = 'S'");
+			Date desde = new java.sql.Date(fDesde.getTimeInMillis());
+			Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
 			pst.setDate (1,desde);
 			pst.setDate (2,hasta);
 			ResultSet rst = pst.executeQuery();
@@ -56,13 +51,11 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	}
 
 	
-	public Vector <DataConsAfi> listarConsultasAfi(Transaccion trn, String id)
-			throws PersistenciaException {
-		PreparedStatement pst;
-		
+	public Vector <DataConsAfi> listarConsultasAfi(Transaccion trn, String id) throws PersistenciaException {
 		Vector <DataConsAfi> consultas  = new Vector <DataConsAfi>();
-		pst = trn.preparedStatement("select c.fecha, m.nombre, m.apellido from consultas c, medicos m where c.idmedico = m.id and c.idafiliado = ?");
 		try {
+			PreparedStatement pst = trn.preparedStatement("select c.fecha, m.nombre, m.apellido from consultas c, medicos m " +
+															"where c.idmedico = m.id and c.idafiliado = ?");
 			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -81,17 +74,12 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return consultas;
 	}
 
-	
-	public Vector <DataConsFecha> listarConsFecha(Transaccion trn, Calendar fecha)
-			throws PersistenciaException {
-		PreparedStatement pst;
-		
+	public Vector <DataConsFecha> listarConsFecha(Transaccion trn, Calendar fecha) throws PersistenciaException {
 		Vector <DataConsFecha> consultas  = new Vector <DataConsFecha>();
-		
-		pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
-				"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliado a, medicos m " +
-				"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ?");
 		try {
+			PreparedStatement pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
+					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliado a, medicos m " +
+					"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ?");
 			Date dia = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate (1, dia);
 			ResultSet rst = pst.executeQuery();
@@ -102,7 +90,6 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 				String apeAfi = rst.getString("apeAfi");
 				int consultorio = rst.getInt("idconsultorio");
 				int turno = rst.getInt("turno");
-				
 				DataConsFecha data = new DataConsFecha(fecha, nomMed, apeMed, nomAfi, apeAfi, consultorio, turno);
 				consultas.add(data);
 			}
@@ -113,13 +100,10 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return consultas;
 	}
 
-	
-	public void elimConsulta(Transaccion trn, String idAfi)
-			throws PersistenciaException {
+	public void elimConsulta(Transaccion trn, String idAfi) throws PersistenciaException {
 		System.out.println("Baja del las consultas pendientes del afiliado ="+ idAfi);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
 		try {
+			PreparedStatement pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
 			pst.setString(1,idAfi);
 			Calendar hoy = Calendar.getInstance(); 
 			Date dia = new java.sql.Date(hoy.getTimeInMillis());

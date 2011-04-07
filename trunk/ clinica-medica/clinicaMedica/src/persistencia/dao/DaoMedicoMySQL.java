@@ -26,9 +26,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	public void altaMedico(Transaccion trn, DataMed med) throws PersistenciaException {
 		System.out.println("Insertando medico: "+med.getId());
-		PreparedStatement pst;
 		try {
-			pst = trn.preparedStatement("insert into Medico values (?,?,?,?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Medico values (?,?,?,?,?,?,?)");
 			pst.setString (1, med.getId());
 			pst.setString(2, med.getNombre());
 			pst.setString(3, med.getApellido());
@@ -47,14 +46,14 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException {
 		System.out.println("Modificando medico: "+ id);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=? where id="+id);
 		try {
+			PreparedStatement pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, apell);
 			pst.setString(3, ci);
 			pst.setString(4, tel);
 			pst.setInt(5, esp.getCodigo());
+			pst.setString(6, id);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -64,11 +63,11 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	public void bajarMedico(Transaccion trn, String id) throws PersistenciaException {
 		System.out.println("Baja del médico: "+id);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update Medicos set estado=? WHERE id="+id);
 		try {
+			PreparedStatement pst = trn.preparedStatement("update Medicos set estado=? WHERE id=?");
 			// I = inactivo
 			pst.setString(1,"I");
+			pst.setString(2, id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -102,7 +101,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		System.out.println("Listando medicos con especialidad = "+idEsp);
 		Vector<VoMedEsp> resultado = new Vector<VoMedEsp>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido from Medicos where idEspecialidad="+idEsp);
+			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido from Medicos where idEspecialidad=?");
+			pst.setInt(1, idEsp);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
@@ -119,20 +119,17 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public Medico getMedico(Transaccion trn, String id) throws PersistenciaException {
-		
-		//BUSCO MEDICO c/USUARIOS y ESPECIALIDAD
 		String pass = null, tipo = null, nombre = null, apellido = null, ci = null, tel = null, estado = null, desc = null;
 		int idEsp = 0;
 		double monto = 0;
 		Medico med = null;
-		
-		PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, M.NOMBRE, M.APELLIDO, M.CI, " +
-													"M.TELEFONO, M.ESTADO, M.IDESPECIALIDAD, E.DESCRIPCION, E.MONTOBASE" +
-													"FROM MEDICOS M, USUARIOS U, ESPECIALIDADES E " +
-													"WHERE A.ID=U.ID AND M.IDESPECIALIDAD=E.ID AND ID="+id+"");
-		ResultSet rst;
 		try {
-			rst = pst.executeQuery();
+			PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, M.NOMBRE, M.APELLIDO, M.CI, " +
+					"M.TELEFONO, M.ESTADO, M.IDESPECIALIDAD, E.DESCRIPCION, E.MONTOBASE" +
+					"FROM MEDICOS M, USUARIOS U, ESPECIALIDADES E " +
+					"WHERE A.ID=U.ID AND M.IDESPECIALIDAD=E.ID AND ID=?");
+			pst.setString(1, id);
+ 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				pass = rst.getString("CONTRASENA");
 				tipo = rst.getString("TIPO");
@@ -160,7 +157,9 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public VosLogin getDataMedico(Transaccion trn, String id) throws PersistenciaException {
 		VosLogin vosLogin = null;
 		try{
-			PreparedStatement pst = trn.preparedStatement("Select M.nombre, M.apellido, U.contrasena, U.tipo from Medicos M, Usuarios U WHERE M.id=U.id and id="+id+"");
+			PreparedStatement pst = trn.preparedStatement("Select M.nombre, M.apellido, U.contrasena, U.tipo from Medicos M, Usuarios U " +
+															"WHERE M.id=U.id and id=?");
+			pst.setString(1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String nombre = rst.getString("nombre");
@@ -180,9 +179,9 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public boolean validarMed(Transaccion trn, String id) throws PersistenciaException {
 		Boolean validar;
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select estado from Medicos WHERE id="+id);
+			PreparedStatement pst = trn.preparedStatement("Select estado from Medicos WHERE id=?");
+			pst.setString(1, id);
 			ResultSet rst = pst.executeQuery();
-	
 			if(rst.next()){
 				if(rst.getString(1)== "I")
 					validar = false;
@@ -203,7 +202,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		System.out.println("Listando salarios");
 		Vector<DataSalario> resultado = new Vector<DataSalario>();
 		IDaoConsultas daoCon = null;
-		
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select M.id, M.nombre, M.apellido, E.montoBase " +
 															"from Medicos M, Especialidades E where M.idEspecialidad=E.id");
@@ -225,8 +223,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public Vector listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		Vector vMedPremiado = new Vector();
+	public Vector<DataCantConsu> listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
+		Vector<DataCantConsu> vMedPremiado = new Vector<DataCantConsu>();
 		IDaoConsultas daoCon = null;
 		DataCantConsu medicoPremiado= new DataCantConsu();
 
@@ -251,7 +249,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public VoResumCont calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		Vector vSalario = new Vector();
+		Vector<VoResumCont> vSalario = new Vector<VoResumCont>();
 		Vector<DataSalario> vSalarioMed = this.listarSalarios(trn, fDesde, fHasta);
 		double salTotal = 0;
 		for (int i = 0; i < vSalarioMed.size(); i++) {
@@ -263,7 +261,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	
 	public Vector<Disponibilidad> listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
-
 		Medico med = this.getMedico(trn, dataMed.getId());
 		IDaoDisponibilidad disp = med.getDisp();
 		return disp.listarDispMedico(dataMed.getId(), trn);

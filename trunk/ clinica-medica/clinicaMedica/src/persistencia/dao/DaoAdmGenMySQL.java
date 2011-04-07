@@ -18,10 +18,8 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
 		System.out.println("Insertando administrativo: "+ adm.getId());
-		PreparedStatement pst;
-
 		try {
-			pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?)");
 			pst.setString (1, adm.getId());
 			pst.setString(2, adm.getNombre());
 			pst.setInt(3, adm.getCargo());
@@ -37,11 +35,11 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo) throws PersistenciaException {
 		System.out.println("Modificando administrativo: "+id);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=? where id="+id);
 		try {
+			PreparedStatement pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, cargo);
+			pst.setString (3, id);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,11 +49,11 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void bajaAdmin(Transaccion trn, String id) throws PersistenciaException {
 		System.out.println("Baja del administrativo: "+id);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update Administrativos set estado=? WHERE id="+id);
 		try {
+			PreparedStatement pst = trn.preparedStatement("update Administrativos set estado=? WHERE id=?");
 			// I = inactivo
 			pst.setString(1,"I");
+			pst.setString (2, id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -65,7 +63,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public Vector<DataAdmin> listarAdmin(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando Administrativos");
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
-		
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select * from administrativos");
 			System.out.println("paso1");
@@ -90,7 +87,8 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public VosLogin getDataAdmin(Transaccion trn, String id) throws PersistenciaException {
 		VosLogin vosLogin = null;
 		try{
-			PreparedStatement pst = trn.preparedStatement("Select A.nombre, U.contrasena, U.tipo from Administrativos A, Usuarios U WHERE A.id=U.id and id="+id+"");
+			PreparedStatement pst = trn.preparedStatement("Select A.nombre, U.contrasena, U.tipo from Administrativos A, Usuarios U WHERE A.id=U.id and id=?");
+			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String nombre = rst.getString("nombre");
@@ -109,9 +107,9 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public boolean validarAdmin(Transaccion trn, String id) throws PersistenciaException {
 		Boolean validar;
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select estado from Administrativos WHERE id="+id+"");
+			PreparedStatement pst = trn.preparedStatement("Select estado from Administrativos WHERE id=?");
+			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
-	
 			if(rst.next()){
 				if(rst.getString(1)== "I")
 					validar = false;
@@ -130,11 +128,14 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void modifEx(Transaccion trn, String idAfil, Calendar fIni, int idTex, Calendar fRes) throws PersistenciaException {
 		System.out.println("Modificando examen");
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update Examenes set FECHARESULTADO=? where IDAFILIADO="+idAfil+"AND FECHAINICIO="+fIni+"AND IDTIPOEXAMEN="+idTex);
 		try {
-			 Date fechaRes = new java.sql.Date(fRes.getTimeInMillis());
+			PreparedStatement pst = trn.preparedStatement("update Examenes set FECHARESULTADO=? where IDAFILIADO=? AND FECHAINICIO=? AND IDTIPOEXAMEN=?");
+			Date fechaRes = new java.sql.Date(fRes.getTimeInMillis());
 			pst.setDate(1,fechaRes);
+			pst.setString (2, idAfil);
+			Date fechaInicio = new java.sql.Date(fIni.getTimeInMillis());
+			pst.setDate(3,fechaInicio);
+			pst.setInt(4, idTex);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -142,7 +143,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		}
 	}
 
-	public Vector<Examen> listarExPend(Transaccion trn, int idAdmin) throws PersistenciaException {
+	public Vector<Examen> listarExPend(Transaccion trn, String idAdmin) throws PersistenciaException {
 		System.out.println("Listando examenes pendientes de resolución");
 		Vector<Examen> resultado = new Vector<Examen>();
 		Date  fechaInicio, fechaResultado;
@@ -153,9 +154,10 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		
 		try {
 			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
-				"E.COBRATIMBRE, E.FECHARESULTADO " +
-				"FROM EXAMENES E, TIPOEXAMENES T " +
-				"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAdmin+" AND E.FECHARESULTADO=NULL");
+															"E.COBRATIMBRE, E.FECHARESULTADO " +
+															"FROM EXAMENES E, TIPOEXAMENES T " +
+															"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO=? AND E.FECHARESULTADO=NULL");
+			pst.setString(1, idAdmin);
 		ResultSet rst = pst.executeQuery();
 		while(rst.next()){
 			fechaInicio = rst.getDate("FECHAINICIO");

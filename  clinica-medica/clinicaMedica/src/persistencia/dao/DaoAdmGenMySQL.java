@@ -151,30 +151,29 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		Calendar fechaRes = Calendar.getInstance();
 		int tipoEx;
 		boolean enviaMail, cobroTimbre;
-		
 		try {
 			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
 															"E.COBRATIMBRE, E.FECHARESULTADO " +
 															"FROM EXAMENES E, TIPOEXAMENES T " +
 															"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO=? AND E.FECHARESULTADO=NULL");
 			pst.setString(1, idAdmin);
-		ResultSet rst = pst.executeQuery();
-		while(rst.next()){
-			fechaInicio = rst.getDate("FECHAINICIO");
-			fechaIni.setTime(fechaInicio);
-			//Tipo de Examen
-			tipoEx = rst.getInt("IDTIPOEXAMEN");
-			String descTipoEx = rst.getString("DESC_EXAMEN");
-			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
-			//----
-			enviaMail = rst.getBoolean("ENVIAMAIL");
-			cobroTimbre = rst.getBoolean("COBRATIMBRE");
-			fechaResultado = rst.getDate("FECHARESULTADO");
-			fechaRes.setTime(fechaResultado);
-			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
-			resultado.add(ex);
-		}
-		return resultado;
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				fechaInicio = rst.getDate("FECHAINICIO");
+				fechaIni.setTime(fechaInicio);
+				//Tipo de Examen
+				tipoEx = rst.getInt("IDTIPOEXAMEN");
+				String descTipoEx = rst.getString("DESC_EXAMEN");
+				TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+				//----
+				enviaMail = rst.getBoolean("ENVIAMAIL");
+				cobroTimbre = rst.getBoolean("COBRATIMBRE");
+				fechaResultado = rst.getDate("FECHARESULTADO");
+				fechaRes.setTime(fechaResultado);
+				Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+				resultado.add(ex);
+			}
+			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

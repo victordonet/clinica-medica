@@ -7,12 +7,15 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import logica.Afiliado;
+import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.VoMedEsp;
+import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
@@ -174,7 +177,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public boolean validarMed(Transaccion trn, String id) throws PersistenciaException {
 		Boolean validar;
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select estado from Medicos WHERE id="+id+"");
+			PreparedStatement pst = trn.preparedStatement("Select estado from Medicos WHERE id="+id);
 			ResultSet rst = pst.executeQuery();
 	
 			if(rst.next()){
@@ -220,14 +223,43 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public Vector listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		return null;
+		Vector vMedPremiado = new Vector();
+		IDaoConsultas daoCon = null;
+		DataCantConsu medicoPremiado= new DataCantConsu();
+
+		Vector<DataMed> medicos = this.listarMedicos(trn);
+		for (int i = 0; i < medicos.size(); i++) {
+			String id = medicos.get(i).getId();
+			int cant = daoCon.getCantidadConsultas(trn, fDesde, fHasta, id);
+			String nombre = medicos.get(i).getNombre();
+			String apellido = medicos.get(i).getApellido();
+			DataCantConsu dataCantCons = new DataCantConsu(id, nombre, apellido, cant);
+			if(medicoPremiado.getCantConsultas()==dataCantCons.getCantConsultas()){
+				vMedPremiado.add(medicoPremiado);
+			}else{
+				if(medicoPremiado.getCantConsultas()<dataCantCons.getCantConsultas()){
+					vMedPremiado = null;
+					medicoPremiado=dataCantCons;
+					vMedPremiado.add(medicoPremiado);
+				}
+			}
+		}
+		return vMedPremiado;
 	}
 
-	public Vector calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		return null;
+	public VoResumCont calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
+		Vector vSalario = new Vector();
+		Vector<DataSalario> vSalarioMed = this.listarSalarios(trn, fDesde, fHasta);
+		double salTotal = 0;
+		for (int i = 0; i < vSalarioMed.size(); i++) {
+			salTotal = salTotal + vSalarioMed.get(i).getSalarioMed();
+		}
+		VoResumCont vo = new VoResumCont("Salarios", salTotal);
+		return vo;
 	}
+	
 
-	public Vector listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
+	public Vector<Disponibilidad> listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
 
 		Medico med = this.getMedico(trn, dataMed.getId());

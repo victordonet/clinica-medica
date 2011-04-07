@@ -3,8 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
-import persistencia.transacciones.Transaccion;
 import logica.AdminGen;
 import logica.Afiliado;
 import logica.Consulta;
@@ -21,6 +19,7 @@ import excepciones.PersistenciaException;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
+import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 
 public interface IfachadaLogica extends IObservable{
@@ -43,6 +42,7 @@ public interface IfachadaLogica extends IObservable{
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException;
 	public boolean validarAdmin(String id) throws PersistenciaException, RemoteException;
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException;
+	public Vector listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
@@ -75,7 +75,7 @@ public interface IfachadaLogica extends IObservable{
  	public boolean validarMed(String id) throws PersistenciaException, RemoteException;
  	public Vector listarSalarios(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Medico> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
- 	public Vector calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
+ 	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException;
  	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException;
 	public void altaConsulta(Calendar fecha,String id,int dia, Afiliado afil, int conult) throws PersistenciaException, RemoteException;

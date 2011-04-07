@@ -21,6 +21,7 @@ import logica.observer.IObserver;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
+import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 import excepciones.EspecialidadException;
 import excepciones.LogicaException;
@@ -107,6 +108,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException {
 		fachada.modifEx(idAfil, fIni, idTex, fRes);
 	}
+	public Vector listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+		return fachada.listarResContable(fDesde, fHasta);
+	}
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
@@ -183,7 +187,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public Vector listarMedPremiado(Calendar fDesde, Calendar fHasta)  throws PersistenciaException, RemoteException {
  		return fachada.listarMedPremiado(fDesde, fHasta);
  	}
- 	public Vector calcSalarioTotal(Calendar fDesde, Calendar fHasta)  throws PersistenciaException, RemoteException {
+ 	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta)  throws PersistenciaException, RemoteException {
  		return fachada.calcSalarioTotal(fDesde, fHasta);
  	}
  	public Vector listarDispMed(DataMed dataMed)  throws PersistenciaException, RemoteException {

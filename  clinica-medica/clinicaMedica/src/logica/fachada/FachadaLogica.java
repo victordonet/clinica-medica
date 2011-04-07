@@ -22,6 +22,7 @@ import persistencia.dao.IDaoDisponibilidad;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoExamen;
 import persistencia.dao.IDaoMedico;
+import persistencia.dao.IDaoParametros;
 import persistencia.dao.IDaoTipoExamen;
 import persistencia.dao.IDaoTotConsulta;
 import persistencia.dao.IDaoUsuarios;
@@ -31,6 +32,7 @@ import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
+import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 import excepciones.EspecialidadException;
 import excepciones.LogicaException;
@@ -55,6 +57,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	private IDaoTipoExamen iDaoTE;
 	private IDaoTotConsulta iDaoTC;
 	private IDaoUsuarios iDaoU;
+	private IDaoParametros iDaoP;
 	
 	private FachadaLogica() throws LogicaException, PersistenciaException, RemoteException{
 		
@@ -77,6 +80,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoTE = fabrica.crearDaoTEx();
 			iDaoTC = fabrica.crearDaoTConsultas();
 			iDaoU = fabrica.crearDaoUsuarios();
+			iDaoP = fabrica.crearDaoParametros();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 			throw new LogicaException("No es poSsible crear la instancia necesaria para persistir");
@@ -389,6 +393,22 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
+	}
+	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<VoResumCont> resultado = new Vector<VoResumCont>();
+		//busco salarios
+		VoResumCont salarios = iDaoM.calcSalarioTotal(trn, fDesde, fHasta);
+		resultado.add(salarios);
+		//busco valor tikets/timbres
+		double valor = Double.parseDouble(iDaoP.getValor(trn, "ValorTimbre"));
+		//busco timbres
+		int cantConsPagas = iDaoTC.getCantConsultasPagas(trn, fDesde, fHasta);
+		VoResumCont timbres = new VoResumCont("Timbres", valor*cantConsPagas);
+		//busco tikets
+		int cantTikets = iDaoEx.getCantExPagos(trn, fDesde, fHasta);
+		VoResumCont tikets = new VoResumCont("Timbres", valor*cantTikets);
+		return resultado;
 	}
 	
 	//CONSULTAS
@@ -732,9 +752,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+ 	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector resultado = null;
+ 		VoResumCont resultado = null;
 		try {
 			resultado = iDaoM.calcSalarioTotal(trn, fDesde, fHasta);
 			trn.finalizarTrn(true);

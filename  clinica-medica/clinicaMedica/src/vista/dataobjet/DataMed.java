@@ -1,7 +1,9 @@
 package vista.dataobjet;
 
-public class DataMed {
-	private String id,nombre,apellido,ci,tel;
+import java.io.Serializable;
+
+public class DataMed implements Serializable {
+	private String id,nombre,apellido,ci,tel, estado;
 	private int esp;
 	
 	public DataMed(String id,String nombre, String apellido, String ci, String tel, int esp) {
@@ -59,5 +61,13 @@ public class DataMed {
 
 	public void setEsp(int esp) {
 		this.esp = esp;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getEstado() {
+		return estado;
 	}
 }

@@ -19,6 +19,7 @@ import logica.Usuario;
 import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
@@ -117,7 +118,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
 		return fachada.getCantidadConsultas(fDesde, fHasta, idMed);
 	}
-	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException {
+	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException {
 		fachada.altaConsultaProxMes(cons, idMed);
 	}
 	public Vector listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {

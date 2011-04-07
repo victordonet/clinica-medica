@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class VoResumCont {
+import java.io.Serializable;
+
+public class VoResumCont implements Serializable {
 
 	private String descripcion;
 	private double valor;

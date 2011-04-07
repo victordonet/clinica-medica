@@ -1,14 +1,16 @@
 package vista.dataobjet;
 
-public class DataAdmin {
+import java.io.Serializable;
+
+public class DataAdmin implements Serializable {
 	
 	private String id,nombre,estado;
 	int cargo;
 
-	public DataAdmin(String id, String nombre, int cargo2, String estado) {
+	public DataAdmin(String id, String nombre, int cargo, String estado) {
 		this.id = id;
 		this.nombre = nombre;
-		this.cargo = cargo2;
+		this.cargo = cargo;
 		this.estado = estado;
 	}
 

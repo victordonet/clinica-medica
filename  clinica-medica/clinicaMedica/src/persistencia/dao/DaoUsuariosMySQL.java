@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import logica.Usuario;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataUsuario;
 import excepciones.PersistenciaException;
 
 public class DaoUsuariosMySQL implements IDaoUsuarios {
 
 
-	public void altaUsuario(Transaccion trn, Usuario usu) throws PersistenciaException {
+	public void altaUsuario(Transaccion trn, DataUsuario usu) throws PersistenciaException {
 
 		System.out.println("Insertando usuario: "+ usu.getId());
 		PreparedStatement pst;

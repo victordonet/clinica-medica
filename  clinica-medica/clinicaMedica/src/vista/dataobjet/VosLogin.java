@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class VosLogin {
+import java.io.Serializable;
+
+public class VosLogin implements Serializable {
 	
 	private String nombre, apellido, tipo, pass;
 

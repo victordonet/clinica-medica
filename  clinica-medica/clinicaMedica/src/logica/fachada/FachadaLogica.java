@@ -31,8 +31,12 @@ import persistencia.transacciones.Pool;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
+import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataTipoExamen;
+import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
@@ -430,7 +434,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException {
+	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoC.altaConsultaProxMes(trn, cons, idMed);
@@ -457,7 +461,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoC.altaConsulta(trn, fecha, horario, dia, idConsultorio, timbre, afil, turno, med);
@@ -549,7 +553,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//EXAMENES
-	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException {
+	public void regEx(DataExamen ex, String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoEx.regEx(trn, ex, idAfil);
@@ -593,7 +597,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//MEDICOS
-	public void altaMedico(Medico med) throws PersistenciaException, RemoteException {
+	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		String idMed = med.getId();
 		try {
@@ -613,7 +617,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
- 	public void modifMedico(String id, String nom, String apell, String ci, String tel, Especialidad esp) throws PersistenciaException, RemoteException {
+ 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
@@ -804,7 +808,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
-	public void altaConsulta(Calendar fecha,String id, int dia, Afiliado afil, int conult) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha,String id, int dia, DataAfiliado afil, int conult) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
@@ -826,7 +830,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//TIPO DE EXAMEN
-	public void agregar(TipoExamen tex) throws PersistenciaException, RemoteException {
+	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoTE.agregar(trn, tex);
@@ -838,7 +842,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public void modificar(TipoExamen tex) throws PersistenciaException, RemoteException {
+	public void modificar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoTE.modificar(trn, tex);
@@ -941,7 +945,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//USUARIOS
-	public void altaUsuario(Usuario usu) throws PersistenciaException, RemoteException {
+	public void altaUsuario(DataUsuario usu) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoU.altaUsuario(trn, usu);

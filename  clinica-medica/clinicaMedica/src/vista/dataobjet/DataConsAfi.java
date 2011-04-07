@@ -1,8 +1,9 @@
 package vista.dataobjet;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class DataConsAfi {
+public class DataConsAfi implements Serializable {
 
 	private Calendar fecha;
 	private String nomMed, apeMed;

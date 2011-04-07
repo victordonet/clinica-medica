@@ -11,7 +11,10 @@ import logica.Afiliado;
 import logica.Consulta;
 import logica.Medico;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataConsAfi;
+import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataMed;
 import vista.dataobjet.VoTurnosDisp;
 import excepciones.PersistenciaException;
 
@@ -34,13 +37,13 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		return cantidadConsulta;
 	}
 
-	public void altaConsultaProxMes(Transaccion trn, Consulta cons, String idMed) throws PersistenciaException {
+	public void altaConsultaProxMes(Transaccion trn, DataConsulta cons, String idMed) throws PersistenciaException {
 		System.out.println("Insertando consulta proximo mes");
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
 			pst.setString(1, idMed);
-			pst.setString(2, cons.getAfil().getId());
+			pst.setString(2, cons.getIdAfil());
 			Date fecha = new java.sql.Date(cons.getFecha().getTimeInMillis());
 			pst.setDate(3, fecha);
 			pst.setInt(4, cons.getDia());
@@ -93,12 +96,12 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		return consultas;
 	}
 
-	public void altaConsulta(Transaccion trn, Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException {
+	public void altaConsulta(Transaccion trn, Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException {
 		System.out.println("Insertando consulta");
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
-			pst.setString(1, med.getApellido());
+			pst.setString(1, med.getId());
 			pst.setString(2, afil.getId());
 			Date date = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate(3, date);

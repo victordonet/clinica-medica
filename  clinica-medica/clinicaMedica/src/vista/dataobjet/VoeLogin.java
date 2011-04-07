@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class VoeLogin {
+import java.io.Serializable;
+
+public class VoeLogin implements Serializable {
 	
 	private String usuario;
 	private String pass;

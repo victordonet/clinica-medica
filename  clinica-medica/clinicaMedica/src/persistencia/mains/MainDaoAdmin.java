@@ -2,6 +2,8 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import vista.dataobjet.DataAdmin;
 import vista.dataobjet.VosLogin;
 import logica.AdminGen;
 import logica.Examen;
@@ -17,7 +19,7 @@ public class MainDaoAdmin {
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
-		AdminGen adm = new AdminGen("FGonzales", "admin", "AD","A" , "Fernando",1);
+		DataAdmin adm = new DataAdmin("FGonzales", "Fernando", 1, "A");
 		fachada.altaAdmin(adm);
 		System.out.println("PASO POR EL ALTA DEL ADMIN1");
 

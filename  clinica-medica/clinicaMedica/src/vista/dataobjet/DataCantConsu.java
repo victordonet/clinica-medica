@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class DataCantConsu {
+import java.io.Serializable;
+
+public class DataCantConsu implements Serializable{
 	private String id, nombre, apellido;
 	private int cantConsultas;
 	

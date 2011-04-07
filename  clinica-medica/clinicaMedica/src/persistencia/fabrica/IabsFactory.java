@@ -7,6 +7,7 @@ import persistencia.dao.IDaoDisponibilidad;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoExamen;
 import persistencia.dao.IDaoMedico;
+import persistencia.dao.IDaoParametros;
 import persistencia.dao.IDaoTipoExamen;
 import persistencia.dao.IDaoTotConsulta;
 import persistencia.dao.IDaoUsuarios;
@@ -23,5 +24,6 @@ public interface IabsFactory {
 	public IDaoTipoExamen crearDaoTEx();
 	public IDaoTotConsulta crearDaoTConsultas();
 	public IDaoUsuarios crearDaoUsuarios();
+	public IDaoParametros crearDaoParametros();
 
 }

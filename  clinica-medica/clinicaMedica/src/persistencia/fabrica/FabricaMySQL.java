@@ -1,5 +1,6 @@
 package persistencia.fabrica;
 
+import persistencia.dao.DaoParametrosMySQL;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
 import persistencia.dao.IDaoConsultas;
@@ -7,6 +8,7 @@ import persistencia.dao.IDaoDisponibilidad;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoExamen;
 import persistencia.dao.IDaoMedico;
+import persistencia.dao.IDaoParametros;
 import persistencia.dao.IDaoTipoExamen;
 import persistencia.dao.IDaoTotConsulta;
 import persistencia.dao.IDaoUsuarios;
@@ -71,6 +73,12 @@ public class FabricaMySQL implements IabsFactory {
 	public IDaoUsuarios crearDaoUsuarios() {
 		IDaoUsuarios iusu = new DaoUsuariosMySQL();
 		return iusu;
+	}
+
+	@Override
+	public IDaoParametros crearDaoParametros() {
+		IDaoParametros ipar = new DaoParametrosMySQL();
+		return ipar;
 	}
 	
 }

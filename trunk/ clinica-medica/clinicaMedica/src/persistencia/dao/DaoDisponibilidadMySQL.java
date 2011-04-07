@@ -13,27 +13,11 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 
 	public void updateDisponibilidad(VoDispo vo, Transaccion trn) throws PersistenciaException {
 		
-		int dia = vo.getDia();
-		int horario = vo.getHorario();
-		int idMed = vo.getIdMed();
-		int cantConsultas;
-		int nuevaConsulta = 0;
-		PreparedStatement pst = trn.preparedStatement("Select count (idconsultorio) as cantConsultas FROM Disponibilidad WHERE dia="+dia+" & horario="+horario+" & idmedico="+idMed+"");
 		try {
-			ResultSet rst = pst.executeQuery();
-			if(rst.next())
-				cantConsultas = rst.getInt(1);
-			else
-				cantConsultas = 0;
-			pst.close();
-			
-			if (cantConsultas<5)
-				nuevaConsulta = cantConsultas + 1;
-				PreparedStatement pst1 = trn.preparedStatement("update Disponibilidad set dia=?, horario=?, idconsultorio=? where idmedico=?");
-				pst1.setInt(1, idMed);
-				pst1.setInt(2, dia);
-				pst1.setInt(3, horario);
-				pst1.setInt(4, nuevaConsulta);
+				PreparedStatement pst = trn.preparedStatement("update Disponibilidad set dia=?, horario=? where idmedico=?");
+				pst.setInt(1, vo.getDia());
+				pst.setInt(2, vo.getHorario());
+				pst.setString(3, vo.getIdMed());
 				pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

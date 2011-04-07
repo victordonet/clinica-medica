@@ -5,6 +5,7 @@ import java.util.Vector;
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 import logica.Afiliado;
 import logica.Especialidad;
@@ -22,7 +23,7 @@ public interface IDaoMedico {
  	public boolean validarMed(Transaccion trn, String id) throws PersistenciaException;
  	public Vector listarSalarios(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
  	public Vector listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
- 	public Vector calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
+ 	public VoResumCont calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
  	public Vector listarDispMed(DataMed dataMed,Transaccion trn) throws PersistenciaException;
  	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException;
  	public Vector listarConsultasDisp(Transaccion trn) throws PersistenciaException;

@@ -14,14 +14,10 @@ import excepciones.PersistenciaException;
 
 public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 
-	
 	public void altaEspecialidad(Transaccion trn, Especialidad esp) throws PersistenciaException {
-
 		System.out.println("Insertando especialidad: "+ esp.getDescripcion());
-		PreparedStatement pst;
-
 		try {
-			pst = trn.preparedStatement("insert into Especialidades values (?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Especialidades values (?,?,?)");
 			pst.setInt(1, esp.getIdEspecialidad());
 			pst.setString(2, esp.getDescripcion());
 			pst.setDouble(3, esp.getMontoBase());
@@ -32,12 +28,11 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	public Vector listarEspecialidades(Transaccion trn) throws PersistenciaException {
+	public Vector<DataEsp> listarEspecialidades(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando especialidades");
-		Vector <DataEsp> resultado = new Vector();
+		Vector<DataEsp> resultado = new Vector<DataEsp>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select * from Especialidades");
 			ResultSet rst = pst.executeQuery();
@@ -46,9 +41,6 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 				String descripcion = rst.getString("Descripcion");
 				double monto = rst.getDouble("MontoBase");
 				DataEsp dataEsp = new DataEsp(id, descripcion, monto);
-				//JOptionPane.showMessageDialog(null,dataEsp.getCodigo());
-				//JOptionPane.showMessageDialog(null,dataEsp.getDescripcion());
-				//JOptionPane.showMessageDialog(null,dataEsp.getMontoBase());
 				resultado.add(dataEsp);
 			}
 			return resultado;

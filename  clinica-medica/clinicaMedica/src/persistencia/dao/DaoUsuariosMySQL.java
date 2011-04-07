@@ -12,11 +12,9 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 
 
 	public void altaUsuario(Transaccion trn, DataUsuario usu) throws PersistenciaException {
-
 		System.out.println("Insertando usuario: "+ usu.getId());
-		PreparedStatement pst;
 		try {
-			pst = trn.preparedStatement("insert into Usuarios values (?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Usuarios values (?,?,?)");
 			pst.setString(1, usu.getId());
 			pst.setString(2, "MD5("+usu.getContrasena()+")");
 			pst.setString(3, usu.getTipo());
@@ -57,5 +55,4 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 	public void modifContrasena(String clave, String pass, Transaccion trn) throws PersistenciaException {
 
 	}
-
 }

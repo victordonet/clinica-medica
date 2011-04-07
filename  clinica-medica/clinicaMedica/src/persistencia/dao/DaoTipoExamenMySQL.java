@@ -15,10 +15,8 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 
 	public void agregar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
 		System.out.println("Insertando tipo examen: "+ tex.getId());
-		PreparedStatement pst;
-
 		try {
-			pst = trn.preparedStatement("insert into TipoExamenes values (?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into TipoExamenes values (?,?)");
 			pst.setInt(1, tex.getId());
 			pst.setString(2, tex.getNombre());
 			pst.executeUpdate();
@@ -32,10 +30,10 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 
 	public void modificar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
 		System.out.println("Modificando tipo de examen: "+tex.getId());
-		PreparedStatement pst;
-		pst = trn.preparedStatement("update TipoExamenes set nombre=? where id="+tex.getId());
 		try {
-			pst.setString (1, tex.getNombre());
+			PreparedStatement pst = trn.preparedStatement("update TipoExamenes set nombre=? where id=?");
+			pst.setString(1, tex.getNombre());
+			pst.setInt(2, tex.getId());
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -61,5 +59,4 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
-
 }

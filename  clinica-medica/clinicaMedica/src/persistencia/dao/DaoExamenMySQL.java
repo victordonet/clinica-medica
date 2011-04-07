@@ -48,9 +48,8 @@ public class DaoExamenMySQL implements IDaoExamen {
 
 	public void regEx(Transaccion trn, DataExamen ex, String idAfil) throws PersistenciaException {
 		System.out.println("Registrando nuevo examen");
-		PreparedStatement pst;
 		try {
-			pst = trn.preparedStatement("insert into Examenes(IDAFILIADO,FECHAINICIO,IDTIPOEXAMEN,ENVIAMAIL,COBRATIMBRE) values (?,?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Examenes(IDAFILIADO,FECHAINICIO,IDTIPOEXAMEN,ENVIAMAIL,COBRATIMBRE) values (?,?,?,?,?)");
 			pst.setString(1, idAfil);
 			Date fInicio = new java.sql.Date(ex.getFechaInicio().getTimeInMillis());
 			pst.setDate(2, fInicio);
@@ -75,28 +74,29 @@ public class DaoExamenMySQL implements IDaoExamen {
 		int tipoEx;
 		boolean enviaMail, cobroTimbre;
 		try {
-		PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
-														"E.COBRATIMBRE, E.FECHARESULTADO " +
-														"FROM EXAMENES E, TIPOEXAMENES T " +
-														"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO="+idAfil+"");
-		ResultSet rst = pst.executeQuery();
-		while(rst.next()){
-			fechaInicio = rst.getDate("FECHAINICIO");
-			fechaIni.setTime(fechaInicio);
-			//Tipo de Examen
-			tipoEx = rst.getInt("IDTIPOEXAMEN");
-			String descTipoEx = rst.getString("DESC_EXAMEN");
-			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
-			//----
-			enviaMail = rst.getBoolean("ENVIAMAIL");
-			cobroTimbre = rst.getBoolean("COBRATIMBRE");
-			fechaResultado = rst.getDate("FECHARESULTADO");
-			fechaRes.setTime(fechaResultado);
-			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
-			resultado.add(ex);
-		}
-		pst.close();
-		return resultado;
+			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
+															"E.COBRATIMBRE, E.FECHARESULTADO " +
+															"FROM EXAMENES E, TIPOEXAMENES T " +
+															"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO=?");
+			pst.setString(1, idAfil);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				fechaInicio = rst.getDate("FECHAINICIO");
+				fechaIni.setTime(fechaInicio);
+				//Tipo de Examen
+				tipoEx = rst.getInt("IDTIPOEXAMEN");
+				String descTipoEx = rst.getString("DESC_EXAMEN");
+				TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+				//----
+				enviaMail = rst.getBoolean("ENVIAMAIL");
+				cobroTimbre = rst.getBoolean("COBRATIMBRE");
+				fechaResultado = rst.getDate("FECHARESULTADO");
+				fechaRes.setTime(fechaResultado);
+				Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+				resultado.add(ex);
+			}
+			pst.close();
+			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

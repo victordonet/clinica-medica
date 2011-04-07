@@ -21,10 +21,9 @@ import excepciones.PersistenciaException;
 public class DaoConsultasMySQL implements IDaoConsultas {
 
 	public int getCantidadConsultas(Transaccion trn, Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException {
-		PreparedStatement pst;
-		int cantidadConsulta = 0;
-		pst = trn.preparedStatement("select count(*) as cantidad from consultas where idMedico = ?");
+		int cantidadConsulta = 0;	
 		try {
+			PreparedStatement pst = trn.preparedStatement("select count(*) as cantidad from consultas where idMedico = ?");
 			pst.setString (1, idMed);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -39,9 +38,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 
 	public void altaConsultaProxMes(Transaccion trn, DataConsulta cons, String idMed) throws PersistenciaException {
 		System.out.println("Insertando consulta proximo mes");
-		PreparedStatement pst;
 		try {
-			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
 			pst.setString(1, idMed);
 			pst.setString(2, cons.getIdAfil());
 			Date fecha = new java.sql.Date(cons.getFecha().getTimeInMillis());
@@ -62,20 +60,20 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn, String idMed) throws PersistenciaException {
 		Vector<VoTurnosDisp> consultas  = new Vector<VoTurnosDisp>();
-		PreparedStatement pst = trn.preparedStatement("select fecha,"+
-															"dia,"+
-															"horario,"+
-																"(select count(turno)+1 from consultas c1"+ 
-																	"where c1.idMedico=c.idMedico "+
-																	"and c1.fecha=c.fecha "+
-																	"and c1.idconsultorio=c.idConsultorio"+
-																	"and c1.turno>0) as proxTurno,"+
-															"idConsultorio"+
-															"from consultas c"+										
-															"where idmedico = ?"+
-															"and fecha>= ?"+
-															"and turno = 0");
 		try {
+			PreparedStatement pst = trn.preparedStatement("select fecha,"+
+					"dia,"+
+					"horario,"+
+						"(select count(turno)+1 from consultas c1"+ 
+							"where c1.idMedico=c.idMedico "+
+							"and c1.fecha=c.fecha "+
+							"and c1.idconsultorio=c.idConsultorio"+
+							"and c1.turno>0) as proxTurno,"+
+					"idConsultorio"+
+					"from consultas c"+										
+					"where idmedico = ?"+
+					"and fecha>= ?"+
+					"and turno = 0");
 			pst.setString (1, idMed);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -98,9 +96,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 
 	public void altaConsulta(Transaccion trn, Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException {
 		System.out.println("Insertando consulta");
-		PreparedStatement pst;
 		try {
-			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
 			pst.setString(1, med.getId());
 			pst.setString(2, afil.getId());
 			Date date = new java.sql.Date(fecha.getTimeInMillis());
@@ -121,9 +118,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 
 	public void elimConsultasAfil(Transaccion trn, String idAfi) throws PersistenciaException {
 		System.out.println("Baja del las consultas pendientes del afiliado ="+ idAfi);
-		PreparedStatement pst;
-		pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
 		try {
+			PreparedStatement pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
 			pst.setString(1,idAfi);
 			Calendar hoy = Calendar.getInstance(); 
 			Date dia = new java.sql.Date(hoy.getTimeInMillis());

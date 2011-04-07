@@ -16,7 +16,7 @@ import excepciones.PersistenciaException;
 
 public class DaoAdmGenMySQL implements IDaoAdmGen {
 
-	public void altaAdmin(Transaccion trn, AdminGen adm) throws PersistenciaException {
+	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
 		System.out.println("Insertando administrativo: "+ adm.getId());
 		PreparedStatement pst;
 
@@ -67,7 +67,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
 		
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id, nombre, idcargo from administrativos");
+			PreparedStatement pst = trn.preparedStatement("Select * from administrativos");
 			System.out.println("paso1");
 			ResultSet rst = pst.executeQuery();
 			System.out.println("paso2");
@@ -76,7 +76,8 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 				String id = rst.getString("Id");
 				String nombre = rst.getString("nombre");
 				int cargo = rst.getInt("idcargo");
-				DataAdmin dataAdmin = new DataAdmin(id, nombre, cargo);
+				String estado = rst.getString("estado");
+				DataAdmin dataAdmin = new DataAdmin(id, nombre, cargo, estado);
 				resultado.add(dataAdmin);
 			}
 			return resultado;

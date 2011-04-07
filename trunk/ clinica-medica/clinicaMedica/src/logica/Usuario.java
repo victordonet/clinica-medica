@@ -1,8 +1,8 @@
 package logica;
 
-import java.io.Serializable;
 
-public abstract class Usuario implements Serializable{
+
+public abstract class Usuario {
 
 	private String id,contrasena,tipo,estado;
 	

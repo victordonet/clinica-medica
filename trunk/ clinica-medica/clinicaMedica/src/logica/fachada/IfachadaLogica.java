@@ -16,6 +16,8 @@ import logica.Usuario;
 import logica.observer.IObservable;
 import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
@@ -25,7 +27,7 @@ import vista.dataobjet.VosLogin;
 public interface IfachadaLogica extends IObservable{
 
 	//AFILIADOS
-	public void altaAfiliado(Afiliado afil) throws PersistenciaException, RemoteException;
+	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException;
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException;
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException;
 	public Vector<Afiliado> listarAfiliados() throws PersistenciaException, RemoteException;
@@ -35,7 +37,7 @@ public interface IfachadaLogica extends IObservable{
 	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES
-	public void altaAdmin(AdminGen adm) throws PersistenciaException, RemoteException;
+	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;
 	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException;
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException;
 	public Vector<AdminGen> listarAdmin() throws PersistenciaException, RemoteException;

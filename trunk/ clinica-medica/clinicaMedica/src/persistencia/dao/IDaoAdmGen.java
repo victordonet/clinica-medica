@@ -5,12 +5,13 @@ import java.util.Vector;
 
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAdmin;
 import vista.dataobjet.VosLogin;
 import logica.AdminGen;
 
 public interface IDaoAdmGen {
 
-	public void altaAdmin(Transaccion trn, AdminGen adm) throws PersistenciaException;
+	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException;
 	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo) throws PersistenciaException;
 	public void bajaAdmin(Transaccion trn, String id) throws PersistenciaException;
 	public Vector listarAdmin(Transaccion trn) throws PersistenciaException;

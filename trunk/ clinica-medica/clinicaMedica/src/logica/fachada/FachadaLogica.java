@@ -29,6 +29,8 @@ import persistencia.dao.IDaoUsuarios;
 import persistencia.fabrica.IabsFactory;
 import persistencia.transacciones.Pool;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
@@ -124,7 +126,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 //	}
 
 	//AFILIADOS
-	public void altaAfiliado(Afiliado afil) throws PersistenciaException, RemoteException {
+	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		pool.obtenerTrn(8);
 		Transaccion trn = pool.obtenerTrn(8);
 		String idAfil = afil.getId();
@@ -269,7 +271,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//ADMINS-GERENTES
-	public void altaAdmin(AdminGen adm) throws PersistenciaException, RemoteException {
+	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		String idAdm = adm.getId();
 		try {

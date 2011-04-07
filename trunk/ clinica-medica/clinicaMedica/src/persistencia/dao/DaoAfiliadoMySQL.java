@@ -16,7 +16,7 @@ import excepciones.PersistenciaException;
 
 public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
-	public void altaAfiliado(Transaccion trn, Afiliado afil) throws PersistenciaException {
+	public void altaAfiliado(Transaccion trn, DataAfiliado afil) throws PersistenciaException {
 		System.out.println("Insertando afiliado: "+afil.getId());
 		PreparedStatement pst;
 		try {
@@ -26,11 +26,11 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setString(3, afil.getApellido());
 			pst.setString(4, afil.getCi());
 			pst.setString(5, afil.getMail());
-			pst.setString(6, afil.getDir());
+			pst.setString(6, afil.getDireccion());
 			pst.setString(7, afil.getTel());
-			Date dt = new Date(afil.getFecha().getTimeInMillis());
+			Date dt = new Date(afil.getFechaIngreso().getTimeInMillis());
 			pst.setDate(8, dt);
-			pst.setBoolean(9, afil.isFonasa());
+			pst.setBoolean(9, afil.getFonasa());
 			pst.setString(10, afil.getEstado());
 			pst.executeUpdate();
 		} catch (SQLException e) {

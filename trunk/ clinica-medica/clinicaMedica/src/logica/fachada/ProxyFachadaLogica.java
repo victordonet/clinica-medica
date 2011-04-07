@@ -8,7 +8,6 @@ import java.util.Calendar;
 import java.util.Hashtable;
 import java.util.Vector;
 import persistencia.transacciones.Transaccion;
-import logica.AdminGen;
 import logica.Afiliado;
 import logica.Configuracion;
 import logica.Consulta;
@@ -18,6 +17,8 @@ import logica.Medico;
 import logica.TipoExamen;
 import logica.Usuario;
 import logica.observer.IObserver;
+import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoDispo;
@@ -61,7 +62,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 
 	//AFILIADOS
-	public void altaAfiliado(Afiliado afil) throws PersistenciaException, RemoteException {
+	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		fachada.altaAfiliado(afil);
 	}
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException {
@@ -87,7 +88,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	
 	//ADMIN-GERENTE
-	public void altaAdmin(AdminGen adm) throws PersistenciaException, RemoteException {
+	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {
 		fachada.altaAdmin(adm);
 	}
 	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException {

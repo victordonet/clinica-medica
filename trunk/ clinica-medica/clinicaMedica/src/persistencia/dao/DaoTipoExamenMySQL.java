@@ -8,11 +8,12 @@ import java.util.Vector;
 import logica.TipoExamen;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataTipoExamen;
 import excepciones.PersistenciaException;
 
 public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 
-	public void agregar(Transaccion trn, TipoExamen tex) throws PersistenciaException {
+	public void agregar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
 		System.out.println("Insertando tipo examen: "+ tex.getId());
 		PreparedStatement pst;
 
@@ -29,7 +30,7 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 		}
 	}
 
-	public void modificar(Transaccion trn, TipoExamen tex) throws PersistenciaException {
+	public void modificar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
 		System.out.println("Modificando tipo de examen: "+tex.getId());
 		PreparedStatement pst;
 		pst = trn.preparedStatement("update TipoExamenes set nombre=? where id="+tex.getId());

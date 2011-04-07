@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class VoMedEsp {
+import java.io.Serializable;
+
+public class VoMedEsp implements Serializable {
 	private String id,nombre,apellido;
 	
 	public VoMedEsp(String id,String nombre, String apellido) {

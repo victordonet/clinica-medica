@@ -11,7 +11,9 @@ import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.VoMedEsp;
@@ -22,7 +24,7 @@ import excepciones.PersistenciaException;
 
 public class DaoMedicoMySQL implements IDaoMedico {
 
-	public void altaMedico(Transaccion trn, Medico med) throws PersistenciaException {
+	public void altaMedico(Transaccion trn, DataMed med) throws PersistenciaException {
 		System.out.println("Insertando medico: "+med.getId());
 		PreparedStatement pst;
 		try {
@@ -32,7 +34,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.setString(3, med.getApellido());
 			pst.setString(4, med.getCi());
 			pst.setString(5, med.getTel());
-			pst.setInt(6, med.getEsp().getIdEspecialidad());
+			pst.setInt(6, med.getEsp());
 			pst.setString(7, med.getEstado());
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -43,7 +45,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, Especialidad esp) throws PersistenciaException {
+	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException {
 		System.out.println("Modificando medico: "+ id);
 		PreparedStatement pst;
 		pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=? where id="+id);
@@ -52,7 +54,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.setString(2, apell);
 			pst.setString(3, ci);
 			pst.setString(4, tel);
-			pst.setInt(5, esp.getIdEspecialidad());
+			pst.setInt(5, esp.getCodigo());
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -291,7 +293,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public void altaConsulta(Transaccion trn, Calendar fecha, String id, int dia, Afiliado afil, int consult) throws PersistenciaException {
+	public void altaConsulta(Transaccion trn, Calendar fecha, String id, int dia, DataAfiliado afil, int consult) throws PersistenciaException {
 		System.out.println("Insertando nueva consulta para el medico: "+id);
 		PreparedStatement pst;
 		try {

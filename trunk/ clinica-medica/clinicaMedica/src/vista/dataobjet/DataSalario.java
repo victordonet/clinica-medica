@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class DataSalario {
+import java.io.Serializable;
+
+public class DataSalario implements Serializable {
 	private String id,nombre,apellido;
 	private double salarioMed;
 	

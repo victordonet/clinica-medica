@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class VoDispo {
+import java.io.Serializable;
+
+public class VoDispo implements Serializable {
 	
 	private int dia,horario;
 	private String idMed;

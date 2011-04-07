@@ -18,8 +18,12 @@ import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
+import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataTipoExamen;
+import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
@@ -48,9 +52,9 @@ public interface IfachadaLogica extends IObservable{
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
-	public void altaConsultaProxMes(Consulta cons, String idMed) throws PersistenciaException, RemoteException;
+	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException;
 	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, Afiliado afil, int turno, Medico med) throws PersistenciaException, RemoteException;
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException;
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD
@@ -62,13 +66,13 @@ public interface IfachadaLogica extends IObservable{
 	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	
 	//EXAMENES
-	public void regEx(Examen ex, String idAfil) throws PersistenciaException, RemoteException;
+	public void regEx(DataExamen ex, String idAfil) throws PersistenciaException, RemoteException;
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException;
 	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException;
 	
 	//MEDICOS
- 	public void altaMedico(Medico med) throws PersistenciaException, RemoteException;
- 	public void modifMedico(String id, String nom, String apell, String ci, String tel, Especialidad esp) throws PersistenciaException, RemoteException;
+ 	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException;
+ 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException, RemoteException;
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException;
  	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException;
  	public Vector<Medico> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;
@@ -80,11 +84,11 @@ public interface IfachadaLogica extends IObservable{
  	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException;
  	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha,String id,int dia, Afiliado afil, int conult) throws PersistenciaException, RemoteException;
+	public void altaConsulta(Calendar fecha,String id,int dia, DataAfiliado afil, int conult) throws PersistenciaException, RemoteException;
 	
 	//TIPO DE EXAMEN
-	public void agregar(TipoExamen tex) throws PersistenciaException, RemoteException;
-	public void modificar(TipoExamen tex) throws PersistenciaException, RemoteException;
+	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException;
+	public void modificar(DataTipoExamen tex) throws PersistenciaException, RemoteException;
 	public Vector<TipoExamen> listarTipoEx() throws PersistenciaException, RemoteException;
 	
 	//TOTAL CONSULTAS
@@ -95,7 +99,7 @@ public interface IfachadaLogica extends IObservable{
 	public void elimConsulta(String idAfi) throws PersistenciaException, RemoteException;
 	
 	//USUARIOS
-	public void altaUsuario(Usuario usu) throws PersistenciaException, RemoteException;
+	public void altaUsuario(DataUsuario usu) throws PersistenciaException, RemoteException;
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException;
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException;
 }

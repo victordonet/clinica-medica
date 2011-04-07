@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataExamen;
 import logica.Examen;
 import logica.TipoExamen;
 import excepciones.PersistenciaException;
@@ -45,7 +46,7 @@ public class DaoExamenMySQL implements IDaoExamen {
 		}
 	}
 
-	public void regEx(Transaccion trn, Examen ex, String idAfil) throws PersistenciaException {
+	public void regEx(Transaccion trn, DataExamen ex, String idAfil) throws PersistenciaException {
 		System.out.println("Registrando nuevo examen");
 		PreparedStatement pst;
 		try {

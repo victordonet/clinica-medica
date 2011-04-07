@@ -2,12 +2,13 @@ package vista.dataobjet;
 
 public class DataAdmin {
 	
-	private String id,nombre,cargo;
+	private String id,nombre;
+	int cargo;
 
-	public DataAdmin(String id, String nombre, String cargo) {
+	public DataAdmin(String id, String nombre, int cargo2) {
 		this.id = id;
 		this.nombre = nombre;
-		this.cargo = cargo;
+		this.cargo = cargo2;
 	}
 
 	public String getId() {
@@ -26,11 +27,11 @@ public class DataAdmin {
 		this.nombre = nombre;
 	}
 
-	public String getCargo() {
+	public int getCargo() {
 		return cargo;
 	}
 
-	public void setCargo(String cargo) {
+	public void setCargo(int cargo) {
 		this.cargo = cargo;
 	}	
 }

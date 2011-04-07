@@ -65,13 +65,17 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public Vector<DataAdmin> listarAdmin(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando Administrativos");
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
+		
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id, nombre, cargo from Administrativos");
+			PreparedStatement pst = trn.preparedStatement("Select id, nombre, idcargo from administrativos");
+			System.out.println("paso1");
 			ResultSet rst = pst.executeQuery();
+			System.out.println("paso2");
 			while(rst.next()){
+				System.out.println("paso3");
 				String id = rst.getString("Id");
 				String nombre = rst.getString("nombre");
-				String cargo = rst.getString("cargo");
+				int cargo = rst.getInt("idcargo");
 				DataAdmin dataAdmin = new DataAdmin(id, nombre, cargo);
 				resultado.add(dataAdmin);
 			}

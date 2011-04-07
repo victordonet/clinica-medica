@@ -274,6 +274,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		String idAdm = adm.getId();
 		try {
 			if (iDaoAdmin.validarAdmin(trn, idAdm)==false){
+			System.out.println("valida el admin : " + idAdm);
 			iDaoAdmin.altaAdmin(trn, adm);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);

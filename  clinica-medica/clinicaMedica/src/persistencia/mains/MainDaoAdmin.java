@@ -19,9 +19,11 @@ public class MainDaoAdmin {
 		//Alta
 		AdminGen adm = new AdminGen("FGonzales", "admin", "AD","A" , "Fernando",1);
 		fachada.altaAdmin(adm);
+		System.out.println("PASO POR EL ALTA DEL ADMIN1");
 
 		AdminGen adm2 = new AdminGen("RPerez", "13", "AD", "A", "Ruso", 1);
 		fachada.altaAdmin(adm2);
+		System.out.println("PASO POR EL ALTA DEL ADMIN2");
 
 		//Listar
 		Vector<AdminGen> listAdmin = fachada.listarAdmin();

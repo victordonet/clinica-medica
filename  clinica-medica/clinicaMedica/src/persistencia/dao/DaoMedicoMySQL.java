@@ -16,6 +16,7 @@ import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
+import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
@@ -258,7 +259,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		return vo;
 	}
 	
-
 	public Vector<Disponibilidad> listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
 
@@ -271,8 +271,24 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	}
 
-	public Vector listarConsultasDisp(Transaccion trn) throws PersistenciaException {
-		return null;
+	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException {
+		System.out.println("Listando consultas disponibles");
+		Vector<VoTurnosDisp> resultado = new Vector<VoTurnosDisp>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select fecha, dia, horario, idconsultorio, turno from Consultas where =");
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				String id = rst.getString("Id");
+				String nombre = rst.getString("nombre");
+				String apellido = rst.getString("apellido");
+				VoMedEsp voMed = new VoMedEsp(id, nombre, apellido);
+				resultado.add(voMed);
+			}
+			return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 	}
 
 	public void altaConsulta(Transaccion trn, Calendar fecha, String id, int dia, Afiliado afil, int consult) throws PersistenciaException {

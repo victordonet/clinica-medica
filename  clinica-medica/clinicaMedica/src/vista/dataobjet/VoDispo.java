@@ -2,11 +2,19 @@ package vista.dataobjet;
 
 public class VoDispo {
 	
-	private int dia,horario, idMed;
-
+	private int dia,horario;
+	private String idMed;
+	
 	public VoDispo() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+
+	
+	public VoDispo(int dia, int horario, String idMed) {
+		super();
+		this.dia = dia;
+		this.horario = horario;
+		this.idMed = idMed;
 	}
 
 	public int getDia() {
@@ -25,14 +33,11 @@ public class VoDispo {
 		this.horario = horario;
 	}
 
-	public void setIdMed(int idMed) {
+	public void setIdMed(String idMed) {
 		this.idMed = idMed;
 	}
 
-	public int getIdMed() {
+	public String getIdMed() {
 		return idMed;
 	}
-	
-	
-
 }

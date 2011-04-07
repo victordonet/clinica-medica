@@ -53,6 +53,15 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 	}
 
 	public void modifContrasena(String clave, String pass, Transaccion trn) throws PersistenciaException {
-
+		System.out.println("Modificando contraseña del usu: "+clave);
+		try {
+			PreparedStatement pst = trn.preparedStatement("update Usuarios set contrasena=? where id=?");
+			pst.setString (1, "MD5("+pass+")");
+			pst.setString(2, clave);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 	}
 }

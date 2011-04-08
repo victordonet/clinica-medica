@@ -26,6 +26,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			while(rst.next()){
 				cantidadConsulta = rst.getInt("cantidad");
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
@@ -46,6 +48,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			while(rst.next()){
 				cantidadConsulta = rst.getInt("cantidad");
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
@@ -70,6 +74,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 				DataConsAfi data = new DataConsAfi(cal, nom, ape);
 				consultas.add(data);
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
@@ -96,6 +102,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 				DataConsFecha data = new DataConsFecha(fecha, nomMed, apeMed, nomAfi, apeAfi, consultorio, turno);
 				consultas.add(data);
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());

@@ -20,6 +20,7 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			pst.setInt(1, tex.getId());
 			pst.setString(2, tex.getNombre());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -35,6 +36,7 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			pst.setString(1, tex.getNombre());
 			pst.setInt(2, tex.getId());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -53,6 +55,8 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 				TipoExamen tex = new TipoExamen(id, nombre);
 				resultado.add(tex);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -23,6 +23,8 @@ public class DaoExamenMySQL implements IDaoExamen {
 			while(rst.next()){
 				resultado = rst.getInt("cantidad");
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -39,6 +41,8 @@ public class DaoExamenMySQL implements IDaoExamen {
 			while(rst.next()){
 				resultado = rst.getInt("cantidad");
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,6 +61,7 @@ public class DaoExamenMySQL implements IDaoExamen {
 			pst.setBoolean(4, ex.isEnviaMail());
 			pst.setBoolean(5, ex.isCobroTimbre());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -95,6 +100,7 @@ public class DaoExamenMySQL implements IDaoExamen {
 				Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
 				resultado.add(ex);
 			}
+			rst.close();
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {

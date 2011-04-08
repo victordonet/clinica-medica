@@ -25,6 +25,7 @@ import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
@@ -58,7 +59,7 @@ public interface IfachadaLogica extends IObservable{
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
 	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException;
 	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException;
+	public void altaConsulta(DataReservaTurno dataResTurno) throws PersistenciaException, RemoteException;
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD

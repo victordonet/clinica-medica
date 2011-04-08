@@ -94,13 +94,13 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		return consultas;
 	}
 
-	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario, boolean timbre) throws PersistenciaException {
+	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, String idAfil, int consult, int turno, int horario, boolean timbre) throws PersistenciaException {
 		System.out.println("Insertando nueva consulta para el medico: "+idMed);
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
 			pst.setString(1, idMed);
-			pst.setString(2, afil.getId());
+			pst.setString(2, idAfil);
 			Date date = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate(3, date);
 			pst.setInt(4, dia);

@@ -21,6 +21,7 @@ import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
@@ -128,8 +129,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {	
 		fachada.elimConsultasAfil(idAfil);
 	}
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario)  throws PersistenciaException, RemoteException {
-		fachada.altaConsulta(fecha, idMed, dia, afil, consult, turno, horario);
+	public void altaConsulta(DataReservaTurno dataResTurno)  throws PersistenciaException, RemoteException {
+		fachada.altaConsulta(dataResTurno);
 	}
 	
 	//DISPONIBILIDAD

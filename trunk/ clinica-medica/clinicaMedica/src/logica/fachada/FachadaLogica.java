@@ -35,6 +35,7 @@ import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
@@ -76,7 +77,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		try {
 			
 			fabrica = (IabsFactory) Class.forName(fb).newInstance();
-			pool = new Pool(conf);
+			pool = Pool.getInstance(conf);
 			iDaoAdmin = fabrica.crearDaoAdminGen();
 			iDaoAfil = fabrica.crearDaoAfil();
 			iDaoC = fabrica.crearDaoConsultas();
@@ -464,8 +465,15 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
+	public void altaConsulta(DataReservaTurno dataResTurno) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
+		Calendar fecha = dataResTurno.getFecha();
+		String idMed = dataResTurno.getIdMedico();
+		int dia = dataResTurno.getDia();
+		String idAfil = dataResTurno.getIdAfil();
+		int consultorio = dataResTurno.getIdConsultorio();
+		int turno = dataResTurno.getTurno();
+		int horario = dataResTurno.getHorario();
 		try {
 			if (iDaoM.validarMed(trn, idMed)==false){
 				trn.finalizarTrn(false);
@@ -473,12 +481,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
-				int cantCons = iDaoTC.getCantConsult(trn, afil.getId());
+				int cantCons = iDaoTC.getCantConsult(trn, idAfil);
 				boolean timbre = true;
 				if(cantCons<10){
 					timbre=false;
 				}
-				iDaoC.altaConsulta(trn, fecha, idMed, dia, afil, consult, turno, horario, timbre);
+				iDaoC.altaConsulta(trn, fecha, idMed, dia, idAfil, consultorio, turno, horario, timbre);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

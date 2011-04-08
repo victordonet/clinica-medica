@@ -17,7 +17,7 @@ public class Pool {
 	private LinkedList <Connection> conexionesLibres;
 
 		
-	public Pool(Configuracion conf) throws Exception, IllegalAccessException, Throwable{
+	private Pool(Configuracion conf) throws Exception, IllegalAccessException, Throwable{
 		// hay que leer de un archivo la configuracion
 		//String url, String usuario, String pass, String driver,int cantMax
 		super();

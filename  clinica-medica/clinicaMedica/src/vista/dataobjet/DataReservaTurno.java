@@ -6,10 +6,11 @@ import java.util.Calendar;
 public class DataReservaTurno implements Serializable{
 	
 	private Calendar fecha;
-	private int dia, horario, idAfil, idConsultorio, idMedico;
+	private int dia, horario, idConsultorio, turno;
+	private String idAfil, idMedico;
 	
-	public DataReservaTurno(Calendar fecha, int dia, int horario, int idAfil,
-			int idConsultorio, int idMedico) {
+	public DataReservaTurno(Calendar fecha, int dia, int horario, String idAfil,
+			int idConsultorio, String idMedico) {
 		super();
 		this.fecha = fecha;
 		this.dia = dia;
@@ -43,11 +44,11 @@ public class DataReservaTurno implements Serializable{
 		this.horario = horario;
 	}
 
-	public int getIdAfil() {
+	public String getIdAfil() {
 		return idAfil;
 	}
 
-	public void setIdAfil(int idAfil) {
+	public void setIdAfil(String idAfil) {
 		this.idAfil = idAfil;
 	}
 
@@ -59,14 +60,19 @@ public class DataReservaTurno implements Serializable{
 		this.idConsultorio = idConsultorio;
 	}
 
-	public int getIdMedico() {
+	public String getIdMedico() {
 		return idMedico;
 	}
 
-	public void setIdMedico(int idMedico) {
+	public void setIdMedico(String idMedico) {
 		this.idMedico = idMedico;
 	}
-	
-	
 
+	public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
 }

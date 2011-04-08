@@ -64,6 +64,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		System.out.println("Listando Administrativos");
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
 		try {
+			System.out.println("paso0");
 			PreparedStatement pst = trn.preparedStatement("Select * from administrativos");
 			System.out.println("paso1");
 			ResultSet rst = pst.executeQuery();

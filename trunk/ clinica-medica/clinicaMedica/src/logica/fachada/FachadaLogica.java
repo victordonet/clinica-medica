@@ -279,7 +279,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Transaccion trn = pool.obtenerTrn(8);
 		String idAdm = adm.getId();
 		try {
-			if (iDaoAdmin.validarAdmin(trn, idAdm)==false){
+			if (this.validarAdmin(idAdm)==false){
 			System.out.println("valida el admin : " + idAdm);
 			iDaoAdmin.altaAdmin(trn, adm);
 			trn.finalizarTrn(true);
@@ -354,13 +354,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		VosLogin vosL = null;
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)==false){
-				trn.finalizarTrn(false);
+				
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 			}
 			else{
 				vosL = iDaoAdmin.getDataAdmin(trn, id);
-				trn.finalizarTrn(true);
+				
 				pool.liberarTrn(trn);
 			}
 		} catch (PersistenciaException e) {
@@ -375,6 +375,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoAdmin.validarAdmin(trn, id);
+			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);

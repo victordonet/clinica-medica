@@ -154,10 +154,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {	
 		fachada.elimConsultasAfil(idAfil);
 	}
-	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario)  throws PersistenciaException, RemoteException {
+		fachada.altaConsulta(fecha, idMed, dia, afil, consult, turno, horario);
 	}
-//	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
-//	}
 	
 	//DISPONIBILIDAD
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException {
@@ -226,9 +225,6 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
  	public void cargaConsultasProxMes(String id, Calendar fecha)  throws PersistenciaException, RemoteException {
  		fachada.cargaConsultasProxMes(id, fecha);
  	}
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario)  throws PersistenciaException, RemoteException {
-		fachada.altaConsulta(fecha, idMed, dia, afil, consult, turno, horario);
-	}
 	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {

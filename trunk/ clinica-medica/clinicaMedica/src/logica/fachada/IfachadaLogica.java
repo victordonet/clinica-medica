@@ -58,7 +58,7 @@ public interface IfachadaLogica extends IObservable{
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
 	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException;
 	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException;
+	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException;
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD
@@ -88,7 +88,6 @@ public interface IfachadaLogica extends IObservable{
  	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException;
  	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException;
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException;
 
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException;

@@ -464,15 +464,28 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoC.altaConsulta(trn, fecha, horario, dia, idConsultorio, timbre, afil, turno, med);
-			trn.finalizarTrn(true);
-			pool.liberarTrn(trn);
+			if (iDaoM.validarMed(trn, idMed)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
+				throw new PersistenciaException("El médico no existe");
+			}
+			else{
+				int cantCons = iDaoTC.getCantConsult(trn, afil.getId());
+				boolean timbre = true;
+				if(cantCons<10){
+					timbre=false;
+				}
+				iDaoC.altaConsulta(trn, fecha, idMed, dia, afil, consult, turno, horario, timbre);
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
+			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
+			trn.finalizarTrn(false);
 			e.printStackTrace();
 		}
 	}
@@ -811,31 +824,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
-	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
-		Transaccion trn = pool.obtenerTrn(8);
-		try {
-			if (iDaoM.validarMed(trn, idMed)==false){
-				trn.finalizarTrn(false);
-				pool.liberarTrn(trn);
-				throw new PersistenciaException("El médico no existe");
-			}
-			else{
-				int cantCons = iDaoTC.getCantConsult(trn, afil.getId());
-				boolean timbre = true;
-				if(cantCons<10){
-					timbre=false;
-				}
-				iDaoM.altaConsulta(trn, fecha, idMed, dia, afil, consult, turno, horario, timbre);
-				trn.finalizarTrn(true);
-				pool.liberarTrn(trn);
-			}
-		} catch (PersistenciaException e) {
-			trn.finalizarTrn(false);
-			pool.liberarTrn(trn);
-			trn.finalizarTrn(false);
-			e.printStackTrace();
-		}
-	}
 	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {

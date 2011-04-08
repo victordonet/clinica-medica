@@ -36,7 +36,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		
 		try {
 			fabrica = (IabsFactory) Class.forName(fb).newInstance();
-			pool = new Pool(conf);
+			pool = Pool.getInstance(conf);
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

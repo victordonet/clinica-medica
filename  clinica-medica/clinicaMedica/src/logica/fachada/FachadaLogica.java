@@ -74,7 +74,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		System.out.println(conf.getValor("FABRICA"));
 		
 		try {
-			nivelTrn = 8;
+			
 			fabrica = (IabsFactory) Class.forName(fb).newInstance();
 			pool = new Pool(conf);
 			iDaoAdmin = fabrica.crearDaoAdminGen();
@@ -132,8 +132,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
-		pool.obtenerTrn(8);
-		Transaccion trn = pool.obtenerTrn(8);
+
+		Transaccion trn = pool.obtenerTrn(5);
 		String idAfil = afil.getId();
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
@@ -284,16 +284,16 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			System.out.println("valida el admin : " + idAdm);
 			iDaoAdmin.altaAdmin(trn, adm);
 			trn.finalizarTrn(true);
-			pool.liberarTrn(trn);
+			//pool.liberarTrn(trn);
 			}
 			else{
 				trn.finalizarTrn(false);
-				pool.liberarTrn(trn);
+				//pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo ya existe");
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
-			pool.liberarTrn(trn);
+			//pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
@@ -376,9 +376,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoAdmin.validarAdmin(trn, id);
+			
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			trn.finalizarTrn(false);
+		
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}

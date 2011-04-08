@@ -1,7 +1,11 @@
 package persistencia.mains;
 
+import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
+import excepciones.LogicaException;
+import excepciones.PersistenciaException;
 
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.VosLogin;
@@ -12,16 +16,30 @@ import logica.fachada.ProxyFachadaLogica;
 
 public class MainDaoAdmin {
 
-	public static void main(String[] args) throws IllegalAccessException, Exception, Throwable {
+	public static void main(String[] args) {
 		
-		IfachadaLogica fachada = new ProxyFachadaLogica();
+		IfachadaLogica fachada;
 		
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
+		
 		DataAdmin adm = new DataAdmin("FGonzales", "Fernando", 1, "A");
-		fachada.altaAdmin(adm);
+		try {
+			fachada = new ProxyFachadaLogica();
+			fachada.altaAdmin(adm);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LogicaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("PASO POR EL ALTA DEL ADMIN1");
+		
 
 //		DataAdmin adm2 = new DataAdmin("RPerez", "Ruso",1,"A");
 //		fachada.altaAdmin(adm2);
@@ -62,5 +80,5 @@ public class MainDaoAdmin {
 //			Examen ex = (Examen) exPend.get(i);
 //			System.out.println("Listado examenes, FechaIni. = "+ex.getFechaInicio());
 //		}
-	}
+		}
 }

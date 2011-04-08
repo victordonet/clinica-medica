@@ -19,7 +19,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
 		System.out.println("Insertando administrativo: "+ adm.getId());
 		try {
-			PreparedStatement pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into administrativos values (?,?,?,?)");
 			pst.setString (1, adm.getId());
 			pst.setString(2, adm.getNombre());
 			pst.setInt(3, adm.getCargo());

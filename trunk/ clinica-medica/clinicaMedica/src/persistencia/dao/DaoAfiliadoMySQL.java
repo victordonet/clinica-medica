@@ -11,6 +11,8 @@ import logica.Examen;
 import logica.TipoExamen;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataExamen;
+import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.VosLogin;
 import excepciones.PersistenciaException;
 
@@ -125,9 +127,9 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		return validar;
 	}
 
-	public Vector<Examen> listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
+	public Vector<DataExamen> listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
 		System.out.println("Listando examenes pendientes de resolución");
-		Vector<Examen> resultado = new Vector<Examen>();
+		Vector<DataExamen> resultado = new Vector<DataExamen>();
 		Date  fechaInicio, fechaResultado;
 		Calendar fechaIni = Calendar.getInstance();
 		Calendar fechaRes = Calendar.getInstance();
@@ -147,13 +149,13 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			//Tipo de Examen
 			tipoEx = rst.getInt("IDTIPOEXAMEN");
 			String descTipoEx = rst.getString("DESC_EXAMEN");
-			TipoExamen tex = new TipoExamen(tipoEx, descTipoEx);
+			DataTipoExamen tex = new DataTipoExamen(tipoEx, descTipoEx);
 			//----
 			enviaMail = rst.getBoolean("ENVIAMAIL");
 			cobroTimbre = rst.getBoolean("COBRATIMBRE");
 			fechaResultado = rst.getDate("FECHARESULTADO");
 			fechaRes.setTime(fechaResultado);
-			Examen ex = new Examen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
+			DataExamen ex = new DataExamen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
 			resultado.add(ex);
 		}
 		return resultado;

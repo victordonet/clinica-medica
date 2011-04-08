@@ -249,7 +249,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public VoResumCont calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		Vector<VoResumCont> vSalario = new Vector<VoResumCont>();
 		Vector<DataSalario> vSalarioMed = this.listarSalarios(trn, fDesde, fHasta);
 		double salTotal = 0;
 		for (int i = 0; i < vSalarioMed.size(); i++) {
@@ -267,21 +266,41 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException {
-
+		//FALTAAAA
 	}
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando consultas disponibles");
 		Vector<VoTurnosDisp> resultado = new Vector<VoTurnosDisp>();
+		int cantTurno = 0, dia =0,horario =0,cons =0;
+		Date fecha;
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select fecha, dia, horario, idconsultorio, turno from Consultas where =");
+			PreparedStatement pst = trn.preparedStatement("Select fecha, dia, horario, idconsultorio from Consultas where fecha >=? and turno=0");
+			Calendar calHoy = Calendar.getInstance();
+			Date hoy = new java.sql.Date(calHoy.getTimeInMillis());
+			pst.setDate(1, hoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				String id = rst.getString("Id");
-				String nombre = rst.getString("nombre");
-				String apellido = rst.getString("apellido");
-				VoMedEsp voMed = new VoMedEsp(id, nombre, apellido);
-				resultado.add(voMed);
+				fecha = rst.getDate("fecha");
+				dia = rst.getInt("dia");
+				horario = rst.getInt("horario");
+				cons = rst.getInt("idconsultario");
+				PreparedStatement pst2 = trn.preparedStatement("Select count(*) as cantTurnos from Consultas " +
+																"where fecha =? and dia=? and horario=? and idconsultorio=? and turno>0");
+				pst.setDate(1, fecha);
+				pst.setInt(2, dia);
+				pst.setInt(3, horario);
+				pst.setInt(4, cons);
+				ResultSet rst2 = pst.executeQuery();
+				while(rst2.next()){
+					cantTurno = rst.getInt("cantTurnos");
+				}
+				if (cantTurno<=9){
+					Calendar fech = Calendar.getInstance();
+					fech.setTime(fecha);
+					VoTurnosDisp voTurnosDisp = new VoTurnosDisp(fech, dia, horario, cantTurno+1, cons);
+					resultado.add(voTurnosDisp);
+				}
 			}
 			return resultado;
 		} catch (SQLException e) {
@@ -290,23 +309,20 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public void altaConsulta(Transaccion trn, Calendar fecha, String id, int dia, DataAfiliado afil, int consult) throws PersistenciaException {
-		System.out.println("Insertando nueva consulta para el medico: "+id);
+	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario, int timbre) throws PersistenciaException {
+		System.out.println("Insertando nueva consulta para el medico: "+idMed);
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
-			pst.setString(1, id);
+			pst.setString(1, idMed);
 			pst.setString(2, afil.getId());
 			Date date = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate(3, date);
 			pst.setInt(4, dia);
 			pst.setInt(5, consult);
-			int turno = 0;
 			pst.setInt(6, turno);
-			int horario = 0;
 			pst.setInt(7, horario);
-			String timbre = "";
-			pst.setString(8, timbre);
+			pst.setInt(8, timbre);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

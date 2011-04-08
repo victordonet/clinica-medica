@@ -15,9 +15,13 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	
 	public int getCantConsult(Transaccion trn, String idAfi) throws PersistenciaException{
 		int cantidadConsulta = 0;
+		Calendar calHoy = Calendar.getInstance();
+		Date hoy = new java.sql.Date(calHoy.getTimeInMillis());
 		try {
-			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas where idafiliado = ?");
-			pst.setString (1, idAfi);
+			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas " +
+															"where idafiliado = ? and YEAR(fecha)=YEAR(?)");
+			pst.setString(1, idAfi);
+			pst.setDate(2, hoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				cantidadConsulta = rst.getInt("cantidad");
@@ -29,16 +33,15 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return cantidadConsulta;
 	}
 
-	public int getCantConsultasPagas(Transaccion trn, Calendar fDesde,
-		Calendar fHasta) throws PersistenciaException {
+	public int getCantConsultasPagas(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
 		int cantidadConsulta = 0;
 		try {
 			PreparedStatement pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas " +
 															"where fecha between ? and ? and timbre = 'S'");
 			Date desde = new java.sql.Date(fDesde.getTimeInMillis());
 			Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
-			pst.setDate (1,desde);
-			pst.setDate (2,hasta);
+			pst.setDate(1,desde);
+			pst.setDate(2,hasta);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				cantidadConsulta = rst.getInt("cantidad");

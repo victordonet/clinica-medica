@@ -14,7 +14,7 @@ import logica.Examen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
-public class MainDaoAdmin {
+public class MainDaoAdminOld {
 
 	public static void main(String[] args) {
 		

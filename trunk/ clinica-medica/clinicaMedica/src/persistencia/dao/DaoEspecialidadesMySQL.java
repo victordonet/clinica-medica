@@ -22,6 +22,7 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 			pst.setString(2, esp.getDescripcion());
 			pst.setDouble(3, esp.getMontoBase());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -43,6 +44,8 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 				DataEsp dataEsp = new DataEsp(id, descripcion, monto);
 				resultado.add(dataEsp);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,6 +66,8 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 				double monto = rst.getDouble("MontoBase");
 				esp = new Especialidad(id, descripcion, monto);
 			}
+			rst.close();
+			pst.close();
 			return esp;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -6,13 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-
-import logica.Afiliado;
-import logica.Consulta;
-import logica.Medico;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
-import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.VoTurnosDisp;
@@ -29,6 +24,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			while(rst.next()){
 				cantidadConsulta = rst.getInt("cantidad");
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
@@ -50,6 +47,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			pst.setInt(7, cons.getHorario());
 			pst.setBoolean(8, cons.isPagoConsulta());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -87,6 +85,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 				VoTurnosDisp data = new VoTurnosDisp(cal, dia, horario, proxTurno, idConsultorio);
 				consultas.add(data);
 			}
+			rst.close();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
@@ -108,6 +108,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			pst.setInt(7, horario);
 			pst.setBoolean(8, timbre);
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

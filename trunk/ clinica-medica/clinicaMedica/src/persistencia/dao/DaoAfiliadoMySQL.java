@@ -7,8 +7,6 @@ import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
 import logica.Afiliado;
-import logica.Examen;
-import logica.TipoExamen;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
@@ -34,6 +32,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setBoolean(9, afil.getFonasa());
 			pst.setString(10, afil.getEstado());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -56,6 +55,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setDate (7, dt);
 			pst.setBoolean(8, fon);
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -69,6 +69,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			// I = inactivo
 			pst.setString(1,"I");
 			pst.setString(2, id);
+			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -81,6 +83,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, " +
 															"fechaingreso, fonasa, estado from Afiliados");
+			pst.executeUpdate();
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
@@ -98,6 +101,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 				DataAfiliado dataAfil = new DataAfiliado (id, ci, nombre, apellido,  mail, direccion, telefono, estado, cal, fonasa);
 				resultado.add(dataAfil);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -120,6 +125,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			else{
 				validar = false;
 			}
+			rst.close();
+			pst.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -158,6 +165,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			DataExamen ex = new DataExamen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
 			resultado.add(ex);
 		}
+		rst.close();
+		pst.close();
 		return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -178,8 +187,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 														"FROM AFILIADOS A, USUARIOS U " +
 														"WHERE A.ID=U.ID AND ID=?");
 			pst.setString(1, idAfil);
-			ResultSet rst;
-			rst = pst.executeQuery();
+			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				pass = rst.getString("CONTRASENA");
 				tipo = rst.getString("TIPO");
@@ -194,6 +202,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 				fonasa = rst.getBoolean("FONASA");
 				estado = rst.getString("ESTADO");
 			}
+			rst.close();
 			pst.close();
 			IDaoExamen daoEx = new DaoExamenMySQL();
 			af = new Afiliado(idAfil, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
@@ -204,13 +213,21 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
+		String nombre= null,apellido = null,pass = null,tipo= null;
 		try{
 			PreparedStatement pst = trn.preparedStatement("Select A.nombre, A.apellido, U.contrasena, U.tipo " +
 														"from Afiliados A, Usuarios U WHERE A.id=U.id and id=?");
 			pst.setString(1, id);
-			ResultSet rs = pst.executeQuery();
-			VosLogin vosLogin = new VosLogin(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				nombre = rst.getString("nombre");
+				apellido = rst.getString("apellido");
+				pass = rst.getString("contrasena");
+				tipo = rst.getString("tipo");
+			}
+			rst.close();
 			pst.close();
+			VosLogin vosLogin = new VosLogin(nombre, apellido, tipo, pass);
 			return vosLogin;
 		} catch (SQLException e) {
 			e.printStackTrace();

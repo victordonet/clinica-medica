@@ -3,17 +3,16 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
 import logica.AdminGen;
 import logica.Afiliado;
 import logica.Configuracion;
 import logica.Consulta;
 import logica.Disponibilidad;
 import logica.Especialidad;
-import logica.Examen;
 import logica.Medico;
 import logica.TipoExamen;
 import logica.TotConsulta;
-import logica.Usuario;
 import logica.observer.Observable;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
@@ -31,6 +30,7 @@ import persistencia.transacciones.Pool;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
@@ -38,6 +38,7 @@ import vista.dataobjet.DataMed;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
+import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 import excepciones.EspecialidadException;
@@ -189,9 +190,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<Afiliado> listarAfiliados() throws PersistenciaException, RemoteException {
+	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Afiliado> resultado = null;
+		Vector<DataAfiliado> resultado = null;
 		try {
 			resultado = iDaoAfil.listarAfiliados(trn);
 			trn.finalizarTrn(true);
@@ -237,9 +238,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Vector<Examen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
+	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Examen> resultado = null;
+		Vector<DataExamen> resultado = null;
 		try {
 			resultado = iDaoAfil.listarExPend(trn, idAfil);
 			trn.finalizarTrn(true);
@@ -656,9 +657,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
- 	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException {
+ 	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Medico> resultado = null;
+		Vector<DataMed> resultado = null;
 		try {
 			resultado = iDaoM.listarMedicos(trn);
 			trn.finalizarTrn(true);
@@ -671,9 +672,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector<Medico> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException {
+ 	public Vector<VoMedEsp> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Medico> resultado = null;
+		Vector<VoMedEsp> resultado = null;
 		try {
 			resultado = iDaoM.listarMedEsp(idEsp, trn);
 			trn.finalizarTrn(true);
@@ -745,9 +746,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector<Medico> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+ 	public Vector<DataCantConsu> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Medico> resultado = null;
+		Vector<DataCantConsu> resultado = null;
 		try {
 			resultado = iDaoM.listarMedPremiado(trn, fDesde, fHasta);
 			trn.finalizarTrn(true);

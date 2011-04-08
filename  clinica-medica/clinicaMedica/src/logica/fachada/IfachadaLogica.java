@@ -20,6 +20,7 @@ import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
@@ -27,6 +28,7 @@ import vista.dataobjet.DataMed;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
+import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VosLogin;
 
@@ -36,10 +38,10 @@ public interface IfachadaLogica extends IObservable{
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException;
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException;
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException;
-	public Vector<Afiliado> listarAfiliados() throws PersistenciaException, RemoteException;
+	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException;
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException;
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException;
-	public Vector<Examen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
+	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
 	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES
@@ -76,13 +78,13 @@ public interface IfachadaLogica extends IObservable{
  	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException;
  	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException, RemoteException;
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException;
- 	public Vector<Medico> listarMedicos() throws PersistenciaException, RemoteException;
- 	public Vector<Medico> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;
+ 	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException;
+ 	public Vector<VoMedEsp> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;
  	public Medico getMedico(String id) throws PersistenciaException, RemoteException;
  	public VosLogin getDataMedico(String id) throws PersistenciaException, RemoteException;
  	public boolean validarMed(String id) throws PersistenciaException, RemoteException;
  	public Vector listarSalarios(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
- 	public Vector<Medico> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
+ 	public Vector<DataCantConsu> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException;
  	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException;

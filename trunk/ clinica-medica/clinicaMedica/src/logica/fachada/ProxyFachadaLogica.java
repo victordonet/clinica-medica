@@ -125,25 +125,13 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		return fachada.listarConsultasDisp(idMed);
 	}
-
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {	
 		fachada.elimConsultasAfil(idAfil);
 	}
-	@Override
-	public void altaConsulta(Calendar fecha, int horario, int dia,
-			int idConsultorio, boolean timbre, DataAfiliado afil, int turno,
-			DataMed med) throws PersistenciaException, RemoteException {
-		// TODO Auto-generated method stub
-		
+	public void altaConsulta(Calendar fecha, int horario, int dia, int idConsultorio, boolean timbre, DataAfiliado afil, int turno, DataMed med) throws PersistenciaException, RemoteException {
 	}
-
-	@Override
-	public void altaConsulta(Calendar fecha, String idMed, int dia,
-			DataAfiliado afil, int consult, int turno, int horario)
-			throws PersistenciaException, RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
+	//public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
+	//}
 
 	
 	//DISPONIBILIDAD
@@ -213,8 +201,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public void cargaConsultasProxMes(String id, Calendar fecha)  throws PersistenciaException, RemoteException {
  		fachada.cargaConsultasProxMes(id, fecha);
  	}
-	public void altaConsulta(Calendar fecha,String id,int dia, DataAfiliado afil, int conult)  throws PersistenciaException, RemoteException {
-		//fachada.altaConsulta(fecha, id, dia, afil, conult, conult);
+	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario)  throws PersistenciaException, RemoteException {
+		fachada.altaConsulta(fecha, idMed, dia, afil, consult, turno, horario);
 	}
 	
 	//TIPO DE EXAMEN

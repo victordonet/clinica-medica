@@ -19,6 +19,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			pst.setString(2, "MD5("+usu.getContrasena()+")");
 			pst.setString(3, usu.getTipo());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -45,6 +46,8 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			else
 				respuesta=true;
 			System.out.println("Validado: "+respuesta);
+			rst.close();
+			pst.close();
 			return respuesta;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,6 +62,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			pst.setString (1, "MD5("+pass+")");
 			pst.setString(2, clave);
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

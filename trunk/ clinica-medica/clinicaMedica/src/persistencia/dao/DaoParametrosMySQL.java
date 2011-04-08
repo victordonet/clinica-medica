@@ -17,6 +17,8 @@ public class DaoParametrosMySQL implements IDaoParametros {
 			while(rst.next()){
 				resultado = rst.getString("valor");
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();

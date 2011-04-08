@@ -35,6 +35,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.setInt(6, med.getEsp());
 			pst.setString(7, med.getEstado());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -54,6 +55,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.setInt(5, esp.getCodigo());
 			pst.setString(6, id);
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -67,6 +69,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			// I = inactivo
 			pst.setString(1,"I");
 			pst.setString(2, id);
+			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -89,6 +93,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				DataMed dataMed = new DataMed(id, nombre, apellido, ci, tel, esp);
 				resultado.add(dataMed);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -110,6 +116,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				VoMedEsp voMed = new VoMedEsp(id, nombre, apellido);
 				resultado.add(voMed);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -141,6 +149,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				monto = rst.getDouble("MONTOBASE");
 				estado = rst.getString("ESTADO");
 			}
+			rst.close();
 			pst.close();
 			Especialidad esp = new Especialidad(idEsp, desc, monto);
 			IDaoConsultas daoConsultas = new DaoConsultasMySQL();
@@ -167,6 +176,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				String tipo = rst.getString("tipo");
 				vosLogin = new VosLogin(nombre, apellido, tipo, pass);
 			}
+			rst.close();
 			pst.close();
 			return vosLogin;
 		} catch (SQLException e) {
@@ -190,6 +200,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			else{
 				validar = false;
 			}
+			rst.close();
+			pst.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -215,6 +227,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				DataSalario dtSalario = new DataSalario(id, nombre, apellido, salarioMed);
 				resultado.add(dtSalario);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -301,6 +315,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 					resultado.add(voTurnosDisp);
 				}
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -323,6 +339,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.setInt(7, horario);
 			pst.setBoolean(8, timbre);
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

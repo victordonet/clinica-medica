@@ -817,7 +817,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
-				int timbre = iDaoTC.getCantConsult(trn, afil.getId());
+				int cantCons = iDaoTC.getCantConsult(trn, afil.getId());
+				boolean timbre = true;
+				if(cantCons<10){
+					timbre=false;
+				}
 				iDaoM.altaConsulta(trn, fecha, idMed, dia, afil, consult, turno, horario, timbre);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);

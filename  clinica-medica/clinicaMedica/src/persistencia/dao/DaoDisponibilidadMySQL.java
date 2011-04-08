@@ -18,6 +18,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			pst.setInt(2, vo.getHorario());
 			pst.setString(3, vo.getIdMed());
 			pst.executeUpdate();
+			pst.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -36,6 +37,8 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 				Disponibilidad disp = new Disponibilidad(dia, horario);
 				resultado.add(disp);
 			}
+			rst.close();
+			pst.close();
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();

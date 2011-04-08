@@ -808,16 +808,17 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
-	public void altaConsulta(Calendar fecha,String id, int dia, DataAfiliado afil, int conult) throws PersistenciaException, RemoteException {
+	public void altaConsulta(Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			if (iDaoM.validarMed(trn, id)==false){
+			if (iDaoM.validarMed(trn, idMed)==false){
 				trn.finalizarTrn(false);
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
-				iDaoM.altaConsulta(trn, fecha, id, dia, afil, conult);
+				int timbre = iDaoTC.getCantConsult(trn, afil.getId());
+				iDaoM.altaConsulta(trn, fecha, idMed, dia, afil, consult, turno, horario, timbre);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

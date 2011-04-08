@@ -279,7 +279,9 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException {
-		//FALTAAAA
+		System.out.println("Cargando consultas del los proximos meses.");
+		Vector matriz = new Vector();
+		
 	}
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException {
@@ -324,27 +326,4 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, DataAfiliado afil, int consult, int turno, int horario, boolean timbre) throws PersistenciaException {
-		System.out.println("Insertando nueva consulta para el medico: "+idMed);
-		PreparedStatement pst;
-		try {
-			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
-			pst.setString(1, idMed);
-			pst.setString(2, afil.getId());
-			Date date = new java.sql.Date(fecha.getTimeInMillis());
-			pst.setDate(3, date);
-			pst.setInt(4, dia);
-			pst.setInt(5, consult);
-			pst.setInt(6, turno);
-			pst.setInt(7, horario);
-			pst.setBoolean(8, timbre);
-			pst.executeUpdate();
-			pst.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
-	}
 }

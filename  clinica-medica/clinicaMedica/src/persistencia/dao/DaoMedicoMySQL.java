@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-import logica.Afiliado;
 import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
@@ -287,10 +286,10 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				cons = rst.getInt("idconsultario");
 				PreparedStatement pst2 = trn.preparedStatement("Select count(*) as cantTurnos from Consultas " +
 																"where fecha =? and dia=? and horario=? and idconsultorio=? and turno>0");
-				pst.setDate(1, fecha);
-				pst.setInt(2, dia);
-				pst.setInt(3, horario);
-				pst.setInt(4, cons);
+				pst2.setDate(1, fecha);
+				pst2.setInt(2, dia);
+				pst2.setInt(3, horario);
+				pst2.setInt(4, cons);
 				ResultSet rst2 = pst.executeQuery();
 				while(rst2.next()){
 					cantTurno = rst.getInt("cantTurnos");

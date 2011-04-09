@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
+
+import javax.swing.JOptionPane;
+
 import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
@@ -46,7 +49,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	public void modifAfil(Transaccion trn, String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException {
 		System.out.println("================================Modificando afiliado: "+ idAfil+"==============================================");
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=? where id="+idAfil);
+			PreparedStatement pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, apel);
 			pst.setString(3, ci);
@@ -56,6 +59,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			Date dt = new Date (ing.getTimeInMillis());
 			pst.setDate (7, dt);
 			pst.setBoolean(8, fon);
+			pst.setString(9, idAfil);
 			pst.executeUpdate();
 			pst.close();
 			System.out.println("==============Afiliado Modificado==============================");
@@ -69,11 +73,12 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException {	
 		System.out.println("=============================Baja del afiliado: "+id+"===================================");
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Afiliados set estado=? WHERE id=?");
+			PreparedStatement pst = trn.preparedStatement("update Afiliados set estado=? where id=?");
 			// I = inactivo
 			pst.setString(1,"I");
 			pst.setString(2, id);
 			pst.executeUpdate();
+			JOptionPane.showMessageDialog(null,"aca lo bajo al afi");
 			pst.close();
 			System.out.println("==============Baja Afiliado==============================");
 

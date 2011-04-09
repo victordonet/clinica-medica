@@ -1,20 +1,9 @@
 package persistencia.mains;
 
 import java.rmi.RemoteException;
-import java.util.Calendar;
-
 import javax.swing.JOptionPane;
-
-import persistencia.dao.DaoAdmGenMySQL;
-import persistencia.dao.IDaoAdmGen;
-import persistencia.fabrica.FabricaMySQL;
-import persistencia.transacciones.Pool;
-import persistencia.transacciones.Transaccion;
-
-import logica.Configuracion;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
-import vista.controladores.CdorMantEsp;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataUsuario;
 import excepciones.LogicaException;
@@ -39,6 +28,7 @@ public class MainDaoAdm {
 			
 			facade.bajaAdmin("FEDE");
 			JOptionPane.showMessageDialog(null,"Bajo Id FEDE");
+			facade.modifEstado(adm.getId());
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();			

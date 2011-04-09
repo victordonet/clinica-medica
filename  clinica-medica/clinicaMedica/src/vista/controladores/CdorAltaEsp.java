@@ -61,7 +61,7 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 		double montoBase = Double.parseDouble(monto);
 		DataEsp datEsp = new DataEsp(idEspecialidad, desc, montoBase);
 		try {
-			mod.altaEspecialidades(datEsp);
+			mod.altaEspecialidad(datEsp);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());

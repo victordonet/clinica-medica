@@ -6,7 +6,6 @@ import java.util.Vector;
 import logica.Afiliado;
 import logica.Medico;
 import logica.observer.IObservable;
-import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
@@ -60,7 +59,7 @@ public interface IfachadaLogica extends IObservable{
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException;
 	
 	//ESPECIALIDADES
-	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException, EspecialidadException;
+	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException;
 	public Vector<DataEsp> listarEspecialidades() throws PersistenciaException, RemoteException;
 	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	

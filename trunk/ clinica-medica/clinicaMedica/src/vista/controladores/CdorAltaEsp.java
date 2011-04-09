@@ -5,7 +5,7 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
-import excepciones.EspecialidadException;
+
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
@@ -69,10 +69,6 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
-		} catch (EspecialidadException e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();

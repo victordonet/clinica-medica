@@ -28,7 +28,6 @@ import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
-import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
@@ -140,7 +139,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	
 	//ESPECIALIDADES
-	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
+	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException {
 			fachada.altaEspecialidad(datEsp);
 	}
 	public Vector<DataEsp> listarEspecialidades() throws PersistenciaException, RemoteException {

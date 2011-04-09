@@ -18,8 +18,7 @@ public class Pool {
 
 		
 	private Pool(Configuracion conf) throws Exception, IllegalAccessException, Throwable{
-		// hay que leer de un archivo la configuracion
-		//String url, String usuario, String pass, String driver,int cantMax
+		
 		super();
 		this.url = conf.getValor("URL");
 		this.usuario = conf.getValor("USUARIO");

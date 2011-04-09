@@ -70,7 +70,9 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 					"where idmedico = ?"+
 					"and fecha>= ?"+
 					"and turno = 0");
-			pst.setString (1, idMed);
+			pst.setString(1, idMed);
+			Date fechaHoy = (Date) new java.util.Date();
+			pst.setDate(2, fechaHoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				Date fecha = rst.getDate("fecha");

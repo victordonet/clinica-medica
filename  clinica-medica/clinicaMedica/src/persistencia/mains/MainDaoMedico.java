@@ -26,14 +26,14 @@ public class MainDaoMedico {
 		//PRUEBO LOS METODOS
 		//Medicos:
 		//Alta
-		DataMed med = new DataMed("1234", "Carlos", "Prociutto", "17863574", "29001496", 1);
+		DataMed med = new DataMed("1234", "Carlos", "Prociutto", "17863574", "29001496", "A", 1);
 		fachada.altaMedico(med);
 		//Usuarios:
 		//Alta
 		DataUsuario usuMed = new DataUsuario(med.getId(),"1234","ME","A");
 		fachada.altaUsuario(usuMed);
 
-		DataMed med2 = new DataMed("4567", "Jose", "Castro", "19358516", "24863278", 1);
+		DataMed med2 = new DataMed("4567", "Jose", "Castro", "19358516", "24863278", "A", 1);
 		fachada.altaMedico(med2);
 		//Usuarios:
 		//Alta

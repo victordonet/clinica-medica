@@ -81,7 +81,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		System.out.println("Listando Medicos");
 		Vector<DataMed> resultado = new Vector<DataMed>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, telefono, idEspecialidad from Medicos");
+			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, telefono, idEspecialidad, estado from Medicos");
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
@@ -90,7 +90,8 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				String ci = rst.getString("ci");
 				String tel = rst.getString("telefono");
 				int esp = rst.getInt("idEspecialidad");
-				DataMed dataMed = new DataMed(id, nombre, apellido, ci, tel, esp);
+				String estado = rst.getString("telefono");
+				DataMed dataMed = new DataMed(id, nombre, apellido, ci, tel, estado, esp);
 				resultado.add(dataMed);
 			}
 			rst.close();

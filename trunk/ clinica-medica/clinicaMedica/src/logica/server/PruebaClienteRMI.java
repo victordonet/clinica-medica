@@ -18,7 +18,7 @@ import excepciones.PersistenciaException;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
-public class PruebaPrototipo {
+public class PruebaClienteRMI {
 
 	/**
 	 * @param args

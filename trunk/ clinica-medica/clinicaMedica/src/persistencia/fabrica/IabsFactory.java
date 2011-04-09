@@ -3,6 +3,7 @@ package persistencia.fabrica;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
 import persistencia.dao.IDaoConsultas;
+import persistencia.dao.IDaoConsultorios;
 import persistencia.dao.IDaoDisponibilidad;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoExamen;
@@ -25,5 +26,6 @@ public interface IabsFactory {
 	public IDaoTotConsulta crearDaoTConsultas();
 	public IDaoUsuarios crearDaoUsuarios();
 	public IDaoParametros crearDaoParametros();
-
+	public IDaoConsultorios crearDaoConsultorios();
+	
 }

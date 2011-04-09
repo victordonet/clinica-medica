@@ -26,7 +26,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public void altaMedico(Transaccion trn, DataMed med) throws PersistenciaException {
 		System.out.println("Insertando medico: "+med.getId());
 		try {
-			PreparedStatement pst = trn.preparedStatement("insert into Medico values (?,?,?,?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Medicos values (?,?,?,?,?,?,?)");
 			pst.setString (1, med.getId());
 			pst.setString(2, med.getNombre());
 			pst.setString(3, med.getApellido());

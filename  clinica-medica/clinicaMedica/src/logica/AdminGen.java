@@ -1,7 +1,5 @@
 package logica;
 
-import java.io.Serializable;
-
 public class AdminGen extends Usuario {
 
 	private String nombre;

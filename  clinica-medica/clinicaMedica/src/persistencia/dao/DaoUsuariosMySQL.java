@@ -96,7 +96,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		return h.toString();
 	}
 	
-	public void modifEstado(Transaccion trn, java.lang.String id)
+	public void modifEstado(Transaccion trn, String id)
 			throws PersistenciaException {
 		System.out.println("Modif. estado del usuario: "+id);
 		try {

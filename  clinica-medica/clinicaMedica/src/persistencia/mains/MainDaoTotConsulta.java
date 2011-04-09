@@ -2,7 +2,8 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
-import logica.TotConsulta;
+import vista.dataobjet.DataConsAfi;
+import vista.dataobjet.DataConsFecha;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
@@ -27,19 +28,19 @@ public class MainDaoTotConsulta {
 		System.out.println("Cantidad de consultas pagas = "+cant2);
 
 		//Listar Consultas x Afiliado
-		Vector vCons = fachada.listarConsultasAfi("1001");
+		Vector<DataConsAfi> vCons = fachada.listarConsultasAfi("1001");
 		for (int i = 0; i < vCons.size(); i++) {
-			TotConsulta totCons = (TotConsulta) vCons.get(i);
-			System.out.println("Listado consultas del afiliado 1001, nomMed = "+totCons.getNombreMed());
+			DataConsAfi totCons = vCons.get(i);
+			System.out.println("Listado consultas del afiliado 1001, nomMed = "+totCons.getNomMed());
 		}
 		
 		//Listar Consultas x Fecha
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(2010, 02, 14);
-		Vector vConsFecha = fachada.listarConsFecha(fecha);
+		Vector<DataConsFecha> vConsFecha = fachada.listarConsFecha(fecha);
 		for (int i = 0; i < vConsFecha.size(); i++) {
-			TotConsulta tc = (TotConsulta) vConsFecha.get(i);
-			System.out.println("Listado consultas x dia, idAfil = "+tc.getIdAfiliado());
+			DataConsFecha tc = vConsFecha.get(i);
+			System.out.println("Listado consultas x dia, nomAfil = "+tc.getNomAfi());
 		}
 		
 		//Eliminar consutla

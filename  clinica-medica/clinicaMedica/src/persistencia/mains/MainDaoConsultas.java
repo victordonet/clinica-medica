@@ -2,13 +2,9 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
-
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.VoTurnosDisp;
-import logica.Afiliado;
-import logica.Consulta;
-import logica.Medico;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
@@ -45,6 +41,7 @@ public class MainDaoConsultas {
 		Calendar fHasta = Calendar.getInstance();
 		fHasta.set(2010, 03, 01);
 		int cant = fachada.getCantidadConsultas(fDesde, fHasta, idMed);
+		System.out.println("Cantidad de consultas = "+cant);
 		
 		//Eliminar
 		fachada.elimConsultasAfil("1001");		

@@ -1,7 +1,5 @@
 package logica;
 
-import java.util.Vector;
-
 import persistencia.dao.IDaoConsultas;
 import persistencia.dao.IDaoDisponibilidad;
 

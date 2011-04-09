@@ -74,7 +74,7 @@ public class MainDaoMedico {
 		
 		//Obtener VO
 		VosLogin vo = fachada.getDataMedico(med.getId());
-		//System.out.println("Nombre medico buscado = "+vo.getNombre());
+		System.out.println("Nombre medico buscado = "+vo.getNombre());
 		
 		//Listar Salario
 		Calendar fDesde = Calendar.getInstance();
@@ -82,6 +82,10 @@ public class MainDaoMedico {
 		Calendar fHasta = Calendar.getInstance();
 		fHasta.set(2010, 03, 01);
 		Vector<DataSalario> vSal = fachada.listarSalarios(fDesde, fHasta);
+		for (int i = 0; i < vSal.size(); i++) {
+			DataSalario sal = vSal.get(i);
+			System.out.println("Listando salario del Medico: "+sal.getNombre()+" Salario= "+sal.getSalarioMed());
+		}
 		
 		//Listar Med. Premiado
 		Vector<DataCantConsu> vMedPre = fachada.listarMedPremiado(fDesde, fHasta);

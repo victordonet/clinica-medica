@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Especialidad implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int idEspecialidad;
 	private String descripcion;
 	private double montoBase;

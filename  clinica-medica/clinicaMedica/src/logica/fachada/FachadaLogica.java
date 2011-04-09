@@ -127,10 +127,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
-			else
-				trn.finalizarTrn(false);
-				pool.liberarTrn(trn);
+			else{
+			
 				throw new PersistenciaException("El afiliado ya existe");
+			}
 				
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);

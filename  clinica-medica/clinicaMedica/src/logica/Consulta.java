@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Consulta {
+public class Consulta implements Serializable{
 
 	private Calendar fecha;
 	private int dia,horario,turno,idConsultorio;

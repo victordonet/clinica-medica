@@ -1,6 +1,8 @@
 package logica;
 
-public class Consultorio {
+import java.io.Serializable;
+
+public class Consultorio implements Serializable {
 
 	private int idConsultorio;
 	private String nombre;

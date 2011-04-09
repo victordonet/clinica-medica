@@ -1,15 +1,18 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import persistencia.dao.*;
 
-public class Afiliado extends Usuario {
+public class Afiliado extends Usuario implements Serializable {
 
 	private String nombre,apellido,ci,mail,dir,tel;
 	private Calendar fecha;
 	private boolean fonasa;
 	private IDaoExamen daoExamen;
-	
+	public Afiliado (){
+		
+	}
 	public Afiliado(String id, String contrasena, String tipo, String estado,
 			String nombre, String apellido, String ci, String mail, String dir,
 			String tel, Calendar fecha, boolean fonasa, IDaoExamen daoExamen) {

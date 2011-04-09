@@ -1,5 +1,6 @@
 package persistencia.dao;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ import logica.Examen;
 import logica.TipoExamen;
 import excepciones.PersistenciaException;
 
-public class DaoExamenMySQL implements IDaoExamen {
+public class DaoExamenMySQL implements IDaoExamen, Serializable{
 
 	public int getCantExPagos(Transaccion trn, Calendar fini, Calendar ffin) throws PersistenciaException {
 		System.out.println("Listando cantidad de exámenes pagos");

@@ -40,8 +40,8 @@ public class MainDaoAfiliados {
 		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDireccion(), "26199911", afil.getFechaIngreso(), false);
 		
 		//Obtener
-		//Afiliado af = fachada.getAfiliado(afil.getId());
-		//System.out.println("Nombre afiliado buscado = "+af.getNombre());
+		Afiliado af = fachada.getAfiliado(afil.getId());
+		System.out.println("Nombre afiliado buscado = "+af.getNombre());
 		
 		//Validar
 		boolean afilOk = fachada.validarAfil(afil.getId());

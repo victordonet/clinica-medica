@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import logica.Configuracion;
 import excepciones.PersistenciaException;
 
@@ -18,8 +20,7 @@ public class Pool {
 
 		
 	private Pool(Configuracion conf) throws Exception, IllegalAccessException, Throwable{
-		// hay que leer de un archivo la configuracion
-		//String url, String usuario, String pass, String driver,int cantMax
+		
 		super();
 		this.url = conf.getValor("URL");
 		this.usuario = conf.getValor("USUARIO");
@@ -58,6 +59,7 @@ public class Pool {
 		Transaccion trn = null;
 		if(conexionesLibres.size()>0){
 			try {
+				
 				trn = new Transaccion(conexionesLibres.getFirst(), nivel);
 				conexionesLibres.removeFirst();
 				
@@ -94,6 +96,7 @@ public class Pool {
 				}
 			}
 		}
+		
 		return trn;
 	
 	}

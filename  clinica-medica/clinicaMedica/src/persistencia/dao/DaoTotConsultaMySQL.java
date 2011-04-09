@@ -38,7 +38,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	public int getCantConsultasPagas(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
 		int cantidadConsulta = 0;
 		try {
-			PreparedStatement pst = trn.preparedStatement("select count (idafiliado) as cantidad from consultas " +
+			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas " +
 															"where fecha between ? and ? and timbre = 'S'");
 			Date desde = new java.sql.Date(fDesde.getTimeInMillis());
 			Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
@@ -87,7 +87,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		Vector <DataConsFecha> consultas  = new Vector <DataConsFecha>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
-					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliado a, medicos m " +
+					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliados a, medicos m " +
 					"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ?");
 			Date dia = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate (1, dia);
@@ -114,7 +114,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	public void elimConsulta(Transaccion trn, String idAfi) throws PersistenciaException {
 		System.out.println("Baja del las consultas pendientes del afiliado ="+ idAfi);
 		try {
-			PreparedStatement pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
+			PreparedStatement pst = trn.preparedStatement("delete from Consultas where idAfiliado = ? and fecha >= ?");
 			pst.setString(1,idAfi);
 			Calendar hoy = Calendar.getInstance(); 
 			Date dia = new java.sql.Date(hoy.getTimeInMillis());

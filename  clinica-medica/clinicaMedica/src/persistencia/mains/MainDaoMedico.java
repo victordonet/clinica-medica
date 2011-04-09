@@ -7,6 +7,7 @@ import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
+import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
@@ -27,9 +28,17 @@ public class MainDaoMedico {
 		//Alta
 		DataMed med = new DataMed("1234", "Carlos", "Prociutto", "17863574", "29001496", 1);
 		fachada.altaMedico(med);
+		//Usuarios:
+		//Alta
+		DataUsuario usuMed = new DataUsuario(med.getId(),"1234","ME","A");
+		fachada.altaUsuario(usuMed);
 
 		DataMed med2 = new DataMed("4567", "Jose", "Castro", "19358516", "24863278", 1);
 		fachada.altaMedico(med2);
+		//Usuarios:
+		//Alta
+		DataUsuario usuMed2 = new DataUsuario(med2.getId(),"1234","ME","A");
+		fachada.altaUsuario(usuMed2);
 
 		//Listar
 		Vector<DataMed> listMed = fachada.listarMedicos();
@@ -41,6 +50,8 @@ public class MainDaoMedico {
 		//Borrar
 		fachada.bajarMedico(med2.getId());
 		System.out.println("Estado medico eliminado= "+med2.getEstado());
+		fachada.modifEstado(usuMed2.getId());
+		System.out.println("Estado usuario eliminado= "+usuMed2.getEstado());
 		
 		//Modificacion
 		DataEsp esp = new DataEsp(4, "Traumatologia", 140);

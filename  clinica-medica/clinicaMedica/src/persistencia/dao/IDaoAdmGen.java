@@ -2,12 +2,11 @@ package persistencia.dao;
 
 import java.util.Calendar;
 import java.util.Vector;
-
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataExamen;
 import vista.dataobjet.VosLogin;
-import logica.AdminGen;
 
 public interface IDaoAdmGen {
 
@@ -18,6 +17,6 @@ public interface IDaoAdmGen {
 	public VosLogin getDataAdmin(Transaccion trn, String id) throws PersistenciaException;
 	public boolean validarAdmin(Transaccion trn, String id) throws PersistenciaException;
 	public void modifEx(Transaccion trn,String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException;
-	public Vector listarExPend(Transaccion trn,String idAdmin) throws PersistenciaException;
+	public Vector<DataExamen> listarExPend(Transaccion trn,String idAdmin) throws PersistenciaException;
 	
 }

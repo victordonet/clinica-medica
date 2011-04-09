@@ -1,9 +1,6 @@
 package persistencia.dao;
 
 import java.util.Vector;
-
-import logica.Disponibilidad;
-
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.VoDispo;

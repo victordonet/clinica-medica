@@ -96,19 +96,4 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		return h.toString();
 	}
 	
-	public void modifEstado(Transaccion trn, String id)
-			throws PersistenciaException {
-		System.out.println("Modif. estado del usuario: "+id);
-		try {
-			PreparedStatement pst = trn.preparedStatement("update Usuarios set estado=? WHERE id=?");
-			// I = inactivo
-			pst.setString(1,"I");
-			pst.setString(2, id);
-			pst.executeUpdate();
-			pst.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new PersistenciaException("Error de conexion con la base de datos");
-		}
-	}
 }

@@ -28,7 +28,6 @@ public class MainDaoAdm {
 			
 			facade.bajaAdmin("FEDE");
 			JOptionPane.showMessageDialog(null,"Bajo Id FEDE");
-			facade.modifEstado(adm.getId());
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();			

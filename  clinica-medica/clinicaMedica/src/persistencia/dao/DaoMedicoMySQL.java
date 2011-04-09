@@ -132,10 +132,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		double monto = 0;
 		Medico med = null;
 		try {
-			PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, M.NOMBRE, M.APELLIDO, M.CI, " +
-					"M.TELEFONO, M.ESTADO, M.IDESPECIALIDAD, E.DESCRIPCION, E.MONTOBASE" +
-					"FROM MEDICOS M, USUARIOS U, ESPECIALIDADES E " +
-					"WHERE A.ID=U.ID AND M.IDESPECIALIDAD=E.ID AND ID=?");
+			PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, M.NOMBRE, M.APELLIDO, M.CI, M.TELEFONO, M.ESTADO, M.IDESPECIALIDAD, E.DESCRIPCION, E.MONTOBASE FROM MEDICOS M, USUARIOS U, ESPECIALIDADES E WHERE M.ID=U.ID AND M.IDESPECIALIDAD=E.ID AND M.ID=?");
 			pst.setString(1, id);
  			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -167,7 +164,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		VosLogin vosLogin = null;
 		try{
 			PreparedStatement pst = trn.preparedStatement("Select M.nombre, M.apellido, U.contrasena, U.tipo from Medicos M, Usuarios U " +
-															"WHERE M.id=U.id and id=?");
+															"WHERE M.id=U.id and M.id=?");
 			pst.setString(1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

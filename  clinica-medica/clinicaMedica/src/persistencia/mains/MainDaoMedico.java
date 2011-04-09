@@ -67,8 +67,8 @@ public class MainDaoMedico {
 		System.out.println("Medico valido? = "+medOk);
 
 		//Obtener Medico
-		Medico medico = fachada.getMedico("12341");
-		System.out.println("Medico #"+medico.getId());
+		//Medico medico = fachada.getMedico("12341");
+		//System.out.println("Medico #"+medico.getId());
 		
 		//Obtener VO
 		VosLogin vo = fachada.getDataMedico(med.getId());

@@ -71,7 +71,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 					"and fecha>= ?"+
 					"and turno = 0");
 			pst.setString(1, idMed);
-			Date fechaHoy = (Date) new java.util.Date();
+			Calendar hoy = Calendar.getInstance(); 
+			Date fechaHoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(2, fechaHoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

@@ -16,7 +16,7 @@ public class MainDaoEsp {
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
-		DataEsp datEsp = new DataEsp(2, "Traumatologia", 250);
+		DataEsp datEsp = new DataEsp(1, "Oftalmologia", 170);
 		fachada.altaEspecialidad(datEsp);
 		JOptionPane.showMessageDialog(null,"alta esp ");
 		//Listar

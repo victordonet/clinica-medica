@@ -3,16 +3,10 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
-import logica.AdminGen;
 import logica.Afiliado;
 import logica.Configuracion;
-import logica.Consulta;
-import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
-import logica.TipoExamen;
-import logica.TotConsulta;
 import logica.observer.Observable;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
@@ -32,16 +26,20 @@ import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataConsAfi;
+import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataReservaTurno;
+import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VoDispo;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
+import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
 import excepciones.EspecialidadException;
 import excepciones.LogicaException;
@@ -49,12 +47,11 @@ import excepciones.PersistenciaException;
 
 public class FachadaLogica extends Observable implements IfachadaLogica {
 
+	private static final long serialVersionUID = 1L;
 	private static FachadaLogica INSTANCE;
 	private Configuracion conf;
 	private IabsFactory fabrica;
 	private Pool pool;
-	//private Transaccion trn;
-	private int nivelTrn;
 	//DAOS
 	private IDaoAdmGen iDaoAdmin;
 	private IDaoAfiliado iDaoAfil;
@@ -319,9 +316,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<AdminGen> listarAdmin() throws PersistenciaException, RemoteException {
+	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<AdminGen> resultado = null;
+		Vector<DataAdmin> resultado = null;
 		try {
 			resultado = iDaoAdmin.listarAdmin(trn);
 			trn.finalizarTrn(true);
@@ -399,9 +396,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		//busco timbres
 		int cantConsPagas = iDaoTC.getCantConsultasPagas(trn, fDesde, fHasta);
 		VoResumCont timbres = new VoResumCont("Timbres", valor*cantConsPagas);
+		resultado.add(timbres);
 		//busco tikets
 		int cantTikets = iDaoEx.getCantExPagos(trn, fDesde, fHasta);
 		VoResumCont tikets = new VoResumCont("Timbres", valor*cantTikets);
+		resultado.add(tikets);
 		return resultado;
 	}
 	
@@ -433,9 +432,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<Consulta> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
+	public Vector<VoTurnosDisp> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Consulta> resultado = null;
+		Vector<VoTurnosDisp> resultado = null;
 		try {
 			resultado = iDaoC.listarConsultasDisp(trn, idMed);
 			trn.finalizarTrn(true);
@@ -736,9 +735,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector listarSalarios(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
+ 	public Vector<DataSalario> listarSalarios(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector resultado = null;
+		Vector<DataSalario> resultado = null;
 		try {
 			resultado = iDaoM.listarSalarios(trn, fDesde, fHasta);
 			trn.finalizarTrn(true);
@@ -781,11 +780,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException {
+ 	public Vector<VoDispo> listarDispMed(String idMed) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Disponibilidad> resultado = null;
+		Vector<VoDispo> resultado = null;
 		try {
-			resultado = iDaoM.listarDispMed(dataMed, trn);
+			resultado = iDaoM.listarDispMed(idMed, trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -842,9 +841,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<TipoExamen> listarTipoEx() throws PersistenciaException, RemoteException {
+	public Vector<DataTipoExamen> listarTipoEx() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<TipoExamen> resultado = null;
+		Vector<DataTipoExamen> resultado = null;
 		try {
 			resultado = iDaoTE.listarTipoEx(trn);
 			trn.finalizarTrn(true);
@@ -889,9 +888,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Vector<TotConsulta> listarConsultasAfi(String id) throws PersistenciaException, RemoteException {
+	public Vector<DataConsAfi> listarConsultasAfi(String id) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<TotConsulta> resultado = null;
+		Vector<DataConsAfi> resultado = null;
 		try {
 			resultado = iDaoTC.listarConsultasAfi(trn, id);
 			trn.finalizarTrn(true);
@@ -904,9 +903,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Vector<TotConsulta> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
+	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<TotConsulta> resultado = null;
+		Vector<DataConsFecha> resultado = null;
 		try {
 			resultado = iDaoTC.listarConsFecha(trn, fecha);
 			trn.finalizarTrn(true);

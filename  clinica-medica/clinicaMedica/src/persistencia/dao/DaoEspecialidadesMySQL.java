@@ -3,10 +3,8 @@ package persistencia.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Hashtable;
 import java.util.Vector;
-import javax.swing.JOptionPane;
-import javax.swing.JSpinner.DateEditor;
+
 import logica.Especialidad;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
@@ -53,9 +51,9 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 		}
 	}
 
-	public Especialidad obtenerEspecialidad(Transaccion trn, int idEsp) throws PersistenciaException {
+	public DataEsp obtenerEspecialidad(Transaccion trn, int idEsp) throws PersistenciaException {
 		System.out.println("Listando especialidad con id="+idEsp);
-		Especialidad esp = null;
+		DataEsp esp = null;
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select * from Especialidades where id=?");
 			pst.setInt(1, idEsp);
@@ -64,7 +62,7 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 				int id = rst.getInt("Id");
 				String descripcion = rst.getString("Descripcion");
 				double monto = rst.getDouble("MontoBase");
-				esp = new Especialidad(id, descripcion, monto);
+				esp = new DataEsp(id, descripcion, monto);
 			}
 			rst.close();
 			pst.close();

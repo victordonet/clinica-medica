@@ -67,8 +67,8 @@ public interface IfachadaLogica extends IObservable{
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException, EspecialidadException;
-	public Vector<Especialidad> listarEspecialidades() throws PersistenciaException, RemoteException;
-	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
+	public Vector<DataEsp> listarEspecialidades() throws PersistenciaException, RemoteException;
+	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	
 	//EXAMENES
 	public void regEx(DataExamen ex, String idAfil) throws PersistenciaException, RemoteException;

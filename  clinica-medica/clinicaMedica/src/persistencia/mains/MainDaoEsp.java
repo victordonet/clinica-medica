@@ -1,6 +1,9 @@
 package persistencia.mains;
 
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataEsp;
 import logica.Especialidad;
 import logica.fachada.IfachadaLogica;
@@ -17,16 +20,16 @@ public class MainDaoEsp {
 		//Alta
 		DataEsp datEsp = new DataEsp(2, "Traumatologia", 250);
 		fachada.altaEspecialidad(datEsp);
-
+		JOptionPane.showMessageDialog(null,"alta esp ");
 		//Listar
-		Vector<Especialidad> vEsp = fachada.listarEspecialidades();
+		Vector<DataEsp> vEsp = fachada.listarEspecialidades();
 		for (int i = 0; i < vEsp.size(); i++) {
-			Especialidad es = vEsp.get(i);
-			System.out.println("Listado Esp., Nombre = "+es.getDescripcion());
+			DataEsp es = vEsp.get(i);
+			JOptionPane.showMessageDialog(null,"listando : " + es.getDescripcion());
 		}
 
 		//Obtener
-		Especialidad es = fachada.obtenerEspecialidad(2);
-		System.out.println("Especialidad = "+es.getDescripcion());
+		DataEsp es = fachada.obtenerEspecialidad(2);
+		JOptionPane.showMessageDialog(null,"Obtener : "+es.getDescripcion());
 	}
 }

@@ -113,24 +113,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return INSTANCE;
 	}
 	
-//	public int getNivelTrn() {
-//		return nivelTrn;
-//	}
-//
-//	public void setNivelTrn(int nivelTrn) {
-//		this.nivelTrn = nivelTrn;
-//	}
-
-//	public Transaccion getTrn() {
-//		Transaccion trn = null;
-//		try {
-//			trn = pool.obtenerTrn(nivelTrn);
-//		} catch (PersistenciaException e) {
-//			e.printStackTrace();
-//		}
-//		return trn;
-//	}
-
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 
@@ -279,22 +261,20 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	//ADMINS-GERENTES
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		String idAdm = adm.getId();
+	
 		try {
-			if (this.validarAdmin(idAdm)==false){
-			System.out.println("valida el admin : " + idAdm);
+			if(iDaoAdmin.validarAdmin(trn, adm.getId())==false){
 			iDaoAdmin.altaAdmin(trn, adm);
 			trn.finalizarTrn(true);
-			//pool.liberarTrn(trn);
+			pool.liberarTrn(trn);
 			}
 			else{
 				trn.finalizarTrn(false);
-				//pool.liberarTrn(trn);
-				throw new PersistenciaException("El administrativo ya existe");
+				pool.liberarTrn(trn);
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
-			//pool.liberarTrn(trn);
+			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
 	}
@@ -545,9 +525,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<Especialidad> listarEspecialidades() throws RemoteException, PersistenciaException {
+	public Vector<DataEsp> listarEspecialidades() throws RemoteException, PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<Especialidad> resultado = null;
+		Vector<DataEsp> resultado = null;
 		try {
 			resultado = iDaoEsp.listarEspecialidades(trn);
 			trn.finalizarTrn(true);
@@ -560,9 +540,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
+	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Especialidad es = null;
+		DataEsp es = null;
 		try {
 			es = iDaoEsp.obtenerEspecialidad(trn, idEsp);
 			trn.finalizarTrn(true);

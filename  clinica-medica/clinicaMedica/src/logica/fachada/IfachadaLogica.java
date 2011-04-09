@@ -3,6 +3,8 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
+import persistencia.transacciones.Transaccion;
 import logica.Afiliado;
 import logica.Medico;
 import logica.observer.IObservable;
@@ -100,4 +102,5 @@ public interface IfachadaLogica extends IObservable{
 	public void altaUsuario(DataUsuario usu) throws PersistenciaException, RemoteException;
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException;
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException;
+	public void modifEstado(String id) throws PersistenciaException;
 }

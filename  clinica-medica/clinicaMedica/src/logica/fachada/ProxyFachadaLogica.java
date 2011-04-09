@@ -240,7 +240,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
 		fachada.modifContrasena(clave, pass);
 	}
-	public void modifEstado(String id) throws PersistenciaException {
+	public void modifEstado(String id) throws PersistenciaException, RemoteException {
 		fachada.modifEstado(id);
 	}
 

@@ -17,6 +17,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
+import vista.dataobjet.VoDispo;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
@@ -273,18 +274,17 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		return vo;
 	}
 	
-	public Vector<Disponibilidad> listarDispMed(DataMed dataMed, Transaccion trn) throws PersistenciaException {
+	public Vector<VoDispo> listarDispMed(String idMed, Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando disponibilidades por medico");
-		Medico med = this.getMedico(trn, dataMed.getId());
+		Medico med = this.getMedico(trn, idMed);
 		IDaoDisponibilidad disp = med.getDisp();
-		return disp.listarDispMedico(dataMed.getId(), trn);
+		return disp.listarDispMedico(idMed, trn);
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, int totalConsultorios) throws PersistenciaException {
 		System.out.println("Cargando consultas del los proximos meses.");
 		Medico med = this.getMedico(trn, id);
-		DataMed dataMed = new DataMed(id, med.getNombre(), med.getApellido(), med.getCi(), med.getTel(), med.getEsp().getIdEspecialidad());
-		Vector<Disponibilidad> horarios = this.listarDispMed(dataMed, trn);
+		Vector<VoDispo> horarios = this.listarDispMed(id, trn);
 		IDaoConsultas daoCons = med.getDaoConsultas();
 		int contadorConsultorios = 0;
 		
@@ -311,7 +311,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		java.util.Date ultimoDia = new java.sql.Date(cal2.getTimeInMillis());
 		
 		for (int i = 0; i < horarios.size(); i++) {
-			Disponibilidad disp = horarios.get(i);
+			VoDispo disp = horarios.get(i);
 
 			DateIterator j = new DateIterator(primerDia, ultimoDia);
 			while (j.hasNext()) {
@@ -371,5 +371,4 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
-
 }

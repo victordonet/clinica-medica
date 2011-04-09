@@ -58,8 +58,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 	}
 
 	
-	public Vector <DataConsAfi> listarConsultasAfi(Transaccion trn, String id) throws PersistenciaException {
-		Vector <DataConsAfi> consultas  = new Vector <DataConsAfi>();
+	public Vector<DataConsAfi> listarConsultasAfi(Transaccion trn, String id) throws PersistenciaException {
+		Vector<DataConsAfi> consultas  = new Vector<DataConsAfi>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select c.fecha, m.nombre, m.apellido from consultas c, medicos m " +
 															"where c.idmedico = m.id and c.idafiliado = ?");
@@ -83,8 +83,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		return consultas;
 	}
 
-	public Vector <DataConsFecha> listarConsFecha(Transaccion trn, Calendar fecha) throws PersistenciaException {
-		Vector <DataConsFecha> consultas  = new Vector <DataConsFecha>();
+	public Vector<DataConsFecha> listarConsFecha(Transaccion trn, Calendar fecha) throws PersistenciaException {
+		Vector<DataConsFecha> consultas  = new Vector<DataConsFecha>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
 					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliados a, medicos m " +

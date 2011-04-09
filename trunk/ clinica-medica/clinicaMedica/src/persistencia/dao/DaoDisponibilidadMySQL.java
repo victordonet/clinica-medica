@@ -11,6 +11,7 @@ import excepciones.PersistenciaException;
 public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 
 	public void altaDisponibilidad(Transaccion trn, VoDispo dataDsip) throws PersistenciaException {
+		System.out.println("Insertando disponibilidad del medico: "+dataDsip.getIdMed());
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Disponibilidad values (?,?,?)");
 			pst.setString(1, dataDsip.getIdMed());
@@ -26,9 +27,10 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			e.printStackTrace();
 		}
 	}
-	public void updateDisponibilidad(VoDispo vo, Transaccion trn) throws PersistenciaException {
+	public void eliminarDisponibilidad(VoDispo vo, Transaccion trn) throws PersistenciaException {
+		System.out.println("Eliminando disponibilidad del medico: "+vo.getIdMed());
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Disponibilidad set dia=?, horario=? where idmedico=?");
+			PreparedStatement pst = trn.preparedStatement("delete from Disponibilidad where idmedico=? and dia=? and horario=?");
 			pst.setInt(1, vo.getDia());
 			pst.setInt(2, vo.getHorario());
 			pst.setString(3, vo.getIdMed());
@@ -41,6 +43,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 	}
 
 	public Vector<VoDispo> listarDispMedico(String idMed, Transaccion trn) throws PersistenciaException {
+		System.out.println("Listando disponibilidad del medico: "+idMed);
 		Vector<VoDispo> resultado = new Vector<VoDispo>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select dia, horario from Disponibilidad where idMedico=?");

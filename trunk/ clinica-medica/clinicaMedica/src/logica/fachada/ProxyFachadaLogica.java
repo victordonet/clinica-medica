@@ -137,11 +137,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {
 		fachada.altaDisponibilidad(dataDsip);
 	}
-	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException {
-		fachada.updateDisponibilidad(vo);
-	}
-	public Vector<VoDispo> listarDispMedico(String idMed) throws PersistenciaException, RemoteException {
-		return fachada.listarDispMed(idMed);
+	public void eliminarDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException {
+		fachada.eliminarDisponibilidad(vo);
 	}
 	
 	//ESPECIALIDADES

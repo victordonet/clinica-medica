@@ -16,12 +16,17 @@ public class MainDaoDisp {
 		//Modificacion
 		String idMed = "1234";
 		VoDispo vo = new VoDispo(04, 12, idMed);
-		fachada.updateDisponibilidad(vo);
+		fachada.altaDisponibilidad(vo);
 		VoDispo vo1 = new VoDispo(2, 10, idMed);
-		fachada.updateDisponibilidad(vo1);
+		fachada.altaDisponibilidad(vo1);
 		VoDispo vo2 = new VoDispo(6, 18, idMed);
-		fachada.updateDisponibilidad(vo2);
+		fachada.altaDisponibilidad(vo2);
 		System.out.println("Carga de Disponibilidad del medico = "+vo.getIdMed());
+		
+		//Eliminacion
+		VoDispo vo3 = new VoDispo(6, 18, idMed);
+		fachada.eliminarDisponibilidad(vo3);
+		System.out.println("Elimino Disponibilidad del medico = "+vo.getIdMed()+" para el dia = "+vo.getDia());
 		
 		//Listar Disp. Medico
 		Vector<VoDispo> vDsipMed = fachada.listarDispMed(idMed);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class VosLogin implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String nombre, apellido, tipo, pass;
 
 	public VosLogin(String nombre, String apellido, String tipo, String pass) {

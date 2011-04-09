@@ -3,6 +3,8 @@ package vista.dataobjet;
 import java.io.Serializable;
 
 public class VoMedEsp implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String id,nombre,apellido;
 	
 	public VoMedEsp(String id,String nombre, String apellido) {

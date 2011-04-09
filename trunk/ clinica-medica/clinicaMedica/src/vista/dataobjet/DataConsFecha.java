@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class DataConsFecha implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Calendar fecha;
 	private String nomMed, apeMed, nomAfi, apeAfil;
 	private int idConsultorio, turno;
 	public DataConsFecha() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public DataConsFecha(Calendar fecha, String nomMed, String apeMed,
 			String nomAfi, String apeAfil, int idConsultorio, int turno) {
@@ -64,7 +65,5 @@ public class DataConsFecha implements Serializable {
 	public void setTurno(int turno) {
 		this.turno = turno;
 	}
-	
-	
 
 }

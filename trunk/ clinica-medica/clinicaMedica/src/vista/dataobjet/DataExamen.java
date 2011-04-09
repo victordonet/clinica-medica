@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class DataExamen implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private Calendar fechaInicio,fechaResultado;
 	private boolean enviaMail,cobroTimbre;
 	private DataTipoExamen tex;

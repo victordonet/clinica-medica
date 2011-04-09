@@ -3,6 +3,8 @@ package persistencia.mains;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.VosLogin;
 import logica.Afiliado;

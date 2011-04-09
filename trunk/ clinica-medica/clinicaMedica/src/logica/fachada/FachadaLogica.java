@@ -157,7 +157,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
-				trn.finalizarTrn(false);
+	
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}

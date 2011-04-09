@@ -5,6 +5,9 @@ package logica;
 public abstract class Usuario {
 
 	private String id,contrasena,tipo,estado;
+	public Usuario(){
+		
+	}
 	
 	public Usuario(String id, String contrasena, String tipo, String estado) {
 		super();

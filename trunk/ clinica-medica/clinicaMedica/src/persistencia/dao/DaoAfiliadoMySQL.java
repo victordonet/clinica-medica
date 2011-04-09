@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
+
+import javax.swing.JOptionPane;
+
 import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
@@ -17,7 +20,7 @@ import excepciones.PersistenciaException;
 public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 	public void altaAfiliado(Transaccion trn, DataAfiliado afil) throws PersistenciaException {
-		System.out.println("Insertando afiliado: "+afil.getId());
+		System.out.println("==============Insertando afiliado: "+afil.getId()+"==============================");
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Afiliados values (?,?,?,?,?,?,?,?,?,?)");
 			pst.setString (1, afil.getId());
@@ -33,6 +36,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setString(10, afil.getEstado());
 			pst.executeUpdate();
 			pst.close();
+			System.out.println("==============Afiliado de Alta==============================");
+	
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -42,7 +47,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	public void modifAfil(Transaccion trn, String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException {
-		System.out.println("Modificando afiliado: "+ idAfil);
+		System.out.println("================================Modificando afiliado: "+ idAfil+"==============================================");
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fechaingreso=?, fonasa=? where id="+idAfil);
 			pst.setString (1, nom);
@@ -56,6 +61,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setBoolean(8, fon);
 			pst.executeUpdate();
 			pst.close();
+			System.out.println("==============Afiliado Modificado==============================");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -63,7 +70,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException {	
-		System.out.println("Baja del afiliado: "+id);
+		System.out.println("=============================Baja del afiliado: "+id+"===================================");
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Afiliados set estado=? WHERE id=?");
 			// I = inactivo
@@ -71,6 +78,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setString(2, id);
 			pst.executeUpdate();
 			pst.close();
+			System.out.println("==============Baja Afiliado==============================");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -78,12 +87,12 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	}
 
 	public Vector<DataAfiliado> listarAfiliados(Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando afiliados");
+		System.out.println("====================Listando afiliados======================");
 		Vector<DataAfiliado> resultado = new Vector<DataAfiliado>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, " +
 															"fechaingreso, fonasa, estado from Afiliados");
-			pst.executeUpdate();
+		
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
@@ -96,13 +105,15 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 				Date fechaIngreso = rst.getDate("fechaingreso");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(fechaIngreso);
-				Boolean fonasa = rst.getBoolean("fonsasa");
+				Boolean fonasa = rst.getBoolean("fonasa");
 				String estado = rst.getString("estado");
 				DataAfiliado dataAfil = new DataAfiliado (id, ci, nombre, apellido,  mail, direccion, telefono, estado, cal, fonasa);
 				resultado.add(dataAfil);
 			}
 			rst.close();
 			pst.close();
+			System.out.println("==============Fin Listado afiliado==============================");
+
 			return resultado;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,6 +124,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException {
 		Boolean validar;
 		try {
+			System.out.println("==============Validando Afiliado"+idAfil+"==============================");
+
 			PreparedStatement pst = trn.preparedStatement("Select estado from Afiliados WHERE id=?");
 			pst.setString(1, idAfil);
 			ResultSet rst = pst.executeQuery();
@@ -127,6 +140,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			}
 			rst.close();
 			pst.close();
+			System.out.println("==============Fin Validación Afiliado==============================");
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -182,10 +197,12 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		Afiliado af = null;
 		
 		try {
+			System.out.println("==============Obteniendo afiliado: "+idAfil+"==============================");
+
 			PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, A.NOMBRE, A.APELLIDO, A.CI, " +
 														"A.MAIL, A.DIRECCION, A.TELEFONO, A.FECHAINGRESO, A.FONASA, A.ESTADO " +
 														"FROM AFILIADOS A, USUARIOS U " +
-														"WHERE A.ID=U.ID AND ID=?");
+														"WHERE A.ID=U.ID AND A.ID=?");
 			pst.setString(1, idAfil);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -206,6 +223,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.close();
 			IDaoExamen daoEx = new DaoExamenMySQL();
 			af = new Afiliado(idAfil, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
+			System.out.println("==============Fin Obtener Afiliado==============================");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -215,6 +234,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException {
 		String nombre= null,apellido = null,pass = null,tipo= null;
 		try{
+			System.out.println("==============Obteniendo data Afiliado==============================");
+
 			PreparedStatement pst = trn.preparedStatement("Select A.nombre, A.apellido, U.contrasena, U.tipo " +
 														"from Afiliados A, Usuarios U WHERE A.id=U.id and id=?");
 			pst.setString(1, id);
@@ -228,6 +249,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			rst.close();
 			pst.close();
 			VosLogin vosLogin = new VosLogin(nombre, apellido, tipo, pass);
+			System.out.println("==============Fin Obtener data Afiliado==============================");
+
 			return vosLogin;
 		} catch (SQLException e) {
 			e.printStackTrace();

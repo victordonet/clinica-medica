@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class DataAfiliado implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String id, nombre, apellido, ci, mail, direccion, tel, estado;
 	private Calendar fechaIngreso;
 	private Boolean fonasa;

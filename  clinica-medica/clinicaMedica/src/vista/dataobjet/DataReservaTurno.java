@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class DataReservaTurno implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private Calendar fecha;
 	private int dia, horario, idConsultorio, turno;
 	private String idAfil, idMedico;

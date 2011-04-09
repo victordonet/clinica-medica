@@ -5,12 +5,13 @@ import java.util.Calendar;
 
 public class DataConsulta implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private Calendar fecha;
-	private int idMed, dia, IdConsultorio, turno, horario;
-	private String idAfil;
+	private int dia, IdConsultorio, turno, horario;
+	private String idAfil,idMed;
 	private boolean pagoConsulta;
 	
-	public DataConsulta(Calendar fecha, int idMed, String idAfil, int dia,
+	public DataConsulta(Calendar fecha, String idMed, String idAfil, int dia,
 						int idConsultorio, int turno, int horario, boolean pagoConsulta) {
 		super();
 		this.fecha = fecha;
@@ -31,11 +32,11 @@ public class DataConsulta implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public int getIdMed() {
+	public String getIdMed() {
 		return idMed;
 	}
 
-	public void setIdMed(int idMed) {
+	public void setIdMed(String idMed) {
 		this.idMed = idMed;
 	}
 

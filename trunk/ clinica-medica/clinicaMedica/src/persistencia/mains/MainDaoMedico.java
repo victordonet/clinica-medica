@@ -50,8 +50,6 @@ public class MainDaoMedico {
 		//Borrar
 		fachada.bajarMedico(med2.getId());
 		System.out.println("Estado medico eliminado= "+med2.getEstado());
-		fachada.modifEstado(usuMed2.getId());
-		System.out.println("Estado usuario eliminado= "+usuMed2.getEstado());
 		
 		//Modificacion
 		DataEsp esp = new DataEsp(4, "Traumatologia", 140);

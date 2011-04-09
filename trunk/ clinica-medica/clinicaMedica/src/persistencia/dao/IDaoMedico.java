@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.Vector;
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
@@ -14,9 +13,6 @@ import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
-import logica.Afiliado;
-import logica.Disponibilidad;
-import logica.Especialidad;
 import logica.Medico;
 
 public interface IDaoMedico {

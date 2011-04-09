@@ -4,13 +4,8 @@ import java.util.Calendar;
 import java.util.Vector;
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataConsulta;
-import vista.dataobjet.DataMed;
 import vista.dataobjet.VoTurnosDisp;
-import logica.Afiliado;
-import logica.Consulta;
-import logica.Medico;
 
 public interface IDaoConsultas {
 

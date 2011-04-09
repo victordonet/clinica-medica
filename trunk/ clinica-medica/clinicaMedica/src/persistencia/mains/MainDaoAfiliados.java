@@ -60,8 +60,6 @@ public class MainDaoAfiliados {
 
 		//Borrar
 		fachada.bajaAfil(afil.getId());
-		fachada.modifEstado(afil.getId());
 		System.out.println("Estado afiliado eliminado= "+afil.getEstado());
-		System.out.println("Estado usuario eliminado= "+usuAf.getEstado());
 		}
 }

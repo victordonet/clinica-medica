@@ -6,9 +6,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
-
-import javax.swing.JOptionPane;
-
 import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;

@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
-import logica.Disponibilidad;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.VoDispo;
 import excepciones.PersistenciaException;

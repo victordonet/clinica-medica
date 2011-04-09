@@ -4,7 +4,6 @@ import java.security.MessageDigest;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import logica.Usuario;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataUsuario;
 import excepciones.PersistenciaException;
@@ -80,7 +79,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		}
 	}
 	
-	private static String md5(String clear) throws Exception {
+	public String md5(String clear) throws Exception {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] b = md.digest(clear.getBytes());
 
@@ -95,5 +94,21 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			}
 		}
 		return h.toString();
+	}
+	
+	public void modifEstado(Transaccion trn, java.lang.String id)
+			throws PersistenciaException {
+		System.out.println("Modif. estado del usuario: "+id);
+		try {
+			PreparedStatement pst = trn.preparedStatement("update Usuarios set estado=? WHERE id=?");
+			// I = inactivo
+			pst.setString(1,"I");
+			pst.setString(2, id);
+			pst.executeUpdate();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
 	}
 }

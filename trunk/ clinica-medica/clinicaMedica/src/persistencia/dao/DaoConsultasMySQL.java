@@ -57,19 +57,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn, String idMed) throws PersistenciaException {
 		Vector<VoTurnosDisp> consultas  = new Vector<VoTurnosDisp>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select fecha,"+
-					"dia,"+
-					"horario,"+
-						"(select count(turno)+1 from consultas c1"+ 
-							"where c1.idMedico=c.idMedico "+
-							"and c1.fecha=c.fecha "+
-							"and c1.idconsultorio=c.idConsultorio"+
-							"and c1.turno>0) as proxTurno,"+
-					"idConsultorio"+
-					"from consultas c"+										
-					"where idmedico = ?"+
-					"and fecha>= ?"+
-					"and turno = 0");
+			PreparedStatement pst = trn.preparedStatement("select fecha, dia, horario, (select count(turno)+1 from consultas co where co.idMedico=c.idMedico and co.fecha=c.fecha and co.idconsultorio=c.idConsultorio and co.turno>0) as proxTurno, idConsultorio from consultas c where idmedico = ? and fecha>= ? and turno = 0");
 			pst.setString(1, idMed);
 			Calendar hoy = Calendar.getInstance(); 
 			Date fechaHoy = new java.sql.Date(hoy.getTimeInMillis());

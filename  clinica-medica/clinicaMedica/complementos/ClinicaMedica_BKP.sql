@@ -85,6 +85,10 @@ CREATE TABLE `cargos` (
 --
 
 /*!40000 ALTER TABLE `cargos` DISABLE KEYS */;
+INSERT INTO `cargos` (`ID`,`DESCRIPCION`) VALUES 
+ ('1','Gerente'),
+ ('2','Administrador'),
+ ('3','Cajero');
 /*!40000 ALTER TABLE `cargos` ENABLE KEYS */;
 
 
@@ -129,6 +133,12 @@ CREATE TABLE `consultorios` (
 --
 
 /*!40000 ALTER TABLE `consultorios` DISABLE KEYS */;
+INSERT INTO `consultorios` (`ID`,`NOMBRE`) VALUES 
+ ('1','Figari'),
+ ('2','Cuneo'),
+ ('3','Barradas'),
+ ('4','Torres Garcia'),
+ ('5','Blanes');
 /*!40000 ALTER TABLE `consultorios` ENABLE KEYS */;
 
 
@@ -169,6 +179,8 @@ CREATE TABLE `especialidades` (
 --
 
 /*!40000 ALTER TABLE `especialidades` DISABLE KEYS */;
+INSERT INTO `especialidades` (`ID`,`DESCRIPCION`,`MONTOBASE`) VALUES 
+ ('2','Traumatologia','250.00');
 /*!40000 ALTER TABLE `especialidades` ENABLE KEYS */;
 
 
@@ -183,7 +195,7 @@ CREATE TABLE `examenes` (
   `IDTIPOEXAMEN` decimal(3,0) NOT NULL,
   `ENVIAMAIL` varchar(1) NOT NULL,
   `COBRATIMBRE` varchar(1) NOT NULL,
-  `FECHARESULTADO` date,
+  `FECHARESULTADO` date DEFAULT NULL,
   PRIMARY KEY (`IDAFILIADO`,`FECHAINICIO`,`IDTIPOEXAMEN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -235,6 +247,8 @@ CREATE TABLE `parametros` (
 --
 
 /*!40000 ALTER TABLE `parametros` DISABLE KEYS */;
+INSERT INTO `parametros` (`PARAMETRO`,`VALOR`) VALUES 
+ ('ValorTimbre','80');
 /*!40000 ALTER TABLE `parametros` ENABLE KEYS */;
 
 

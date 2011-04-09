@@ -1,6 +1,9 @@
 package persistencia.mains;
 
 import java.util.Calendar;
+
+import vista.dataobjet.DataExamen;
+import vista.dataobjet.DataTipoExamen;
 import logica.Examen;
 import logica.TipoExamen;
 import logica.fachada.IfachadaLogica;
@@ -20,9 +23,10 @@ public class MainDaoExam {
 		Calendar fechaR = Calendar.getInstance();
 		fechaR.set(2010, 02, 26);
 		
-		TipoExamen tex = new TipoExamen(1, "Ecografia");
-		Examen ex = new Examen(fechaI, fechaR, true, true, tex);
-		fachada.regEx(ex, "1001");
+		String idAfil = "1001";
+		DataTipoExamen tex = new DataTipoExamen(1, "Ecografia");
+		DataExamen ex = new DataExamen(fechaI, fechaR, true, true, tex);
+		fachada.regEx(ex, idAfil);
 
 		//Cant Ex. pagos
 		int cantP = fachada.getCantExPagos(fechaI, fechaR);

@@ -2,6 +2,10 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataReservaTurno;
+import vista.dataobjet.VoTurnosDisp;
 import logica.Afiliado;
 import logica.Consulta;
 import logica.Medico;
@@ -17,20 +21,21 @@ public class MainDaoConsultas {
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
+		String idMed = "12341";
+		String idAfil = "1001";
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(2010, 02, 20);
-		Afiliado af = fachada.getAfiliado("1001");
-		Medico med = fachada.getMedico("12341");
-		fachada.altaConsulta(fecha, "12", 27, af, 6, med);
+		DataReservaTurno dataResTurno = new DataReservaTurno(fecha, 4, 12, idAfil, 3, idMed);
+		fachada.altaConsulta(dataResTurno);
 
 		//Alta prox mes
-		Consulta cons = new Consulta(fecha, 27, 12, 0, 1, null, false);
-		fachada.altaConsultaProxMes(cons);
+		DataConsulta cons = new DataConsulta(fecha, idMed, idAfil, 4, 3, 2, 12, false);
+		fachada.altaConsultaProxMes(cons, idMed);
 		
 		//Listar Consultas Disp
-		Vector vDisp = fachada.listarConsultasDisp();
+		Vector<VoTurnosDisp> vDisp = fachada.listarConsultasDisp(idMed);
 		for (int i = 0; i < vDisp.size(); i++) {
-			Consulta con = (Consulta) vDisp.get(i);
+			VoTurnosDisp con = (VoTurnosDisp) vDisp.get(i);
 			System.out.println("Listado Cons.Disponibles, fecha = "+con.getFecha());
 		}
 		
@@ -39,7 +44,7 @@ public class MainDaoConsultas {
 		fDesde.set(2010, 02, 01);
 		Calendar fHasta = Calendar.getInstance();
 		fHasta.set(2010, 03, 01);
-		int cant = fachada.getCantidadConsultas(fDesde, fHasta);
+		int cant = fachada.getCantidadConsultas(fDesde, fHasta, idMed);
 		
 		//Eliminar
 		fachada.elimConsultasAfil("1001");		

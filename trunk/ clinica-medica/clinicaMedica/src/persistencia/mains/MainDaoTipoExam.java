@@ -1,6 +1,8 @@
 package persistencia.mains;
 
 import java.util.Vector;
+
+import vista.dataobjet.DataTipoExamen;
 import logica.TipoExamen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
@@ -14,19 +16,14 @@ public class MainDaoTipoExam {
 		//PRUEBO LOS METODOS
 		//Tipo Examenes:
 		//Agregar
-		TipoExamen tex = new TipoExamen(2, "Tomografia");
+		DataTipoExamen tex = new DataTipoExamen(2, "Tomografia");
 		fachada.agregar(tex);
 
-		//Modificacion ?????????????????
-		tex = new TipoExamen(2, "Radiografia");
-		fachada.modificar(tex);
-
 		//Listar
-		Vector<TipoExamen> vEx = fachada.listarTipoEx();
+		Vector<DataTipoExamen> vEx = fachada.listarTipoEx();
 		for (int i = 0; i < vEx.size(); i++) {
-			TipoExamen ex = vEx.get(i);
+			DataTipoExamen ex = vEx.get(i);
 			System.out.println("Listado Examenes, Nombre = "+ex.getNombre());
 		}
-
 	}
 }

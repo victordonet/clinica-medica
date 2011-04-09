@@ -21,26 +21,20 @@ public class MainDaoAfiliados {
 		//Alta
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(2009, 11, 31);
-		DataAfiliado afil = new DataAfiliado("1001", "1001", "AF", "A", "Pedro", "Jimenez", "12354726", "pjimenez@hotmail.com", "Soca 1234", "27083223", fecha, true, null);
+		DataAfiliado afil = new DataAfiliado("1001", "1001", "Pedro", "Jimenez", "pjimenez@hotmail.com", "Soca 1234", "27083223", "A",fecha, true);
 		fachada.altaAfiliado(afil);
+		
 
-		fecha.set(2009, 8, 12);
-		Afiliado afil2 = new Afiliado("1002", "1002", "AF", "A", "Juan", "Guzman", "31364280", "jg@hotmail.com", "Orinoco 1234", "26191245", fecha, false, null);
-		fachada.altaAfiliado(afil2);
-
+		
 		//Listar
-		Vector<Afiliado> listAfiliados = fachada.listarAfiliados();
+		Vector<DataAfiliado> listAfiliados = fachada.listarAfiliados();
 		for (int i = 0; i < listAfiliados.size(); i++) {
-			Afiliado af = listAfiliados.get(i);
+			DataAfiliado af = listAfiliados.get(i);
 			System.out.println("Listado afiliados, Nombre = "+af.getNombre());
 		}
-		
-		//Borrar
-		fachada.bajaAfil(afil2.getId());
-		System.out.println("Estado afiliado eliminado= "+afil2.getEstado());
-		
+	
 		//Modificacion
-		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDir(), "26199911", afil.getFecha(), false);
+		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDireccion(), "26199911", afil.getFechaIngreso(), false);
 		
 		//Obtener
 		Afiliado af = fachada.getAfiliado(afil.getId());
@@ -60,5 +54,10 @@ public class MainDaoAfiliados {
 			Examen ex = (Examen) exPend.get(i);
 			System.out.println("Listado examenes, FechaIni. = "+ex.getFechaInicio());
 		}
-	}
+
+		//Borrar
+		fachada.bajaAfil(afil.getId());
+		System.out.println("Estado afiliado eliminado= "+afil.getEstado());
+		
+		}
 }

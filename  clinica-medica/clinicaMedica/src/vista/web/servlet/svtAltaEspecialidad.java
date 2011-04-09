@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataEsp;
-import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 
 /**
@@ -53,9 +52,6 @@ public class svtAltaEspecialidad extends HttpServlet {
 		    try {
 				mod.altaEspecialidad(datEsp);
 			} catch (PersistenciaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (EspecialidadException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

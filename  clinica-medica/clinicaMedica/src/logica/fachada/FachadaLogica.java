@@ -41,7 +41,6 @@ import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
-import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
@@ -507,7 +506,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//ESPECIALIDADES
-	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException, EspecialidadException {
+	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException  {
 		Transaccion trn = pool.obtenerTrn(8);
 		Especialidad esp = new Especialidad(datEsp.getCodigo(), datEsp.getDescripcion(), datEsp.getMontoBase());
 		try {
@@ -519,7 +518,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			else{
 				trn.finalizarTrn(false);
 				pool.liberarTrn(trn);
-				throw new EspecialidadException("La especialidad ya existe");
+				throw new PersistenciaException("La especialidad ya existe");
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);

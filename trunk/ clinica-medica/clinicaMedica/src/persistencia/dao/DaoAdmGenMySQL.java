@@ -16,15 +16,17 @@ import excepciones.PersistenciaException;
 public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
-		System.out.println("Insertando administrativo: "+ adm.getId());
+		
 		try {
-			PreparedStatement pst = trn.preparedStatement("insert into administrativos values (?,?,?,?)");
+			PreparedStatement pst = trn.preparedStatement("insert into Administrativos values (?,?,?,?)");
 			pst.setString (1, adm.getId());
 			pst.setString(2, adm.getNombre());
 			pst.setInt(3, adm.getCargo());
 			pst.setString(4, adm.getEstado());
 			pst.executeUpdate();
+			System.out.println("Insertando administrativo: "+ adm.getId());
 			pst.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");

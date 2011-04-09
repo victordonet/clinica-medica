@@ -1,9 +1,17 @@
 package persistencia.mains;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
 
+import persistencia.dao.DaoAdmGenMySQL;
+import persistencia.dao.IDaoAdmGen;
+import persistencia.fabrica.FabricaMySQL;
+import persistencia.transacciones.Pool;
+import persistencia.transacciones.Transaccion;
+
+import logica.Configuracion;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 import vista.controladores.CdorMantEsp;
@@ -18,15 +26,14 @@ public class MainDaoAdm {
 		{
 			
 			IfachadaLogica facade = new ProxyFachadaLogica();
-			
-			JOptionPane.showMessageDialog(null,"Hizo el lookup");
-			DataAdmin adm = new DataAdmin("ELFEDE", "FEDERICO", 1, "A");
-			if (facade.validarAdmin(adm.getId())==false){
+			DataAdmin adm = new DataAdmin("FEDE", "FEDERICO", 1, "A");
 			facade.altaAdmin(adm);
-			}
-			else{
-				JOptionPane.showMessageDialog(null,"Administrador ya esssiste");
-			}
+			JOptionPane.showMessageDialog(null,"Alta ADM");
+			
+			JOptionPane.showMessageDialog(null,"Validando Id FEDE" + facade.validarAdmin("FEDE"));
+			
+			facade.bajaAdmin("FEDE");
+			JOptionPane.showMessageDialog(null,"Bajo Id FEDE");
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();			

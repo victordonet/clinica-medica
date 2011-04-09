@@ -145,7 +145,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector listarEspecialidades() throws PersistenciaException, RemoteException {
 		return fachada.listarEspecialidades();
 	}
-	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
+	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
 		return fachada.obtenerEspecialidad(idEsp);
 	}
 	

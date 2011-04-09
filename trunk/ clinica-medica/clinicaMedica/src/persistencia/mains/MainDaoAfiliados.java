@@ -2,6 +2,8 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.VosLogin;
 import logica.Afiliado;
 import logica.Examen;
@@ -19,7 +21,7 @@ public class MainDaoAfiliados {
 		//Alta
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(2009, 11, 31);
-		Afiliado afil = new Afiliado("1001", "1001", "AF", "A", "Pedro", "Jimenez", "12354726", "pjimenez@hotmail.com", "Soca 1234", "27083223", fecha, true, null);
+		DataAfiliado afil = new DataAfiliado("1001", "1001", "AF", "A", "Pedro", "Jimenez", "12354726", "pjimenez@hotmail.com", "Soca 1234", "27083223", fecha, true, null);
 		fachada.altaAfiliado(afil);
 
 		fecha.set(2009, 8, 12);

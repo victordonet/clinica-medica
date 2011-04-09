@@ -154,10 +154,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 	}
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
-		Transaccion trn = pool.obtenerTrn(8);
+		Transaccion trn = pool.obtenerTrn(1);
 		try {
 			if (iDaoAfil.validarAfil(trn, id)==false){
-	
+				trn.finalizarTrn(false);
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El afiliado no existe");
 			}
@@ -177,11 +177,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Vector<DataAfiliado> resultado = null;
 		try {
 			resultado = iDaoAfil.listarAfiliados(trn);
-		
+			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
-		
+			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			throw e;
 		}
@@ -213,8 +213,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoAfil.validarAfil(trn, idAfil);
+			trn.finalizarTrn(true);
 		} catch (PersistenciaException e) {
-		
+			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}

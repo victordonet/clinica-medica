@@ -51,7 +51,7 @@ public class svtAltaEspecialidad extends HttpServlet {
 		    double monto = Double.parseDouble(montoBase);
 		    DataEsp datEsp = new DataEsp(id, desc, monto);
 		    try {
-				mod.altaEspecialidades(datEsp);
+				mod.altaEspecialidad(datEsp);
 			} catch (PersistenciaException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

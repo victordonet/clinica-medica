@@ -1,4 +1,4 @@
-package vista;
+package vista.ventanas;
 
 import java.awt.Image;
 import java.awt.event.KeyAdapter;

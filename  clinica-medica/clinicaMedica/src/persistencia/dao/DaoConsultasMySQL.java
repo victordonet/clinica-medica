@@ -121,7 +121,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 	public void elimConsultasAfil(Transaccion trn, String idAfi) throws PersistenciaException {
 		System.out.println("Baja del las consultas pendientes del afiliado ="+ idAfi);
 		try {
-			PreparedStatement pst = trn.preparedStatement("delete Consultas where idAfiliado = ? and fecha >= ?");
+			PreparedStatement pst = trn.preparedStatement("delete from Consultas where idAfiliado = ? and fecha >= ?");
 			pst.setString(1,idAfi);
 			Calendar hoy = Calendar.getInstance(); 
 			Date dia = new java.sql.Date(hoy.getTimeInMillis());

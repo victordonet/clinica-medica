@@ -51,7 +51,7 @@ CREATE TABLE `afiliados` (
   `ID` varchar(10) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
   `APELLIDO` varchar(20) NOT NULL,
-  `CI` decimal(8,0) NOT NULL,
+  `CI` varchar(8) NOT NULL,
   `MAIL` varchar(50) DEFAULT ' ',
   `DIRECCION` varchar(50) DEFAULT ' ',
   `TELEFONO` varchar(50) NOT NULL,
@@ -175,16 +175,6 @@ CREATE TABLE `especialidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `especialidades`
---
-
-/*!40000 ALTER TABLE `especialidades` DISABLE KEYS */;
-INSERT INTO `especialidades` (`ID`,`DESCRIPCION`,`MONTOBASE`) VALUES 
- ('2','Traumatologia','250.00');
-/*!40000 ALTER TABLE `especialidades` ENABLE KEYS */;
-
-
---
 -- Definition of table `examenes`
 --
 
@@ -216,7 +206,7 @@ CREATE TABLE `medicos` (
   `ID` varchar(10) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
   `APELLIDO` varchar(20) NOT NULL,
-  `CI` decimal(8,0) NOT NULL,
+  `CI` varchar(8) NOT NULL,
   `TELEFONO` varchar(50) NOT NULL,
   `IDESPECIALIDAD` decimal(3,0) NOT NULL,
   `ESTADO` varchar(1) NOT NULL,

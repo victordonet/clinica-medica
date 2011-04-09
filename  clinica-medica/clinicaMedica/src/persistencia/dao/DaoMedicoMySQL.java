@@ -210,7 +210,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	public Vector<DataSalario> listarSalarios(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
 		System.out.println("Listando salarios");
 		Vector<DataSalario> resultado = new Vector<DataSalario>();
-		IDaoConsultas daoCon = null;
+		IDaoConsultas daoCon = new DaoConsultasMySQL();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select M.id, M.nombre, M.apellido, E.montoBase " +
 															"from Medicos M, Especialidades E where M.idEspecialidad=E.id");
@@ -236,7 +236,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 	public Vector<DataCantConsu> listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
 		Vector<DataCantConsu> vMedPremiado = new Vector<DataCantConsu>();
-		IDaoConsultas daoCon = null;
+		IDaoConsultas daoCon = new DaoConsultasMySQL();
 		DataCantConsu medicoPremiado= new DataCantConsu();
 
 		Vector<DataMed> medicos = this.listarMedicos(trn);
@@ -250,7 +250,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 				vMedPremiado.add(medicoPremiado);
 			}else{
 				if(medicoPremiado.getCantConsultas()<dataCantCons.getCantConsultas()){
-					vMedPremiado = null;
+					//vMedPremiado = null;
 					medicoPremiado=dataCantCons;
 					vMedPremiado.add(medicoPremiado);
 				}
@@ -310,14 +310,14 @@ public class DaoMedicoMySQL implements IDaoMedico {
 
 			DateIterator j = new DateIterator(primerDia, ultimoDia);
 			while (j.hasNext()) {
-				Date actual = (Date) j.next();
+				java.util.Date actual = (java.util.Date) j.next();
 				Calendar calActual = Calendar.getInstance();
 				calActual.setTime(actual);
 				int diaSemana = calActual.get(Calendar.DAY_OF_MONTH);
 				if (diaSemana==disp.getDia()){
 					if (contadorConsultorios<totalConsultorios){
 						//Alta de la consulta
-						daoCons.altaConsulta(trn, calActual, med.getId(), disp.getDia(), "0", contadorConsultorios, 0, disp.getHorario(), false);
+						daoCons.altaConsulta(trn, calActual, id, disp.getDia(), "0", contadorConsultorios, 0, disp.getHorario(), false);
 					}
 					contadorConsultorios++;
 				}

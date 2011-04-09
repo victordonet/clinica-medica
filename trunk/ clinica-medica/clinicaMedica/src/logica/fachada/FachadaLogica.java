@@ -968,4 +968,16 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
+	public void modifEstado(String id) throws PersistenciaException {
+		Transaccion trn = pool.obtenerTrn(8);
+		try {
+			iDaoU.modifEstado(trn, id);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+	}
 }

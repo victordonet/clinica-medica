@@ -266,5 +266,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
 		fachada.modifContrasena(clave, pass);
 	}
-
+	public void modifEstado(String id) throws PersistenciaException {
+		fachada.modifEstado(id);
+	}
 }

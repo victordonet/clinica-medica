@@ -4,10 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
-
-import logica.TipoExamen;
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataTipoExamen;
 import excepciones.PersistenciaException;
 
@@ -43,16 +40,16 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 		}
 	}
 
-	public Vector<TipoExamen> listarTipoEx(Transaccion trn) throws PersistenciaException {
+	public Vector<DataTipoExamen> listarTipoEx(Transaccion trn) throws PersistenciaException {
 		System.out.println("Listando Tipos de exámenes");
-		Vector<TipoExamen> resultado = new Vector<TipoExamen>();
+		Vector<DataTipoExamen> resultado = new Vector<DataTipoExamen>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre from TipoExamenes");
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				int id = rst.getInt("Id");
 				String nombre = rst.getString("nombre");
-				TipoExamen tex = new TipoExamen(id, nombre);
+				DataTipoExamen tex = new DataTipoExamen(id, nombre);
 				resultado.add(tex);
 			}
 			rst.close();

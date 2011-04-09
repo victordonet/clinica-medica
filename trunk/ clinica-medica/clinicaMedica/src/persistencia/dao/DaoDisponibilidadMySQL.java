@@ -25,8 +25,8 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 		}
 	}
 
-	public Vector<Disponibilidad> listarDispMedico(String idMed, Transaccion trn) throws PersistenciaException {
-		Vector<Disponibilidad> resultado = new Vector<Disponibilidad>();
+	public Vector<VoDispo> listarDispMedico(String idMed, Transaccion trn) throws PersistenciaException {
+		Vector<VoDispo> resultado = new Vector<VoDispo>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select dia, horario from Disponibilidad where idMedico=?");
 			pst.setString(1, idMed);
@@ -34,7 +34,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			while(rst.next()){
 				int dia = rst.getInt("dia");
 				int horario = rst.getInt("horario");
-				Disponibilidad disp = new Disponibilidad(dia, horario);
+				VoDispo disp = new VoDispo(dia, horario, idMed);
 				resultado.add(disp);
 			}
 			rst.close();

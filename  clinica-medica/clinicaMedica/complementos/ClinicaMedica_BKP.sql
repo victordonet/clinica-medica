@@ -48,7 +48,7 @@ CREATE TABLE `administrativos` (
 
 DROP TABLE IF EXISTS `afiliados`;
 CREATE TABLE `afiliados` (
-  `ID` decimal(10,0) NOT NULL,
+  `ID` varchar(10) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
   `APELLIDO` varchar(20) NOT NULL,
   `CI` decimal(8,0) NOT NULL,
@@ -213,7 +213,7 @@ CREATE TABLE `examenes` (
 
 DROP TABLE IF EXISTS `medicos`;
 CREATE TABLE `medicos` (
-  `ID` decimal(10,0) NOT NULL,
+  `ID` varchar(10) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
   `APELLIDO` varchar(20) NOT NULL,
   `CI` decimal(8,0) NOT NULL,

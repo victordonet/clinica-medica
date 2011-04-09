@@ -504,10 +504,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException {
+	public void eliminarDisponibilidad(VoDispo vo) throws PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoD.updateDisponibilidad(vo, trn);
+			iDaoD.eliminarDisponibilidad(vo, trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -515,21 +515,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
-	}
-	public Vector<VoDispo> listarDispMedico(String idMed) throws PersistenciaException, RemoteException {
-		Transaccion trn = pool.obtenerTrn(8);
-		Vector<VoDispo> resultado = null;
-		try {
-			resultado = iDaoD.listarDispMedico(idMed, trn);
-			trn.finalizarTrn(true);
-			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-			trn.finalizarTrn(false);
-			pool.liberarTrn(trn);
-			throw e;
-		}
-		return resultado;
 	}
 	
 	//ESPECIALIDADES

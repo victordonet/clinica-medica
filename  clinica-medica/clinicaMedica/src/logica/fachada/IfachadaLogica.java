@@ -57,8 +57,7 @@ public interface IfachadaLogica extends IObservable{
 	
 	//DISPONIBILIDAD
 	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException;
-	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException;
-	public Vector<VoDispo> listarDispMedico(String idMed) throws PersistenciaException, RemoteException;
+	public void eliminarDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException;
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException;

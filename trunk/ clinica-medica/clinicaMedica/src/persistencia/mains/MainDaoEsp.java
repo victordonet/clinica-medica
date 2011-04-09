@@ -3,9 +3,7 @@ package persistencia.mains;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
-
 import vista.dataobjet.DataEsp;
-import logica.Especialidad;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 

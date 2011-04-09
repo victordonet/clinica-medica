@@ -1,9 +1,7 @@
 package persistencia.mains;
 
 import java.util.Vector;
-
 import vista.dataobjet.DataTipoExamen;
-import logica.TipoExamen;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 

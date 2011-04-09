@@ -1,8 +1,6 @@
 package persistencia.mains;
 
 import vista.dataobjet.DataUsuario;
-import logica.AdminGen;
-import logica.Usuario;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 

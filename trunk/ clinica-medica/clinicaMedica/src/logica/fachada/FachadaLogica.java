@@ -214,6 +214,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		try {
 			resultado = iDaoAfil.validarAfil(trn, idAfil);
 			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -336,13 +337,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		VosLogin vosL = null;
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)==false){
-				
+				trn.finalizarTrn(false);
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 			}
 			else{
 				vosL = iDaoAdmin.getDataAdmin(trn, id);
-				
+				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}
 		} catch (PersistenciaException e) {
@@ -357,10 +358,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoAdmin.validarAdmin(trn, id);
-			
+			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-		
+			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
@@ -401,6 +402,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		int cantTikets = iDaoEx.getCantExPagos(trn, fDesde, fHasta);
 		VoResumCont tikets = new VoResumCont("Timbres", valor*cantTikets);
 		resultado.add(tikets);
+		trn.finalizarTrn(true);
+		pool.liberarTrn(trn);
 		return resultado;
 	}
 	
@@ -475,7 +478,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			trn.finalizarTrn(false);
 			e.printStackTrace();
 		}
 	}
@@ -961,8 +963,10 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		boolean resultado = false;
 		try {
 			resultado = iDaoU.validarUsuario(clave, pass, trn);
+			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}

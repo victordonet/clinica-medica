@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Vector;
+import logica.DateIterator;
 import logica.Disponibilidad;
 import logica.Especialidad;
 import logica.Medico;
@@ -278,10 +280,54 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		return disp.listarDispMedico(dataMed.getId(), trn);
 	}
 
-	public void cargaConsultasProxMes(Transaccion trn, String id, Calendar fecha) throws PersistenciaException {
+	public void cargaConsultasProxMes(Transaccion trn, String id, int totalConsultorios) throws PersistenciaException {
 		System.out.println("Cargando consultas del los proximos meses.");
-		Vector matriz = new Vector();
+		Medico med = this.getMedico(trn, id);
+		DataMed dataMed = new DataMed(id, med.getNombre(), med.getApellido(), med.getCi(), med.getTel(), med.getEsp().getIdEspecialidad());
+		Vector<Disponibilidad> horarios = this.listarDispMed(dataMed, trn);
+		IDaoConsultas daoCons = med.getDaoConsultas();
+		int contadorConsultorios = 0;
 		
+		//Para recorrer el mes.
+		Calendar calHoy = Calendar.getInstance();
+		calHoy.setTime(new java.util.Date());
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		
+		if(calHoy.MONTH==10){
+			cal1.set((calHoy.get(Calendar.YEAR))+1,Calendar.JANUARY,1);
+		}else{
+			if(calHoy.MONTH==11){
+				cal1.set((calHoy.get(Calendar.YEAR))+1,Calendar.FEBRUARY,1);
+			}else{
+				cal1.set(Calendar.YEAR,(calHoy.get(Calendar.MONTH))+2,1);
+			}
+		}
+		
+		int diaUltimo = cal1.getActualMaximum(Calendar.DAY_OF_MONTH);
+		cal2.set(cal1.get(Calendar.YEAR),cal1.get(Calendar.MONTH), diaUltimo);
+		
+		java.util.Date primerDia = new java.sql.Date(cal1.getTimeInMillis());
+		java.util.Date ultimoDia = new java.sql.Date(cal2.getTimeInMillis());
+		
+		for (int i = 0; i < horarios.size(); i++) {
+			Disponibilidad disp = horarios.get(i);
+
+			DateIterator j = new DateIterator(primerDia, ultimoDia);
+			while (j.hasNext()) {
+				Date actual = (Date) j.next();
+				Calendar calActual = Calendar.getInstance();
+				calActual.setTime(actual);
+				int diaSemana = calActual.get(Calendar.DAY_OF_MONTH);
+				if (diaSemana==disp.getDia()){
+					if (contadorConsultorios<totalConsultorios){
+						//Alta de la consulta
+						daoCons.altaConsulta(trn, calActual, med.getId(), disp.getDia(), "0", contadorConsultorios, 0, disp.getHorario(), false);
+					}
+					contadorConsultorios++;
+				}
+			}
+		}
 	}
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException {

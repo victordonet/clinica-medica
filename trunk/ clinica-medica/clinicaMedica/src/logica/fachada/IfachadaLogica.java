@@ -88,7 +88,7 @@ public interface IfachadaLogica extends IObservable{
  	public Vector<DataCantConsu> listarMedPremiado(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
  	public Vector<Disponibilidad> listarDispMed(DataMed dataMed) throws PersistenciaException, RemoteException;
- 	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException;
+ 	public void cargaConsultasProxMes(String id) throws PersistenciaException, RemoteException;
 
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException;

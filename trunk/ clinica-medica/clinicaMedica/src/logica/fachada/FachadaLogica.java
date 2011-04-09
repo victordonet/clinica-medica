@@ -17,6 +17,7 @@ import logica.observer.Observable;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
 import persistencia.dao.IDaoConsultas;
+import persistencia.dao.IDaoConsultorios;
 import persistencia.dao.IDaoDisponibilidad;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoExamen;
@@ -66,6 +67,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	private IDaoTotConsulta iDaoTC;
 	private IDaoUsuarios iDaoU;
 	private IDaoParametros iDaoP;
+	private IDaoConsultorios iDaoConsultorios;
 	
 	private FachadaLogica() throws LogicaException, PersistenciaException, RemoteException{
 		
@@ -89,6 +91,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoTC = fabrica.crearDaoTConsultas();
 			iDaoU = fabrica.crearDaoUsuarios();
 			iDaoP = fabrica.crearDaoParametros();
+			iDaoConsultorios = fabrica.crearDaoConsultorios();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 			throw new LogicaException("No es poSsible crear la instancia necesaria para persistir");
@@ -793,7 +796,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public void cargaConsultasProxMes(String id, Calendar fecha) throws PersistenciaException, RemoteException {
+ 	public void cargaConsultasProxMes(String id) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
@@ -802,7 +805,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
-				iDaoM.cargaConsultasProxMes(trn, id, fecha);
+				int totalConsultorios = iDaoConsultorios.totalConsultorios(trn);
+				iDaoM.cargaConsultasProxMes(trn, id, totalConsultorios);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

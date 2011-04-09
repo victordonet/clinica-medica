@@ -171,7 +171,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public Vector listarEspecialidades() throws PersistenciaException, RemoteException {
 		return fachada.listarEspecialidades();
 	}
-	public Especialidad obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
+	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
 		return fachada.obtenerEspecialidad(idEsp);
 	}
 	
@@ -223,8 +223,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
  	public Vector listarDispMed(DataMed dataMed)  throws PersistenciaException, RemoteException {
  		return fachada.listarDispMed(dataMed);
  	}
- 	public void cargaConsultasProxMes(String id, Calendar fecha)  throws PersistenciaException, RemoteException {
- 		fachada.cargaConsultasProxMes(id, fecha);
+ 	public void cargaConsultasProxMes(String id)  throws PersistenciaException, RemoteException {
+ 		fachada.cargaConsultasProxMes(id);
  	}
 	
 	//TIPO DE EXAMEN

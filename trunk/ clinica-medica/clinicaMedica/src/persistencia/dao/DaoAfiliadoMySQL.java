@@ -234,7 +234,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			System.out.println("==============Obteniendo data Afiliado==============================");
 
 			PreparedStatement pst = trn.preparedStatement("Select A.nombre, A.apellido, U.contrasena, U.tipo " +
-														"from Afiliados A, Usuarios U WHERE A.id=U.id and id=?");
+														"from Afiliados A, Usuarios U WHERE A.id=U.id and A.id=?");
 			pst.setString(1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

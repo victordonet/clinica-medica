@@ -492,6 +492,18 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//DISPONIBILIDAD
+	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		try {
+			iDaoD.altaDisponibilidad(trn, dataDsip);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+	}
 	public void updateDisponibilidad(VoDispo vo) throws PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
@@ -503,6 +515,21 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
+	}
+	public Vector<VoDispo> listarDispMedico(String idMed) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<VoDispo> resultado = null;
+		try {
+			resultado = iDaoD.listarDispMedico(idMed, trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
 	}
 	
 	//ESPECIALIDADES
@@ -967,4 +994,5 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
+
 }

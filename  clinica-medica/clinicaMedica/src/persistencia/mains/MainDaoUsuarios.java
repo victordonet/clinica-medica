@@ -1,5 +1,6 @@
 package persistencia.mains;
 
+import vista.dataobjet.DataUsuario;
 import logica.AdminGen;
 import logica.Usuario;
 import logica.fachada.IfachadaLogica;
@@ -14,7 +15,7 @@ public class MainDaoUsuarios {
 		//PRUEBO LOS METODOS
 		//Usuarios:
 		//Alta
-		Usuario usuAdm = new AdminGen("JLOPEZ","111","A","A","Jorge","1");
+		DataUsuario usuAdm = new DataUsuario("JLOPEZ","111","AD","A");
 		fachada.altaUsuario(usuAdm);
 		
 		//Validacion	

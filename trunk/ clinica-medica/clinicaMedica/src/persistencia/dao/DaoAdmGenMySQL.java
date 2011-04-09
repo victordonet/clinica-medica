@@ -16,7 +16,7 @@ import excepciones.PersistenciaException;
 public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
-		
+		System.out.println("Insertando administrativo: "+ adm.getId());
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Administrativos values (?,?,?,?)");
 			pst.setString (1, adm.getId());
@@ -24,7 +24,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.setInt(3, adm.getCargo());
 			pst.setString(4, adm.getEstado());
 			pst.executeUpdate();
-			System.out.println("Insertando administrativo: "+ adm.getId());
 			pst.close();
 
 		} catch (SQLException e) {

@@ -1,4 +1,4 @@
-package persistencia.dao;
+package excepciones;
 
 import java.io.Serializable;
 

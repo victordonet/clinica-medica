@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.observer.IObserver;
-import persistencia.dao.EspecialidadException;
 import vista.dataobjet.DataEsp;
+import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 

@@ -6,10 +6,10 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-import persistencia.dao.EspecialidadException;
 import logica.Configuracion;
 import logica.observer.IObserver;
 import vista.dataobjet.DataEsp;
+import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 

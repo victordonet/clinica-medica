@@ -3,11 +3,11 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-import persistencia.dao.EspecialidadException;
 import persistencia.transacciones.Transaccion;
 
 import logica.observer.IObservable;
 
+import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 
 import vista.dataobjet.DataEsp;

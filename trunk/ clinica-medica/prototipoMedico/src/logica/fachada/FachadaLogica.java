@@ -8,13 +8,13 @@ import javax.swing.JOptionPane;
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.observer.Observable;
-import persistencia.dao.EspecialidadException;
 import persistencia.dao.IDaoEspecialidades;
 import persistencia.dao.IDaoUsuarios;
 import persistencia.fabrica.IabsFactory;
 import persistencia.transacciones.Pool;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
+import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 

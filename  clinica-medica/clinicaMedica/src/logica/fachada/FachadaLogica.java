@@ -45,7 +45,7 @@ import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
 public class FachadaLogica extends Observable implements IfachadaLogica {
-	private String fede = "EL FEDE SE LA COME";
+
 	private static final long serialVersionUID = 1L;
 	private static FachadaLogica INSTANCE;
 	private Configuracion conf;

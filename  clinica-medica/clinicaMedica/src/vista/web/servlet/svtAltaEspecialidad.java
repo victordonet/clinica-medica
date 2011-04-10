@@ -52,9 +52,11 @@ public class svtAltaEspecialidad extends HttpServlet {
 		    try {
 				mod.altaEspecialidad(datEsp);
 			} catch (PersistenciaException e) {
-				// TODO Auto-generated catch block
+				String msg = "ERROR: No se pudo acceder a la información almacenada.";
+		    	response.sendRedirect("errores.jsp?msg"+msg);
 				e.printStackTrace();
 			}
+			
 			response.sendRedirect("menu.jsp");
 	    }
 	}

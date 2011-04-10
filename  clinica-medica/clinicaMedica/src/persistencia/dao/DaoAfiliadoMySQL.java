@@ -78,7 +78,7 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setString(1,"I");
 			pst.setString(2, id);
 			pst.executeUpdate();
-			JOptionPane.showMessageDialog(null,"aca lo bajo al afi");
+
 			pst.close();
 			System.out.println("==============Baja Afiliado==============================");
 

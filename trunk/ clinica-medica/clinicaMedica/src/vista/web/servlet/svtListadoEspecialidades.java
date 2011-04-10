@@ -1,6 +1,7 @@
 package vista.web.servlet;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Vector;
 import javax.servlet.ServletContext;
@@ -54,6 +55,11 @@ public class svtListadoEspecialidades extends HttpServlet {
 			response.sendRedirect("listarEspecialidades.jsp");
 		} catch (PersistenciaException e) {
 			String msg = "ERROR: No se pudo acceder a la información almacenada.";
+			request.setAttribute("msg", msg);
+	    	response.sendRedirect("errores.jsp");
+			e.printStackTrace();
+		}catch (RemoteException e) {
+			String msg = "ERROR: No se pudo acceder al servidor.";
 			request.setAttribute("msg", msg);
 	    	response.sendRedirect("errores.jsp");
 			e.printStackTrace();

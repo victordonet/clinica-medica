@@ -123,7 +123,7 @@ public class FrmAltaEspecialidades extends JFrame {
 					      //Controlar el largo del text
 					      String s = jTextField1.getText();
 					      int n=s.length();
-					      if(n > 9){
+					      if(n >= 3){
 					    	  e.consume();  // ignorar el evento de teclado
 					      }
 					   }
@@ -148,7 +148,7 @@ public class FrmAltaEspecialidades extends JFrame {
 						  //Controlar el largo del text
 					      String s = jTextField2.getText();
 					      int n=s.length();
-					      if(n > 50){
+					      if(n >= 50){
 					    	  e.consume();  // ignorar el evento de teclado
 					      }
 					   }
@@ -215,7 +215,7 @@ public class FrmAltaEspecialidades extends JFrame {
 			   {
 				   // Verificar si la tecla pulsada no es un digito
 				   char caracter = e.getKeyChar();
-				   if(((caracter < '0') ||(caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
+				   if(((caracter < '0') ||(caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)&&(caracter != '.'))
 				   {
 					   e.consume();  // ignorar el evento de teclado
 				   }
@@ -223,7 +223,7 @@ public class FrmAltaEspecialidades extends JFrame {
 			      //Controlar el largo del text
 			      String s = jTextField.getText();
 			      int n=s.length();
-			      if(n > 9){
+			      if(n >= 10){
 			    	  e.consume();  // ignorar el evento de teclado
 			      }
 			   }

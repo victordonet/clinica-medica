@@ -24,7 +24,7 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			mod = new ProxyFachadaLogica();
 			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion");
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();
 			
 		} catch (LogicaException e) {
@@ -57,24 +57,31 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 	}
 	
 	public void altaEsp (String IdEsp, String desc, String monto){
-		int idEspecialidad = Integer.parseInt(IdEsp);
-		double montoBase = Double.parseDouble(monto);
-		DataEsp datEsp = new DataEsp(idEspecialidad, desc, montoBase);
+		
+		
 		try {
+			int idEspecialidad = Integer.parseInt(IdEsp);
+			double montoBase = Double.parseDouble(monto);
+			DataEsp datEsp = new DataEsp(idEspecialidad, desc, montoBase);
 			mod.altaEspecialidad(datEsp);
 			JOptionPane.showMessageDialog(null,"Alta ok");
+			actionCerrar();
+			
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
+
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null,"El campo Codigo y monto no pueden estar vacios ");
+			e.printStackTrace();
 		}
 		
-		actionCerrar();
+		
+		//actionCerrar();
 	}
 
 	@Override

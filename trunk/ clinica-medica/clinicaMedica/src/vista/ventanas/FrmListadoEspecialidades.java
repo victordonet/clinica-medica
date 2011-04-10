@@ -70,7 +70,7 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * @throws Throwable 
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
-		if (jContentPane == null) {
+		//if (jContentPane == null) {
 			jLabel = new JLabel();
 			jLabel.setBounds(new java.awt.Rectangle(176,15,257,24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
@@ -81,16 +81,23 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane(), null);
+			jContentPane.add(getJScrollPane(modelo), null);
 			
-		}
+		//}
 		return jContentPane;
 	}
 
 	public void update() throws RemoteException {
-		JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
+		//JOptionPane.showMessageDialog(null,"Update del Observer FrmListado NUEVO");
 		try {
+			//cdor.listarEspecialidades();
+			//frm.setVisible(false);
+			this.modelo = cdor.listarEspecialidades();
 			initialize();
+			
+			
+			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -105,12 +112,12 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * 	
 	 * @return javax.swing.JScrollPane	
 	 */
-	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
+	private JScrollPane getJScrollPane(ModeloTablaListEsp modelo) {
+		//if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(65, 96, 475, 209));
-			jScrollPane.setViewportView(getJTable1());
-		}
+			jScrollPane.setViewportView(getJTable1(modelo));
+		//}
 		return jScrollPane;
 	}
 
@@ -119,10 +126,10 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * 	
 	 * @return javax.swing.JTable	
 	 */
-	private JTable getJTable1() {
-		if (jTable1 == null) {
+	private JTable getJTable1(ModeloTablaListEsp modelo) {
+		//if (jTable1 == null) {
 			jTable1 = new JTable(modelo);
-		}
+		//}
 		return jTable1;
 	}
 	public JFrame getVentana(){

@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import persistencia.dao.EspecialidadException;
 import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataEsp;
+import excepciones.EspecialidadException;
 import excepciones.PersistenciaException;
 
 /**

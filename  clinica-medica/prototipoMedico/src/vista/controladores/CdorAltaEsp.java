@@ -5,7 +5,7 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 
-import persistencia.dao.EspecialidadException;
+import excepciones.EspecialidadException;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;

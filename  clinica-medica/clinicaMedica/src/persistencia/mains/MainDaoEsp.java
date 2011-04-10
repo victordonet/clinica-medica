@@ -16,9 +16,15 @@ public class MainDaoEsp {
 		//PRUEBO LOS METODOS
 		//Administrativos:
 		//Alta
-		DataEsp datEsp = new DataEsp(1, "Oftalmologia", 170);
+		DataEsp datEsp = new DataEsp(5, "Oftalmologia", 170);
+		DataEsp datEsp1 = new DataEsp(4, "Traumatoogia", 200);
+		DataEsp datEsp2 = new DataEsp(1, "Medicina General", 300);
+		
 		fachada.altaEspecialidad(datEsp);
-		JOptionPane.showMessageDialog(null,"alta esp ");
+		fachada.altaEspecialidad(datEsp1);
+		fachada.altaEspecialidad(datEsp2);
+		
+		
 		//Listar
 		Vector<DataEsp> vEsp = fachada.listarEspecialidades();
 		for (int i = 0; i < vEsp.size(); i++) {
@@ -27,7 +33,7 @@ public class MainDaoEsp {
 		}
 
 		//Obtener
-		DataEsp es = fachada.obtenerEspecialidad(2);
-		JOptionPane.showMessageDialog(null,"Obtener : "+es.getDescripcion());
+		DataEsp es = fachada.obtenerEspecialidad(5);
+	
 	}
 }

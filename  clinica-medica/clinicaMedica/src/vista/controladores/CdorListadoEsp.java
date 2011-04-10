@@ -74,9 +74,14 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 	}
 	public void cerrar() {
 		
+		try {
+			mod1.addObserver(ventana);
+			ventana.getVentana().dispose();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
-	ventana.getVentana().dispose();
-		
 	}
 	public void habilitarVentana(){
 		ventana.getVentana().setFocusable(true);
@@ -92,6 +97,7 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 	}
 
 	public void actionCerrar(){
+	
 		this.cerrarVentana(this, vino);
 		
 	}

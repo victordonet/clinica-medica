@@ -52,17 +52,31 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 
 	//GENERALES
-	public void addObserver(IObserver obs) throws RemoteException {
-		fachada.addObserver(obs);
-	}
-	
-	public void remObserver(IObserver obs) throws RemoteException {
-		fachada.remObserver(obs);
+
+	public void addObsMenuGA(IObserver obs) throws RemoteException {
+		fachada.addObsMenuGA(obs);
 	}
 
-	public void notificar() throws RemoteException {
-		fachada.notificar();
+	public void remObsMenuGA(IObserver obs) throws RemoteException {
+		fachada.remObsMenuGA(obs);
 	}
+
+	public void notificarMenuGA() throws RemoteException {
+		fachada.notificarMenuGA();
+	}
+
+	public void addObsReservaTurno(IObserver obs) throws RemoteException {
+		fachada.addObsReservaTurno(obs);
+	}
+	
+	public void remObsRservaTurno(IObserver obs) throws RemoteException {
+		fachada.remObsRservaTurno(obs);
+	}
+	
+	public void notificarReservaTurno() throws RemoteException {
+		fachada.notificarReservaTurno();
+	}
+
 
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {

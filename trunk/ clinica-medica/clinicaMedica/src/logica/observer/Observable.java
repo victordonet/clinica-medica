@@ -8,29 +8,51 @@ import java.util.LinkedList;
 
 public class Observable extends UnicastRemoteObject implements IObservable
 {
-    private LinkedList observersEspecialidades;
+    private LinkedList colMenuGA, colReservaTurno;
 
     public Observable() throws RemoteException
     {
-        observersEspecialidades = new LinkedList();
+        colMenuGA = new LinkedList();
+        colReservaTurno = new LinkedList();
+        
     }
 
-    public void addObserver (IObserver obs) throws RemoteException
+    public void addObsMenuGA (IObserver obs) throws RemoteException
     {
-        observersEspecialidades.add(obs);
+        colMenuGA.add(obs);
     }
     
-    public void remObserver (IObserver obs) throws RemoteException
+    public void remObsMenuGA (IObserver obs) throws RemoteException
     {
-    	observersEspecialidades.remove(obs);
+    	colMenuGA.remove(obs);
     }
 
-    public void notificar() throws RemoteException
+    public void notificarMenuGA() throws RemoteException
     {
-        for (int i=0; i<observersEspecialidades.size(); i++)
+        for (int i=0; i<colMenuGA.size(); i++)
         {
-            IObserver obs = (IObserver) observersEspecialidades.get(i);
+            IObserver obs = (IObserver) colMenuGA.get(i);
             obs.update();
         }
     }
+    public void addObsReservaTurno (IObserver obs) throws RemoteException
+    {
+        colReservaTurno.add(obs);
+    }
+    
+    public void remObsRservaTurno (IObserver obs) throws RemoteException
+    {
+    	colReservaTurno.remove(obs);
+    }
+
+    public void notificarReservaTurno() throws RemoteException
+    {
+        for (int i=0; i<colReservaTurno.size(); i++)
+        {
+            IObserver obs = (IObserver) colReservaTurno.get(i);
+            obs.update();
+        }
+    }
+
+	
 }

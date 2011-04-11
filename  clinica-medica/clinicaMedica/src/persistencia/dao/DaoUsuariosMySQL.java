@@ -95,5 +95,30 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		}
 		return h.toString();
 	}
+
+
+	public String getTipo(Transaccion trn, String idUsuario) throws PersistenciaException {
+
+		System.out.println("Validando usuario: "+idUsuario);
+		String tipo = null ;
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select tipo from Usuarios where id=?");
+			pst.setString(1, idUsuario);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				tipo = rst.getString("tipo");
+			}
+			rst.close();
+			pst.close();
+	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return tipo;	
+	}
 	
 }

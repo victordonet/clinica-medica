@@ -529,7 +529,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoEsp.altaEspecialidad(trn, esp);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-			this.notificar();
+			
 			}
 			else{
 				trn.finalizarTrn(false);

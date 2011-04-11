@@ -29,7 +29,7 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 		try {
 			modelo = listarEspecialidades();
 			ventana = new FrmListadoEspecialidades(modelo,this);
-			mod1.addObserver(ventana);
+		
 			
 		} catch (Throwable e) {
 	
@@ -73,15 +73,8 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 
 	}
 	public void cerrar() {
-		
-		try {
-			mod1.addObserver(ventana);
-			ventana.getVentana().dispose();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
+		ventana.getVentana().dispose();
+
 	}
 	public void habilitarVentana(){
 		ventana.getVentana().setFocusable(true);
@@ -89,7 +82,7 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 		ventana.getVentana().setFocusableWindowState(true);
 	}
 
-	@Override
+
 	public void deshabilitarVentana() {
 		ventana.getVentana().setFocusable(false);
 		ventana.getVentana().setEnabled(false);

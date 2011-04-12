@@ -2,6 +2,7 @@ package vista.ventanas;
 
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -48,6 +49,7 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
 		frm.setSize(new java.awt.Dimension(611,412));
+		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
 		frm.setTitle("Especialidades");
 		frm.setContentPane(getJContentPane());

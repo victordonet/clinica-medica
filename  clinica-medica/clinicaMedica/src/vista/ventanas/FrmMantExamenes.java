@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import vista.controladores.CdorMantEsp;
 import java.awt.Rectangle;
 
-public class FrmMantEspecialidades extends JFrame {
+public class FrmMantExamenes extends JFrame {
 
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
@@ -18,7 +18,7 @@ public class FrmMantEspecialidades extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantEspecialidades(CdorMantEsp cdor) {
+	public FrmMantExamenes(CdorMantEsp cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -33,7 +33,7 @@ public class FrmMantEspecialidades extends JFrame {
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(330,231));
 		this.setResizable(false);
-		this.setTitle("Especialidades");
+		this.setTitle("Exámenes");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -61,10 +61,10 @@ public class FrmMantEspecialidades extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new java.awt.Rectangle(35,7,266,21));
+			jLabel.setBounds(new Rectangle(51, 7, 220, 21));
 			jLabel.setFont(new java.awt.Font("Calibri", java.awt.Font.PLAIN, 16));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("MANTENIMIENTO DE ESPECIALIDADES");
+			jLabel.setText("MANTENIMIENTO DE EXAMENES");
 			jContentPane = new PanelConImagen("./fondos/imgMantChica.JPG");
 			jContentPane.setLayout(null);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
@@ -86,10 +86,10 @@ public class FrmMantEspecialidades extends JFrame {
 			jButton1.setBounds(new java.awt.Rectangle(59,64,204,32));
 			jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton1.setBackground(java.awt.Color.lightGray);
-			jButton1.setText("Alta");
+			jButton1.setText("Registro");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Alta Especialidades");
+					System.out.println("Registro Exámenes");
 					cdor.actionAltaEsp();
 					
 				}
@@ -106,13 +106,13 @@ public class FrmMantEspecialidades extends JFrame {
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(59, 118, 204, 32));
+			jButton2.setBounds(new Rectangle(59, 114, 204, 32));
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Listado");
+			jButton2.setText("Resultado");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Listar especialidades");
+					System.out.println("Resultado Exámenes");
 					System.out.println(cdor.toString());
 					cdor.actionListarEsp();
 				}

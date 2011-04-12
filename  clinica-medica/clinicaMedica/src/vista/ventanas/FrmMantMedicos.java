@@ -5,20 +5,26 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import vista.controladores.CdorMantEsp;
+import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.Color;
+import java.awt.Font;
 
-public class FrmMantEspecialidades extends JFrame {
+public class FrmMantMedicos extends JFrame {
 
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
 	private CdorMantEsp cdor;
+	private JButton jButton21 = null;
+	private JButton jButton211 = null;
+	private JButton jButton2111 = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantEspecialidades(CdorMantEsp cdor) {
+	public FrmMantMedicos(CdorMantEsp cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -31,9 +37,9 @@ public class FrmMantEspecialidades extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(330,231));
+		this.setSize(new Dimension(330, 349));
 		this.setResizable(false);
-		this.setTitle("Especialidades");
+		this.setTitle("Médicos");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -61,16 +67,19 @@ public class FrmMantEspecialidades extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new java.awt.Rectangle(35,7,266,21));
+			jLabel.setBounds(new Rectangle(59, 7, 204, 21));
 			jLabel.setFont(new java.awt.Font("Calibri", java.awt.Font.PLAIN, 16));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("MANTENIMIENTO DE ESPECIALIDADES");
-			jContentPane = new PanelConImagen("./fondos/imgMantChica.JPG");
+			jLabel.setText("MANTENIMIENTO DE MÉDICOS");
+			jContentPane = new PanelConImagen("./fondos/imgMantGrande.JPG");
 			jContentPane.setLayout(null);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(jLabel, null);
+			jContentPane.add(getJButton21(), null);
+			jContentPane.add(getJButton211(), null);
+			jContentPane.add(getJButton2111(), null);
 		}
 		return jContentPane;
 	}
@@ -83,13 +92,13 @@ public class FrmMantEspecialidades extends JFrame {
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(59,64,204,32));
+			jButton1.setBounds(new Rectangle(59, 51, 204, 32));
 			jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton1.setBackground(java.awt.Color.lightGray);
 			jButton1.setText("Alta");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Alta Especialidades");
+					System.out.println("Alta Medicos");
 					cdor.actionAltaEsp();
 					
 				}
@@ -106,13 +115,13 @@ public class FrmMantEspecialidades extends JFrame {
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(59, 118, 204, 32));
+			jButton2.setBounds(new Rectangle(59, 101, 204, 32));
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Listado");
+			jButton2.setText("Baja");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Listar especialidades");
+					System.out.println("Baja Médicos");
 					System.out.println(cdor.toString());
 					cdor.actionListarEsp();
 				}
@@ -120,4 +129,52 @@ public class FrmMantEspecialidades extends JFrame {
 		}
 		return jButton2;
 	}
-}
+
+	/**
+	 * This method initializes jButton21	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton21() {
+		if (jButton21 == null) {
+			jButton21 = new JButton();
+			jButton21.setBounds(new Rectangle(59, 151, 204, 32));
+			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton21.setText("Modificación");
+			jButton21.setBackground(Color.lightGray);
+		}
+		return jButton21;
+	}
+
+	/**
+	 * This method initializes jButton211	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton211() {
+		if (jButton211 == null) {
+			jButton211 = new JButton();
+			jButton211.setBounds(new Rectangle(59, 201, 204, 32));
+			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton211.setText("Modificación de Consultas");
+			jButton211.setBackground(Color.lightGray);
+		}
+		return jButton211;
+	}
+
+	/**
+	 * This method initializes jButton2111	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton2111() {
+		if (jButton2111 == null) {
+			jButton2111 = new JButton();
+			jButton2111.setBounds(new Rectangle(59, 251, 204, 32));
+			jButton2111.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton2111.setText("Modificación de Usuario");
+			jButton2111.setBackground(Color.lightGray);
+		}
+		return jButton2111;
+	}
+}  //  @jve:decl-index=0:visual-constraint="10,10"

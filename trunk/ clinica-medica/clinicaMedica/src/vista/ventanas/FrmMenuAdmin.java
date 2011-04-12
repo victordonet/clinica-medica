@@ -15,7 +15,6 @@ import vista.controladores.CdorListadoEsp;
 import vista.controladores.ModeloTablaListEsp;
 import java.awt.Dimension;
 import javax.swing.JButton;
-import java.awt.Color;
 
 public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 

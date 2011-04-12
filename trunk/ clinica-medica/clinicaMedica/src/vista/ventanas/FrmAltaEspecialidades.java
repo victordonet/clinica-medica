@@ -2,19 +2,17 @@ package vista.ventanas;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import vista.controladores.CdorAltaEsp;
-import vista.controladores.CdorManejoVentanas;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 public class FrmAltaEspecialidades extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
@@ -24,7 +22,6 @@ public class FrmAltaEspecialidades extends JFrame {
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JFrame deLaQueViene = null;
 	private JTextField jTextField = null;
 	private CdorAltaEsp cdor;
 	
@@ -44,7 +41,7 @@ public class FrmAltaEspecialidades extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(611,412));
+		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);		
 		this.setTitle("Espscialidades");

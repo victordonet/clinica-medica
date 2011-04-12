@@ -3,12 +3,12 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Rectangle;
 
 public class FrmMantConsultorios extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -31,7 +31,7 @@ public class FrmMantConsultorios extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(330,231));
+		this.setSize(new java.awt.Dimension(330,230));
 		this.setResizable(false);
 		this.setTitle("Consultorios");
 		this.setContentPane(getJContentPane());
@@ -61,7 +61,7 @@ public class FrmMantConsultorios extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(35, 7, 252, 21));
+			jLabel.setBounds(new Rectangle(39, 7, 252, 21));
 			jLabel.setFont(new java.awt.Font("Calibri", java.awt.Font.PLAIN, 16));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
 			jLabel.setText("MANTENIMIENTO DE CONSULTORIOS");

@@ -5,6 +5,8 @@ import java.awt.*;
 
 public class PanelConImagen extends Container
 {
+
+	private static final long serialVersionUID = 1L;
 	// La imagen que queremos de fondo, un fichero .gif
 	public ImageIcon icono;
 

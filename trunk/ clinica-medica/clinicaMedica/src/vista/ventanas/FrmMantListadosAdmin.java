@@ -3,15 +3,16 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class FrmMantListadosAdmin extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -27,7 +28,6 @@ public class FrmMantListadosAdmin extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-	
 	}
 
 	/**
@@ -37,6 +37,7 @@ public class FrmMantListadosAdmin extends JFrame {
 	 */
 	private void initialize() {
 		this.setSize(new Dimension(330, 349));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Listados");
 		this.setContentPane(getJContentPane());
@@ -159,4 +160,4 @@ public class FrmMantListadosAdmin extends JFrame {
 		}
 		return jButton211;
 	}
-}  //  @jve:decl-index=0:visual-constraint="10,10"
+}

@@ -3,7 +3,6 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -24,7 +23,6 @@ public class FrmMenuMed extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-	
 	}
 
 	/**
@@ -33,7 +31,7 @@ public class FrmMenuMed extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(455,339));
+		this.setSize(new java.awt.Dimension(454,338));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Menu");

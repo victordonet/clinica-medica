@@ -9,9 +9,11 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class FrmMantMedicos extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -38,6 +40,7 @@ public class FrmMantMedicos extends JFrame {
 	 */
 	private void initialize() {
 		this.setSize(new Dimension(330, 349));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Médicos");
 		this.setContentPane(getJContentPane());

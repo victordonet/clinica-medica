@@ -34,7 +34,7 @@ public class FrmMenuAfil extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(455,339));
+		this.setSize(new java.awt.Dimension(454,338));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Menu");

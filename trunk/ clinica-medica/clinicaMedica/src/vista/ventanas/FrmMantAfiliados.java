@@ -3,7 +3,6 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -12,6 +11,7 @@ import java.awt.Font;
 
 public class FrmMantAfiliados extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;

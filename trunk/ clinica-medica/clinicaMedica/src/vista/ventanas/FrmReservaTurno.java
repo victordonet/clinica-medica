@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,20 +12,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-
 import logica.observer.IObserver;
 import vista.controladores.CdorListadoEsp;
 import vista.controladores.ModeloTablaListEsp;
 import java.awt.Dimension;
 import javax.swing.JButton;
-import java.awt.Color;
 
 public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 
 	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
-	private JTable jTable = null;
 	private JLabel jLabel = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
@@ -62,7 +58,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 * @throws ClassNotFoundException 
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
-		frm.setSize(new Dimension(611,412));
+		frm.setSize(new Dimension(611,413));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
 		frm.setTitle("Menu");

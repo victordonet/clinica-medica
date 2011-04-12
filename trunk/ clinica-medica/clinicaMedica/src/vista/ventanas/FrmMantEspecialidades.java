@@ -1,16 +1,15 @@
 package vista.ventanas;
 
 import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Rectangle;
 
 public class FrmMantEspecialidades extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -33,7 +32,7 @@ public class FrmMantEspecialidades extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(330,231));
+		this.setSize(new java.awt.Dimension(330,230));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Especialidades");

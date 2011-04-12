@@ -5,24 +5,19 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 import logica.observer.IObserver;
 import vista.controladores.CdorListadoEsp;
 import vista.controladores.ModeloTablaListEsp;
 
 public class FrmListadoEspecialidades extends UnicastRemoteObject implements IObserver{
 
+	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
-	private JFrame deLaQueViene = null;
-	private JTable jTable = null;
-	
 	private JLabel jLabel = null;
 	private ModeloTablaListEsp modelo = null;
 	private JScrollPane jScrollPane = null;
@@ -48,7 +43,7 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * @throws ClassNotFoundException 
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
-		frm.setSize(new java.awt.Dimension(611,412));
+		frm.setSize(new java.awt.Dimension(611,413));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
 		frm.setTitle("Especialidades");
@@ -96,15 +91,10 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 			//frm.setVisible(false);
 			this.modelo = cdor.listarEspecialidades();
 			initialize();
-			
-			
 			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
-			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Throwable e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

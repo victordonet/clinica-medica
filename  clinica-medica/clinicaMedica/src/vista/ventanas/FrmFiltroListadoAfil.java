@@ -1,5 +1,7 @@
 package vista.ventanas;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,35 +9,30 @@ import javax.swing.JTextField;
 import vista.controladores.CdorAltaEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import javax.swing.JComboBox;
 
-public class FrmRegistroExamen extends JFrame {
-	
+public class FrmFiltroListadoAfil extends JFrame {
+
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
-	private JLabel jLabel5 = null;
-	private JLabel jLabel6 = null;
-	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
-	private JComboBox jComboBox1 = null;
-	private JComboBox jComboBox2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JButton jButton3 = null;
+	private JTextField jTextField = null;
 	private CdorAltaEsp cdor;
-
+	
 	/**
 	 * This is the default constructor
 	 */
-	public FrmRegistroExamen(CdorAltaEsp cdor) {
+	public FrmFiltroListadoAfil(CdorAltaEsp cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
+		
 	}
 	
 	/**
@@ -47,7 +44,7 @@ public class FrmRegistroExamen extends JFrame {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);		
-		this.setTitle("Espscialidades");
+		this.setTitle("Listado Afiliado");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);		
@@ -66,30 +63,22 @@ public class FrmRegistroExamen extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel4 = new JLabel();
-			jLabel4.setBounds(new Rectangle(101, 185, 106, 19));
+			jLabel4.setBounds(new java.awt.Rectangle(99,207,106,19));
 			jLabel4.setForeground(java.awt.Color.black);
-			jLabel4.setText("Tipo de exámen");
+			jLabel4.setText("Nro. Afiliado");
 			jLabel3 = new JLabel();
-			jLabel3.setBounds(new Rectangle(101, 156, 106, 19));
+			jLabel3.setBounds(new Rectangle(99, 178, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Fecha inicio");
+			jLabel3.setText("Apellido");
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new java.awt.Rectangle(207,13,200,33));
+			jLabel1.setBounds(new Rectangle(165, 13, 242, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText("Registro de exámen");
+			jLabel1.setText("Listado: Datos del Afiliado");
 			jLabel2 = new JLabel();
-			jLabel2.setBounds(new Rectangle(101, 128, 106, 19));
+			jLabel2.setBounds(new Rectangle(99, 150, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Nro. Afiliado");
-			jLabel5 = new JLabel();
-			jLabel5.setBounds(new Rectangle(101, 214, 106, 19));
-			jLabel5.setForeground(java.awt.Color.black);
-			jLabel5.setText("Envía mail?");
-			jLabel6 = new JLabel();
-			jLabel6.setBounds(new Rectangle(101, 243, 106, 19));
-			jLabel6.setForeground(java.awt.Color.black);
-			jLabel6.setText("Cobra timbre?");
+			jLabel2.setText("Nombre");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -98,16 +87,12 @@ public class FrmRegistroExamen extends JFrame {
 			jContentPane.add(jLabel2, null);
 			jContentPane.add(jLabel3, null);
 			jContentPane.add(jLabel4, null);
-			jContentPane.add(jLabel5, null);
-			jContentPane.add(jLabel6, null);
-			jContentPane.add(getJTextField(), null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJButton3(), null);
-			jContentPane.add(getJComboBox1(), null);
-			jContentPane.add(getJComboBox2(), null);
+			jContentPane.add(jTextField1, null);
+			jContentPane.add(getJTextField(), null);
 		}
 		return jContentPane;
 	}
@@ -120,8 +105,20 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(225, 127, 86, 19));
-			jTextField1.setEditable(false);
+			jTextField1.setBounds(new Rectangle(222, 149, 170, 19));
+			jTextField1.addKeyListener(new KeyAdapter()
+			{
+				public void keyTyped(KeyEvent e)
+				{
+					//Controlar el largo del text
+					String s = jTextField1.getText();
+					int n=s.length();
+					if(n >= 20){
+						e.consume();  // ignorar el evento de teclado
+					}
+				}
+			});
+
 		}
 		return jTextField1;
 	}
@@ -134,7 +131,19 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
-			jTextField2.setBounds(new Rectangle(225, 156, 86, 19));
+			jTextField2.setBounds(new Rectangle(222, 178, 170, 19));
+			jTextField2.addKeyListener(new KeyAdapter()
+			{
+				public void keyTyped(KeyEvent e)
+				{
+					//Controlar el largo del text
+					String s = jTextField2.getText();
+					int n=s.length();
+					if(n >= 20){
+						e.consume();  // ignorar el evento de teclado
+					}
+				}
+			});
 		}
 		return jTextField2;
 	}
@@ -174,8 +183,7 @@ public class FrmRegistroExamen extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Usuario");	
-					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
+					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
 				}
 			});
 		}
@@ -190,56 +198,26 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField getJTextField() {
 		if (jTextField == null) {
 			jTextField = new JTextField();
-			jTextField.setBounds(new Rectangle(225, 243, 34, 19));
-			jTextField.setEditable(false);
-		}
-		return jTextField;
-	}
-
-	/**
-	 * This method initializes jComboBox1	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJComboBox1() {
-		if (jComboBox1 == null) {
-			jComboBox1 = new JComboBox();
-			jComboBox1.setBounds(new Rectangle(225, 185, 227, 19));
-		}
-		return jComboBox1;	
-	}
-
-	/**
-	 * This method initializes jComboBox2	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJComboBox2() {
-		if (jComboBox2 == null) {
-			jComboBox2 = new JComboBox();
-			jComboBox2.setBounds(new Rectangle(225, 214, 52, 19));
-		}
-		return jComboBox2;
-	}
-	
-	/**
-	 * This method initializes Button3	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton3() {
-		if (jButton3 == null) {
-			jButton3 = new JButton();
-			jButton3.setBounds(new Rectangle(311, 156, 30, 18));
-			jButton3.setBackground(java.awt.Color.lightGray);
-			jButton3.setText("?");
-			jButton3.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
+			jTextField.setBounds(new java.awt.Rectangle(222,207,87,19));
+			jTextField.addKeyListener(new KeyAdapter()
+			{
+			   public void keyTyped(KeyEvent e)
+			   {
+				   // Verificar si la tecla pulsada no es un digito
+				   char caracter = e.getKeyChar();
+				   if(((caracter < '0') ||(caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
+				   {
+					   e.consume();  // ignorar el evento de teclado
+				   }
+			      
+			      //Controlar el largo del text
+			      String s = jTextField.getText();
+			      int n=s.length();
+			      if(n >= 10){
+			    	  e.consume();  // ignorar el evento de teclado
+			      }
+			   }
 			});
-		}
-		return jButton3;
-	}
 }
+		return jTextField;}}
 

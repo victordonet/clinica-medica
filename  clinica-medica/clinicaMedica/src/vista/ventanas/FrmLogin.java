@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import vista.PanelConImagen;
+import java.awt.Rectangle;
 
 public class FrmLogin extends JFrame {
 
@@ -115,7 +116,7 @@ public class FrmLogin extends JFrame {
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(400,151,43,20));
+			jButton1.setBounds(new Rectangle(398, 151, 43, 20));
 			jButton1.setBackground(new java.awt.Color(118,144,201));
 			jButton1.setText(">");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {

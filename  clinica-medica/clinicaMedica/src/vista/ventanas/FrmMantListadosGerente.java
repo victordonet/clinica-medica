@@ -3,7 +3,6 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
 import vista.controladores.CdorMantEsp;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -13,6 +12,7 @@ import java.awt.Toolkit;
 
 public class FrmMantListadosGerente extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -71,7 +71,7 @@ public class FrmMantListadosGerente extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(127, 6, 69, 21));
+			jLabel.setBounds(new Rectangle(129, 6, 69, 21));
 			jLabel.setFont(new java.awt.Font("Calibri", java.awt.Font.PLAIN, 16));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
 			jLabel.setText("LISTADOS");
@@ -106,7 +106,6 @@ public class FrmMantListadosGerente extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar Afiliados");
 					cdor.actionAltaEsp();
-					
 				}
 			});
 		}

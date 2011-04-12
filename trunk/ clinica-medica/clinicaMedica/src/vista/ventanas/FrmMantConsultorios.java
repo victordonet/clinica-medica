@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import vista.controladores.CdorMantEsp;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 public class FrmMantConsultorios extends JFrame {
 
@@ -32,6 +33,7 @@ public class FrmMantConsultorios extends JFrame {
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(330,230));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Consultorios");
 		this.setContentPane(getJContentPane());

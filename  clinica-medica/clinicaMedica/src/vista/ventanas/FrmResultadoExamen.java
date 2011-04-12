@@ -7,10 +7,9 @@ import javax.swing.JTextField;
 import vista.controladores.CdorAltaEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import javax.swing.JComboBox;
 
-public class FrmRegistroExamen extends JFrame {
-	
+public class FrmResultadoExamen extends JFrame {
+
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
@@ -19,11 +18,13 @@ public class FrmRegistroExamen extends JFrame {
 	private JLabel jLabel4 = null;
 	private JLabel jLabel5 = null;
 	private JLabel jLabel6 = null;
+	private JLabel jLabel7 = null;
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
-	private JComboBox jComboBox1 = null;
-	private JComboBox jComboBox2 = null;
+	private JTextField jTextField3 = null;
+	private JTextField jTextField4 = null;
+	private JTextField jTextField5 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JButton jButton3 = null;
@@ -32,10 +33,11 @@ public class FrmRegistroExamen extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public FrmRegistroExamen(CdorAltaEsp cdor) {
+	public FrmResultadoExamen(CdorAltaEsp cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
+		
 	}
 	
 	/**
@@ -90,6 +92,10 @@ public class FrmRegistroExamen extends JFrame {
 			jLabel6.setBounds(new Rectangle(101, 243, 106, 19));
 			jLabel6.setForeground(java.awt.Color.black);
 			jLabel6.setText("Cobra timbre?");
+			jLabel7 = new JLabel();
+			jLabel7.setBounds(new Rectangle(101, 272, 106, 19));
+			jLabel7.setForeground(java.awt.Color.black);
+			jLabel7.setText("Fecha resultado");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -100,14 +106,16 @@ public class FrmRegistroExamen extends JFrame {
 			jContentPane.add(jLabel4, null);
 			jContentPane.add(jLabel5, null);
 			jContentPane.add(jLabel6, null);
+			jContentPane.add(jLabel7, null);
 			jContentPane.add(getJTextField(), null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
+			jContentPane.add(getJTextField3(), null);
+			jContentPane.add(getJTextField4(), null);
+			jContentPane.add(getJTextField5(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJButton3(), null);
-			jContentPane.add(getJComboBox1(), null);
-			jContentPane.add(getJComboBox2(), null);
 		}
 		return jContentPane;
 	}
@@ -120,11 +128,10 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(225, 127, 86, 19));
+			jTextField1.setBounds(new Rectangle(225, 128, 86, 19));
 			jTextField1.setEditable(false);
-		}
-		return jTextField1;
 	}
+		return jTextField1;}
 
 	/**
 	 * This method initializes TextField2	
@@ -135,10 +142,52 @@ public class FrmRegistroExamen extends JFrame {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(225, 156, 86, 19));
+			jTextField2.setEditable(false);
 		}
 		return jTextField2;
 	}
 
+	/**
+	 * This method initializes TextField3	
+	 * 	
+	 * @return javax.swing.JTextField	
+	 */
+	private JTextField getJTextField3() {
+		if (jTextField3 == null) {
+			jTextField3 = new JTextField();
+			jTextField3.setBounds(new Rectangle(225, 185, 268, 19));
+			jTextField3.setEditable(false);
+		}
+		return jTextField3;
+	}
+	
+	/**
+	 * This method initializes TextField4	
+	 * 	
+	 * @return javax.swing.JTextField	
+	 */
+	private JTextField getJTextField4() {
+		if (jTextField4 == null) {
+			jTextField4 = new JTextField();
+			jTextField4.setBounds(new Rectangle(225, 214, 34, 19));
+			jTextField4.setEditable(false);
+		}
+		return jTextField4;
+	}
+	
+	/**
+	 * This method initializes TextField5	
+	 * 	
+	 * @return javax.swing.JTextField	
+	 */
+	private JTextField getJTextField5() {
+		if (jTextField5 == null) {
+			jTextField5 = new JTextField();
+			jTextField5.setBounds(new Rectangle(224, 272, 86, 19));
+		}
+		return jTextField5;
+	}
+	
 	/**
 	 * This method initializes Button1	
 	 * 	
@@ -183,6 +232,26 @@ public class FrmRegistroExamen extends JFrame {
 	}
 
 	/**
+	 * This method initializes Button2	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton3() {
+		if (jButton3 == null) {
+			jButton3 = new JButton();
+			jButton3.setBounds(new Rectangle(308, 272, 30, 18));
+			jButton3.setBackground(java.awt.Color.lightGray);
+			jButton3.setText("?");
+			jButton3.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Buscar fecha");
+				}
+			});
+		}
+		return jButton3;
+	}
+	
+	/**
 	 * This method initializes jTextField	
 	 * 	
 	 * @return javax.swing.JTextField	
@@ -194,52 +263,6 @@ public class FrmRegistroExamen extends JFrame {
 			jTextField.setEditable(false);
 		}
 		return jTextField;
-	}
-
-	/**
-	 * This method initializes jComboBox1	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJComboBox1() {
-		if (jComboBox1 == null) {
-			jComboBox1 = new JComboBox();
-			jComboBox1.setBounds(new Rectangle(225, 185, 227, 19));
-		}
-		return jComboBox1;	
-	}
-
-	/**
-	 * This method initializes jComboBox2	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJComboBox2() {
-		if (jComboBox2 == null) {
-			jComboBox2 = new JComboBox();
-			jComboBox2.setBounds(new Rectangle(225, 214, 52, 19));
-		}
-		return jComboBox2;
-	}
-	
-	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton3() {
-		if (jButton3 == null) {
-			jButton3 = new JButton();
-			jButton3.setBounds(new Rectangle(311, 156, 30, 18));
-			jButton3.setBackground(java.awt.Color.lightGray);
-			jButton3.setText("?");
-			jButton3.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
-			});
-		}
-		return jButton3;
 	}
 }
 

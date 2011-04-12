@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class FrmMantAdmin extends JFrame {
 
@@ -37,6 +38,7 @@ public class FrmMantAdmin extends JFrame {
 	 */
 	private void initialize() {
 		this.setSize(new Dimension(330, 349));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Administrativos");
 		this.setContentPane(getJContentPane());

@@ -1,6 +1,6 @@
 package vista.ventanas;
 
-import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
@@ -12,6 +12,7 @@ import vista.PanelConImagen;
 
 public class FrmLogin extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jPanel1 = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
@@ -31,6 +32,7 @@ public class FrmLogin extends JFrame {
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(538,373));
 		this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Login");

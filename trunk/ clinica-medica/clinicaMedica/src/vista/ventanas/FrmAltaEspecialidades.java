@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import vista.controladores.CdorAltaEsp;
 import vista.controladores.CdorManejoVentanas;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 public class FrmAltaEspecialidades extends JFrame {
 
@@ -44,6 +45,7 @@ public class FrmAltaEspecialidades extends JFrame {
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,412));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);		
 		this.setTitle("Espscialidades");
 		this.setContentPane(getJContentPane());

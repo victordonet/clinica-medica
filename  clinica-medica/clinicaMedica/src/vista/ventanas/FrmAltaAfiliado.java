@@ -24,27 +24,30 @@ public class FrmAltaAfiliado extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private CdorManejoVentanas cdor;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
+	private JLabel jLabel5 = null;
+	private JLabel jLabel6 = null;
+	private JLabel jLabel7 = null;
+	private JLabel jLabel8 = null;
+	private JLabel jLabel9 = null;
+	private JLabel jLabel10 = null;
+	
+	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
+	private JTextField jTextField3 = null;
+	private JTextField jTextField4 = null;
+	private JTextField jTextField5 = null;
+	private JTextField jTextField6 = null;
+
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JTextField jTextField = null;
-	private CdorManejoVentanas cdor;
-	private JLabel jLabel41 = null;
-	private JTextField jTextField3 = null;
-	private JLabel jLabel411 = null;
-	private JTextField jTextField31 = null;
-	private JLabel jLabel4111 = null;
-	private JLabel jLabel412 = null;
-	private JTextField jTextField32 = null;
-	private JLabel jLabel4121 = null;
-	private JTextField jTextField311 = null;
-	private JLabel jLabel41112 = null;
+
 	private JCheckBox jCheckBox = null;
 	private JPanel jPanel = null;
 	/**
@@ -85,30 +88,30 @@ public class FrmAltaAfiliado extends JFrame{
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
-			jLabel41112 = new JLabel();
-			jLabel41112.setBounds(new Rectangle(110, 278, 106, 19));
-			jLabel41112.setText("Fonasa");
-			jLabel41112.setForeground(Color.black);
-			jLabel4121 = new JLabel();
-			jLabel4121.setBounds(new Rectangle(110, 194, 106, 19));
-			jLabel4121.setText("Direccion");
-			jLabel4121.setForeground(Color.black);
-			jLabel412 = new JLabel();
-			jLabel412.setBounds(new Rectangle(110, 168, 106, 19));
-			jLabel412.setText("E-mail");
-			jLabel412.setForeground(Color.black);
-			jLabel4111 = new JLabel();
-			jLabel4111.setBounds(new Rectangle(110, 247, 106, 19));
-			jLabel4111.setText("Fecha Ingreso");
-			jLabel4111.setForeground(Color.black);
-			jLabel411 = new JLabel();
-			jLabel411.setBounds(new Rectangle(110, 220, 106, 19));
-			jLabel411.setText("Telefono");
-			jLabel411.setForeground(Color.black);
-			jLabel41 = new JLabel();
-			jLabel41.setBounds(new Rectangle(110, 143, 106, 19));
-			jLabel41.setText("C.I");
-			jLabel41.setForeground(Color.black);
+			jLabel10 = new JLabel();
+			jLabel10.setBounds(new Rectangle(110, 278, 106, 19));
+			jLabel10.setText("Fonasa");
+			jLabel10.setForeground(Color.black);
+			jLabel9 = new JLabel();
+			jLabel9.setBounds(new Rectangle(110, 194, 106, 19));
+			jLabel9.setText("Direccion");
+			jLabel9.setForeground(Color.black);
+			jLabel8 = new JLabel();
+			jLabel8.setBounds(new Rectangle(110, 168, 106, 19));
+			jLabel8.setText("E-mail");
+			jLabel8.setForeground(Color.black);
+			jLabel7 = new JLabel();
+			jLabel7.setBounds(new Rectangle(110, 247, 106, 19));
+			jLabel7.setText("Fecha Ingreso");
+			jLabel7.setForeground(Color.black);
+			jLabel6 = new JLabel();
+			jLabel6.setBounds(new Rectangle(110, 220, 106, 19));
+			jLabel6.setText("Telefono");
+			jLabel6.setForeground(Color.black);
+			jLabel5 = new JLabel();
+			jLabel5.setBounds(new Rectangle(110, 143, 106, 19));
+			jLabel5.setText("C.I");
+			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(110, 117, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
@@ -140,16 +143,16 @@ public class FrmAltaAfiliado extends JFrame{
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(jTextField1, null);
 			jContentPane.add(getJTextField(), null);
-			jContentPane.add(jLabel41, null);
+			jContentPane.add(jLabel5, null);
 			jContentPane.add(getJTextField3(), null);
-			jContentPane.add(jLabel411, null);
+			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJTextField31(), null);
-			jContentPane.add(jLabel4111, null);
-			jContentPane.add(jLabel412, null);
+			jContentPane.add(jLabel7, null);
+			jContentPane.add(jLabel8, null);
 			jContentPane.add(getJTextField32(), null);
-			jContentPane.add(jLabel4121, null);
+			jContentPane.add(jLabel9, null);
 			jContentPane.add(getJTextField311(), null);
-			jContentPane.add(jLabel41112, null);
+			jContentPane.add(jLabel10, null);
 			jContentPane.add(getJCheckBox(), null);
 			jContentPane.add(getJPanel(), null);
 	
@@ -259,11 +262,11 @@ public class FrmAltaAfiliado extends JFrame{
 	 * @return javax.swing.JTextField	
 	 */
 	private JTextField getJTextField31() {
-		if (jTextField31 == null) {
-			jTextField31 = new JTextField();
-			jTextField31.setBounds(new Rectangle(246, 220, 282, 19));
+		if (jTextField4 == null) {
+			jTextField4 = new JTextField();
+			jTextField4.setBounds(new Rectangle(246, 220, 282, 19));
 		}
-		return jTextField31;
+		return jTextField4;
 	}
 
 	/**
@@ -272,11 +275,11 @@ public class FrmAltaAfiliado extends JFrame{
 	 * @return javax.swing.JTextField	
 	 */
 	private JTextField getJTextField32() {
-		if (jTextField32 == null) {
-			jTextField32 = new JTextField();
-			jTextField32.setBounds(new Rectangle(246, 168, 143, 19));
+		if (jTextField5 == null) {
+			jTextField5 = new JTextField();
+			jTextField5.setBounds(new Rectangle(246, 168, 143, 19));
 		}
-		return jTextField32;
+		return jTextField5;
 	}
 
 	/**
@@ -285,11 +288,11 @@ public class FrmAltaAfiliado extends JFrame{
 	 * @return javax.swing.JTextField	
 	 */
 	private JTextField getJTextField311() {
-		if (jTextField311 == null) {
-			jTextField311 = new JTextField();
-			jTextField311.setBounds(new Rectangle(246, 194, 282, 19));
+		if (jTextField6 == null) {
+			jTextField6 = new JTextField();
+			jTextField6.setBounds(new Rectangle(246, 194, 282, 19));
 		}
-		return jTextField311;
+		return jTextField6;
 	}
 
 	/**

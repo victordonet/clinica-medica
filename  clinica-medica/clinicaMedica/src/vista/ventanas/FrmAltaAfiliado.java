@@ -9,14 +9,21 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.LookAndFeel;
 
 import vista.controladores.CdorManejoVentanas;
 import datechooser.beans.DateChooserCombo;
 import javax.swing.JPanel;
+
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDayChooser;
+import com.toedter.plaf.JCalendarTheme;
+
+import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Dimension;
 
 public class FrmAltaAfiliado extends JFrame{
 
@@ -50,6 +57,7 @@ public class FrmAltaAfiliado extends JFrame{
 
 	private JCheckBox jCheckBox = null;
 	private JPanel jPanel = null;
+	private JPanel jPanel1 = null;
 	/**
 	 * This is the default constructor
 	 * @return 
@@ -155,6 +163,8 @@ public class FrmAltaAfiliado extends JFrame{
 			jContentPane.add(jLabel10, null);
 			jContentPane.add(getJCheckBox(), null);
 			jContentPane.add(getJPanel(), null);
+			jContentPane.add(getJPanel1(), null);
+			
 	
 		
 		}
@@ -325,4 +335,28 @@ public class FrmAltaAfiliado extends JFrame{
 		
 		}
 		return jPanel;
+	}
+
+	/**
+	 * This method initializes jPanel1	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel1() {
+		if (jPanel1 == null) {
+			
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.setRows(1);
+			jPanel1 = new JPanel();
+			jPanel1.setLayout(gridLayout1);
+			jPanel1.setBounds(new Rectangle(387, 246, 191, 23));
+		
+			JDateChooser calendar = new JDateChooser();
+			
+			jPanel1.add(calendar, null);
+			
+			
+			
+		}
+		return jPanel1;
 	}}

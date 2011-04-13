@@ -49,7 +49,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 		frm.setSize(new java.awt.Dimension(611,413));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
-		frm.setTitle("Administrativo");
+		frm.setTitle("Administrativos");
 		frm.setContentPane(getJContentPane());
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
@@ -142,7 +142,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 			jButton2 = new JButton();
 			jButton2.setBounds(new Rectangle(309, 332, 110, 26));
 			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2.setText("Aceptar Selección Admin.");
+			jButton2.setText("Aceptar");
 			jButton2.setBackground(Color.lightGray);
 		}
 		return jButton2;
@@ -158,7 +158,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(168, 332, 110, 26));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Cancelar Selección Admin.");
+			jButton21.setText("Cancelar");
 			jButton21.setBackground(Color.lightGray);
 		}
 		return jButton21;

@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import vista.controladores.CdorAltaEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import javax.swing.JComboBox;
 
 public class FrmBajaConsultorio extends JFrame {
 
@@ -15,11 +16,11 @@ public class FrmBajaConsultorio extends JFrame {
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
-	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private CdorAltaEsp cdor;
+	private JComboBox jComboBox = null;
 
 	/**
 	 * This is the default constructor
@@ -77,30 +78,27 @@ public class FrmBajaConsultorio extends JFrame {
 			jContentPane.add(jLabel1, null);
 			jContentPane.add(jLabel2, null);
 			jContentPane.add(jLabel3, null);
-			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(jTextField1, null);
+			jContentPane.add(getJComboBox(), null);
 		}
 		return jContentPane;
 	}
-
+	
 	/**
-	 * This method initializes TextField1
-	 *
-	 * @return javax.swing.JTextField
+	 * This method initializes jComboBox	
+	 * 	
+	 * @return javax.swing.JComboBox	
 	 */
-	private JTextField getJTextField1() {
-		if (jTextField1 == null) {
-			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(223, 149, 45, 19));
-			jTextField1.setEditable(false);
-
+	private JComboBox getJComboBox() {
+		if (jComboBox == null) {
+			jComboBox = new JComboBox();
+			jComboBox.setBounds(new Rectangle(221, 150, 50, 19));
+		}
+		return jComboBox;
 	}
-		return jTextField1;
-	}
-
+	
 	/**
 	 * This method initializes TextField2
 	 *

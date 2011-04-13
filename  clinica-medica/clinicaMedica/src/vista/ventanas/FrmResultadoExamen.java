@@ -3,8 +3,14 @@ package vista.ventanas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.toedter.calendar.JDateChooser;
+
 import vista.controladores.CdorAltaEsp;
+
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -24,10 +30,9 @@ public class FrmResultadoExamen extends JFrame {
 	private JTextField jTextField2 = null;
 	private JTextField jTextField3 = null;
 	private JTextField jTextField4 = null;
-	private JTextField jTextField5 = null;
+	private JPanel jPanelFecha = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JButton jButton3 = null;
 	private CdorAltaEsp cdor;
 
 	/**
@@ -112,10 +117,9 @@ public class FrmResultadoExamen extends JFrame {
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJTextField3(), null);
 			jContentPane.add(getJTextField4(), null);
-			jContentPane.add(getJTextField5(), null);
+			jContentPane.add(getJPanelFecha(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJButton3(), null);
 		}
 		return jContentPane;
 	}
@@ -176,36 +180,21 @@ public class FrmResultadoExamen extends JFrame {
 	}
 
 	/**
-	 * This method initializes TextField5
+	 * This method initializes jPanelFecha
 	 *
-	 * @return javax.swing.JTextField
+	 * @return javax.swing.JPanel
 	 */
-	private JTextField getJTextField5() {
-		if (jTextField5 == null) {
-			jTextField5 = new JTextField();
-			jTextField5.setBounds(new Rectangle(224, 272, 86, 19));
+	private JPanel getJPanelFecha() {
+		if (jPanelFecha == null) {
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.setRows(1);
+			jPanelFecha = new JPanel();
+			jPanelFecha.setLayout(gridLayout1);
+			jPanelFecha.setBounds(new Rectangle(224, 272, 86, 19));
+			JDateChooser calendar = new JDateChooser();
+			jPanelFecha.add(calendar, null);
 		}
-		return jTextField5;
-	}
-
-	/**
-	 * This method initializes Button2
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getJButton3() {
-		if (jButton3 == null) {
-			jButton3 = new JButton();
-			jButton3.setBounds(new Rectangle(308, 272, 30, 18));
-			jButton3.setBackground(java.awt.Color.lightGray);
-			jButton3.setText("?");
-			jButton3.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
-			});
-		}
-		return jButton3;
+		return jPanelFecha;
 	}
 
 	/**

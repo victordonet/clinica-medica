@@ -53,7 +53,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 * @throws ClassNotFoundException 
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
-		frm.setSize(new Dimension(455, 761));
+		frm.setSize(new Dimension(455, 762));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
 		frm.setTitle("Menu");

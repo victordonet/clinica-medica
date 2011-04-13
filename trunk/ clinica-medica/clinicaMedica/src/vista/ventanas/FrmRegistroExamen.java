@@ -3,11 +3,16 @@ package vista.ventanas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import vista.controladores.CdorAltaEsp;
+
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
+
+import com.toedter.calendar.JDateChooser;
 
 public class FrmRegistroExamen extends JFrame {
 
@@ -21,12 +26,11 @@ public class FrmRegistroExamen extends JFrame {
 	private JLabel jLabel6 = null;
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
-	private JTextField jTextField2 = null;
 	private JComboBox jComboBox1 = null;
 	private JComboBox jComboBox2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JButton jButton3 = null;
+	private JPanel jPanelFecha = null;
 	private CdorAltaEsp cdor;
 
 	/**
@@ -102,12 +106,11 @@ public class FrmRegistroExamen extends JFrame {
 			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJTextField(), null);
 			jContentPane.add(getJTextField1(), null);
-			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJButton3(), null);
 			jContentPane.add(getJComboBox1(), null);
 			jContentPane.add(getJComboBox2(), null);
+			jContentPane.add(getJPanelFecha(), null);
 		}
 		return jContentPane;
 	}
@@ -127,16 +130,21 @@ public class FrmRegistroExamen extends JFrame {
 	}
 
 	/**
-	 * This method initializes TextField2
+	 * This method initializes jPanelFecha
 	 *
-	 * @return javax.swing.JTextField
+	 * @return javax.swing.JPanel
 	 */
-	private JTextField getJTextField2() {
-		if (jTextField2 == null) {
-			jTextField2 = new JTextField();
-			jTextField2.setBounds(new Rectangle(225, 156, 86, 19));
+	private JPanel getJPanelFecha() {
+		if (jPanelFecha == null) {
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.setRows(1);
+			jPanelFecha = new JPanel();
+			jPanelFecha.setLayout(gridLayout1);
+			jPanelFecha.setBounds(new Rectangle(225, 156, 86, 19));
+			JDateChooser calendar = new JDateChooser();
+			jPanelFecha.add(calendar, null);
 		}
-		return jTextField2;
+		return jPanelFecha;
 	}
 
 
@@ -178,26 +186,6 @@ public class FrmRegistroExamen extends JFrame {
 			jComboBox2.setBounds(new Rectangle(225, 214, 52, 19));
 		}
 		return jComboBox2;
-	}
-
-	/**
-	 * This method initializes Button3
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getJButton3() {
-		if (jButton3 == null) {
-			jButton3 = new JButton();
-			jButton3.setBounds(new Rectangle(311, 156, 30, 18));
-			jButton3.setBackground(java.awt.Color.lightGray);
-			jButton3.setText("?");
-			jButton3.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
-			});
-		}
-		return jButton3;
 	}
 
 	/**

@@ -261,7 +261,7 @@ public class FrmModifMedico extends JFrame{
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
 			jComboBox = new JComboBox();
-			jComboBox.setBounds(new Rectangle(240, 263, 210, 19));
+			jComboBox.setBounds(new Rectangle(240, 263, 164, 19));
 		}
 		return jComboBox;
 	}

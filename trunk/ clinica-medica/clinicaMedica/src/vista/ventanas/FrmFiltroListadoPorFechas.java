@@ -1,12 +1,12 @@
 package vista.ventanas;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+import com.toedter.calendar.JDateChooser;
 import vista.controladores.CdorAltaEsp;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -17,12 +17,10 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
-	private JTextField jTextField1 = null;
-	private JTextField jTextField2 = null;
+	private JPanel jPanelFechaDesde = null;
+	private JPanel jPanelFechaHasta = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JButton jButton3 = null;
-	private JButton jButton4 = null;
 	private CdorAltaEsp cdor;
 	private String titulo;
 
@@ -83,66 +81,48 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			jContentPane.add(jLabel1, null);
 			jContentPane.add(jLabel2, null);
 			jContentPane.add(jLabel3, null);
-			jContentPane.add(getJTextField1(), null);
-			jContentPane.add(getJTextField2(), null);
+			jContentPane.add(getJPanelFechaDesde(), null);
+			jContentPane.add(getJPanelFechaHasta(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJButton3(), null);
-			jContentPane.add(getJButton4(), null);
-			jContentPane.add(getJButton3(), null);
 		}
 		return jContentPane;
 	}
 
 	/**
-	 * This method initializes TextField1
+	 * This method initializes jPanelFechaDesde
 	 *
-	 * @return javax.swing.JTextField
+	 * @return javax.swing.JPanel
 	 */
-	private JTextField getJTextField1() {
-		if (jTextField1 == null) {
-			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(278, 158, 90, 19));
-			jTextField1.addKeyListener(new KeyAdapter()
-			{
-				public void keyTyped(KeyEvent e)
-				{
-					//Controlar el largo del text
-					String s = jTextField1.getText();
-					int n=s.length();
-					if(n >= 20){
-						e.consume();  // ignorar el evento de teclado
-					}
-				}
-			});
-
+	private JPanel getJPanelFechaDesde() {
+		if (jPanelFechaDesde == null) {
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.setRows(1);
+			jPanelFechaDesde = new JPanel();
+			jPanelFechaDesde.setLayout(gridLayout1);
+			jPanelFechaDesde.setBounds(new Rectangle(278, 158, 90, 19));
+			JDateChooser calendar = new JDateChooser();
+			jPanelFechaDesde.add(calendar, null);
 		}
-		return jTextField1;
+		return jPanelFechaDesde;
 	}
 
 	/**
-	 * This method initializes TextField2
+	 * This method initializes jPanelFechaHasta
 	 *
-	 * @return javax.swing.JTextField
+	 * @return javax.swing.JPanel
 	 */
-	private JTextField getJTextField2() {
-		if (jTextField2 == null) {
-			jTextField2 = new JTextField();
-			jTextField2.setBounds(new Rectangle(278, 187, 90, 19));
-			jTextField2.addKeyListener(new KeyAdapter()
-			{
-				public void keyTyped(KeyEvent e)
-				{
-					//Controlar el largo del text
-					String s = jTextField2.getText();
-					int n=s.length();
-					if(n >= 20){
-						e.consume();  // ignorar el evento de teclado
-					}
-				}
-			});
+	private JPanel getJPanelFechaHasta() {
+		if (jPanelFechaHasta == null) {
+			GridLayout gridLayout1 = new GridLayout();
+			gridLayout1.setRows(1);
+			jPanelFechaHasta = new JPanel();
+			jPanelFechaHasta.setLayout(gridLayout1);
+			jPanelFechaHasta.setBounds(new Rectangle(278, 187, 90, 19));
+			JDateChooser calendar = new JDateChooser();
+			jPanelFechaHasta.add(calendar, null);
 		}
-		return jTextField2;
+		return jPanelFechaHasta;
 	}
 
 	/**
@@ -185,45 +165,5 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			});
 		}
 		return jButton2;
-	}
-
-	/**
-	 * This method initializes Button3
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getJButton3() {
-		if (jButton3 == null) {
-			jButton3 = new JButton();
-			jButton3.setBackground(java.awt.Color.lightGray);
-			jButton3.setBounds(new Rectangle(367, 158, 30, 18));
-			jButton3.setText("?");
-			jButton3.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
-			});
-		}
-		return jButton3;
-	}
-
-	/**
-	 * This method initializes Button4
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getJButton4() {
-		if (jButton4 == null) {
-			jButton4 = new JButton();
-			jButton4.setBounds(new Rectangle(367, 187, 30, 18));
-			jButton4.setBackground(java.awt.Color.lightGray);
-			jButton4.setText("?");
-			jButton4.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Buscar fecha");
-				}
-			});
-		}
-		return jButton4;
 	}
 }

@@ -25,7 +25,6 @@ public class FrmListadoMedicos extends UnicastRemoteObject implements IObserver{
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
 	private CdorListadoEsp cdor;
-	private JButton jButton2 = null;
 	private JButton jButton21 = null;
 
 	/**
@@ -81,7 +80,6 @@ public class FrmListadoMedicos extends UnicastRemoteObject implements IObserver{
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
 			jContentPane.add(getJScrollPane(modelo), null);
-			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJButton21(), null);
 
 		//}
@@ -133,22 +131,6 @@ public class FrmListadoMedicos extends UnicastRemoteObject implements IObserver{
 	}
 
 	/**
-	 * This method initializes jButton2
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(309, 332, 110, 26));
-			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2.setText("Aceptar Listado Médicos.");
-			jButton2.setBackground(Color.lightGray);
-		}
-		return jButton2;
-	}
-
-	/**
 	 * This method initializes jButton21
 	 *
 	 * @return javax.swing.JButton
@@ -156,7 +138,7 @@ public class FrmListadoMedicos extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton21() {
 		if (jButton21 == null) {
 			jButton21 = new JButton();
-			jButton21.setBounds(new Rectangle(168, 332, 110, 26));
+			jButton21.setBounds(new Rectangle(241, 338, 110, 26));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21.setText("Cancelar");
 			jButton21.setBackground(Color.lightGray);

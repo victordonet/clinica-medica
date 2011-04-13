@@ -49,7 +49,7 @@ public class FrmAltaMedico extends JFrame{
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(611,412));
+		this.setSize(new java.awt.Dimension(611,413));
 		this.setResizable(false);
 		this.setTitle("Médicos");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
@@ -249,7 +249,7 @@ public class FrmAltaMedico extends JFrame{
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
 			jComboBox = new JComboBox();
-			jComboBox.setBounds(new Rectangle(240, 263, 282, 19));
+			jComboBox.setBounds(new Rectangle(240, 263, 167, 19));
 		}
 		return jComboBox;
 	}

@@ -140,7 +140,7 @@ public class FrmMantAfiliados extends JFrame {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(59, 176, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación Afiliados");
+			jButton21.setText("Modificación");
 			jButton21.setBackground(Color.lightGray);
 		}
 		return jButton21;

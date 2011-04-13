@@ -140,9 +140,9 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(309, 332, 110, 26));
+			jButton2.setBounds(new Rectangle(250, 337, 110, 26));
 			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2.setText("Aceptar Listado de Afiliados");
+			jButton2.setText("Cancelar");
 			jButton2.setBackground(Color.lightGray);
 		}
 		return jButton2;

@@ -46,7 +46,7 @@ public class FrmBajaMedico extends JFrame{
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(611,412));
+		this.setSize(new java.awt.Dimension(611,413));
 		this.setResizable(false);
 		this.setTitle("Médicos");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
@@ -172,6 +172,7 @@ public class FrmBajaMedico extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(240, 196, 143, 19));
+			jTextField3.setEditable(false);
 		}
 		return jTextField3;
 	}
@@ -185,6 +186,7 @@ public class FrmBajaMedico extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(240, 229, 282, 19));
+			jTextField4.setEditable(false);
 		}
 		return jTextField4;
 	}
@@ -199,6 +201,7 @@ public class FrmBajaMedico extends JFrame{
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(240, 263, 143, 19));
+			jTextField5.setEditable(false);
 		}
 		return jTextField5;
 	}

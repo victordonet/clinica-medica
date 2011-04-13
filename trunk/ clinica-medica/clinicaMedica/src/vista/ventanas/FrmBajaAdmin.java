@@ -61,7 +61,7 @@ public class FrmBajaAdmin extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new java.awt.Rectangle(207,13,200,33));
+			jLabel1.setBounds(new Rectangle(192, 13, 215, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Baja de Administrativo");

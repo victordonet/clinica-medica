@@ -140,7 +140,7 @@ public class FrmMantAdmin extends JFrame {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(60, 177, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación Administrativo");
+			jButton21.setText("Modificación");
 			jButton21.setBackground(Color.lightGray);
 		}
 		return jButton21;

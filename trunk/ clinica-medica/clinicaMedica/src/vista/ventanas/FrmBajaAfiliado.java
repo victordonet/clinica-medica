@@ -112,7 +112,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Nro. Afiliado");
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new Rectangle(174, 11, 216, 33));
+			jLabel1.setBounds(new Rectangle(220, 11, 170, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Baja de Afiliado");
@@ -266,7 +266,7 @@ public class FrmBajaAfiliado extends JFrame{
 		if (jCheckBox == null) {
 			jCheckBox = new JCheckBox();
 			jCheckBox.setBounds(new Rectangle(243, 292, 17, 16));
-			//jCheckBox.s(false);
+			jCheckBox.setEnabled(false);
 		}
 		return jCheckBox;
 	}

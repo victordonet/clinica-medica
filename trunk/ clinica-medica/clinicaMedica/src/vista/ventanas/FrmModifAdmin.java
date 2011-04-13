@@ -61,7 +61,7 @@ public class FrmModifAdmin extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new java.awt.Rectangle(207,13,200,33));
+			jLabel1.setBounds(new Rectangle(157, 13, 258, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Modificación de Administrativo");
@@ -102,7 +102,7 @@ public class FrmModifAdmin extends JFrame {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(223, 149, 86, 19));
+			jTextField1.setBounds(new Rectangle(222, 149, 86, 19));
 			jTextField1.setEditable(false);
 
 	}
@@ -116,8 +116,7 @@ public class FrmModifAdmin extends JFrame {
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
-			jTextField2.setBounds(new java.awt.Rectangle(221,178,292,19));
-			jTextField2.setEditable(false);
+			jTextField2.setBounds(new Rectangle(222, 178, 292, 19));
 		}
 		return jTextField2;
 	}
@@ -131,7 +130,6 @@ public class FrmModifAdmin extends JFrame {
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new java.awt.Rectangle(222,207,87,19));
-			jTextField3.setEditable(false);
 		}
 		return jTextField3;
 	}

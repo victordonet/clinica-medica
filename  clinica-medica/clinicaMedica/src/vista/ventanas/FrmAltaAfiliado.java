@@ -3,23 +3,21 @@ package vista.ventanas;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.LookAndFeel;
-
 import vista.controladores.CdorManejoVentanas;
 import datechooser.beans.DateChooserCombo;
 import javax.swing.JPanel;
-
+import com.toedter.calendar.JDateChooser;
+import java.awt.GridLayout;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;
 import com.toedter.plaf.JCalendarTheme;
-
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -27,9 +25,6 @@ import java.awt.Dimension;
 
 public class FrmAltaAfiliado extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private CdorManejoVentanas cdor;
 	private PanelConImagen jContentPane = null;
@@ -43,7 +38,6 @@ public class FrmAltaAfiliado extends JFrame{
 	private JLabel jLabel8 = null;
 	private JLabel jLabel9 = null;
 	private JLabel jLabel10 = null;
-	
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
@@ -51,37 +45,35 @@ public class FrmAltaAfiliado extends JFrame{
 	private JTextField jTextField4 = null;
 	private JTextField jTextField5 = null;
 	private JTextField jTextField6 = null;
-
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-
 	private JCheckBox jCheckBox = null;
 	private JPanel jPanel = null;
 	private JPanel jPanel1 = null;
+
 	/**
 	 * This is the default constructor
-	 * @return 
+	 * @return
 	 */
 	public  FrmAltaAfiliado(CdorManejoVentanas cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
-		
 	}
-	
+
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,412));
-		this.setResizable(false);		
+		this.setResizable(false);
 		this.setTitle("Alta Medicos");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);		
+		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
@@ -90,9 +82,9 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
@@ -154,96 +146,50 @@ public class FrmAltaAfiliado extends JFrame{
 			jContentPane.add(jLabel5, null);
 			jContentPane.add(getJTextField3(), null);
 			jContentPane.add(jLabel6, null);
-			jContentPane.add(getJTextField31(), null);
+			jContentPane.add(getJTextField4(), null);
 			jContentPane.add(jLabel7, null);
 			jContentPane.add(jLabel8, null);
-			jContentPane.add(getJTextField32(), null);
+			jContentPane.add(getJTextField5(), null);
 			jContentPane.add(jLabel9, null);
-			jContentPane.add(getJTextField311(), null);
+			jContentPane.add(getJTextField6(), null);
 			jContentPane.add(jLabel10, null);
 			jContentPane.add(getJCheckBox(), null);
 			jContentPane.add(getJPanel(), null);
 			jContentPane.add(getJPanel1(), null);
-			
-	
-		
 		}
 		return jContentPane;
 	}
 
 	/**
-	 * This method initializes TextField1	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField1
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(246, 61, 143, 19));
 		}
-		return jTextField1;}
+		return jTextField1;
+	}
 
 	/**
-	 * This method initializes TextField2	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField2
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(246, 89, 282, 19));
-			
 		}
 		return jTextField2;
 	}
 
 	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
-			jButton1.setBackground(java.awt.Color.lightGray);
-			jButton1.setText("Cancelar");
-			jButton1.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
-					cdor.actionCerrar();
-				}
-			});
-		}
-		return jButton1;
-	}
-
-	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
-			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Aceptar");
-			jButton2.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Medico");	
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
-				}
-			});
-		}
-		return jButton2;
-	}
-
-	/**
-	 * This method initializes jTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField() {
 		if (jTextField == null) {
@@ -251,12 +197,12 @@ public class FrmAltaAfiliado extends JFrame{
 			jTextField.setBounds(new Rectangle(246, 117, 282, 19));
 		}
 		return jTextField;
-		}
+	}
 
 	/**
-	 * This method initializes jTextField3	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField3
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField3() {
 		if (jTextField3 == null) {
@@ -267,11 +213,11 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes jTextField31	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField4
+	 *
+	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextField31() {
+	private JTextField getJTextField4() {
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(246, 220, 282, 19));
@@ -280,11 +226,11 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes jTextField32	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField5
+	 *
+	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextField32() {
+	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(246, 168, 143, 19));
@@ -293,11 +239,11 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes jTextField311	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField6
+	 *
+	 * @return javax.swing.JTextField
 	 */
-	private JTextField getJTextField311() {
+	private JTextField getJTextField6() {
 		if (jTextField6 == null) {
 			jTextField6 = new JTextField();
 			jTextField6.setBounds(new Rectangle(246, 194, 282, 19));
@@ -306,9 +252,9 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes jCheckBox	
-	 * 	
-	 * @return javax.swing.JCheckBox	
+	 * This method initializes jCheckBox
+	 *
+	 * @return javax.swing.JCheckBox
 	 */
 	private JCheckBox getJCheckBox() {
 		if (jCheckBox == null) {
@@ -319,9 +265,9 @@ public class FrmAltaAfiliado extends JFrame{
 	}
 
 	/**
-	 * This method initializes jPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes jPanel
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private JPanel getJPanel() {
 		if (jPanel == null) {
@@ -332,31 +278,71 @@ public class FrmAltaAfiliado extends JFrame{
 			jPanel.setBounds(new Rectangle(249, 245, 132, 25));
 			DateChooserCombo dateChooserCombo1 = new DateChooserCombo();
 			jPanel.add(dateChooserCombo1, null);
-		
+
 		}
 		return jPanel;
 	}
 
 	/**
-	 * This method initializes jPanel1	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes jPanel1
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private JPanel getJPanel1() {
 		if (jPanel1 == null) {
-			
+
 			GridLayout gridLayout1 = new GridLayout();
 			gridLayout1.setRows(1);
 			jPanel1 = new JPanel();
 			jPanel1.setLayout(gridLayout1);
 			jPanel1.setBounds(new Rectangle(387, 246, 191, 23));
-		
+
 			JDateChooser calendar = new JDateChooser();
-			
+
 			jPanel1.add(calendar, null);
-			
-			
-			
 		}
 		return jPanel1;
-	}}
+	}
+
+	/**
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton1() {
+		if (jButton1 == null) {
+			jButton1 = new JButton();
+			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
+			jButton1.setBackground(java.awt.Color.lightGray);
+			jButton1.setText("Cancelar");
+			jButton1.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Cancelar Alta Afiliado.");
+					cdor.actionCerrar();
+				}
+			});
+		}
+		return jButton1;
+	}
+
+	/**
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton2() {
+		if (jButton2 == null) {
+			jButton2 = new JButton();
+			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBackground(java.awt.Color.lightGray);
+			jButton2.setText("Aceptar");
+			jButton2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Aceptar Alta Afiliado.");
+					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+				}
+			});
+		}
+		return jButton2;
+	}
+}

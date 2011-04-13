@@ -19,21 +19,26 @@ import javax.swing.JComboBox;
 public class FrmAltaMedico extends JFrame{
 
 	private PanelConImagen jContentPane = null;
+	private CdorManejoVentanas cdor;
+	
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
+	private JLabel jLabel5 = null;
+	private JLabel jLabel6 = null;
+	private JLabel jLabel7 = null;
+	
+	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
+	private JTextField jTextField3 = null;
+	private JTextField jTextField4 = null;
+	
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private JTextField jTextField = null;
-	private CdorManejoVentanas cdor;
-	private JLabel jLabel41 = null;
-	private JTextField jTextField3 = null;
-	private JLabel jLabel411 = null;
-	private JTextField jTextField31 = null;
-	private JLabel jLabel4111 = null;
+	
+
 	private JComboBox jComboBox = null;
 	/**
 	 * This is the default constructor
@@ -73,18 +78,18 @@ public class FrmAltaMedico extends JFrame{
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
-			jLabel4111 = new JLabel();
-			jLabel4111.setBounds(new Rectangle(110, 263, 106, 19));
-			jLabel4111.setText("Especialidad");
-			jLabel4111.setForeground(Color.black);
-			jLabel411 = new JLabel();
-			jLabel411.setBounds(new Rectangle(110, 229, 106, 19));
-			jLabel411.setText("Telefono");
-			jLabel411.setForeground(Color.black);
-			jLabel41 = new JLabel();
-			jLabel41.setBounds(new Rectangle(110, 196, 106, 19));
-			jLabel41.setText("C.I");
-			jLabel41.setForeground(Color.black);
+			jLabel7 = new JLabel();
+			jLabel7.setBounds(new Rectangle(110, 263, 106, 19));
+			jLabel7.setText("Especialidad");
+			jLabel7.setForeground(Color.black);
+			jLabel6 = new JLabel();
+			jLabel6.setBounds(new Rectangle(110, 229, 106, 19));
+			jLabel6.setText("Telefono");
+			jLabel6.setForeground(Color.black);
+			jLabel5 = new JLabel();
+			jLabel5.setBounds(new Rectangle(110, 196, 106, 19));
+			jLabel5.setText("C.I");
+			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(110, 160, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
@@ -116,11 +121,11 @@ public class FrmAltaMedico extends JFrame{
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(jTextField1, null);
 			jContentPane.add(getJTextField(), null);
-			jContentPane.add(jLabel41, null);
+			jContentPane.add(jLabel5, null);
 			jContentPane.add(getJTextField3(), null);
-			jContentPane.add(jLabel411, null);
+			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJTextField31(), null);
-			jContentPane.add(jLabel4111, null);
+			jContentPane.add(jLabel7, null);
 			jContentPane.add(getJComboBox(), null);
 		}
 		return jContentPane;
@@ -278,11 +283,11 @@ public class FrmAltaMedico extends JFrame{
 	 * @return javax.swing.JTextField	
 	 */
 	private JTextField getJTextField31() {
-		if (jTextField31 == null) {
-			jTextField31 = new JTextField();
-			jTextField31.setBounds(new Rectangle(240, 229, 282, 19));
+		if (jTextField4 == null) {
+			jTextField4 = new JTextField();
+			jTextField4.setBounds(new Rectangle(240, 229, 282, 19));
 		}
-		return jTextField31;
+		return jTextField4;
 	}
 
 	/**

@@ -7,6 +7,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import vista.controladores.CdorAltaAdmin;
 import vista.controladores.CdorAltaEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -24,12 +26,12 @@ public class FrmAltaAdmin extends JFrame {
 	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
+	private CdorAltaAdmin cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmAltaAdmin(CdorAltaEsp cdor) {
+	public FrmAltaAdmin(CdorAltaAdmin cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();

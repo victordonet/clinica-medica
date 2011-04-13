@@ -8,14 +8,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorAltaEsp;
 import vista.controladores.CdorManejoVentanas;
 import java.awt.Color;
-import javax.swing.JList;
 import javax.swing.JComboBox;
 
 public class FrmAltaMedico extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private CdorManejoVentanas cdor;
 	private JLabel jLabel1 = null;

@@ -37,22 +37,22 @@ public class FrmResultadoExamen extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-		
+
 	}
-	
+
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
-		this.setResizable(false);		
-		this.setTitle("Espscialidades");
+		this.setResizable(false);
+		this.setTitle("Exámenes");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);		
+		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
@@ -61,9 +61,9 @@ public class FrmResultadoExamen extends JFrame {
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
@@ -121,9 +121,9 @@ public class FrmResultadoExamen extends JFrame {
 	}
 
 	/**
-	 * This method initializes TextField1	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField1
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
@@ -134,9 +134,9 @@ public class FrmResultadoExamen extends JFrame {
 		return jTextField1;}
 
 	/**
-	 * This method initializes TextField2	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField2
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
@@ -148,9 +148,9 @@ public class FrmResultadoExamen extends JFrame {
 	}
 
 	/**
-	 * This method initializes TextField3	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField3
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField3() {
 		if (jTextField3 == null) {
@@ -160,11 +160,11 @@ public class FrmResultadoExamen extends JFrame {
 		}
 		return jTextField3;
 	}
-	
+
 	/**
-	 * This method initializes TextField4	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField4
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField4() {
 		if (jTextField4 == null) {
@@ -174,11 +174,11 @@ public class FrmResultadoExamen extends JFrame {
 		}
 		return jTextField4;
 	}
-	
+
 	/**
-	 * This method initializes TextField5	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField5
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
@@ -187,54 +187,11 @@ public class FrmResultadoExamen extends JFrame {
 		}
 		return jTextField5;
 	}
-	
-	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
-			jButton1.setBackground(java.awt.Color.lightGray);
-			jButton1.setText("Cancelar");
-			jButton1.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
-					cdor.actionCerrar();
-				}
-			});
-		}
-		return jButton1;
-	}
 
 	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
-			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Aceptar");
-			jButton2.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Usuario");	
-					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
-				}
-			});
-		}
-		return jButton2;
-	}
-
-	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton3() {
 		if (jButton3 == null) {
@@ -250,11 +207,11 @@ public class FrmResultadoExamen extends JFrame {
 		}
 		return jButton3;
 	}
-	
+
 	/**
-	 * This method initializes jTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField() {
 		if (jTextField == null) {
@@ -264,5 +221,47 @@ public class FrmResultadoExamen extends JFrame {
 		}
 		return jTextField;
 	}
-}
 
+	/**
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton1() {
+		if (jButton1 == null) {
+			jButton1 = new JButton();
+			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
+			jButton1.setBackground(java.awt.Color.lightGray);
+			jButton1.setText("Cancelar");
+			jButton1.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Cancelar Resultado de Exámenes.");
+					cdor.actionCerrar();
+				}
+			});
+		}
+		return jButton1;
+	}
+
+	/**
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton2() {
+		if (jButton2 == null) {
+			jButton2 = new JButton();
+			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBackground(java.awt.Color.lightGray);
+			jButton2.setText("Aceptar");
+			jButton2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Aceptar Resultado de Exámenes.");
+					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+
+				}
+			});
+		}
+		return jButton2;
+	}
+}

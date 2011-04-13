@@ -24,7 +24,7 @@ public class FrmAltaEspecialidades extends JFrame {
 	private JButton jButton2 = null;
 	private JTextField jTextField = null;
 	private CdorAltaEsp cdor;
-	
+
 	/**
 	 * This is the default constructor
 	 */
@@ -32,22 +32,21 @@ public class FrmAltaEspecialidades extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-		
 	}
-	
+
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
-		this.setResizable(false);		
+		this.setResizable(false);
 		this.setTitle("Espscialidades");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);		
+		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
@@ -56,9 +55,9 @@ public class FrmAltaEspecialidades extends JFrame {
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
@@ -91,16 +90,15 @@ public class FrmAltaEspecialidades extends JFrame {
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(jTextField1, null);
 			jContentPane.add(getJTextField(), null);
 		}
 		return jContentPane;
 	}
 
 	/**
-	 * This method initializes TextField1	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField1
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
@@ -118,7 +116,7 @@ public class FrmAltaEspecialidades extends JFrame {
 						   {
 							   e.consume();  // ignorar el evento de teclado
 						   }
-					      
+
 					      //Controlar el largo del text
 					      String s = jTextField1.getText();
 					      int n=s.length();
@@ -127,14 +125,14 @@ public class FrmAltaEspecialidades extends JFrame {
 					      }
 					   }
 					});
-		
+
 	}
 		return jTextField1;}
 
 	/**
-	 * This method initializes TextField2	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField2
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
@@ -157,9 +155,9 @@ public class FrmAltaEspecialidades extends JFrame {
 	}
 
 	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton1() {
 		if (jButton1 == null) {
@@ -169,7 +167,7 @@ public class FrmAltaEspecialidades extends JFrame {
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
+					System.out.println("Cancelar Alta Especialidad.");
 					cdor.actionCerrar();
 				}
 			});
@@ -178,9 +176,9 @@ public class FrmAltaEspecialidades extends JFrame {
 	}
 
 	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2() {
 		if (jButton2 == null) {
@@ -190,9 +188,9 @@ public class FrmAltaEspecialidades extends JFrame {
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Usuario");	
+					System.out.println("Aceptar Alta Especialidad.");
 					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
+
 				}
 			});
 		}
@@ -200,9 +198,9 @@ public class FrmAltaEspecialidades extends JFrame {
 	}
 
 	/**
-	 * This method initializes jTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField() {
 		if (jTextField == null) {
@@ -218,7 +216,7 @@ public class FrmAltaEspecialidades extends JFrame {
 				   {
 					   e.consume();  // ignorar el evento de teclado
 				   }
-			      
+
 			      //Controlar el largo del text
 			      String s = jTextField.getText();
 			      int n=s.length();

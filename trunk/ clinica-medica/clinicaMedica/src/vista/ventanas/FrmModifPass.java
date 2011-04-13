@@ -28,31 +28,30 @@ public class FrmModifPass extends JFrame{
 	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	
+
 	/**
 	 * This is the default constructor
-	 * @return 
+	 * @return
 	 */
-	public  FrmModifPass(CdorManejoVentanas cdor) {
+	public FrmModifPass(CdorManejoVentanas cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
-		
 	}
-	
+
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,413));
-		this.setResizable(false);		
+		this.setResizable(false);
 		this.setTitle("Usuarios");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);		
+		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
@@ -61,9 +60,9 @@ public class FrmModifPass extends JFrame{
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
@@ -114,9 +113,9 @@ public class FrmModifPass extends JFrame{
 	}
 
 	/**
-	 * This method initializes PassField1	
-	 * 	
-	 * @return javax.swing.JPassField	
+	 * This method initializes PassField1
+	 *
+	 * @return javax.swing.JPassField
 	 */
 	private JPasswordField getJPassField1() {
 		if (jPassField1 == null) {
@@ -127,9 +126,9 @@ public class FrmModifPass extends JFrame{
 		return jPassField1;}
 
 	/**
-	 * This method initializes PassField2	
-	 * 	
-	 * @return javax.swing.JPassField	
+	 * This method initializes PassField2
+	 *
+	 * @return javax.swing.JPassField
 	 */
 	private JPasswordField getJPassField2() {
 		if (jPassField2 == null) {
@@ -141,9 +140,9 @@ public class FrmModifPass extends JFrame{
 
 
 	/**
-	 * This method initializes jPassField	
-	 * 	
-	 * @return javax.swing.JPassField	
+	 * This method initializes jPassField
+	 *
+	 * @return javax.swing.JPassField
 	 */
 	private JPasswordField getJPassField() {
 		if (jPassField == null) {
@@ -154,9 +153,9 @@ public class FrmModifPass extends JFrame{
 	}
 
 	/**
-	 * This method initializes jPassField3	
-	 * 	
-	 * @return javax.swing.JPassField	
+	 * This method initializes jPassField3
+	 *
+	 * @return javax.swing.JPassField
 	 */
 	private JPasswordField getJPassField3() {
 		if (jPassField3 == null) {
@@ -165,11 +164,11 @@ public class FrmModifPass extends JFrame{
 		}
 		return jPassField3;
 	}
-	
+
 	/**
-	 * This method initializes jComboBox	
-	 * 	
-	 * @return javax.swing.JComboBox	
+	 * This method initializes jComboBox
+	 *
+	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
@@ -178,11 +177,11 @@ public class FrmModifPass extends JFrame{
 		}
 		return jComboBox;
 	}
-	
+
 	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton1() {
 		if (jButton1 == null) {
@@ -192,7 +191,7 @@ public class FrmModifPass extends JFrame{
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
+					System.out.println("Cancelar Modificación Contraseña.");
 					cdor.actionCerrar();
 				}
 			});
@@ -201,9 +200,9 @@ public class FrmModifPass extends JFrame{
 	}
 
 	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2() {
 		if (jButton2 == null) {
@@ -213,9 +212,9 @@ public class FrmModifPass extends JFrame{
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Medico");	
+					System.out.println("Aceptar Modificación Contraseña.");
 					//cdor.altaEsp(jPassField1.getText(), jPassField2.getText(), jPassField.getText());
-					
+
 				}
 			});
 		}

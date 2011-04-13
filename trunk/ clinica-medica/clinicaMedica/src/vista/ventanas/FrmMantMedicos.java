@@ -30,7 +30,7 @@ public class FrmMantMedicos extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-	
+
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class FrmMantMedicos extends JFrame {
 		this.setEnabled(true);
 		this.setVisible(true);
 	}
-	
+
 	/**
 	 * This method initializes ContentPane
 	 *
@@ -103,7 +103,7 @@ public class FrmMantMedicos extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Alta Medicos");
 					cdor.actionAltaEsp();
-					
+
 				}
 			});
 		}
@@ -134,25 +134,25 @@ public class FrmMantMedicos extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton21	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton21
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton21() {
 		if (jButton21 == null) {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(59, 151, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación");
+			jButton21.setText("Modificación Médicos");
 			jButton21.setBackground(Color.lightGray);
 		}
 		return jButton21;
 	}
 
 	/**
-	 * This method initializes jButton211	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton211
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton211() {
 		if (jButton211 == null) {
@@ -166,9 +166,9 @@ public class FrmMantMedicos extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton2111	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton2111
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2111() {
 		if (jButton2111 == null) {
@@ -180,4 +180,4 @@ public class FrmMantMedicos extends JFrame {
 		}
 		return jButton2111;
 	}
-}  //  @jve:decl-index=0:visual-constraint="10,10"
+}

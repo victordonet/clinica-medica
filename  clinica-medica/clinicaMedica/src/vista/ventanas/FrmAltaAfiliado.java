@@ -8,20 +8,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.LookAndFeel;
 import vista.controladores.CdorManejoVentanas;
 import datechooser.beans.DateChooserCombo;
 import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JDayChooser;
-import com.toedter.plaf.JCalendarTheme;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Dimension;
 
 public class FrmAltaAfiliado extends JFrame{
 

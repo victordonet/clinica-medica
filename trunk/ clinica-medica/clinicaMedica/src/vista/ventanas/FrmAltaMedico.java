@@ -1,22 +1,25 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import vista.controladores.CdorAltaMedico;
 import vista.controladores.CdorManejoVentanas;
-import java.awt.Color;
-import javax.swing.JComboBox;
 
 public class FrmAltaMedico extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
-	private CdorManejoVentanas cdor;
+	private CdorAltaMedico cdor;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
@@ -36,7 +39,7 @@ public class FrmAltaMedico extends JFrame{
 	 * This is the default constructor
 	 * @return
 	 */
-	public FrmAltaMedico(CdorManejoVentanas cdor) {
+	public FrmAltaMedico(CdorAltaMedico cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -248,8 +251,9 @@ public class FrmAltaMedico extends JFrame{
 	 */
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
-			jComboBox = new JComboBox();
+			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new Rectangle(240, 263, 167, 19));
+			
 		}
 		return jComboBox;
 	}
@@ -290,6 +294,7 @@ public class FrmAltaMedico extends JFrame{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Médico.");
 					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					
 				}
 			});
 		}

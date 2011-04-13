@@ -40,21 +40,21 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 
 	}
 
-	public FrmAltaEspecialidades getVentana() {
-		return ventana;
-	}
-
-	public void setVentana(FrmAltaEspecialidades ventana) {
-		this.ventana = ventana;
-	}
-
-	public ProxyFachadaLogica getMod() {
-		return mod;
-	}
-
-	public void setMod(ProxyFachadaLogica mod) {
-		this.mod = mod;
-	}
+//	public FrmAltaEspecialidades getVentana() {
+//		return ventana;
+//	}
+//
+//	public void setVentana(FrmAltaEspecialidades ventana) {
+//		this.ventana = ventana;
+//	}
+//
+//	public ProxyFachadaLogica getMod() {
+//		return mod;
+//	}
+//
+//	public void setMod(ProxyFachadaLogica mod) {
+//		this.mod = mod;
+//	}
 	
 	public void altaEsp (String IdEsp, String desc, String monto){
 		
@@ -80,8 +80,7 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			e.printStackTrace();
 		}
 		
-		
-		//actionCerrar();
+				
 	}
 
 	@Override

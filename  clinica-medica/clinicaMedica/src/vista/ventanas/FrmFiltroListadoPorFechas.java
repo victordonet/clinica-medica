@@ -10,7 +10,7 @@ import vista.controladores.CdorAltaEsp;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
-public class FrmAltaConsultorio extends JFrame {
+public class FrmFiltroListadoPorFechas extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
@@ -21,15 +21,19 @@ public class FrmAltaConsultorio extends JFrame {
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
+	private JButton jButton3 = null;
+	private JButton jButton4 = null;
 	private CdorAltaEsp cdor;
+	private String titulo;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmAltaConsultorio(CdorAltaEsp cdor) {
+	public FrmFiltroListadoPorFechas(CdorAltaEsp cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
+
 	}
 
 	/**
@@ -41,7 +45,7 @@ public class FrmAltaConsultorio extends JFrame {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
-		this.setTitle("Consultorios");
+		this.setTitle("Listado Afiliado");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -60,18 +64,18 @@ public class FrmAltaConsultorio extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel3 = new JLabel();
-			jLabel3.setBounds(new java.awt.Rectangle(99,178,106,19));
+			jLabel3.setBounds(new Rectangle(171, 187, 90, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Nombre");
+			jLabel3.setText("Fecha Hasta");
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new java.awt.Rectangle(207,13,200,33));
+			jLabel1.setBounds(new Rectangle(165, 13, 242, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText("Alta de Consultorio");
+			jLabel1.setText(titulo);
 			jLabel2 = new JLabel();
-			jLabel2.setBounds(new java.awt.Rectangle(99,150,106,19));
+			jLabel2.setBounds(new Rectangle(171, 159, 90, 19));
 			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Nro. Consultorio");
+			jLabel2.setText("Fecha Desde");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -83,7 +87,9 @@ public class FrmAltaConsultorio extends JFrame {
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(jTextField1, null);
+			jContentPane.add(getJButton3(), null);
+			jContentPane.add(getJButton4(), null);
+			jContentPane.add(getJButton3(), null);
 		}
 		return jContentPane;
 	}
@@ -96,30 +102,21 @@ public class FrmAltaConsultorio extends JFrame {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(223, 149, 45, 19));
+			jTextField1.setBounds(new Rectangle(278, 158, 90, 19));
 			jTextField1.addKeyListener(new KeyAdapter()
-					{
-					   public void keyTyped(KeyEvent e)
-					   {
-						   // Verificar si la tecla pulsada no es un digito
-						   char caracter = e.getKeyChar();
-						   if(((caracter < '0') ||
-								   (caracter > '9')) &&
-								   (caracter != KeyEvent.VK_BACK_SPACE))
-						   {
-							   e.consume();  // ignorar el evento de teclado
-						   }
+			{
+				public void keyTyped(KeyEvent e)
+				{
+					//Controlar el largo del text
+					String s = jTextField1.getText();
+					int n=s.length();
+					if(n >= 20){
+						e.consume();  // ignorar el evento de teclado
+					}
+				}
+			});
 
-					      //Controlar el largo del text
-					      String s = jTextField1.getText();
-					      int n=s.length();
-					      if(n >= 2){
-					    	  e.consume();  // ignorar el evento de teclado
-					      }
-					   }
-					});
-
-	}
+		}
 		return jTextField1;
 	}
 
@@ -131,19 +128,19 @@ public class FrmAltaConsultorio extends JFrame {
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
-			jTextField2.setBounds(new java.awt.Rectangle(221,178,292,19));
+			jTextField2.setBounds(new Rectangle(278, 187, 90, 19));
 			jTextField2.addKeyListener(new KeyAdapter()
-					{
-					   public void keyTyped(KeyEvent e)
-					   {
-						  //Controlar el largo del text
-					      String s = jTextField2.getText();
-					      int n=s.length();
-					      if(n >= 40){
-					    	  e.consume();  // ignorar el evento de teclado
-					      }
-					   }
-					});
+			{
+				public void keyTyped(KeyEvent e)
+				{
+					//Controlar el largo del text
+					String s = jTextField2.getText();
+					int n=s.length();
+					if(n >= 20){
+						e.consume();  // ignorar el evento de teclado
+					}
+				}
+			});
 		}
 		return jTextField2;
 	}
@@ -161,7 +158,7 @@ public class FrmAltaConsultorio extends JFrame {
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Consultorio.");
+					System.out.println("Cancelar Filtro Listado por Fechas.");
 					cdor.actionCerrar();
 				}
 			});
@@ -182,11 +179,51 @@ public class FrmAltaConsultorio extends JFrame {
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Consultorio.");
+					System.out.println("Aceptar Filtro Listado por Fechas");
 					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
 				}
 			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes Button3
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton3() {
+		if (jButton3 == null) {
+			jButton3 = new JButton();
+			jButton3.setBackground(java.awt.Color.lightGray);
+			jButton3.setBounds(new Rectangle(367, 158, 30, 18));
+			jButton3.setText("?");
+			jButton3.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Buscar fecha");
+				}
+			});
+		}
+		return jButton3;
+	}
+
+	/**
+	 * This method initializes Button4
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton4() {
+		if (jButton4 == null) {
+			jButton4 = new JButton();
+			jButton4.setBounds(new Rectangle(367, 187, 30, 18));
+			jButton4.setBackground(java.awt.Color.lightGray);
+			jButton4.setText("?");
+			jButton4.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Buscar fecha");
+				}
+			});
+		}
+		return jButton4;
 	}
 }

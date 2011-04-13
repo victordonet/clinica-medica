@@ -19,7 +19,7 @@ public class FrmMantenerDisp extends JFrame {
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
-	
+
 	private JLabel jLabel5 = null;
 	private JLabel jLabel6 = null;
 	private JLabel jLabel7 = null;
@@ -33,7 +33,7 @@ public class FrmMantenerDisp extends JFrame {
 	private JLabel jLabel15 = null;
 	private JLabel jLabel16 = null;
 	private JLabel jLabel17 = null;
-	
+
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
@@ -42,7 +42,7 @@ public class FrmMantenerDisp extends JFrame {
 	private JTable jTable1 = null;
 	private CdorAltaEsp cdor;
 	private ModeloTablaListEsp modelo = null;
-	
+
 	/**
 	 * This is the default constructor
 	 */
@@ -52,20 +52,20 @@ public class FrmMantenerDisp extends JFrame {
 		//this.modelo = cdor.listarEspecialidades();
 		initialize();
 	}
-	
+
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
-		this.setResizable(false);	
+		this.setResizable(false);
 		this.setTitle("Disponibilidad");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);		
+		this.setVisible(true);
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
@@ -74,9 +74,9 @@ public class FrmMantenerDisp extends JFrame {
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
@@ -89,7 +89,7 @@ public class FrmMantenerDisp extends JFrame {
 			jLabel2.setBounds(new Rectangle(56, 65, 56, 19));
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Médico");
-			
+
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(96, 104, 20, 19));
 			jLabel3.setForeground(java.awt.Color.GRAY);
@@ -126,7 +126,7 @@ public class FrmMantenerDisp extends JFrame {
 			jLabel11.setBounds(new Rectangle(96, 252, 20, 19));
 			jLabel11.setForeground(java.awt.Color.GRAY);
 			jLabel11.setText("16");
-			
+
 			jLabel12 = new JLabel();
 			jLabel12.setForeground(java.awt.Color.GRAY);
 			jLabel12.setBounds(new Rectangle(96, 271, 20, 19));
@@ -139,7 +139,7 @@ public class FrmMantenerDisp extends JFrame {
 			jLabel14.setForeground(java.awt.Color.GRAY);
 			jLabel14.setBounds(new Rectangle(96, 309, 20, 19));
 			jLabel14.setText("22");
-			
+
 			jLabel15 = new JLabel();
 			jLabel15.setBounds(new Rectangle(498, 267, 80, 19));
 			jLabel15.setForeground(java.awt.Color.GRAY);
@@ -152,7 +152,7 @@ public class FrmMantenerDisp extends JFrame {
 			jLabel17.setBounds(new Rectangle(498, 307, 80, 19));
 			jLabel17.setForeground(java.awt.Color.GRAY);
 			jLabel17.setText("No disponible");
-			
+
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -184,23 +184,23 @@ public class FrmMantenerDisp extends JFrame {
 	}
 
 	/**
-	 * This method initializes TextField1	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField1
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(125, 65, 86, 19));
 			jTextField1.setEditable(false);
-		
+
 	}
 		return jTextField1;}
 
 	/**
-	 * This method initializes TextField2	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField2
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
@@ -212,9 +212,9 @@ public class FrmMantenerDisp extends JFrame {
 	}
 
 	/**
-	 * This method initializes jScrollPane	
-	 * 	
-	 * @return javax.swing.JScrollPane	
+	 * This method initializes jScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getJScrollPane(ModeloTablaListEsp modelo) {
 		if (jScrollPane == null) {
@@ -226,9 +226,9 @@ public class FrmMantenerDisp extends JFrame {
 	}
 
 	/**
-	 * This method initializes jTable1	
-	 * 	
-	 * @return javax.swing.JTable	
+	 * This method initializes jTable1
+	 *
+	 * @return javax.swing.JTable
 	 */
 	private JTable getJTable1(ModeloTablaListEsp modelo) {
 		if (jTable1 == null) {
@@ -236,11 +236,11 @@ public class FrmMantenerDisp extends JFrame {
 		}
 		return jTable1;
 	}
-	
+
 	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton1() {
 		if (jButton1 == null) {
@@ -250,7 +250,7 @@ public class FrmMantenerDisp extends JFrame {
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
+					System.out.println("Cancelar Mantenimiento Disponibilidad");
 					cdor.actionCerrar();
 				}
 			});
@@ -259,9 +259,9 @@ public class FrmMantenerDisp extends JFrame {
 	}
 
 	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2() {
 		if (jButton2 == null) {
@@ -271,7 +271,7 @@ public class FrmMantenerDisp extends JFrame {
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Usuario");	
+					System.out.println("Aceptar Mantenimiento Disponibilidad");
 					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
 				}
 			});

@@ -31,7 +31,6 @@ public class FrmMantListadosGerente extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-	
 	}
 
 	/**
@@ -43,7 +42,7 @@ public class FrmMantListadosGerente extends JFrame {
 		this.setSize(new Dimension(330, 406));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
-		this.setTitle("Gerente");
+		this.setTitle("Listados");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -62,7 +61,7 @@ public class FrmMantListadosGerente extends JFrame {
 		this.setEnabled(true);
 		this.setVisible(true);
 	}
-	
+
 	/**
 	 * This method initializes ContentPane
 	 *
@@ -136,9 +135,9 @@ public class FrmMantListadosGerente extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton21	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton21
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton21() {
 		if (jButton21 == null) {
@@ -152,9 +151,9 @@ public class FrmMantListadosGerente extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton211	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton211
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton211() {
 		if (jButton211 == null) {
@@ -168,9 +167,9 @@ public class FrmMantListadosGerente extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton2111	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton2111
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2111() {
 		if (jButton2111 == null) {
@@ -184,9 +183,9 @@ public class FrmMantListadosGerente extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton21111	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton21111
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton21111() {
 		if (jButton21111 == null) {
@@ -200,9 +199,9 @@ public class FrmMantListadosGerente extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton211111	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton211111
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton211111() {
 		if (jButton211111 == null) {
@@ -214,4 +213,4 @@ public class FrmMantListadosGerente extends JFrame {
 		}
 		return jButton211111;
 	}
-}  //  @jve:decl-index=0:visual-constraint="10,10"
+}

@@ -28,7 +28,7 @@ public class FrmMantAfiliados extends JFrame {
 		super();
 		this.cdor = cdor;
 		initialize();
-	
+
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class FrmMantAfiliados extends JFrame {
 		this.setEnabled(true);
 		this.setVisible(true);
 	}
-	
+
 	/**
 	 * This method initializes ContentPane
 	 *
@@ -100,7 +100,7 @@ public class FrmMantAfiliados extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Alta Afiliados");
 					cdor.actionAltaEsp();
-					
+
 				}
 			});
 		}
@@ -131,25 +131,25 @@ public class FrmMantAfiliados extends JFrame {
 	}
 
 	/**
-	 * This method initializes jButton21	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton21
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton21() {
 		if (jButton21 == null) {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(59, 176, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación");
+			jButton21.setText("Modificación Afiliados");
 			jButton21.setBackground(Color.lightGray);
 		}
 		return jButton21;
 	}
 
 	/**
-	 * This method initializes jButton211	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton211
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton211() {
 		if (jButton211 == null) {

@@ -26,25 +26,24 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 	private JTable jTable1 = null;
 	private CdorListadoEsp cdor;
 	private JButton jButton2 = null;
-	private JButton jButton21 = null;
+//	private JButton jButton21 = null;
+
 	/**
 	 * This is the default constructor
-	 * @throws Throwable 
+	 * @throws Throwable
 	 */
 	public FrmListadoAfiliados(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
-	
 		this.modelo = modelo;
 		cdor = control;
 		initialize();
-	
 	}
-	
+
 	/**
 	 * This method initializes frm
-	 * 
+	 *
 	 * @return void
-	 * @throws Throwable 
-	 * @throws ClassNotFoundException 
+	 * @throws Throwable
+	 * @throws ClassNotFoundException
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
 		frm.setSize(new java.awt.Dimension(611,413));
@@ -53,22 +52,21 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 		frm.setTitle("Afiliados");
 		frm.setContentPane(getJContentPane());
 		frm.setLocationRelativeTo(null);
-		frm.setVisible(true);		
+		frm.setVisible(true);
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				
 				cdor.actionCerrar();
 				frm.dispose();
 			}
-		});		
+		});
 	}
 
 	/**
-	 * This method initializes ContentPane	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 * @throws ClassNotFoundException 
-	 * @throws Throwable 
+	 * This method initializes ContentPane
+	 *
+	 * @return javax.swing.JPanel
+	 * @throws ClassNotFoundException
+	 * @throws Throwable
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
 		//if (jContentPane == null) {
@@ -84,8 +82,8 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 			jContentPane.add(jLabel, null);
 			jContentPane.add(getJScrollPane(modelo), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJButton21(), null);
-			
+			//jContentPane.add(getJButton21(), null);
+
 		//}
 		return jContentPane;
 	}
@@ -106,9 +104,9 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 	}
 
 	/**
-	 * This method initializes jScrollPane	
-	 * 	
-	 * @return javax.swing.JScrollPane	
+	 * This method initializes jScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getJScrollPane(ModeloTablaListEsp modelo) {
 		//if (jScrollPane == null) {
@@ -120,9 +118,9 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 	}
 
 	/**
-	 * This method initializes jTable1	
-	 * 	
-	 * @return javax.swing.JTable	
+	 * This method initializes jTable1
+	 *
+	 * @return javax.swing.JTable
 	 */
 	private JTable getJTable1(ModeloTablaListEsp modelo) {
 		//if (jTable1 == null) {
@@ -135,34 +133,19 @@ public class FrmListadoAfiliados extends UnicastRemoteObject implements IObserve
 	}
 
 	/**
-	 * This method initializes jButton2	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes jButton2
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
 			jButton2.setBounds(new Rectangle(309, 332, 110, 26));
 			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2.setText("Aceptar");
+			jButton2.setText("Aceptar Listado de Afiliados");
 			jButton2.setBackground(Color.lightGray);
 		}
 		return jButton2;
 	}
 
-	/**
-	 * This method initializes jButton21	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton21() {
-		if (jButton21 == null) {
-			jButton21 = new JButton();
-			jButton21.setBounds(new Rectangle(168, 332, 110, 26));
-			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Cancelar");
-			jButton21.setBackground(Color.lightGray);
-		}
-		return jButton21;
-	}
 }

@@ -42,43 +42,43 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 
 	/**
 	 * This is the default constructor
-	 * @throws Throwable 
+	 * @throws Throwable
 	 */
 	public FrmReservaTurno(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
 		this.modelo = modelo;
 		//cdor = control;
 		initialize();
 	}
-	
+
 	/**
 	 * This method initializes frm
-	 * 
+	 *
 	 * @return void
-	 * @throws Throwable 
-	 * @throws ClassNotFoundException 
+	 * @throws Throwable
+	 * @throws ClassNotFoundException
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
 		frm.setSize(new Dimension(611,413));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
-		frm.setTitle("Menu");
+		frm.setTitle("Reservas");
 		frm.setContentPane(getJContentPane());
 		frm.setLocationRelativeTo(null);
-		frm.setVisible(true);		
+		frm.setVisible(true);
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				//cdor.actionCerrar();
 				frm.dispose();
 			}
-		});		
+		});
 	}
 
 	/**
 	 * This method initializes ContentPane
-	 * 	
-	 * @return javax.swing.JPanel	
-	 * @throws ClassNotFoundException 
-	 * @throws Throwable 
+	 *
+	 * @return javax.swing.JPanel
+	 * @throws ClassNotFoundException
+	 * @throws Throwable
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
 		if (jContentPane == null) {
@@ -132,7 +132,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	}
 
 	public void update() throws RemoteException {
-		JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
+		//JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
 		try {
 			initialize();
 		} catch (ClassNotFoundException e) {
@@ -143,9 +143,9 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	}
 
 	/**
-	 * This method initializes jScrollPane	
-	 * 	
-	 * @return javax.swing.JScrollPane	
+	 * This method initializes jScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getJScrollPane() {
 		if (jScrollPane == null) {
@@ -156,9 +156,9 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	}
 
 	/**
-	 * This method initializes jTable1	
-	 * 	
-	 * @return javax.swing.JTable	
+	 * This method initializes jTable1
+	 *
+	 * @return javax.swing.JTable
 	 */
 	private JTable getJTable1() {
 		if (jTable1 == null) {
@@ -167,11 +167,11 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		}
 		return jTable1;
 	}
-	
+
 	/**
-	 * This method initializes TextField1	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField1
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
@@ -182,9 +182,9 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		return jTextField1;}
 
 	/**
-	 * This method initializes TextField2	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes TextField2
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
@@ -196,78 +196,36 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	}
 
 	/**
-	 * This method initializes Button1	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
-			jButton1.setBackground(java.awt.Color.lightGray);
-			jButton1.setText("Cancelar");
-			jButton1.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Alta Usuario");
-					//cdor.actionCerrar();
-				}
-			});
-		}
-		return jButton1;
-	}
-
-	/**
-	 * This method initializes Button2	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
-			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Aceptar");
-			jButton2.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Usuario");	
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
-				}
-			});
-		}
-		return jButton2;
-	}
-
-	/**
-	 * This method initializes jTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes jTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField() {
 		if (jTextField == null) {
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(226, 305, 34, 19));
 			jTextField.setEditable(false);
-}
-		return jTextField;}
+		}
+		return jTextField;
+	}
 
 	/**
-	 * This method initializes jComboBox1	
-	 * 	
-	 * @return javax.swing.JComboBox	
+	 * This method initializes jComboBox1
+	 *
+	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getJComboBox1() {
 		if (jComboBox1 == null) {
 			jComboBox1 = new JComboBox();
 			jComboBox1.setBounds(new Rectangle(226, 101, 137, 19));
 		}
-		return jComboBox1;	
+		return jComboBox1;
 	}
 
 	/**
-	 * This method initializes jComboBox2	
-	 * 	
-	 * @return javax.swing.JComboBox	
+	 * This method initializes jComboBox2
+	 *
+	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getJComboBox2() {
 		if (jComboBox2 == null) {
@@ -276,8 +234,50 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		}
 		return jComboBox2;
 	}
-	
+
 	public JFrame getVentana(){
 		return frm;
+	}
+
+	/**
+	 * This method initializes Button1
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton1() {
+		if (jButton1 == null) {
+			jButton1 = new JButton();
+			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
+			jButton1.setBackground(java.awt.Color.lightGray);
+			jButton1.setText("Cancelar Reserva Turno.");
+			jButton1.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Cancelar Reserva de Turno.");
+					//cdor.actionCerrar();
+				}
+			});
+		}
+		return jButton1;
+	}
+
+	/**
+	 * This method initializes Button2
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getJButton2() {
+		if (jButton2 == null) {
+			jButton2 = new JButton();
+			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBackground(java.awt.Color.lightGray);
+			jButton2.setText("Aceptar Reserva Turno.");
+			jButton2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Aceptar Reserva de Turno.");
+					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+				}
+			});
+		}
+		return jButton2;
 	}
 }

@@ -2,8 +2,6 @@ package vista.ventanas;
 
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +11,7 @@ import java.awt.Color;
 import javax.swing.JCheckBox;
 
 
-public class FrmModifAfiliado extends JFrame{
+public class FrmBajaAfiliado extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
@@ -44,7 +42,7 @@ public class FrmModifAfiliado extends JFrame{
 	 * This is the default constructor
 	 * @return
 	 */
-	public  FrmModifAfiliado(CdorManejoVentanas cdor) {
+	public FrmBajaAfiliado(CdorManejoVentanas cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -60,7 +58,6 @@ public class FrmModifAfiliado extends JFrame{
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
 		this.setTitle("Afiliados");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -110,15 +107,15 @@ public class FrmModifAfiliado extends JFrame{
 			jLabel3.setBounds(new Rectangle(110, 105, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
 			jLabel3.setText("Nombre");
-			jLabel1 = new JLabel();
-			jLabel1.setBounds(new Rectangle(174, 11, 216, 33));
-			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
-			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText("Modificación de Afiliado");
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(110, 77, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Nro. Afiliado");
+			jLabel1 = new JLabel();
+			jLabel1.setBounds(new Rectangle(174, 11, 216, 33));
+			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
+			jLabel1.setForeground(new java.awt.Color(118,144,201));
+			jLabel1.setText("Baja de Afiliado");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -148,6 +145,21 @@ public class FrmModifAfiliado extends JFrame{
 		return jContentPane;
 	}
 
+
+	/**
+	 * This method initializes jTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getJTextField() {
+		if (jTextField == null) {
+			jTextField = new JTextField();
+			jTextField.setBounds(new Rectangle(246, 133, 282, 19));
+			jTextField.setEditable(false);
+		}
+		return jTextField;
+	}
+
 	/**
 	 * This method initializes TextField1
 	 *
@@ -170,46 +182,11 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(246, 105, 282, 19));
-			jTextField2.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-			      //Controlar el largo del text
-			      String s = jTextField2.getText();
-			      int n=s.length();
-			      if(n >= 20){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
+			jTextField2.setEditable(false);
 		}
 		return jTextField2;
 	}
 
-/**
-	 * This method initializes jTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
-	private JTextField getJTextField() {
-		if (jTextField == null) {
-			jTextField = new JTextField();
-			jTextField.setBounds(new Rectangle(246, 133, 282, 19));
-			jTextField.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-			      //Controlar el largo del text
-			      String s = jTextField.getText();
-			      int n=s.length();
-			      if(n >= 20){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
-		}
-		return jTextField;
-		}
 
 	/**
 	 * This method initializes jTextField3
@@ -220,27 +197,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(246, 159, 143, 19));
-			jTextField3.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-				   // Verificar si la tecla pulsada no es un digito
-				   char caracter = e.getKeyChar();
-				   if(((caracter < '0') ||
-						   (caracter > '9')) &&
-						   (caracter != KeyEvent.VK_BACK_SPACE))
-				   {
-					   e.consume();  // ignorar el evento de teclado
-				   }
-
-			      //Controlar el largo del text
-			      String s = jTextField3.getText();
-			      int n=s.length();
-			      if(n >= 8){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
+			jTextField3.setEditable(false);
 		}
 		return jTextField3;
 	}
@@ -254,27 +211,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(246, 236, 282, 19));
-			jTextField4.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-				   // Verificar si la tecla pulsada no es un digito
-				   char caracter = e.getKeyChar();
-				   if(((caracter < '0') ||
-						   (caracter > '9')) &&
-						   (caracter != KeyEvent.VK_BACK_SPACE))
-				   {
-					   e.consume();  // ignorar el evento de teclado
-				   }
-
-			      //Controlar el largo del text
-			      String s = jTextField4.getText();
-			      int n=s.length();
-			      if(n >= 50){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
+			jTextField4.setEditable(false);
 		}
 		return jTextField4;
 	}
@@ -288,18 +225,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(246, 184, 282, 19));
-			jTextField5.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-			      //Controlar el largo del text
-			      String s = jTextField5.getText();
-			      int n=s.length();
-			      if(n >= 20){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
+			jTextField5.setEditable(false);
 		}
 		return jTextField5;
 	}
@@ -313,33 +239,9 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField6 == null) {
 			jTextField6 = new JTextField();
 			jTextField6.setBounds(new Rectangle(246, 210, 282, 19));
-			jTextField6.addKeyListener(new KeyAdapter()
-			{
-			   public void keyTyped(KeyEvent e)
-			   {
-			      //Controlar el largo del text
-			      String s = jTextField6.getText();
-			      int n=s.length();
-			      if(n >= 50){
-			    	  e.consume();  // ignorar el evento de teclado
-			      }
-			   }
-			});
+			jTextField6.setEditable(false);
 		}
 		return jTextField6;
-	}
-
-	/**
-	 * This method initializes jCheckBox
-	 *
-	 * @return javax.swing.JCheckBox
-	 */
-	private JCheckBox getJCheckBox() {
-		if (jCheckBox == null) {
-			jCheckBox = new JCheckBox();
-			jCheckBox.setBounds(new Rectangle(243, 292, 17, 16));
-		}
-		return jCheckBox;
 	}
 
 	/* This method initializes jTextField7
@@ -356,6 +258,20 @@ public class FrmModifAfiliado extends JFrame{
 	}
 
 	/**
+	 * This method initializes jCheckBox
+	 *
+	 * @return javax.swing.JCheckBox
+	 */
+	private JCheckBox getJCheckBox() {
+		if (jCheckBox == null) {
+			jCheckBox = new JCheckBox();
+			jCheckBox.setBounds(new Rectangle(243, 292, 17, 16));
+			//jCheckBox.s(false);
+		}
+		return jCheckBox;
+	}
+
+	/**
 	 * This method initializes Button1
 	 *
 	 * @return javax.swing.JButton
@@ -368,7 +284,7 @@ public class FrmModifAfiliado extends JFrame{
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Modificación Afiliado.");
+					System.out.println("Cancelar Baja Afiliado.");
 					cdor.actionCerrar();
 				}
 			});
@@ -389,9 +305,8 @@ public class FrmModifAfiliado extends JFrame{
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Modificación Afiliado.");
+					System.out.println("Aceptar Baja Afiliado.");
 					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-
 				}
 			});
 		}

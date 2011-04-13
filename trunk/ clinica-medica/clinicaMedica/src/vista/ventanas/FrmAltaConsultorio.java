@@ -190,4 +190,3 @@ public class FrmAltaConsultorio extends JFrame {
 		return jButton2;
 	}
 }
-

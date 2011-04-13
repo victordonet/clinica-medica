@@ -1,23 +1,22 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import vista.controladores.CdorAltaEsp;
 import vista.controladores.CdorManejoVentanas;
-import java.awt.Color;
-import javax.swing.JList;
-import javax.swing.JComboBox;
-import javax.swing.JCheckBox;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import datechooser.beans.DateChooserCombo;
+import javax.swing.JPanel;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 public class FrmAltaAfiliado extends JFrame{
 
@@ -45,9 +44,9 @@ public class FrmAltaAfiliado extends JFrame{
 	private JTextField jTextField32 = null;
 	private JLabel jLabel4121 = null;
 	private JTextField jTextField311 = null;
-	private JLabel jLabel41111 = null;
 	private JLabel jLabel41112 = null;
 	private JCheckBox jCheckBox = null;
+	private JPanel jPanel = null;
 	/**
 	 * This is the default constructor
 	 * @return 
@@ -75,7 +74,7 @@ public class FrmAltaAfiliado extends JFrame{
 		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
-			}
+				dispose();			}
 		});
 	}
 
@@ -90,10 +89,6 @@ public class FrmAltaAfiliado extends JFrame{
 			jLabel41112.setBounds(new Rectangle(110, 278, 106, 19));
 			jLabel41112.setText("Fonasa");
 			jLabel41112.setForeground(Color.black);
-			jLabel41111 = new JLabel();
-			jLabel41111.setBounds(new Rectangle(246, 247, 124, 19));
-			jLabel41111.setText(" ");
-			jLabel41111.setForeground(Color.black);
 			jLabel4121 = new JLabel();
 			jLabel4121.setBounds(new Rectangle(110, 194, 106, 19));
 			jLabel4121.setText("Direccion");
@@ -154,9 +149,11 @@ public class FrmAltaAfiliado extends JFrame{
 			jContentPane.add(getJTextField32(), null);
 			jContentPane.add(jLabel4121, null);
 			jContentPane.add(getJTextField311(), null);
-			jContentPane.add(jLabel41111, null);
 			jContentPane.add(jLabel41112, null);
 			jContentPane.add(getJCheckBox(), null);
+			jContentPane.add(getJPanel(), null);
+	
+		
 		}
 		return jContentPane;
 	}
@@ -306,4 +303,23 @@ public class FrmAltaAfiliado extends JFrame{
 			jCheckBox.setBounds(new Rectangle(246, 278, 34, 23));
 		}
 		return jCheckBox;
+	}
+
+	/**
+	 * This method initializes jPanel	
+	 * 	
+	 * @return javax.swing.JPanel	
+	 */
+	private JPanel getJPanel() {
+		if (jPanel == null) {
+			GridLayout gridLayout = new GridLayout();
+			gridLayout.setRows(1);
+			jPanel = new JPanel();
+			jPanel.setLayout(gridLayout);
+			jPanel.setBounds(new Rectangle(249, 245, 132, 25));
+			DateChooserCombo dateChooserCombo1 = new DateChooserCombo();
+			jPanel.add(dateChooserCombo1, null);
+		
+		}
+		return jPanel;
 	}}

@@ -11,6 +11,7 @@ import vista.*;
 import vista.controladores.CdorListadoEsp;
 import vista.controladores.CdorManejoVentanas;
 import vista.controladores.CdorMantEsp;
+import vista.ventanas.FrmAltaAfiliado;
 
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
@@ -33,8 +34,9 @@ public class PruebaClienteRMI {
 			
 			JOptionPane.showMessageDialog(null,"Hizo el lookup");
 			CdorMantEsp ctrl = new CdorMantEsp();
-			ctrl.setMod(facade);
-			ctrl.desplegarVentana(ctrl);	
+			FrmAltaAfiliado frm = new FrmAltaAfiliado(ctrl);
+//			ctrl.setMod(facade);
+//			ctrl.desplegarVentana(ctrl);	
 		} catch (RemoteException e) {
 			e.printStackTrace();			
 			JOptionPane.showMessageDialog(null,"Error de conexion con el Servidor");
@@ -43,7 +45,7 @@ public class PruebaClienteRMI {
 			e.printStackTrace();
 		}
 	}
-
+		
 }
 
 

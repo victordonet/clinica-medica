@@ -66,7 +66,7 @@ public class FrmAltaAfiliado extends JFrame{
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(611,412));
 		this.setResizable(false);		
-		this.setTitle("Espscialidades");
+		this.setTitle("Alta Medicos");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
@@ -121,7 +121,7 @@ public class FrmAltaAfiliado extends JFrame{
 			jLabel1.setBounds(new Rectangle(214, 9, 136, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText(" Alta de Medicos");
+			jLabel1.setText(" Alta de Afiliado");
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(110, 61, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);

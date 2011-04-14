@@ -140,7 +140,7 @@ public class FrmAltaAdmin extends JFrame {
 						  //Controlar el largo del text
 					      String s = jTextField2.getText();
 					      int n=s.length();
-					      if(n >= 50){
+					      if(n >= 20){
 					    	  e.consume();  // ignorar el evento de teclado
 					      }
 					   }
@@ -198,7 +198,8 @@ public class FrmAltaAdmin extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Administrativo.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					cdor.altaAdmin(jTextField1.getText(), jTextField2.getText(),jComboBox.getSelectedIndex());
+					
 
 				}
 			});

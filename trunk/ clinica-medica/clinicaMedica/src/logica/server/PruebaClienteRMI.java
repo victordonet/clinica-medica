@@ -1,23 +1,15 @@
 package logica.server;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
 
-import vista.*;
-import vista.controladores.CdorListadoEsp;
-import vista.controladores.CdorManejoVentanas;
-import vista.controladores.CdorMantEsp;
-import vista.ventanas.FrmAltaAfiliado;
-
-import excepciones.LogicaException;
-import excepciones.PersistenciaException;
-
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
+import vista.controladores.CdorAltaMedico;
+import vista.ventanas.FrmAltaMedico;
+import excepciones.LogicaException;
+import excepciones.PersistenciaException;
 
 public class PruebaClienteRMI {
 
@@ -33,8 +25,8 @@ public class PruebaClienteRMI {
 			IfachadaLogica facade = new ProxyFachadaLogica();
 			
 			JOptionPane.showMessageDialog(null,"Hizo el lookup");
-			CdorMantEsp ctrl = new CdorMantEsp();
-			FrmAltaAfiliado frm = new FrmAltaAfiliado(ctrl);
+			CdorAltaMedico ctrl = new CdorAltaMedico();
+			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
 //			ctrl.setMod(facade);
 //			ctrl.desplegarVentana(ctrl);	
 		} catch (RemoteException e) {

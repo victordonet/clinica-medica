@@ -18,6 +18,7 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 	private FrmAltaMedico ventana;
 	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vino;
+	private Vector<DataEsp> esp;
 	
 	public CdorAltaMedico() {
 		try {
@@ -41,6 +42,7 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 		
 			
 			try {
+				
 				DataMed med = new DataMed(id, nombre, apellido, ci, tel, "A", idEspecialidad);
 				mod.altaMedico(med);
 				JOptionPane.showMessageDialog(null,"Alta ok");
@@ -57,7 +59,7 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 	public DefaultComboBoxModel cargarBox(){
 		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
 		try {
-			Vector<DataEsp> esp = mod.listarEspecialidades();
+			esp = mod.listarEspecialidades();
 			for (DataEsp especialidad : esp){
 				boxMod.addElement(especialidad.getDescripcion());
 			}
@@ -68,7 +70,7 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
-		//
+		
 		return boxMod;
 	}
 	public void desplegarVentana(CdorManejoVentanas vino) {

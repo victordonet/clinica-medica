@@ -100,4 +100,5 @@ public interface IfachadaLogica extends IObservable{
 	public void altaUsuario(DataUsuario usu) throws PersistenciaException, RemoteException;
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException;
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException;
+	public String getTipo(String idUsuario)throws PersistenciaException, RemoteException;
 }

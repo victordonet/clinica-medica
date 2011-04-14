@@ -256,5 +256,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
 		fachada.modifContrasena(clave, pass);
 	}
-
+	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
+		return fachada.getTipo(idUsuario);
+	}
 }

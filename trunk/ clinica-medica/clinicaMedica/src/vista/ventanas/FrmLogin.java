@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorLogin;
 import vista.ventanas.PanelConImagen;
 import java.awt.Rectangle;
 
@@ -21,14 +24,10 @@ public class FrmLogin extends JFrame {
 	private JPasswordField jPassField1 = null;
 	private JTextField jTextField1 = null;
 	
-	
-	
 	public FrmLogin() {
 		super();
 		initialize();
-	
 	}
-	
 	
 	private void initialize() {
 		this.setSize(new java.awt.Dimension(538,373));
@@ -49,7 +48,6 @@ public class FrmLogin extends JFrame {
 		this.setEnabled(true);
 		this.setVisible(true);
 	}
-	
 	
 	private PanelConImagen getJContentPane() {
 		if (jPanel1 == null) {
@@ -74,34 +72,12 @@ public class FrmLogin extends JFrame {
 		return jPanel1;
 	}
 	
-	
 	private JPasswordField getJPassField1() {
 		if (jPassField1 == null) {
 			jPassField1 = new JPasswordField();
 			jPassField1.setBounds(new java.awt.Rectangle(309,151,90,21));
-			jPassField1.addKeyListener(new KeyAdapter()
-					{
-					   public void keyTyped(KeyEvent e)
-					   {
-					      char caracter = e.getKeyChar();
-					      // Verificar si la tecla pulsada no es un digito
-					      if(caracter == KeyEvent.VK_ENTER)
-					      {
-								/*System.out.println("Inicio de cesión");
-								Usuario usu = new Usuario(jTextField1.getText(),jPassField1.getText(),"");
-								boolean ok = EntradaNegocio.getInst().usuarioCorrecto(usu);
-								if ( ok == false){
-									new FrmVentanaException(FrmLogin.this,"Usuario o Clave incorrecta, vuelva a intentarlo...");
-									frmDisable();
-								}else{
-									dispose();
-									new FrmMenu(usu);
-								}*/
-					      }
-					   }
-					});
-				}
-				return jPassField1;
+		}
+		return jPassField1;
 	}
 	
 	private JTextField getJTextField1() {
@@ -112,7 +88,6 @@ public class FrmLogin extends JFrame {
 		return jTextField1;
 	}	
 	
-	
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
@@ -122,19 +97,10 @@ public class FrmLogin extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Inicio de cesión");
-					/*Usuario usu = new Usuario(jTextField1.getText(),jPassField1.getText(),"");
-					boolean ok = EntradaNegocio.getInst().usuarioCorrecto(usu);
-					if ( ok == false){
-						new FrmVentanaException(FrmLogin.this,"Usuario o Clave incorrecta, vuelva a intentarlo...");
-						frmDisable();
-					}else{
-						dispose();
-						new FrmMenu(usu);
-					}*/
+					new CdorLogin().ingresar(jTextField1.getText(),jPassField1.getText());
 				}
 			});
 		}
 		return jButton1;
 	}
 }
-

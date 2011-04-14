@@ -259,4 +259,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
 		return fachada.getTipo(idUsuario);
 	}
+
+	@Override
+	public boolean validarConsultorio(String id) throws PersistenciaException,RemoteException {
+		return fachada.validarConsultorio(id);
+	}
 }

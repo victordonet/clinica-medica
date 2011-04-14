@@ -9,7 +9,6 @@ import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
 import vista.dataobjet.DataAdmin;
-import vista.dataobjet.DataEsp;
 import vista.ventanas.FrmAltaAdmin;
 
 public class CdorAltaAdmin extends CdorManejoVentanas {

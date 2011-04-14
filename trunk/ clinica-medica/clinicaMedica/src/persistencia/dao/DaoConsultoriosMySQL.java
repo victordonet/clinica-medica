@@ -24,5 +24,27 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
+	public boolean validarConsultorio(Transaccion trn, String idConsul) throws PersistenciaException {
+		Boolean validar;
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select id from consultorio WHERE id=?");
+			pst.setString(1, idConsul);
+			ResultSet rst = pst.executeQuery();
+			if(rst.next()){
+				validar = true;
+			}
+			else{
+				validar = false;
+			}
+			rst.close();
+			pst.close();
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+		return validar;
+	}
+
 
 }

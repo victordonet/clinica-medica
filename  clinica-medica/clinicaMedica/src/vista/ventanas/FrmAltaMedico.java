@@ -199,17 +199,11 @@ public class FrmAltaMedico extends JFrame{
 			{
 			   public void keyTyped(KeyEvent e)
 			   {
-				   // Verificar si la tecla pulsada no es un digito
-				   char caracter = e.getKeyChar();
-				   if(((caracter < '0') ||(caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)&&(caracter != '.'))
-				   {
-					   e.consume();  // ignorar el evento de teclado
-				   }
-
+				   
 			      //Controlar el largo del text
 			      String s = jTextField.getText();
 			      int n=s.length();
-			      if(n >= 10){
+			      if(n >= 50){
 			    	  e.consume();  // ignorar el evento de teclado
 			      }
 			   }
@@ -253,6 +247,7 @@ public class FrmAltaMedico extends JFrame{
 		if (jComboBox == null) {
 			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new Rectangle(240, 263, 167, 19));
+			jComboBox.setSelectedIndex(1);
 			
 		}
 		return jComboBox;
@@ -294,7 +289,10 @@ public class FrmAltaMedico extends JFrame{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Médico.");
 					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-					
+					int espIndex = jComboBox.getSelectedIndex();
+					cdor.AltaMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), 
+									jTextField3.getText(), jTextField4.getText(), espIndex);
+					cdor.actionCerrar();
 				}
 			});
 		}

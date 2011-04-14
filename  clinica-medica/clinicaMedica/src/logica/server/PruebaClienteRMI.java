@@ -6,7 +6,9 @@ import javax.swing.JOptionPane;
 
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
+import vista.controladores.CdorAltaAdmin;
 import vista.controladores.CdorAltaMedico;
+import vista.ventanas.FrmAltaAdmin;
 import vista.ventanas.FrmAltaMedico;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
@@ -27,6 +29,10 @@ public class PruebaClienteRMI {
 			JOptionPane.showMessageDialog(null,"Hizo el lookup");
 			CdorAltaMedico ctrl = new CdorAltaMedico();
 			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
+			
+			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
+			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
+			
 //			ctrl.setMod(facade);
 //			ctrl.desplegarVentana(ctrl);	
 		} catch (RemoteException e) {

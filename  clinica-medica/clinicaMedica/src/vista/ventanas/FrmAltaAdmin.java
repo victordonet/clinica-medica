@@ -112,6 +112,15 @@ public class FrmAltaAdmin extends JFrame {
 					{
 					   public void keyTyped(KeyEvent e)
 					   {
+						// Verificar si la tecla pulsada no es un digito
+						   char caracter = e.getKeyChar();
+						   if(((caracter < '0') ||
+								   (caracter > '9')) &&
+								   (caracter != KeyEvent.VK_BACK_SPACE))
+						   {
+							   e.consume();  // ignorar el evento de teclado
+						   }
+
 					      //Controlar el largo del text
 					      String s = jTextField1.getText();
 					      int n=s.length();

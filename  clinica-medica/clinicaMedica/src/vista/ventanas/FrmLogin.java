@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import vista.PanelConImagen;
+import vista.ventanas.PanelConImagen;
 import java.awt.Rectangle;
 
 public class FrmLogin extends JFrame {

@@ -18,7 +18,7 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 	private FrmAltaMedico ventana;
 	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vino;
-	private Vector<DataEsp> esp;
+	private Vector<DataEsp> esp = null;
 	
 	public CdorAltaMedico() {
 		try {
@@ -29,20 +29,20 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 			e.printStackTrace();
 			
 		} catch (LogicaException e) {
-			JOptionPane.showMessageDialog(null,"Error interno del sistema");
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 			
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 			
 		}
 	}
-	public void AltaMedico(String id, String nombre, String apellido, String ci, String tel, int idEspecialidad){
+	public void AltaMedico(String id, String nombre, String apellido, String ci, String tel, int indexEsp){
 		
 			
 			try {
-				
+				int idEspecialidad = esp.get(indexEsp).getCodigo();
 				DataMed med = new DataMed(id, nombre, apellido, ci, tel, "A", idEspecialidad);
 				mod.altaMedico(med);
 				JOptionPane.showMessageDialog(null,"Alta ok");

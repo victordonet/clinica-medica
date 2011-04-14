@@ -1000,4 +1000,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
+	public boolean validarConsultorio(String id) throws PersistenciaException, RemoteException{
+		Transaccion trn = pool.obtenerTrn(8);
+		boolean resultado = false;
+		try {
+			resultado = iDaoConsultorios.validaConsultorio(trn, id);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+		return resultado;
+
+	}
 }

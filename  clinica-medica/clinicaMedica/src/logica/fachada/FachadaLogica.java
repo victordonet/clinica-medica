@@ -985,4 +985,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
+	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		String resultado = null;
+		try {
+			resultado = iDaoU.getTipo(trn, idUsuario);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
+	}
 }

@@ -19,10 +19,10 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		System.out.println("Insertando administrativo: "+ adm.getId());
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Administrativos values (?,?,?,?)");
-			pst.setString (1, adm.getId());
-			pst.setString(2, adm.getNombre());
+			pst.setString (1, adm.getId().toString());
+			pst.setString(2, adm.getNombre().toString());
 			pst.setInt(3, adm.getCargo());
-			pst.setString(4, adm.getEstado());
+			pst.setString(4, adm.getEstado().toString());
 			pst.executeUpdate();
 			pst.close();
 

@@ -2,12 +2,14 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
 import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataEsp;
 import vista.ventanas.FrmAltaAdmin;
 
 public class CdorAltaAdmin extends CdorManejoVentanas {
@@ -83,8 +85,7 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 	public void altaAdmin (String id, String nombre, int cargo){
 		
 		// el cargo es el lugar en el vector que recorro en el combobox
-		
-		DataAdmin da = new DataAdmin(id, nombre, cargo, "A");
+		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
 			mod.altaAdmin(da);
 		} catch (RemoteException e) {
@@ -97,5 +98,13 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 
 		}
 	}
-	public 
+	public DefaultComboBoxModel cargarBox(){
+		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
+		
+			boxMod.addElement("Gerente");
+			boxMod.addElement("Administrador");
+			boxMod.addElement("Cajero");
+			
+			return boxMod;
+	}
 }

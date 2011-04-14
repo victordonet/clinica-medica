@@ -158,6 +158,7 @@ public class FrmAltaAdmin extends JFrame {
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
 			jComboBox = new JComboBox();
+			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new java.awt.Rectangle(222,207,87,19));
 		}
 		return jComboBox;

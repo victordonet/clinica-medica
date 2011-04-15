@@ -87,8 +87,7 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
 			mod.altaAdmin(da);
-			JOptionPane.showMessageDialog(null,"Alta ok");
-			actionCerrar();
+			//actionCerrar();
 			
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());

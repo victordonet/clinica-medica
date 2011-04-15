@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Vector;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultas;
 import vista.dataobjet.VoTurnosDisp;
 import excepciones.PersistenciaException;
 
@@ -123,27 +124,38 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		}
 	}
 
-	public Vector<DataConsulta> listarConsultas(Transaccion trn)
+	public Vector<DataConsultas> listarConsultas(Transaccion trn)
 			throws PersistenciaException {
-		Vector<DataConsulta> consultas  = new Vector<DataConsulta>();
+		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select * from consultas where fecha=?");
+			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, m.nombre+' '+m.apellido as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
 			Calendar hoy = Calendar.getInstance(); 
 			Date fechaHoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(2, fechaHoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
-				Date fecha = rst.getDate("fecha");
-				String idMed = rst.getString("idMedico");
-				String idAfil = rst.getString("idafiliado");
-				int dia = rst.getInt("dia");
 				int idConsultorio = rst.getInt("idConsultorio");
-				int turno = rst.getInt("turno");
-				int horario = rst.getInt("horario");
-				boolean pagoConsulta = rst.getBoolean("timbre");
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(fecha);
-				DataConsulta data = new DataConsulta(cal, idMed, idAfil, dia, idConsultorio, turno, horario, pagoConsulta);
+				String nomMed = rst.getString("nomMed");
+				int hora = rst.getInt("horario");
+				String horario = "";
+				switch (hora) {
+					case 0: horario="00 a 02";
+					case 2: horario="02 a 04";
+					case 4: horario="04 a 06";
+					case 6: horario="06 a 08";
+					case 8: horario="08 a 10";
+					case 10: horario="10 a 12";
+					case 12: horario="12 a 14";
+					case 14: horario="14 a 16";
+					case 16: horario="16 a 18";
+					case 18: horario="18 a 20";
+					case 20: horario="20 a 22";
+					case 22: horario="22 a 24";
+					break;
+					default: horario="sin horario";
+					break;
+				}
+				DataConsultas data = new DataConsultas(idConsultorio, nomMed, horario);
 				consultas.add(data);
 			}
 			rst.close();

@@ -1,12 +1,11 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-import java.util.Calendar;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
 import logica.fachada.IfachadaLogica;
-import vista.dataobjet.DataConsFecha;
+import vista.dataobjet.DataConsultas;
 import vista.ventanas.FrmMenuAdmin;
 
 public class CdorMenuAdmin extends CdorManejoVentanas {
@@ -36,8 +35,7 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 	public ModeloTablaListConsultas listarConsultas (){
 		ModeloTablaListConsultas modelo =null;
 		try {
-			Calendar fecha = Calendar.getInstance();
-			Vector<DataConsFecha> vec = mod.listarConsFecha(fecha);
+			Vector<DataConsultas> vec = mod.listarConsultas();
 			System.out.println(vec.toString());
 			modelo = new ModeloTablaListConsultas(vec);
 			System.out.println(modelo.toString());

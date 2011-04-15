@@ -29,6 +29,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultas;
 import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
@@ -495,9 +496,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public Vector<DataConsulta> listarConsultas() throws PersistenciaException, RemoteException {
+	public Vector<DataConsultas> listarConsultas() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Vector<DataConsulta> resultado = null;
+		Vector<DataConsultas> resultado = null;
 		try {
 			resultado = iDaoC.listarConsultas(trn);
 			trn.finalizarTrn(true);

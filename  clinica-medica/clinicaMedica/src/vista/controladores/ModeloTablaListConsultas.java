@@ -2,22 +2,21 @@ package vista.controladores;
 
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-import vista.dataobjet.DataConsFecha;
+import vista.dataobjet.DataConsultas;
 
 public class ModeloTablaListConsultas extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 1L;
 	private Vector<String> columnas;
-	private Vector<DataConsFecha> datos;
+	private Vector<DataConsultas> datos;
 	
-	public ModeloTablaListConsultas(Vector<DataConsFecha> datosbase){
+	public ModeloTablaListConsultas(Vector<DataConsultas> vec){
 		super ();
 		columnas = new Vector<String>();
 		
-		this.datos = datosbase;
+		this.datos = vec;
 		columnas.add("Medico");
-		//columnas.add("Horario");
-		columnas.add("Turno");
+		columnas.add("Horario");
 		columnas.add("Consultorio");		
 	}
 
@@ -39,8 +38,8 @@ public class ModeloTablaListConsultas extends AbstractTableModel {
 			return (datos.get(row)).getNomMed();
 		}
 		case 1: {
-			System.out.println((datos.get(row)).getTurno());
-			return (datos.get(row)).getTurno();
+			System.out.println((datos.get(row)).getHorario());
+			return (datos.get(row)).getHorario();
 		}
 		case 2:{
 			System.out.println((datos.get(row)).getIdConsultorio());

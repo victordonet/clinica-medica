@@ -72,4 +72,19 @@ public class DaoEspecialidadesMySQL implements IDaoEspecialidades {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
+
+	public void bajaEspecialidad(Transaccion trn, int idEsp) throws PersistenciaException {
+		System.out.println("Eliminando especialidad, id: "+idEsp);
+		try {
+			PreparedStatement pst = trn.preparedStatement("delete from Especialidades values id=?");
+			pst.setInt(1, idEsp);
+			pst.executeUpdate();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+	}
 }

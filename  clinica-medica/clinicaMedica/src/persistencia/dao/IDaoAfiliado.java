@@ -1,6 +1,5 @@
 package persistencia.dao;
 
-import java.util.Calendar;
 import java.util.Vector;
 import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
@@ -12,7 +11,7 @@ import logica.Afiliado;
 public interface IDaoAfiliado {
 
 	public void altaAfiliado(Transaccion trn, DataAfiliado afil) throws PersistenciaException;
-	public void modifAfil(Transaccion trn,String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException;
+	public void modifAfil(Transaccion trn,String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException;
 	public void bajaAfil(Transaccion trn, String id) throws PersistenciaException;
 	public Vector<DataAfiliado> listarAfiliados(Transaccion trn)throws PersistenciaException;
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException;

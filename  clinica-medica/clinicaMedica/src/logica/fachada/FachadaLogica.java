@@ -120,7 +120,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		String idAfil = afil.getId();
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
-			iDaoAfil.altaAfiliado(trn, afil);
+			iDaoAfil.filiado(trn, afil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
@@ -273,6 +273,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			else{
 				trn.finalizarTrn(false);
 				pool.liberarTrn(trn);
+				throw new PersistenciaException("El administrativo ya existe");
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);

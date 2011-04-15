@@ -3,7 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantListadosGerente;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -17,7 +17,7 @@ public class FrmMantListadosGerente extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantListadosGerente cdor;
 	private JButton jButton21 = null;
 	private JButton jButton211 = null;
 	private JButton jButton2111 = null;
@@ -27,9 +27,9 @@ public class FrmMantListadosGerente extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantListadosGerente(CdorMantEsp cdor) {
+	public FrmMantListadosGerente(CdorMantListadosGerente cdorMantListadosGerente) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMantListadosGerente;
 		initialize();
 	}
 
@@ -104,7 +104,7 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar Afiliados");
-					cdor.actionAltaEsp();
+					cdor.actionListarAfil();
 				}
 			});
 		}
@@ -127,7 +127,7 @@ public class FrmMantListadosGerente extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar Médicos");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionListarMed();
 				}
 			});
 		}
@@ -144,8 +144,14 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(59, 132, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Detalle Afiliados");
+			jButton21.setText("Detalle Afiliado");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Detalle Afiliado");
+					cdor.actionDetalleAfil();
+				}
+			});
 		}
 		return jButton21;
 	}
@@ -162,6 +168,12 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton211.setText("Listado de Consultas");
 			jButton211.setBackground(Color.lightGray);
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Listado de Consultas");
+					cdor.actionListarConsultas();
+				}
+			});
 		}
 		return jButton211;
 	}
@@ -178,6 +190,12 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton2111.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton2111.setText("Liquidación de Salarios");
 			jButton2111.setBackground(Color.lightGray);
+			jButton2111.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Liquidación de Salarios");
+					cdor.actionLiqSalarios();
+				}
+			});
 		}
 		return jButton2111;
 	}
@@ -194,6 +212,12 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton21111.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21111.setText("Medico Premiado");
 			jButton21111.setBackground(Color.lightGray);
+			jButton21111.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Medico Premiado");
+					cdor.actionMedPremiado();
+				}
+			});
 		}
 		return jButton21111;
 	}
@@ -210,6 +234,12 @@ public class FrmMantListadosGerente extends JFrame {
 			jButton211111.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton211111.setText("Resumen Contable");
 			jButton211111.setBackground(Color.lightGray);
+			jButton211111.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Resumen Contable");
+					cdor.actionResumentCont();
+				}
+			});
 		}
 		return jButton211111;
 	}

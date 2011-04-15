@@ -3,7 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantListadosAdmin;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -17,16 +17,16 @@ public class FrmMantListadosAdmin extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantListadosAdmin cdor;
 	private JButton jButton21 = null;
 	private JButton jButton211 = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantListadosAdmin(CdorMantEsp cdor) {
+	public FrmMantListadosAdmin(CdorMantListadosAdmin cdorMantListadosAdmin) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMantListadosAdmin;
 		initialize();
 	}
 
@@ -98,8 +98,7 @@ public class FrmMantListadosAdmin extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar Afiliados");
-					cdor.actionAltaEsp();
-					
+					cdor.actionListarAfil();
 				}
 			});
 		}
@@ -122,7 +121,7 @@ public class FrmMantListadosAdmin extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar Médicos");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionListarMed();
 				}
 			});
 		}
@@ -139,8 +138,15 @@ public class FrmMantListadosAdmin extends JFrame {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(58, 178, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Detalle Afiliados");
+			jButton21.setText("Detalle Afiliado");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Detalle Afiliado");
+					System.out.println(cdor.toString());
+					cdor.actionDetalleAfil();
+				}
+			});
 		}
 		return jButton21;
 	}
@@ -157,6 +163,13 @@ public class FrmMantListadosAdmin extends JFrame {
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton211.setText("Listado de Consultas");
 			jButton211.setBackground(Color.lightGray);
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Listado de Consultas");
+					System.out.println(cdor.toString());
+					cdor.actionListarConsultas();
+				}
+			});
 		}
 		return jButton211;
 	}

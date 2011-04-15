@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorManejoVentanas;
+import vista.controladores.CdorModifAfil;
 import java.awt.Color;
 import javax.swing.JCheckBox;
 
@@ -37,14 +37,14 @@ public class FrmModifAfiliado extends JFrame{
 	private JTextField jTextField7 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorManejoVentanas cdor;
+	private CdorModifAfil cdor;
 	private JCheckBox jCheckBox = null;
 
 	/**
 	 * This is the default constructor
 	 * @return
 	 */
-	public  FrmModifAfiliado(CdorManejoVentanas cdor) {
+	public  FrmModifAfiliado(CdorModifAfil cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -390,8 +390,7 @@ public class FrmModifAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Afiliado.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-
+					cdor.modifAfil(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jCheckBox.getToolTipText());
 				}
 			});
 		}

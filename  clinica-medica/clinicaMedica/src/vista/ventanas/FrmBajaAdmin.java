@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorBajaAdmin;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -21,14 +21,14 @@ public class FrmBajaAdmin extends JFrame {
 	private JTextField jTextField3 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
+	private CdorBajaAdmin cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmBajaAdmin(CdorAltaEsp cdor) {
+	public FrmBajaAdmin(CdorBajaAdmin cdorBajaAdmin) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorBajaAdmin;
 		initialize();
 
 	}
@@ -104,9 +104,9 @@ public class FrmBajaAdmin extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(223, 149, 86, 19));
 			jTextField1.setEditable(false);
-
+		}
+		return jTextField1;
 	}
-		return jTextField1;}
 
 	/**
 	 * This method initializes TextField2
@@ -171,8 +171,7 @@ public class FrmBajaAdmin extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Baja Administrativo");
-					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
-
+					cdor.bajaAdmin(jTextField1.getText());
 				}
 			});
 		}

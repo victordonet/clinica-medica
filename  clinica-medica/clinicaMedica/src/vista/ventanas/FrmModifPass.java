@@ -5,8 +5,10 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import vista.controladores.CdorManejoVentanas;
+import javax.swing.JTextField;
+import vista.controladores.CdorModifPass;
 import java.awt.Color;
 import javax.swing.JComboBox;
 
@@ -20,11 +22,11 @@ public class FrmModifPass extends JFrame{
 	private JLabel jLabel4 = null;
 	private JLabel jLabel5 = null;
 	private JLabel jLabel6 = null;
+	private JTextField jTextField1 = null;
 	private JPasswordField jPassField = null;
-	private JPasswordField jPassField1 = null;
 	private JPasswordField jPassField2 = null;
 	private JPasswordField jPassField3 = null;
-	private CdorManejoVentanas cdor;
+	private CdorModifPass cdor;
 	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -33,7 +35,7 @@ public class FrmModifPass extends JFrame{
 	 * This is the default constructor
 	 * @return
 	 */
-	public FrmModifPass(CdorManejoVentanas cdor) {
+	public FrmModifPass(CdorModifPass cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -103,7 +105,7 @@ public class FrmModifPass extends JFrame{
 			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJPassField1(), null);
+			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJPassField2(), null);
 			jContentPane.add(getJPassField(), null);
 			jContentPane.add(getJPassField3(), null);
@@ -113,17 +115,18 @@ public class FrmModifPass extends JFrame{
 	}
 
 	/**
-	 * This method initializes PassField1
+	 * This method initializes TextField1
 	 *
-	 * @return javax.swing.JPassField
+	 * @return javax.swing.JTextField
 	 */
-	private JPasswordField getJPassField1() {
-		if (jPassField1 == null) {
-			jPassField1 = new JPasswordField();
-			jPassField1.setBounds(new Rectangle(293, 113, 94, 19));
-			jPassField1.setEditable(false);
+	private JTextField getJTextField1() {
+		if (jTextField1 == null) {
+			jTextField1 = new JTextField();
+			jTextField1.setBounds(new Rectangle(293, 113, 94, 19));
+			jTextField1.setEditable(false);
+		}
+		return jTextField1;
 	}
-		return jPassField1;}
 
 	/**
 	 * This method initializes PassField2
@@ -213,8 +216,14 @@ public class FrmModifPass extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Contraseña.");
-					//cdor.altaEsp(jPassField1.getText(), jPassField2.getText(), jPassField.getText());
-
+					//Valido datos
+					boolean validar = cdor.validarPass(jPassField.getText(), jPassField2.getText());
+					if (validar){
+						//Modifico
+						cdor.modifPass(jTextField1.getText(), jPassField.getText());	
+					}else{
+						JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
+					}
 				}
 			});
 		}

@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdroAltaConsultorio;
+import vista.controladores.CdorAltaConsultorio;
 
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -22,12 +22,12 @@ public class FrmAltaConsultorio extends JFrame {
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdroAltaConsultorio cdor;
+	private CdorAltaConsultorio cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmAltaConsultorio(CdroAltaConsultorio cdor) {
+	public FrmAltaConsultorio(CdorAltaConsultorio cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();

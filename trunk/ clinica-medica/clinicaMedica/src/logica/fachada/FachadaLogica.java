@@ -120,7 +120,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		String idAfil = afil.getId();
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
-			iDaoAfil.filiado(trn, afil);
+			iDaoAfil.altaAfiliado(trn, afil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}

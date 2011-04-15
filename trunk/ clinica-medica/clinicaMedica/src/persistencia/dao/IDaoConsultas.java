@@ -14,5 +14,6 @@ public interface IDaoConsultas {
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn, String idMed) throws PersistenciaException;
 	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, String idAfil, int consult, int turno, int horario, boolean timbre) throws PersistenciaException;
 	public void elimConsultasAfil(Transaccion trn, String idAfil) throws PersistenciaException;
-
+	public Vector<DataConsulta> listarConsultas(Transaccion trn) throws PersistenciaException;
+	
 }

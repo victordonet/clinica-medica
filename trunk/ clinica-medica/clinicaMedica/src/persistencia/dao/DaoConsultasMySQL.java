@@ -122,4 +122,36 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
+
+	public Vector<DataConsulta> listarConsultas(Transaccion trn)
+			throws PersistenciaException {
+		Vector<DataConsulta> consultas  = new Vector<DataConsulta>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("select * from consultas where fecha=?");
+			Calendar hoy = Calendar.getInstance(); 
+			Date fechaHoy = new java.sql.Date(hoy.getTimeInMillis());
+			pst.setDate(2, fechaHoy);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				Date fecha = rst.getDate("fecha");
+				String idMed = rst.getString("idMedico");
+				String idAfil = rst.getString("idafiliado");
+				int dia = rst.getInt("dia");
+				int idConsultorio = rst.getInt("idConsultorio");
+				int turno = rst.getInt("turno");
+				int horario = rst.getInt("horario");
+				boolean pagoConsulta = rst.getBoolean("timbre");
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(fecha);
+				DataConsulta data = new DataConsulta(cal, idMed, idAfil, dia, idConsultorio, turno, horario, pagoConsulta);
+				consultas.add(data);
+			}
+			rst.close();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		return consultas;
+	}
 }

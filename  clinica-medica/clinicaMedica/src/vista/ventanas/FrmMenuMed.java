@@ -3,7 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMenuMed;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -14,14 +14,14 @@ public class FrmMenuMed extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMenuMed cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMenuMed(CdorMantEsp cdor) {
+	public FrmMenuMed(CdorMenuMed cdorMenuMed) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMenuMed;
 		initialize();
 	}
 
@@ -91,8 +91,7 @@ public class FrmMenuMed extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar consultas");
-					cdor.actionAltaEsp();
-					
+					cdor.actionListadoConsutlas();
 				}
 			});
 		}
@@ -115,7 +114,7 @@ public class FrmMenuMed extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación de Contraseña");
 					System.out.println(cdor.toString());
-					//cdor.actionListarEsp();
+					cdor.actionModifPass();
 				}
 			});
 		}

@@ -135,7 +135,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException {
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
@@ -144,7 +144,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
-				iDaoAfil.modifAfil(trn, idAfil, nom, apel, ci, mail, dir, tel, ing, fon);
+				iDaoAfil.modifAfil(trn, idAfil, nom, apel, ci, mail, dir, tel, fon);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}
@@ -573,6 +573,24 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw e;
 		}
 		return es;
+	}
+	public void bajaEspecialidad(int idEsp) throws RemoteException, PersistenciaException  {
+		Transaccion trn = pool.obtenerTrn(8);
+		try {
+			if (iDaoEsp.obtenerEspecialidad(trn, idEsp)==null){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
+				throw new PersistenciaException("La especialidad no existe.");
+			}else{
+				iDaoEsp.bajaEspecialidad(trn, idEsp);
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
+			}
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
 	}
 	
 	//EXAMENES
@@ -1018,7 +1036,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 
 	}
 	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException {
-
 		Transaccion trn = pool.obtenerTrn(8);
 		int idConsultorio = consultorio.getIdConsultorio();
 		try {
@@ -1038,5 +1055,36 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-
+	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		try {
+			if (iDaoConsultorios.validaConsultorio(trn, idConsultorio)){
+				iDaoConsultorios.bajaConsultorio(trn, idConsultorio);
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
+			}
+			else{
+				throw new PersistenciaException("El consultorio no existe");
+			}
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+	}
+	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<DataConsultorio> resultado = null;
+		try {
+			resultado = iDaoConsultorios.listarConsultorios(trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
+	}
 }

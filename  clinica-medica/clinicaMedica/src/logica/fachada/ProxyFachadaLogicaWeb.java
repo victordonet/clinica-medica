@@ -23,6 +23,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -78,39 +79,22 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
     
 	//GENERALES
-
 	public void addObsMenuGA(IObserver obs) throws RemoteException {
-
 		fachada.addObsMenuGA(obs);
 	}
-
-
 	public void remObsMenuGA(IObserver obs) throws RemoteException {
-		
 		fachada.remObsMenuGA(obs);
 	}
-
-
 	public void notificarMenuGA() throws RemoteException {
-	
 		fachada.notificarMenuGA();
 	}
-
-
 	public void addObsReservaTurno(IObserver obs) throws RemoteException {
-		
 		fachada.addObsReservaTurno(obs);
 	}
-
-	
 	public void remObsRservaTurno(IObserver obs) throws RemoteException {
-		
 		fachada.remObsRservaTurno(obs);
 	}
-
-	
 	public void notificarReservaTurno() throws RemoteException {
-		
 		fachada.notificarReservaTurno();
 	}
 
@@ -118,8 +102,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		fachada.altaAfiliado(afil);
 	}
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException {
-		fachada.modifAfil(idAfil, nom, apel, ci, mail, dir, tel, ing, fon);
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException {
+		fachada.modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fon);
 	}
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
 		fachada.bajaAfil(id);
@@ -200,6 +184,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
 		return fachada.obtenerEspecialidad(idEsp);
+	}
+	public void bajaEspecialidad(int idEsp) throws RemoteException, PersistenciaException {
+		fachada.bajaEspecialidad(idEsp);
 	}
 	
 	//EXAMENES
@@ -294,5 +281,19 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
 		return fachada.getTipo(idUsuario);
+	}
+	
+	//CONSULTORIOS
+	public boolean validarConsultorio(int id) throws PersistenciaException,RemoteException {
+		return fachada.validarConsultorio(id);
+	}
+	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException{
+		fachada.altaConsultorio(consultorio);
+	}
+	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException {
+		fachada.bajaConsultorio(idConsultorio);
+	}
+	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
+		return fachada.listarConsultorios();
 	}
 }

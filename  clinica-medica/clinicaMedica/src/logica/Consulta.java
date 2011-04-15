@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 public class Consulta implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private Calendar fecha;
 	private int dia,horario,turno,idConsultorio;
 	private Afiliado afil;

@@ -86,14 +86,10 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		// el cargo es el lugar en el vector que recorro en el combobox
 		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
-			if(mod.validarAdmin(id)==false)
-			{
-				mod.altaAdmin(da);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null,"El Administrativo que intenta dar de alta ya existe");
-			}
+			mod.altaAdmin(da);
+			JOptionPane.showMessageDialog(null,"Alta ok");
+			actionCerrar();
+			
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();

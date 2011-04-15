@@ -3,8 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantMedico;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -18,7 +17,7 @@ public class FrmMantMedicos extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantMedico cdor;
 	private JButton jButton21 = null;
 	private JButton jButton211 = null;
 	private JButton jButton2111 = null;
@@ -26,9 +25,9 @@ public class FrmMantMedicos extends JFrame {
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantMedicos(CdorMantEsp cdor) {
+	public FrmMantMedicos(CdorMantMedico cdorMantMedico) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMantMedico;
 		initialize();
 
 	}
@@ -102,8 +101,7 @@ public class FrmMantMedicos extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Alta Medicos");
-					cdor.actionAltaEsp();
-
+					cdor.actionAltaMed();
 				}
 			});
 		}
@@ -126,7 +124,7 @@ public class FrmMantMedicos extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Baja Médicos");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionBajaMed();
 				}
 			});
 		}
@@ -145,6 +143,12 @@ public class FrmMantMedicos extends JFrame {
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21.setText("Modificación");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Medicos");
+					cdor.actionModifMed();
+				}
+			});
 		}
 		return jButton21;
 	}
@@ -161,6 +165,12 @@ public class FrmMantMedicos extends JFrame {
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton211.setText("Modificación de Consultas");
 			jButton211.setBackground(Color.lightGray);
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Consultas");
+					cdor.actionModifConsultas();
+				}
+			});
 		}
 		return jButton211;
 	}
@@ -177,6 +187,12 @@ public class FrmMantMedicos extends JFrame {
 			jButton2111.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton2111.setText("Modificación de Usuario");
 			jButton2111.setBackground(Color.lightGray);
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Usuario");
+					cdor.actionModifPass();
+				}
+			});
 		}
 		return jButton2111;
 	}

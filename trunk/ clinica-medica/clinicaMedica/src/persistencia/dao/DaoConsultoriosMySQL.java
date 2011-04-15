@@ -1,9 +1,14 @@
 package persistencia.dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import logica.Consultorio;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataConsultorio;
 import excepciones.PersistenciaException;
 
 public class DaoConsultoriosMySQL implements IDaoConsultorios {
@@ -24,11 +29,11 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
-	public boolean validarConsultorio(Transaccion trn, String idConsul) throws PersistenciaException {
+	public boolean validaConsultorio(Transaccion trn, int idConsul) throws PersistenciaException {
 		Boolean validar;
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id from consultorio WHERE id=?");
-			pst.setString(1, idConsul);
+			pst.setInt(1, idConsul);
 			ResultSet rst = pst.executeQuery();
 			if(rst.next()){
 				validar = true;
@@ -45,6 +50,21 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 		}
 		return validar;
 	}
-
+	public void altaConsultorio(Transaccion trn, DataConsultorio consultorio) throws PersistenciaException {
+		
+		try {
+			PreparedStatement pst = trn.preparedStatement("insert into Consultorios values (?,?)");
+			pst.setInt (1, consultorio.getIdConsultorio());
+			pst.setString(2, consultorio.getNombre());
+			pst.executeUpdate();
+			pst.close();
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

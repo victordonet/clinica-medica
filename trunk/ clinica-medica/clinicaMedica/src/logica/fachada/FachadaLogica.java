@@ -29,6 +29,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -1000,7 +1001,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public boolean validarConsultorio(String id) throws PersistenciaException, RemoteException{
+	public boolean validarConsultorio(int id) throws PersistenciaException, RemoteException{
 		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = false;
 		try {
@@ -1015,4 +1016,26 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return resultado;
 
 	}
+	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException {
+
+		Transaccion trn = pool.obtenerTrn(8);
+		int idConsultorio = consultorio.getIdConsultorio();
+		try {
+			if (iDaoConsultorios.validaConsultorio(trn, idConsultorio)==false){
+			iDaoConsultorios.altaConsultorio(trn, consultorio);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+			}
+			else{
+			
+				throw new PersistenciaException("El consultorio ya existe");
+			}
+				
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+	}
+
 }

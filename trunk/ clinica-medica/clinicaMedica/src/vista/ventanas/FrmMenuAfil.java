@@ -3,8 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMenuAfil;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -16,14 +15,14 @@ public class FrmMenuAfil extends JFrame {
 	private JButton jButton2 = null;
 	private JButton jButton3 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMenuAfil cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMenuAfil(CdorMantEsp cdor) {
+	public FrmMenuAfil(CdorMenuAfil cdorMenuAfil) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMenuAfil;
 		initialize();
 	
 	}
@@ -95,8 +94,7 @@ public class FrmMenuAfil extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listar consultas");
-					cdor.actionAltaEsp();
-					
+					cdor.actionListadoConsutlas();
 				}
 			});
 		}
@@ -119,7 +117,7 @@ public class FrmMenuAfil extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Reserva de turno");
 					System.out.println(cdor.toString());
-					//cdor.actionListarEsp();
+					cdor.actionReservaTurno();
 				}
 			});
 		}
@@ -142,7 +140,7 @@ public class FrmMenuAfil extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación de contraseña");
 					System.out.println(cdor.toString());
-					//cdor.actionListarEsp();
+					cdor.actionModifPass();
 				}
 			});
 		}

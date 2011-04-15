@@ -11,8 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import logica.observer.IObserver;
-import vista.controladores.CdorListadoEsp;
-import vista.controladores.ModeloTablaListEsp;
+import vista.controladores.CdorMenuAdmin;
+import vista.controladores.ModeloTablaListConsultas;
 import java.awt.Dimension;
 import javax.swing.JButton;
 
@@ -21,12 +21,12 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
-	//private JTable jTable = null;
+	private JTable jTable = null;
 	private JLabel jLabel = null;
-	private ModeloTablaListEsp modelo = null;
+	private ModeloTablaListConsultas modelo = null;
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
-	//private CdorListadoEsp cdor;
+	private CdorMenuAdmin cdor;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JButton jButton4 = null;
@@ -38,9 +38,9 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	 * This is the default constructor
 	 * @throws Throwable 
 	 */
-	public FrmMenuAdmin(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
+	public FrmMenuAdmin(ModeloTablaListConsultas modelo, CdorMenuAdmin cdorMenuAdmin)throws Throwable {
 		this.modelo = modelo;
-		//cdor = control;
+		cdor = cdorMenuAdmin;
 		initialize();
 	}
 	
@@ -61,12 +61,25 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 		frm.setVisible(true);		
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				//cdor.actionCerrar();
-				frm.dispose();
+				frmCerrar();
 			}
 		});		
 	}
 
+	public void frmDisable(){
+		frm.setEnabled(false);
+	}
+
+	public void frmEnable(){
+		frm.setEnabled(true);
+		frm.setVisible(true);
+		frm.setFocusable(true);
+	}
+	
+	public void frmCerrar(){
+		frm.dispose();
+	}
+	
 	/**
 	 * This method initializes ContentPane
 	 * 	
@@ -153,7 +166,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Mantenimiento de afiliados");
-					//cdor.actionAltaEsp();
+					cdor.actionMantAfil();
 				}
 			});
 		}
@@ -175,7 +188,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Mantenimiento de médicos");
-					//cdor.actionAltaEsp();
+					cdor.actionMantMed();
 				}
 			});
 		}
@@ -197,7 +210,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton4.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Mantenimiento de exámenes");
-					//cdor.actionAltaEsp();
+					cdor.actionMantExamenes();
 				}
 			});
 		}
@@ -219,7 +232,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton5.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Mantenimiento de consultorios");
-					//cdor.actionAltaEsp();
+					cdor.actionMantConsultorios();
 				}
 			});
 		}
@@ -241,7 +254,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton6.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Mantenimiento de especialidades");
-					//cdor.actionAltaEsp();
+					cdor.actionMantEsp();
 				}
 			});
 		}
@@ -263,7 +276,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jButton7.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Listados");
-					//cdor.actionAltaEsp();
+					cdor.actionListados();
 				}
 			});
 		}

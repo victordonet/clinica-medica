@@ -3,7 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantAdmin;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -17,14 +17,14 @@ public class FrmMantAdmin extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantAdmin cdor;
 	private JButton jButton21 = null;
 	private JButton jButton211 = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantAdmin(CdorMantEsp cdor) {
+	public FrmMantAdmin(CdorMantAdmin cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -99,8 +99,7 @@ public class FrmMantAdmin extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Alta Administrativo");
-					cdor.actionAltaEsp();
-
+					cdor.actionAltaAdmin();
 				}
 			});
 		}
@@ -123,7 +122,7 @@ public class FrmMantAdmin extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Baja Administrativo");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionBajaAdmin();
 				}
 			});
 		}
@@ -140,8 +139,15 @@ public class FrmMantAdmin extends JFrame {
 			jButton21 = new JButton();
 			jButton21.setBounds(new Rectangle(60, 177, 204, 32));
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.setText("Modificación");
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Administrativo");
+					System.out.println(cdor.toString());
+					cdor.actionModifAdmin();
+				}
+			});
 		}
 		return jButton21;
 	}
@@ -156,8 +162,15 @@ public class FrmMantAdmin extends JFrame {
 			jButton211 = new JButton();
 			jButton211.setBounds(new Rectangle(60, 230, 204, 32));
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton211.setText("Modificación de Usuario");
 			jButton211.setBackground(Color.lightGray);
+			jButton211.setText("Modificación de Usuario");
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Usuario");
+					System.out.println(cdor.toString());
+					cdor.actionModifPass();
+				}
+			});
 		}
 		return jButton211;
 	}

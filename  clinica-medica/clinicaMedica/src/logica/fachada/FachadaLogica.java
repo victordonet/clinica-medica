@@ -495,6 +495,21 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
+	public Vector<DataConsulta> listarConsultas() throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<DataConsulta> resultado = null;
+		try {
+			resultado = iDaoC.listarConsultas(trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
+	}
 	
 	//DISPONIBILIDAD
 	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {

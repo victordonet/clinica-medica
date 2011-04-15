@@ -166,6 +166,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void altaConsulta(DataReservaTurno dataResTurno)  throws PersistenciaException, RemoteException {
 		fachada.altaConsulta(dataResTurno);
 	}
+	public Vector<DataConsulta> listarConsultas() throws PersistenciaException, RemoteException {
+		return fachada.listarConsultas();
+	}
 	
 	//DISPONIBILIDAD
 	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {

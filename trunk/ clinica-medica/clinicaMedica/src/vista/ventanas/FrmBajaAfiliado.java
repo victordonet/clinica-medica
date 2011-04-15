@@ -6,10 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorManejoVentanas;
+import vista.controladores.CdorBajaAfil;
 import java.awt.Color;
 import javax.swing.JCheckBox;
-
 
 public class FrmBajaAfiliado extends JFrame{
 
@@ -35,14 +34,14 @@ public class FrmBajaAfiliado extends JFrame{
 	private JTextField jTextField7 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorManejoVentanas cdor;
+	private CdorBajaAfil cdor;
 	private JCheckBox jCheckBox = null;
 
 	/**
 	 * This is the default constructor
 	 * @return
 	 */
-	public FrmBajaAfiliado(CdorManejoVentanas cdor) {
+	public FrmBajaAfiliado(CdorBajaAfil cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -306,7 +305,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Baja Afiliado.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					cdor.bajaAfil(jTextField1.getText());
 				}
 			});
 		}

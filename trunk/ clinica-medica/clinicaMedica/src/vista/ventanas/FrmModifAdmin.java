@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorModifAdmin;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -21,14 +21,14 @@ public class FrmModifAdmin extends JFrame {
 	private JTextField jTextField3 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
+	private CdorModifAdmin cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmModifAdmin(CdorAltaEsp cdor) {
+	public FrmModifAdmin(CdorModifAdmin cdorModifAdmin) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorModifAdmin;
 		initialize();
 
 	}
@@ -169,13 +169,11 @@ public class FrmModifAdmin extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Administrativo.");
-					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
-
+					cdor.modifAdmin(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
 				}
 			});
 		}
 		return jButton2;
 	}
-
 }
 

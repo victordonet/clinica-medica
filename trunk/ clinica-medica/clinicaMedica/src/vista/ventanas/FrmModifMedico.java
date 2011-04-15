@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorManejoVentanas;
+import vista.controladores.CdorModifMedico;
+
 import java.awt.Color;
 import javax.swing.JComboBox;
 
@@ -28,7 +29,7 @@ public class FrmModifMedico extends JFrame{
 	private JTextField jTextField2 = null;
 	private JTextField jTextField3 = null;
 	private JTextField jTextField4 = null;
-	private CdorManejoVentanas cdor;
+	private CdorModifMedico cdor;
 	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -37,7 +38,7 @@ public class FrmModifMedico extends JFrame{
 	 * This is the default constructor
 	 * @return
 	 */
-	public FrmModifMedico(CdorManejoVentanas cdor) {
+	public FrmModifMedico(CdorModifMedico cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -301,7 +302,7 @@ public class FrmModifMedico extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Médico.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					cdor.modifMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(),jTextField3.getText(), jTextField4.getText(),jComboBox.getToolTipText());
 				}
 			});
 		}

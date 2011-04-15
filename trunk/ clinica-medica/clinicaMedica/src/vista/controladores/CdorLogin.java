@@ -6,6 +6,10 @@ import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
 import vista.ventanas.FrmLogin;
+import vista.ventanas.FrmMenuAdmin;
+import vista.ventanas.FrmMenuAfil;
+import vista.ventanas.FrmMenuGerente;
+import vista.ventanas.FrmMenuMed;
 
 public class CdorLogin extends CdorManejoVentanas {
 	
@@ -33,26 +37,33 @@ public class CdorLogin extends CdorManejoVentanas {
 	    	String msg = "Debe cargar todos los campos solicitados.";
 	    	JOptionPane.showMessageDialog(null,msg);
 	    }else {
-			try {
-				usuOk = mod.validarUsuario(usu, pass);
-				if(usuOk){
-					String tipo = mod.getTipo(usu);
-					if (tipo.equals("ME")){
-						//new CdorMenuMed();
-					}else {
-						if (tipo.equals("AF")){
-							//new CdorMenuAfil();							
-						}else {
-							if (tipo.equals("AD")){
-								//new CdorMenuAdmin();
-							}
-						}
-					}
-					actionCerrar();
-				} else {
-			    	String msg = "Usuario o Contraseña invalido.";
-			    	JOptionPane.showMessageDialog(null,msg);
-				}
+	    	try {
+	    		usuOk = mod.validarUsuario(usu, pass);
+	    		if(usuOk){
+	    			String tipo = mod.getTipo(usu);
+	    			if (tipo.equals("ME")){
+	    				CdorMenuMed cdorMenu = new CdorMenuMed();
+	    				new FrmMenuMed(cdorMenu);
+	    			}else {
+	    				if (tipo.equals("AF")){
+	    					CdorMenuAfil cdorMenu = new CdorMenuAfil();
+	    					new FrmMenuAfil(cdorMenu);						
+	    				}else {
+	    					if (tipo.equals("AD")){
+	    						CdorMenuAdmin cdorMenu = new CdorMenuAdmin();
+	    						new FrmMenuAdmin(cdorMenu);
+	    					}else{
+	    						if (tipo.equals("GE")){
+	    							CdorMenuGerente cdorMenu = new CdorMenuGerente();
+	    							new FrmMenuGerente(cdorMenu);
+	    						}
+	    					}
+	    				}
+	    			}
+	    		}else {
+    				String msg = "Usuario o Contraseña invalido.";
+    				JOptionPane.showMessageDialog(null,msg);
+	    		}
 			} catch (PersistenciaException e) {
 				String msg = "No se pudo acceder a la información almacenada.";
 				JOptionPane.showMessageDialog(null,msg);
@@ -61,7 +72,10 @@ public class CdorLogin extends CdorManejoVentanas {
 				String msg = "No se pudo acceder al servidor.";
 				JOptionPane.showMessageDialog(null,msg);
 				e.printStackTrace();
+			} catch (Throwable e) {
+				e.printStackTrace();
 			}
+			actionCerrar();
 	    }
 	}
 

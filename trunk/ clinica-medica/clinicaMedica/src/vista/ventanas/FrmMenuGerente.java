@@ -39,9 +39,9 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 * This is the default constructor
 	 * @throws Throwable 
 	 */
-	public FrmMenuGerente(ModeloTablaListConsultas modelo, CdorMenuGerente control)throws Throwable {
-		this.modelo = modelo;
+	public FrmMenuGerente(CdorMenuGerente control)throws Throwable {
 		cdor = control;
+		modelo = cdor.listarConsultas();
 		initialize();
 	}
 

@@ -31,7 +31,7 @@ public interface IfachadaLogica extends IObservable{
 
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException;
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, Calendar ing, boolean fon) throws PersistenciaException, RemoteException;
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException;
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException;
 	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException;
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException;
@@ -64,6 +64,7 @@ public interface IfachadaLogica extends IObservable{
 	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException;
 	public Vector<DataEsp> listarEspecialidades() throws PersistenciaException, RemoteException;
 	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
+	public void bajaEspecialidad(int idEsp) throws PersistenciaException, RemoteException;
 	
 	//EXAMENES
 	public void regEx(DataExamen ex, String idAfil) throws PersistenciaException, RemoteException;
@@ -106,4 +107,6 @@ public interface IfachadaLogica extends IObservable{
 	//CONSULTORIOS
 	public boolean validarConsultorio(int id) throws PersistenciaException, RemoteException;
 	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException;
+	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException;
+	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException;
 }

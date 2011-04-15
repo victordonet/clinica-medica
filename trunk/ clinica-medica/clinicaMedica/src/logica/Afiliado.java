@@ -6,6 +6,7 @@ import persistencia.dao.*;
 
 public class Afiliado extends Usuario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String nombre,apellido,ci,mail,dir,tel;
 	private Calendar fecha;
 	private boolean fonasa;

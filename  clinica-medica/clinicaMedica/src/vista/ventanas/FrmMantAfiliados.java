@@ -3,7 +3,7 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantAfil;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Color;
@@ -17,18 +17,17 @@ public class FrmMantAfiliados extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantAfil cdor;
 	private JButton jButton21 = null;
 	private JButton jButton211 = null;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantAfiliados(CdorMantEsp cdor) {
+	public FrmMantAfiliados(CdorMantAfil cdorMantAfil) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMantAfil;
 		initialize();
-
 	}
 
 	/**
@@ -99,7 +98,7 @@ public class FrmMantAfiliados extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Alta Afiliados");
-					cdor.actionAltaEsp();
+					cdor.actionAltaAfil();
 
 				}
 			});
@@ -123,7 +122,7 @@ public class FrmMantAfiliados extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Baja Afiliados");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionBajaAfil();
 				}
 			});
 		}
@@ -142,6 +141,13 @@ public class FrmMantAfiliados extends JFrame {
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21.setText("Modificación");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Afiliados");
+					System.out.println(cdor.toString());
+					cdor.actionModifAfil();
+				}
+			});
 		}
 		return jButton21;
 	}
@@ -158,7 +164,14 @@ public class FrmMantAfiliados extends JFrame {
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton211.setText("Modificación de Usuario");
 			jButton211.setBackground(Color.lightGray);
+			jButton211.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Modificación Usuario");
+					System.out.println(cdor.toString());
+					cdor.actionModifPass();
+				}
+			});
 		}
 		return jButton211;
 	}
-}  //  @jve:decl-index=0:visual-constraint="10,10"
+}

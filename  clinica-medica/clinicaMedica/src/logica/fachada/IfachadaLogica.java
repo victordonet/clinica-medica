@@ -13,6 +13,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -103,5 +104,6 @@ public interface IfachadaLogica extends IObservable{
 	public String getTipo(String idUsuario)throws PersistenciaException, RemoteException;
 	
 	//CONSULTORIOS
-	public boolean validarConsultorio(String id) throws PersistenciaException, RemoteException;
+	public boolean validarConsultorio(int id) throws PersistenciaException, RemoteException;
+	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException;
 }

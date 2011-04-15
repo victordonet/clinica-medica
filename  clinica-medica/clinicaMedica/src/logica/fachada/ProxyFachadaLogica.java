@@ -16,6 +16,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
+import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -261,7 +262,10 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 
 	@Override
-	public boolean validarConsultorio(String id) throws PersistenciaException,RemoteException {
+	public boolean validarConsultorio(int id) throws PersistenciaException,RemoteException {
 		return fachada.validarConsultorio(id);
+	}
+	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException{
+		fachada.altaConsultorio(consultorio);
 	}
 }

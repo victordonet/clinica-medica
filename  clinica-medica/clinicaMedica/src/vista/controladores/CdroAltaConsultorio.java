@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataConsultorio;
 import vista.ventanas.FrmAltaAdmin;
 import vista.ventanas.FrmAltaConsultorio;
 import logica.fachada.ProxyFachadaLogica;
@@ -77,18 +78,12 @@ public class CdroAltaConsultorio extends CdorManejoVentanas {
 	public void actionCerrar() {
 		this.cerrarVentana(this, vino);
 	}
-	public void altaAdmin (String id, String nombre, int cargo){
+	public void altaConsultorio (String id, String nombre){
 		
-		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
+		int idConsultorio = Integer.parseInt(id);
+		DataConsultorio dc = new DataConsultorio(idConsultorio, nombre);
 		try {
-			if(mod.validarAdmin(id)==false)
-			{
-				mod.altaAdmin(da);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null,"El Administrativo que intenta dar de alta ya existe");
-			}
+			mod.altaConsultorio(dc);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();

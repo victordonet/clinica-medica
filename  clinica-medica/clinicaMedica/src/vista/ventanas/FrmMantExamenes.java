@@ -3,7 +3,8 @@ package vista.ventanas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import vista.controladores.CdorMantEsp;
+import vista.controladores.CdorMantExamenes;
+
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -14,14 +15,14 @@ public class FrmMantExamenes extends JFrame {
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
-	private CdorMantEsp cdor;
+	private CdorMantExamenes cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmMantExamenes(CdorMantEsp cdor) {
+	public FrmMantExamenes(CdorMantExamenes cdorMantExamenes) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorMantExamenes;
 		initialize();
 	
 	}
@@ -92,7 +93,7 @@ public class FrmMantExamenes extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Registro Exámenes");
-					cdor.actionAltaEsp();
+					cdor.actionRegistro();
 					
 				}
 			});
@@ -116,7 +117,7 @@ public class FrmMantExamenes extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Resultado Exámenes");
 					System.out.println(cdor.toString());
-					cdor.actionListarEsp();
+					cdor.actionResultado();
 				}
 			});
 		}

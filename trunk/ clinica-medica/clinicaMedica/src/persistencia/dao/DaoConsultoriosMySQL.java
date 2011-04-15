@@ -1,13 +1,10 @@
 package persistencia.dao;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import logica.Consultorio;
+import java.util.Vector;
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataConsultorio;
 import excepciones.PersistenciaException;
 
@@ -51,7 +48,6 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 		return validar;
 	}
 	public void altaConsultorio(Transaccion trn, DataConsultorio consultorio) throws PersistenciaException {
-		
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Consultorios values (?,?)");
 			pst.setInt (1, consultorio.getIdConsultorio());
@@ -64,6 +60,41 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void bajaConsultorio(Transaccion trn, int idConsultorio) throws PersistenciaException {
+		try {
+			PreparedStatement pst = trn.preparedStatement("delete from Consultorios where id =?");
+			pst.setInt (1, idConsultorio);
+			pst.executeUpdate();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Vector<DataConsultorio> listarConsultorios(Transaccion trn) throws PersistenciaException {
+		System.out.println("Listando Administrativos");
+		Vector<DataConsultorio> resultado = new Vector<DataConsultorio>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select * from consultorios");
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				int id = rst.getInt("id");
+				String nombre = rst.getString("nombre");
+				DataConsultorio dataC = new DataConsultorio(id, nombre);
+				resultado.add(dataC);
+			}
+			rst.close();
+			pst.close();
+			return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 

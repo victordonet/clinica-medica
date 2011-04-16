@@ -43,6 +43,7 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 	}
 	
 	public Object getValueAt(int row, int col) {
+		System.out.println("pasa fede");
 		switch (col){
 		case 0: {
 			System.out.println((datos.get(row)).getId());

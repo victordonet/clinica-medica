@@ -13,7 +13,6 @@ import vista.ventanas.FrmListadoAdmin;
 public class CdorListadoAdmin extends CdorManejoVentanas {
 	
 	private FrmListadoAdmin ventana;
-	private IfachadaLogica mod;
 	private ModeloTablaListAdmin modelo = null;
 	private CdorManejoVentanas vino;
 
@@ -29,20 +28,21 @@ public class CdorListadoAdmin extends CdorManejoVentanas {
 		this.ventana = ventana;
 	}
 
-	public IfachadaLogica getMod() {
-		return mod;
+
+	public ModeloTablaListAdmin getModelo() {
+		return modelo;
 	}
 
-	public void setMod(IfachadaLogica mod) {
-		this.mod = mod;
+	public void setModelo(ModeloTablaListAdmin modelo) {
+		this.modelo = modelo;
 	}
 
 	@Override
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		this.vino = vino;
 		try {
-			modelo = listarAdmin();
-			ventana = new FrmListadoAdmin(modelo,this);
+			
+			ventana = new FrmListadoAdmin(this);
 		
 			
 		} catch (Throwable e) {
@@ -78,7 +78,7 @@ public class CdorListadoAdmin extends CdorManejoVentanas {
 
 		ModeloTablaListAdmin modelo =null;
 		try {
-			Vector<DataAdmin> hs = mod.listarAdmin();
+			Vector<DataAdmin> hs = super.getMod().listarAdmin();
 			System.out.println(hs.toString());
 			modelo = new ModeloTablaListAdmin(hs);
 			System.out.println(modelo.toString());

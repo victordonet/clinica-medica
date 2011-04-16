@@ -95,6 +95,7 @@ public class FrmAltaAdmin extends JFrame {
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJComboBox(), null);
+			jContentPane.add(jComboBox, null);
 		}
 		return jContentPane;
 	}
@@ -167,6 +168,7 @@ public class FrmAltaAdmin extends JFrame {
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
 			jComboBox = new JComboBox();
+			jComboBox.setBounds(new Rectangle(223, 208, 156, 18));
 			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new java.awt.Rectangle(222,207,87,19));
 		}

@@ -93,7 +93,6 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 

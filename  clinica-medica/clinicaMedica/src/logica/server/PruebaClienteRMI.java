@@ -30,9 +30,9 @@ public class PruebaClienteRMI {
 			CdorAltaMedico ctrl = new CdorAltaMedico();
 			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
 			
-			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
-			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
-			
+//			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
+//			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
+//			
 //			ctrl.setMod(facade);
 //			ctrl.desplegarVentana(ctrl);	
 		} catch (RemoteException e) {

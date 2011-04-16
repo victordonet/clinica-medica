@@ -54,25 +54,23 @@ public class CdorLogin extends CdorManejoVentanas {
 	    			String tipo = super.getMod().getTipo(usu);
 	    			if (tipo.equals("ME")){
 	    				CdorMenuMed cdorMenu = new CdorMenuMed();
-	    				cdorMenu.desplegarVentana(cdorMenu);
+	    				this.cambioVentana(this, cdorMenu);
 	    			}else {
 	    				if (tipo.equals("AF")){
 	    					CdorMenuAfil cdorMenu = new CdorMenuAfil();
-	    					cdorMenu.desplegarVentana(cdorMenu);						
+	    					this.cambioVentana(this, cdorMenu);						
 	    				}else {
 	    					if (tipo.equals("AD")){
 	    						CdorMenuAdmin cdorMenu = new CdorMenuAdmin();
-	    						cdorMenu.desplegarVentana(cdorMenu);
+	    						this.cambioVentana(this, cdorMenu);
 	    					}else{
 	    						if (tipo.equals("GE")){
 	    							CdorMenuGerente cdorMenu = new CdorMenuGerente();
 	    							this.cambioVentana(this, cdorMenu);
-	    							//cdorMenu.desplegarVentana(cdorMenu);
 	    						}
 	    					}
 	    				}
 	    			}
-	    			//actionCerrar();
 	    		}else {
     				String msg = "Usuario o Contraseña invalido.";
     				JOptionPane.showMessageDialog(null,msg);

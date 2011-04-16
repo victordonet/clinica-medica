@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorListadoAdmin;
 import vista.controladores.CdorListadoEsp;
@@ -25,17 +27,17 @@ public class FrmListadoAdmin extends UnicastRemoteObject implements IObserver{
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
 	private ModeloTablaListAdmin modelo = null;
-	private JScrollPane jScrollPane = null;
-	private JTable jTable1 = null;
 	private CdorListadoAdmin cdor;
 	private JButton jButton2 = null;
+	private JScrollPane jScrollPane = null;
+	private JTable jTable = null;
 
 	/**
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmListadoAdmin(ModeloTablaListAdmin modelo, CdorListadoAdmin control)throws Throwable {
-		this.modelo = modelo;
+	public FrmListadoAdmin(CdorListadoAdmin control)throws Throwable {
+		modelo = control.listarAdmin();
 		cdor = control;
 		initialize();
 	}
@@ -82,9 +84,9 @@ public class FrmListadoAdmin extends UnicastRemoteObject implements IObserver{
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane(modelo), null);
 			jContentPane.add(getJButton2(), null);
 
+			jContentPane.add(getJScrollPane(), null);
 		//}
 		return jContentPane;
 	}
@@ -104,32 +106,6 @@ public class FrmListadoAdmin extends UnicastRemoteObject implements IObserver{
 		}
 	}
 
-	/**
-	 * This method initializes jScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
-	private JScrollPane getJScrollPane(ModeloTablaListAdmin modelo2) {
-		//if (jScrollPane == null) {
-			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(65, 96, 475, 209));
-			jScrollPane.setViewportView(getJTable1(modelo2));
-		//}
-		return jScrollPane;
-	}
-
-	/**
-	 * This method initializes jTable1
-	 *
-	 * @return javax.swing.JTable
-	 */
-	private JTable getJTable1(ModeloTablaListAdmin modelo2) {
-		
-			jTable1 = new JTable(modelo2);
-		
-		return jTable1;
-	}
-
 	public JFrame getVentana(){
 		return frm;
 	}
@@ -146,7 +122,39 @@ public class FrmListadoAdmin extends UnicastRemoteObject implements IObserver{
 			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton2.setText("Cancelar");
 			jButton2.setBackground(Color.lightGray);
+			jButton2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					System.out.println("Cancelar Listado Administrativos");
+					cdor.actionCerrar();
+				}
+			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes jScrollPane	
+	 * 	
+	 * @return javax.swing.JScrollPane	
+	 */
+	private JScrollPane getJScrollPane() {
+		if (jScrollPane == null) {
+			jScrollPane = new JScrollPane();
+			jScrollPane.setBounds(new Rectangle(38, 84, 529, 228));
+			jScrollPane.setViewportView(getJTable());
+		}
+		return jScrollPane;
+	}
+
+	/**
+	 * This method initializes jTable	
+	 * 	
+	 * @return javax.swing.JTable	
+	 */
+	private JTable getJTable() {
+		if (jTable == null) {
+			jTable = new JTable(modelo);
+		}
+		return jTable;
 	}
 }

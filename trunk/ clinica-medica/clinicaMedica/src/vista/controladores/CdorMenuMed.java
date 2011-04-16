@@ -1,12 +1,10 @@
 package vista.controladores;
 
-import logica.fachada.IfachadaLogica;
 import vista.ventanas.FrmMenuMed;
 
 public class CdorMenuMed extends CdorManejoVentanas {
 
 	private FrmMenuMed ventana;
-	private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
 
 	public CdorMenuMed() {}
@@ -49,14 +47,6 @@ public class CdorMenuMed extends CdorManejoVentanas {
 
 	public void setVentana(FrmMenuMed ventana) {
 		this.ventana = ventana;
-	}
-
-	public IfachadaLogica getMod() {
-		return mod;
-	}
-
-	public void setMod(IfachadaLogica modelo) {
-		this.mod = modelo;
 	}
 
 	public void actionCerrar() {

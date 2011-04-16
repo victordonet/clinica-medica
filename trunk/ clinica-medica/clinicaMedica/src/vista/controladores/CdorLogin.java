@@ -6,15 +6,10 @@ import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
 import vista.ventanas.FrmLogin;
-import vista.ventanas.FrmMenuAdmin;
-import vista.ventanas.FrmMenuAfil;
-import vista.ventanas.FrmMenuGerente;
-import vista.ventanas.FrmMenuMed;
 
 public class CdorLogin extends CdorManejoVentanas {
 	
 	private FrmLogin ventana;
-	//private ProxyFachadaLogica mod = (ProxyFachadaLogica) super.getMod();
 	private CdorManejoVentanas vino;
 	
 	public void desplegarVentana(CdorManejoVentanas vino){

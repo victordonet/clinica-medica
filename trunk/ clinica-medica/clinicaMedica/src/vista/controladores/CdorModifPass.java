@@ -1,33 +1,16 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-import javax.swing.JOptionPane;
-import excepciones.LogicaException;
 import excepciones.PersistenciaException;
-import logica.fachada.ProxyFachadaLogica;
 import vista.ventanas.FrmModifPass;
 
 public class CdorModifPass extends CdorManejoVentanas {
 	
 	private FrmModifPass ventana;
-	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vino;
 	
 	public CdorModifPass() {
-		try {
-			mod = new ProxyFachadaLogica();
-		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
-			
-		} catch (LogicaException e) {
-			JOptionPane.showMessageDialog(null,"Error interno del sistema");
-			e.printStackTrace();
-			
-		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
-		}
+		super();
 	}
 		
 	public FrmModifPass getVentana() {
@@ -36,14 +19,6 @@ public class CdorModifPass extends CdorManejoVentanas {
 	
 	public void setVentana(FrmModifPass ventana) {
 		this.ventana = ventana;
-	}
-	
-	public ProxyFachadaLogica getMod() {
-		return mod;
-	}
-	
-	public void setMod(ProxyFachadaLogica mod) {
-		this.mod = mod;
 	}
 
 	public void desplegarVentana(CdorManejoVentanas vino) {
@@ -81,13 +56,11 @@ public class CdorModifPass extends CdorManejoVentanas {
 	
 	public void modifPass(String clave, String pass){
 		try {
-			mod.modifContrasena(clave, pass);
+			super.getMod().modifContrasena(clave, pass);
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
 	}

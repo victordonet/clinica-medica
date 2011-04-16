@@ -4,16 +4,13 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
-import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataConsultas;
 import vista.ventanas.FrmMenuGerente;
 
 public class CdorMenuGerente extends CdorManejoVentanas {
 
 	private FrmMenuGerente ventana;
-	//private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
-	//private ModeloTablaListConsultas modelo = null;
 
 	public CdorMenuGerente() {
 		super();
@@ -22,7 +19,6 @@ public class CdorMenuGerente extends CdorManejoVentanas {
 	public void desplegarVentana(CdorManejoVentanas vino){
 		this.vino = vino;
 		try {
-			//modelo = listarConsultas();
 			ventana = new FrmMenuGerente(this);
 			super.getMod().addObsMenuGA(ventana);
 

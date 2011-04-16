@@ -1,12 +1,10 @@
 package vista.controladores;
 
-import logica.fachada.IfachadaLogica;
 import vista.ventanas.FrmMantListadosGerente;
 
 public class CdorMantListadosGerente extends CdorManejoVentanas {
 
 	private FrmMantListadosGerente ventana;
-	private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
 
 	public CdorMantListadosGerente() {}
@@ -69,14 +67,6 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 
 	public void setVentana(FrmMantListadosGerente ventana) {
 		this.ventana = ventana;
-	}
-
-	public IfachadaLogica getMod() {
-		return mod;
-	}
-
-	public void setMod(IfachadaLogica modelo) {
-		this.mod = modelo;
 	}
 
 	public void actionCerrar() {

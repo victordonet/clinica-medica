@@ -1,12 +1,10 @@
 package vista.controladores;
 
-import logica.fachada.IfachadaLogica;
 import vista.ventanas.FrmMantExamenes;
 
 public class CdorMantExamenes extends CdorManejoVentanas {
 
 	private FrmMantExamenes ventana;
-	private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
 
 	public CdorMantExamenes() {}
@@ -49,14 +47,6 @@ public class CdorMantExamenes extends CdorManejoVentanas {
 
 	public void setVentana(FrmMantExamenes ventana) {
 		this.ventana = ventana;
-	}
-
-	public IfachadaLogica getMod() {
-		return mod;
-	}
-
-	public void setMod(IfachadaLogica modelo) {
-		this.mod = modelo;
 	}
 
 	public void actionCerrar() {

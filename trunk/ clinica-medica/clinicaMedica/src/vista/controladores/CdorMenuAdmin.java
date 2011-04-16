@@ -4,14 +4,12 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
-import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataConsultas;
 import vista.ventanas.FrmMenuAdmin;
 
 public class CdorMenuAdmin extends CdorManejoVentanas {
 
 	private FrmMenuAdmin ventana;
-	private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
 
 	public CdorMenuAdmin() {

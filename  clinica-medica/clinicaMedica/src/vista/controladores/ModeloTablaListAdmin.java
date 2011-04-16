@@ -66,24 +66,24 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 		}
 		case 2:{
 			System.out.println((datos.get(row)).getCargo());
-			Vector<DataCargo> vec = new Vector<DataCargo>();
-			try {
-				vec = mod.listarCargos();
-			} catch (RemoteException e) {
-				JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-				e.printStackTrace();
-			} catch (PersistenciaException e) {
-				JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-				e.printStackTrace();
-			}
-			int cargo = (datos.get(row)).getCargo();
-			String nomCargo = "";
-			for(int i=0; i< vec.size(); i++){
-				if((vec.get(i)).getIdCargo()== cargo){
-					nomCargo = (vec.get(i)).getDescripcion();
-				}
-			}
-			return nomCargo;
+//			Vector<DataCargo> vec = new Vector<DataCargo>();
+//			try {
+//				vec = mod.listarCargos();
+//			} catch (RemoteException e) {
+//				JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+//				e.printStackTrace();
+//			} catch (PersistenciaException e) {
+//				JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+//				e.printStackTrace();
+//			}
+//			int cargo = (datos.get(row)).getCargo();
+//			String nomCargo = "";
+//			for(int i=0; i< vec.size(); i++){
+//				if((vec.get(i)).getIdCargo()== cargo){
+//					nomCargo = (vec.get(i)).getDescripcion();
+//				}
+//			}
+			return (datos.get(row)).getCargo();
 		}
 		case 3: {
 			System.out.println((datos.get(row)).getEstado());

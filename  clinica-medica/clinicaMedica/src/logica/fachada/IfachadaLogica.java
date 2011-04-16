@@ -10,6 +10,7 @@ import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
@@ -49,6 +50,7 @@ public interface IfachadaLogica extends IObservable{
 	public boolean validarAdmin(String id) throws PersistenciaException, RemoteException;
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException;
 	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException;
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;

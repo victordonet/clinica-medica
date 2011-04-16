@@ -13,6 +13,7 @@ import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
@@ -273,5 +274,10 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
+	}
+
+	@Override
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
+		return fachada.listarCargos();
 	}
 }

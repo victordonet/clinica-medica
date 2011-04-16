@@ -13,7 +13,7 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 	private FrmMenuAdmin ventana;
 	private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
-	//private ModeloTablaListConsultas modelo = null;
+	private ModeloTablaListConsultas modelo = null;
 
 	public CdorMenuAdmin() {
 		super();
@@ -22,7 +22,7 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 	public void desplegarVentana(CdorManejoVentanas vino){
 		this.vino = vino;
 		try {
-			//modelo = listarConsultas();
+			modelo = listarConsultas();
 			ventana = new FrmMenuAdmin(this);
 			mod.addObsMenuGA(ventana);
 		} catch (Throwable e) {

@@ -8,10 +8,11 @@ import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 import vista.controladores.CdorAltaAdmin;
 import vista.controladores.CdorAltaMedico;
-import vista.controladores.CdorBajaAdmin;
+import vista.controladores.CdorLogin;
+import vista.controladores.CdorManejoVentanas;
 import vista.ventanas.FrmAltaAdmin;
 import vista.ventanas.FrmAltaMedico;
-import vista.ventanas.FrmBajaAdmin;
+import vista.ventanas.FrmLogin;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
@@ -29,15 +30,14 @@ public class PruebaClienteRMI {
 			IfachadaLogica facade = new ProxyFachadaLogica();
 			
 			JOptionPane.showMessageDialog(null,"Hizo el lookup");
-//			CdorAltaMedico ctrl = new CdorAltaMedico();
-//			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
+			/*CdorAltaMedico ctrl = new CdorAltaMedico();
+			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
 			
-//			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
-//			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
+			//CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
+			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);*/
 			
-			CdorBajaAdmin ctrl2 = new CdorBajaAdmin();
-			FrmBajaAdmin frm2 = new FrmBajaAdmin(ctrl2);
-//			
+			CdorLogin cdorLogin = new CdorLogin();
+			cdorLogin.desplegarVentana(cdorLogin);
 //			ctrl.setMod(facade);
 //			ctrl.desplegarVentana(ctrl);	
 		} catch (RemoteException e) {

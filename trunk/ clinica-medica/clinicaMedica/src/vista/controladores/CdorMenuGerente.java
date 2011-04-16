@@ -11,9 +11,9 @@ import vista.ventanas.FrmMenuGerente;
 public class CdorMenuGerente extends CdorManejoVentanas {
 
 	private FrmMenuGerente ventana;
-	private IfachadaLogica mod;
+	//private IfachadaLogica mod;
 	private CdorManejoVentanas vino;
-	private ModeloTablaListConsultas modelo = null;
+	//private ModeloTablaListConsultas modelo = null;
 
 	public CdorMenuGerente() {
 		super();
@@ -22,9 +22,9 @@ public class CdorMenuGerente extends CdorManejoVentanas {
 	public void desplegarVentana(CdorManejoVentanas vino){
 		this.vino = vino;
 		try {
-			modelo = listarConsultas();
+			//modelo = listarConsultas();
 			ventana = new FrmMenuGerente(this);
-			mod.addObsMenuGA(ventana);
+			super.getMod().addObsMenuGA(ventana);
 
 		} catch (Throwable e) {
 
@@ -32,10 +32,10 @@ public class CdorMenuGerente extends CdorManejoVentanas {
 		}
 	}
 
-	public ModeloTablaListConsultas listarConsultas (){
+	public ModeloTablaListConsultas listarConsultas(){
 		ModeloTablaListConsultas modelo =null;
 		try {
-			Vector<DataConsultas> vec = mod.listarConsultas();
+			Vector<DataConsultas> vec = super.getMod().listarConsultas();
 			System.out.println(vec.toString());
 			modelo = new ModeloTablaListConsultas(vec);
 			System.out.println(modelo.toString());
@@ -95,14 +95,6 @@ public class CdorMenuGerente extends CdorManejoVentanas {
 
 	public void setVentana(FrmMenuGerente ventana) {
 		this.ventana = ventana;
-	}
-
-	public IfachadaLogica getMod() {
-		return mod;
-	}
-
-	public void setMod(IfachadaLogica modelo) {
-		this.mod = modelo;
 	}
 
 	public void actionCerrar() {

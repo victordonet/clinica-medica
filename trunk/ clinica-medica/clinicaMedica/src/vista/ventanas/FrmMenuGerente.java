@@ -21,11 +21,8 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
-	private JTable jTable = null;
 	private JLabel jLabel = null;
 	private ModeloTablaListConsultas modelo = null;
-	private JScrollPane jScrollPane = null;
-	private JTable jTable1 = null;
 	private CdorMenuGerente cdor;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -34,6 +31,8 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	private JButton jButton5 = null;
 	private JButton jButton6 = null;
 	private JButton jButton7 = null;
+	private JScrollPane jScrollPane = null;
+	private JTable jTable = null;
 	
 	/**
 	 * This is the default constructor
@@ -100,8 +99,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane(), null);
-			jContentPane.add(getJTable1(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getjButton2(), null);
 			jContentPane.add(getJButton3(), null);
@@ -109,6 +106,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(getJButton5(), null);
 			jContentPane.add(getJButton6(), null);
 			jContentPane.add(getJButton7(), null);
+			jContentPane.add(getJScrollPane(), null);
 		}
 		return jContentPane;
 	}
@@ -124,31 +122,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 		}
 	}
 
-	/**
-	 * This method initializes jScrollPane	
-	 * 	
-	 * @return javax.swing.JScrollPane	
-	 */
-	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
-			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(94, 495, 283, 182));
-		}
-		return jScrollPane;
-	}
-
-	/**
-	 * This method initializes jTable1	
-	 * 	
-	 * @return javax.swing.JTable	
-	 */
-	private JTable getJTable1() {
-		if (jTable1 == null) {
-			jTable1 = new JTable(modelo);
-			jTable1.setBounds(new Rectangle(100, 501, 284, 164));
-		}
-		return jTable1;
-	}
 	public JFrame getVentana(){
 		return frm;
 	}
@@ -306,4 +279,30 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 		}
 		return jButton7;
 	}
-}
+
+	/**
+	 * This method initializes jScrollPane	
+	 * 	
+	 * @return javax.swing.JScrollPane	
+	 */
+	private JScrollPane getJScrollPane() {
+		if (jScrollPane == null) {
+			jScrollPane = new JScrollPane();
+			jScrollPane.setBounds(new Rectangle(94, 496, 273, 183));
+			jScrollPane.setViewportView(getJTable());
+		}
+		return jScrollPane;
+	}
+
+	/**
+	 * This method initializes jTable	
+	 * 	
+	 * @return javax.swing.JTable	
+	 */
+	private JTable getJTable() {
+		if (jTable == null) {
+			jTable = new JTable(modelo);
+		}
+		return jTable;
+	}
+}  //  @jve:decl-index=0:visual-constraint="476,14"

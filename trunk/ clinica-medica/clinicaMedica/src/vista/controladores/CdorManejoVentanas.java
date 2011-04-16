@@ -18,27 +18,20 @@ public abstract class CdorManejoVentanas {
 	public abstract void cerrar();
 	public abstract void actionCerrar();
 
-
 	public final void cambioVentana(CdorManejoVentanas vengo, CdorManejoVentanas voy){
-
-
 		this.voy=voy;
-		mod = vengo.getMod();
-		voy.setMod(mod);
+		voy.setMod(vengo.getMod());
 		voy.desplegarVentana(vengo);
 		vengo.deshabilitarVentana();
-
 	}
+	
 	public final void cerrarVentana(CdorManejoVentanas vengo, CdorManejoVentanas voy) {
-
-
-		mod = vengo.getMod();
-		voy.setMod(mod);
+		voy.setMod(vengo.getMod());
 		voy.habilitarVentana();
 		System.out.println("En el manejador de ventana = "+vengo.toString());
 		vengo.cerrar();
-
 	}
+	
 	public IfachadaLogica getMod() {
 		return mod;
 	}
@@ -62,8 +55,5 @@ public abstract class CdorManejoVentanas {
 	public void setVoy(CdorManejoVentanas voy) {
 		this.voy = voy;
 	}
-
-
-
 }
 

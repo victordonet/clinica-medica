@@ -1,8 +1,5 @@
 package vista.controladores;
 
-import javax.swing.JOptionPane;
-
-import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
 public abstract class CdorManejoVentanas {
@@ -10,6 +7,7 @@ public abstract class CdorManejoVentanas {
 	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vengo= null;
 	private CdorManejoVentanas voy = null;
+	private String idUsu;
 
 	public CdorManejoVentanas() {}	
 	public abstract void desplegarVentana(CdorManejoVentanas vino);
@@ -54,6 +52,14 @@ public abstract class CdorManejoVentanas {
 
 	public void setVoy(CdorManejoVentanas voy) {
 		this.voy = voy;
+	}
+	
+	public String getIdUsu() {
+		return idUsu;
+	}
+	
+	public void setIdUsu(String idUsu) {
+		this.idUsu = idUsu;
 	}
 }
 

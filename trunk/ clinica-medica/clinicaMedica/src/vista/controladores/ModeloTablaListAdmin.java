@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 import excepciones.PersistenciaException;
 
+import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
 import vista.dataobjet.DataAdmin;
@@ -20,15 +21,25 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 	private Vector columnas;
 	private Vector <DataAdmin> datos;
 	
-	public ModeloTablaListAdmin (Vector datosbase){
+	public ModeloTablaListAdmin (ProxyFachadaLogica mode){
 		super ();
+		mod = mode;
 		columnas = new Vector();
 		
-		this.datos = datosbase;
-		columnas.add("id");
-		columnas.add("Nombre");
-		columnas.add("Cargo");
-		columnas.add("Estado");
+		try {
+			this.datos = mod.listarAdmin();
+			columnas.add("id");
+			columnas.add("Nombre");
+			columnas.add("Cargo");
+			columnas.add("Estado");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public int getRowCount() {

@@ -37,8 +37,8 @@ public class FrmListadoAdmin extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable
 	 */
 	public FrmListadoAdmin(CdorListadoAdmin control)throws Throwable {
-		modelo = control.listarAdmin();
 		cdor = control;
+		modelo = control.listarAdmin();
 		initialize();
 	}
 

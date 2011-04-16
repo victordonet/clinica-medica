@@ -128,6 +128,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoAfil.altaAfiliado(trn, afil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			
 			}
 			else{
 			
@@ -137,7 +138,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException {

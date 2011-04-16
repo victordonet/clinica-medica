@@ -74,14 +74,11 @@ public class CdorAltaAfil extends CdorManejoVentanas {
 		this.cerrarVentana(this, vino);
 	}
 	
-	public void altaAfil(String id,String ci,String nombre,String apellido,String mail,String direccion,String tel,String estado,String fechaIngreso,String fonasa){
-		Date date = new Date(fechaIngreso);
-		Calendar fechaIng = Calendar.getInstance();
-		fechaIng.setTime(date);
-		boolean fon = false;
-		if(fonasa.equals("S"))
-			fon=true;
-		DataAfiliado afil = new DataAfiliado(id, ci, nombre, apellido, mail, direccion, tel, estado, fechaIng, fon);
+	public void altaAfil(String id,String ci,String nombre,String apellido,String mail,String direccion,String tel,String estado,Calendar fechaIngreso,boolean fonasa){
+		
+		DataAfiliado afil=null;
+		if(fonasa==true)
+		afil = new DataAfiliado(id, ci, nombre, apellido, mail, direccion, tel, estado, fechaIngreso, fonasa);
 		try {
 			mod.altaAfiliado(afil);
 			actionCerrar();

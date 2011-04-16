@@ -29,13 +29,8 @@ public class CdorListadoAdmin extends CdorManejoVentanas {
 	}
 
 
-	public ModeloTablaListAdmin getModelo() {
-		return modelo;
-	}
 
-	public void setModelo(ModeloTablaListAdmin modelo) {
-		this.modelo = modelo;
-	}
+
 
 	@Override
 	public void desplegarVentana(CdorManejoVentanas vino) {
@@ -76,20 +71,7 @@ public class CdorListadoAdmin extends CdorManejoVentanas {
 	}
 	public ModeloTablaListAdmin listarAdmin (){
 
-		ModeloTablaListAdmin modelo =null;
-		try {
-			Vector<DataAdmin> hs = super.getMod().listarAdmin();
-			System.out.println(hs.toString());
-			modelo = new ModeloTablaListAdmin(hs);
-			System.out.println(modelo.toString());
-		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			
-			e.printStackTrace();
-		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
-		}
+		ModeloTablaListAdmin modelo = new ModeloTablaListAdmin(super.getMod());
 		return modelo;
 
 	}

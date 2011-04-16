@@ -7,7 +7,7 @@ import logica.fachada.ProxyFachadaLogica;
 
 public abstract class CdorManejoVentanas {
 
-	private IfachadaLogica mod;
+	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vengo= null;
 	private CdorManejoVentanas voy = null;
 
@@ -32,11 +32,11 @@ public abstract class CdorManejoVentanas {
 		vengo.cerrar();
 	}
 	
-	public IfachadaLogica getMod() {
+	public ProxyFachadaLogica getMod() {
 		return mod;
 	}
 
-	public void setMod(IfachadaLogica mod) {
+	public void setMod(ProxyFachadaLogica mod) {
 		this.mod = mod;
 	}
 

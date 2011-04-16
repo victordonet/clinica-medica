@@ -1,15 +1,11 @@
 package vista.ventanas;
 
 import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
-import vista.controladores.CdorAltaEsp;
 import vista.controladores.CdorLogin;
 import vista.ventanas.PanelConImagen;
 import java.awt.Rectangle;
@@ -23,9 +19,11 @@ public class FrmLogin extends JFrame {
 	private JButton jButton1 = null;
 	private JPasswordField jPassField1 = null;
 	private JTextField jTextField1 = null;
+	private CdorLogin cdor;
 	
-	public FrmLogin() {
+	public FrmLogin(CdorLogin cdor) {
 		super();
+		this.cdor = cdor;
 		initialize();
 	}
 	
@@ -97,7 +95,7 @@ public class FrmLogin extends JFrame {
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Inicio de cesión");
-					new CdorLogin().ingresar(jTextField1.getText(),jPassField1.getText());
+					cdor.ingresar(jTextField1.getText(),jPassField1.getText());
 				}
 			});
 		}

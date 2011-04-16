@@ -15,6 +15,17 @@ public class CdorLogin extends CdorManejoVentanas {
 	
 	private FrmLogin ventana;
 	private ProxyFachadaLogica mod;
+	private CdorManejoVentanas vino;
+	
+	public void desplegarVentana(CdorManejoVentanas vino){
+		this.vino = vino;
+		try {
+			ventana = new FrmLogin(this);
+		} catch (Throwable e) {
+
+			e.printStackTrace();
+		}
+	}
 	
 	public CdorLogin() {
 		try {
@@ -91,10 +102,6 @@ public class CdorLogin extends CdorManejoVentanas {
 	}
 	public void cerrar() {
 		ventana.dispose();
-	}
-
-	public void desplegarVentana(CdorManejoVentanas vino) {
-		//No aplica, es la primera ventana que se despliega.
 	}
 
 	public void actionCerrar() {

@@ -414,6 +414,22 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		pool.liberarTrn(trn);
 		return resultado;
 	}
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
+		
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<DataCargo> resultado = null;
+		try {
+			resultado = iDaoCargos.listarCargos(trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
+	}
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
@@ -1099,24 +1115,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Vector<DataConsultorio> resultado = null;
 		try {
 			resultado = iDaoConsultorios.listarConsultorios(trn);
-			trn.finalizarTrn(true);
-			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-			trn.finalizarTrn(false);
-			pool.liberarTrn(trn);
-			throw e;
-		}
-		return resultado;
-	}
-
-	@Override
-	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
-		
-		Transaccion trn = pool.obtenerTrn(8);
-		Vector<DataCargo> resultado = null;
-		try {
-			resultado = iDaoCargos.listarCargos(trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

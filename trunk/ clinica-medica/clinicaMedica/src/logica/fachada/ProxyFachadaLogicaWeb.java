@@ -20,6 +20,7 @@ import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
@@ -149,6 +150,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
 		return fachada.listarResContable(fDesde, fHasta);
+	}
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
+		return fachada.listarCargos();
 	}
 	
 	//CONSULTAS

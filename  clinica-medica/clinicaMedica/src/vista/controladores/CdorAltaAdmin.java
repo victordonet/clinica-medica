@@ -46,7 +46,7 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void altaAdmin (String id, String nombre, int cargo){

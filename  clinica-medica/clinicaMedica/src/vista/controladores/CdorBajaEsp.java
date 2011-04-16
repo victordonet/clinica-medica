@@ -43,7 +43,7 @@ public class CdorBajaEsp extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void bajaEsp(String id){

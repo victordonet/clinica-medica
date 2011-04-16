@@ -43,7 +43,7 @@ public class CdorBajaAdmin extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void bajaAdmin(String id){

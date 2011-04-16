@@ -58,6 +58,6 @@ public class CdorMantAdmin extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		cerrar();
+		cerrarVentana(this, vino);
 	}
 }

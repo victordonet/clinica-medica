@@ -98,6 +98,6 @@ public class CdorLogin extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		ventana.dispose();
+		cerrar();
 	}
 }

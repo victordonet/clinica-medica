@@ -70,6 +70,6 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		cerrar();
+		cerrarVentana(this, vino);
 	}
 }

@@ -42,7 +42,7 @@ public class CdorModifPass extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public boolean validarPass(String passNueva, String repPass){

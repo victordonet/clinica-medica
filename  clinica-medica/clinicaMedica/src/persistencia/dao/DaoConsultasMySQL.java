@@ -141,7 +141,6 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 				int idConsultorio = rst.getInt("idConsultorio");
 				String nomMed = rst.getString("nomMed");
 				int hora = rst.getInt("horario");
-				JOptionPane.showConfirmDialog(null, hora);
 				String horario = "";
 				switch (hora) {
 					case 0: horario="00 a 02"; break;

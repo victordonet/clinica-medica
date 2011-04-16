@@ -5,6 +5,8 @@ import javax.swing.JOptionPane;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
+import vista.dataobjet.DataAdmin;
+import vista.dataobjet.VosLogin;
 import vista.ventanas.FrmLogin;
 
 public class CdorLogin extends CdorManejoVentanas {

@@ -279,7 +279,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException {

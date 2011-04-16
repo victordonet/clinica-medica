@@ -8,8 +8,10 @@ import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 import vista.controladores.CdorAltaAdmin;
 import vista.controladores.CdorAltaMedico;
+import vista.controladores.CdorBajaAdmin;
 import vista.ventanas.FrmAltaAdmin;
 import vista.ventanas.FrmAltaMedico;
+import vista.ventanas.FrmBajaAdmin;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
@@ -30,8 +32,11 @@ public class PruebaClienteRMI {
 //			CdorAltaMedico ctrl = new CdorAltaMedico();
 //			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
 			
-			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
-			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
+//			CdorAltaAdmin ctrl1 = new CdorAltaAdmin();
+//			FrmAltaAdmin frm1 = new FrmAltaAdmin(ctrl1);
+			
+			CdorBajaAdmin ctrl2 = new CdorBajaAdmin();
+			FrmBajaAdmin frm2 = new FrmBajaAdmin(ctrl2);
 //			
 //			ctrl.setMod(facade);
 //			ctrl.desplegarVentana(ctrl);	

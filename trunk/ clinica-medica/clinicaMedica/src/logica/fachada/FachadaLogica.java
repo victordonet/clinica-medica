@@ -10,6 +10,7 @@ import logica.Medico;
 import logica.observer.Observable;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
+import persistencia.dao.IDaoCargos;
 import persistencia.dao.IDaoConsultas;
 import persistencia.dao.IDaoConsultorios;
 import persistencia.dao.IDaoDisponibilidad;
@@ -26,6 +27,7 @@ import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 import vista.dataobjet.DataConsulta;
@@ -66,6 +68,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	private IDaoUsuarios iDaoU;
 	private IDaoParametros iDaoP;
 	private IDaoConsultorios iDaoConsultorios;
+	private IDaoCargos iDaoCargos;
 	
 	private FachadaLogica() throws LogicaException, PersistenciaException, RemoteException{
 		
@@ -90,6 +93,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoU = fabrica.crearDaoUsuarios();
 			iDaoP = fabrica.crearDaoParametros();
 			iDaoConsultorios = fabrica.crearDaoConsultorios();
+			iDaoCargos = fabrica.crearDaoCargos();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 			throw new LogicaException("No es poSsible crear la instancia necesaria para persistir");
@@ -1094,6 +1098,24 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Vector<DataConsultorio> resultado = null;
 		try {
 			resultado = iDaoConsultorios.listarConsultorios(trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		return resultado;
+	}
+
+	@Override
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
+		
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<DataCargo> resultado = null;
+		try {
+			resultado = iDaoCargos.listarCargos(trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

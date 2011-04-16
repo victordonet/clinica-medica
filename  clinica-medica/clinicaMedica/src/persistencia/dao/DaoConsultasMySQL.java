@@ -132,12 +132,10 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			throws PersistenciaException {
 		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, m.nombre+' '+m.apellido as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
-			Calendar hoy = new GregorianCalendar();
-			JOptionPane.showMessageDialog(null,hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH)+"/"+hoy.get(Calendar.YEAR));
+			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, m.nombre as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
+			Calendar hoy = Calendar.getInstance();
 			java.sql.Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
-			String Shoy = hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH)+"/"+hoy.get(Calendar.YEAR);
-			pst.setString(1, Shoy);
+			pst.setDate(1, fhoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				int idConsultorio = rst.getInt("idConsultorio");

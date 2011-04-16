@@ -14,7 +14,7 @@ import vista.ventanas.FrmMenuMed;
 public class CdorLogin extends CdorManejoVentanas {
 	
 	private FrmLogin ventana;
-	private ProxyFachadaLogica mod;
+	//private ProxyFachadaLogica mod = (ProxyFachadaLogica) super.getMod();
 	private CdorManejoVentanas vino;
 	
 	public void desplegarVentana(CdorManejoVentanas vino){
@@ -29,7 +29,7 @@ public class CdorLogin extends CdorManejoVentanas {
 	
 	public CdorLogin() {
 		try {
-			mod = new ProxyFachadaLogica();
+			super.setMod(new ProxyFachadaLogica());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();
@@ -49,28 +49,30 @@ public class CdorLogin extends CdorManejoVentanas {
 	    	JOptionPane.showMessageDialog(null,msg);
 	    }else {
 	    	try {
-	    		usuOk = mod.validarUsuario(usu, pass);
+	    		usuOk = super.getMod().validarUsuario(usu, pass);
 	    		if(usuOk){
-	    			String tipo = mod.getTipo(usu);
+	    			String tipo = super.getMod().getTipo(usu);
 	    			if (tipo.equals("ME")){
 	    				CdorMenuMed cdorMenu = new CdorMenuMed();
-	    				new FrmMenuMed(cdorMenu);
+	    				cdorMenu.desplegarVentana(cdorMenu);
 	    			}else {
 	    				if (tipo.equals("AF")){
 	    					CdorMenuAfil cdorMenu = new CdorMenuAfil();
-	    					new FrmMenuAfil(cdorMenu);						
+	    					cdorMenu.desplegarVentana(cdorMenu);						
 	    				}else {
 	    					if (tipo.equals("AD")){
 	    						CdorMenuAdmin cdorMenu = new CdorMenuAdmin();
-	    						new FrmMenuAdmin(cdorMenu);
+	    						cdorMenu.desplegarVentana(cdorMenu);
 	    					}else{
 	    						if (tipo.equals("GE")){
 	    							CdorMenuGerente cdorMenu = new CdorMenuGerente();
-	    							new FrmMenuGerente(cdorMenu);
+	    							this.cambioVentana(this, cdorMenu);
+	    							//cdorMenu.desplegarVentana(cdorMenu);
 	    						}
 	    					}
 	    				}
 	    			}
+	    			//actionCerrar();
 	    		}else {
     				String msg = "Usuario o Contraseña invalido.";
     				JOptionPane.showMessageDialog(null,msg);
@@ -86,7 +88,6 @@ public class CdorLogin extends CdorManejoVentanas {
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}
-			actionCerrar();
 	    }
 	}
 
@@ -97,8 +98,7 @@ public class CdorLogin extends CdorManejoVentanas {
 	}
 
 	public void deshabilitarVentana() {
-		ventana.setFocusable(false);
-		ventana.setEnabled(false);
+		actionCerrar();
 	}
 	public void cerrar() {
 		ventana.dispose();

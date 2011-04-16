@@ -74,6 +74,6 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 }

@@ -50,6 +50,6 @@ public class CdorMantEsp extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		cerrar();
+		cerrarVentana(this, vino);
 	}
 }

@@ -57,6 +57,6 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 }

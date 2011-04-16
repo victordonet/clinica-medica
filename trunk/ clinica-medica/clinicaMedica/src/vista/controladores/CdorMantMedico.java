@@ -62,6 +62,6 @@ public class CdorMantMedico extends CdorManejoVentanas {
 	}
 
 	public void actionCerrar() {
-		cerrar();
+		cerrarVentana(this, vino);
 	}
 }

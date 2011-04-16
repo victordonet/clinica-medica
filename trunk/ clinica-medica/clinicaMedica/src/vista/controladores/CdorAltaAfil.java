@@ -45,7 +45,7 @@ public class CdorAltaAfil extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void altaAfil(String id,String ci,String nombre,String apellido,String mail,String direccion,String tel,String estado,Calendar fechaIngreso,boolean fonasa){

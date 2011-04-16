@@ -42,7 +42,7 @@ public class CdorModifAfil extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, String fonasa){

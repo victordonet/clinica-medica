@@ -43,7 +43,7 @@ public class CdorModifMedico extends CdorManejoVentanas {
 	}
 	
 	public void actionCerrar() {
-		this.cerrarVentana(this, vino);
+		cerrarVentana(this, vino);
 	}
 	
 	public void modifMedico(String id, String nom, String apell, String ci, String tel, String idEsp){

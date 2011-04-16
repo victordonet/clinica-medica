@@ -8,15 +8,19 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import vista.controladores.CdorAltaAfil;
 import vista.controladores.CdorManejoVentanas;
 import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 import java.awt.GridLayout;
+import java.util.Calendar;
+import java.util.Date;
 
 public class FrmAltaAfiliado extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private CdorManejoVentanas cdor;
+	private CdorAltaAfil cdor;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
@@ -39,12 +43,13 @@ public class FrmAltaAfiliado extends JFrame{
 	private JButton jButton2 = null;
 	private JCheckBox jCheckBox = null;
 	private JPanel jPanelFecha = null;
+	JDateChooser calendar = new JDateChooser();
 
 	/**
 	 * This is the default constructor
 	 * @return
 	 */
-	public  FrmAltaAfiliado(CdorManejoVentanas cdor) {
+	public  FrmAltaAfiliado(CdorAltaAfil cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -264,7 +269,6 @@ public class FrmAltaAfiliado extends JFrame{
 			jPanelFecha = new JPanel();
 			jPanelFecha.setLayout(gridLayout1);
 			jPanelFecha.setBounds(new Rectangle(243, 268, 100, 19));
-			JDateChooser calendar = new JDateChooser();
 			jPanelFecha.add(calendar, null);
 		}
 		return jPanelFecha;
@@ -305,7 +309,12 @@ public class FrmAltaAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Afiliado.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					Date fecha = calendar.getDate();
+					Calendar fechaIngr = Calendar.getInstance();
+					fechaIngr.setTime(fecha);
+					boolean fona = jCheckBox.isSelected();
+					cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
+					cdor.actionCerrar();		
 				}
 			});
 		}

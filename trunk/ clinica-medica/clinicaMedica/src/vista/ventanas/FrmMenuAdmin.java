@@ -21,11 +21,8 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
-	private JTable jTable = null;
 	private JLabel jLabel = null;
 	private ModeloTablaListConsultas modelo = null;
-	private JScrollPane jScrollPane = null;
-	private JTable jTable1 = null;
 	private CdorMenuAdmin cdor;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
@@ -33,17 +30,19 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton jButton5 = null;
 	private JButton jButton6 = null;
 	private JButton jButton7 = null;
+	private JScrollPane jScrollPane = null;
+	private JTable jTable = null;
 	
 	/**
 	 * This is the default constructor
 	 * @throws Throwable 
 	 */
-	public FrmMenuAdmin(CdorMenuAdmin cdorMenuAdmin)throws Throwable {
-		cdor = cdorMenuAdmin;
-		this.modelo = cdor.listarConsultas();
+	public FrmMenuAdmin(CdorMenuAdmin control)throws Throwable {
+		cdor = control;
+		modelo = cdor.listarConsultas();
 		initialize();
 	}
-	
+
 	/**
 	 * This method initializes frm
 	 * 
@@ -52,7 +51,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	 * @throws ClassNotFoundException 
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
-		frm.setSize(new Dimension(455, 762));
+		frm.setSize(new Dimension(410, 686));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
 		frm.setTitle("Menu");
@@ -90,7 +89,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(39, 21, 257, 24));
+			jLabel.setBounds(new Rectangle(35, 18, 210, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
 			jLabel.setText("MENU PRINCIPAL");
 			jLabel.setFont(new Font("Arial", Font.PLAIN, 24));
@@ -99,14 +98,13 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane(), null);
-			jContentPane.add(getJTable1(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getjButton2(), null);
 			jContentPane.add(getJButton4(), null);
 			jContentPane.add(getJButton5(), null);
 			jContentPane.add(getJButton6(), null);
 			jContentPane.add(getJButton7(), null);
+			jContentPane.add(getJScrollPane(), null);
 		}
 		return jContentPane;
 	}
@@ -122,31 +120,6 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 		}
 	}
 
-	/**
-	 * This method initializes jScrollPane	
-	 * 	
-	 * @return javax.swing.JScrollPane	
-	 */
-	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
-			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(94, 495, 283, 182));
-		}
-		return jScrollPane;
-	}
-
-	/**
-	 * This method initializes jTable1	
-	 * 	
-	 * @return javax.swing.JTable	
-	 */
-	private JTable getJTable1() {
-		if (jTable1 == null) {
-			jTable1 = new JTable(modelo);
-			jTable1.setBounds(new Rectangle(94, 495, 283, 182));
-		}
-		return jTable1;
-	}
 	public JFrame getVentana(){
 		return frm;
 	}
@@ -159,7 +132,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new Rectangle(124, 105, 216, 35));
+			jButton1.setBounds(new Rectangle(108, 88, 200, 30));
 			jButton1.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton1.setBackground(java.awt.Color.lightGray);
 			jButton1.setText("Afiliados");
@@ -181,7 +154,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getjButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(124, 169, 216, 35));
+			jButton2.setBounds(new Rectangle(108, 140, 200, 30));
 			jButton2.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton2.setBackground(java.awt.Color.lightGray);
 			jButton2.setText("Médicos");
@@ -203,7 +176,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton4() {
 		if (jButton4 == null) {
 			jButton4 = new JButton();
-			jButton4.setBounds(new Rectangle(124, 232, 216, 35));
+			jButton4.setBounds(new Rectangle(108, 195, 200, 30));
 			jButton4.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton4.setBackground(java.awt.Color.lightGray);
 			jButton4.setText("Exámenes");
@@ -225,7 +198,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton5() {
 		if (jButton5 == null) {
 			jButton5 = new JButton();
-			jButton5.setBounds(new Rectangle(124, 293, 216, 35));
+			jButton5.setBounds(new Rectangle(108, 250, 200, 30));
 			jButton5.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton5.setBackground(java.awt.Color.lightGray);
 			jButton5.setText("Consultorios");
@@ -247,7 +220,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton6() {
 		if (jButton6 == null) {
 			jButton6 = new JButton();
-			jButton6.setBounds(new Rectangle(124, 355, 216, 35));
+			jButton6.setBounds(new Rectangle(108, 310, 200, 30));
 			jButton6.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton6.setBackground(java.awt.Color.lightGray);
 			jButton6.setText("Especialidades");
@@ -269,7 +242,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton7() {
 		if (jButton7 == null) {
 			jButton7 = new JButton();
-			jButton7.setBounds(new Rectangle(124, 415, 216, 35));
+			jButton7.setBounds(new Rectangle(108, 370, 200, 30));
 			jButton7.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 12));
 			jButton7.setBackground(java.awt.Color.lightGray);
 			jButton7.setText("Listados");
@@ -281,5 +254,31 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 			});
 		}
 		return jButton7;
+	}
+
+	/**
+	 * This method initializes jScrollPane	
+	 * 	
+	 * @return javax.swing.JScrollPane	
+	 */
+	private JScrollPane getJScrollPane() {
+		if (jScrollPane == null) {
+			jScrollPane = new JScrollPane();
+			jScrollPane.setBounds(new Rectangle(90, 440, 245, 155));
+			jScrollPane.setViewportView(getJTable());
+		}
+		return jScrollPane;
+	}
+
+	/**
+	 * This method initializes jTable	
+	 * 	
+	 * @return javax.swing.JTable	
+	 */
+	private JTable getJTable() {
+		if (jTable == null) {
+			jTable = new JTable(modelo);
+		}
+		return jTable;
 	}
 }

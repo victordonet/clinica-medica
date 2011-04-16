@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -132,11 +133,11 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, m.nombre+' '+m.apellido as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
-			Calendar hoy = Calendar.getInstance();
-			hoy.setTime(new java.util.Date());
+			Calendar hoy = new GregorianCalendar();
 			JOptionPane.showMessageDialog(null,hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH)+"/"+hoy.get(Calendar.YEAR));
 			java.sql.Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
-			pst.setDate(1, fhoy);
+			String Shoy = hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH)+"/"+hoy.get(Calendar.YEAR);
+			pst.setString(1, Shoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				int idConsultorio = rst.getInt("idConsultorio");

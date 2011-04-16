@@ -125,6 +125,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
 		return fachada.listarResContable(fDesde, fHasta);
 	}
+	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
+		return fachada.listarCargos();
+	}
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
@@ -274,10 +277,5 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
-	}
-
-	@Override
-	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
-		return fachada.listarCargos();
 	}
 }

@@ -132,7 +132,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			throws PersistenciaException {
 		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, m.nombre as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
+			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, CONCAT(m.nombre,' ',m.apellido) as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
 			Calendar hoy = Calendar.getInstance();
 			java.sql.Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(1, fhoy);
@@ -141,23 +141,22 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 				int idConsultorio = rst.getInt("idConsultorio");
 				String nomMed = rst.getString("nomMed");
 				int hora = rst.getInt("horario");
+				JOptionPane.showConfirmDialog(null, hora);
 				String horario = "";
 				switch (hora) {
-					case 0: horario="00 a 02";
-					case 2: horario="02 a 04";
-					case 4: horario="04 a 06";
-					case 6: horario="06 a 08";
-					case 8: horario="08 a 10";
-					case 10: horario="10 a 12";
-					case 12: horario="12 a 14";
-					case 14: horario="14 a 16";
-					case 16: horario="16 a 18";
-					case 18: horario="18 a 20";
-					case 20: horario="20 a 22";
-					case 22: horario="22 a 24";
-					break;
-					default: horario="sin horario";
-					break;
+					case 0: horario="00 a 02"; break;
+					case 2: horario="02 a 04"; break;
+					case 4: horario="04 a 06"; break;
+					case 6: horario="06 a 08"; break;
+					case 8: horario="08 a 10"; break;
+					case 10: horario="10 a 12"; break;
+					case 12: horario="12 a 14"; break;
+					case 14: horario="14 a 16"; break;
+					case 16: horario="16 a 18"; break;
+					case 18: horario="18 a 20"; break;
+					case 20: horario="20 a 22"; break;
+					case 22: horario="22 a 24"; break;
+					default: horario="sin horario"; break;
 				}
 				DataConsultas data = new DataConsultas(idConsultorio, nomMed, horario);
 				consultas.add(data);

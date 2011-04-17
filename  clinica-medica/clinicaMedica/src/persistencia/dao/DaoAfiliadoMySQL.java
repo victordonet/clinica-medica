@@ -186,13 +186,12 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		}
 	}
 
-	public Afiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
+	public DataAfiliado getAfiliado(String idAfil, Transaccion trn)	throws PersistenciaException {
 		String pass = null, tipo = null, nombre = null, apellido = null, ci = null, email = null, direccion = null, telefono = null, estado = null;
 		Date fechaIngreso;
 		Calendar fechaIng = Calendar.getInstance();
 		Boolean fonasa = null;
-		Afiliado af = null;
-		
+		DataAfiliado af = null;
 		try {
 			System.out.println("==============Obteniendo afiliado: "+idAfil+"==============================");
 
@@ -218,8 +217,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			}
 			rst.close();
 			pst.close();
-			IDaoExamen daoEx = new DaoExamenMySQL();
-			af = new Afiliado(idAfil, pass, tipo, estado, nombre, apellido, ci, email, direccion, telefono, fechaIng, fonasa, daoEx);
+			//IDaoExamen daoEx = new DaoExamenMySQL();
+			af = new DataAfiliado(idAfil, ci, nombre, apellido, email, direccion, telefono, estado, fechaIng, fonasa);
 			System.out.println("==============Fin Obtener Afiliado==============================");
 
 		} catch (SQLException e) {

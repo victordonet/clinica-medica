@@ -3,7 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-import logica.Afiliado;
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -244,9 +243,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
+	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
-		Afiliado af = null;
+		DataAfiliado af = null;
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
 				trn.finalizarTrn(false);

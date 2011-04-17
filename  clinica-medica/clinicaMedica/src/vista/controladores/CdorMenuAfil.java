@@ -1,5 +1,8 @@
 package vista.controladores;
 
+import java.rmi.RemoteException;
+
+import excepciones.PersistenciaException;
 import vista.ventanas.FrmMenuAfil;
 
 public class CdorMenuAfil extends CdorManejoVentanas {
@@ -18,8 +21,16 @@ public class CdorMenuAfil extends CdorManejoVentanas {
 		}
 	}
 
-	public void actionListadoConsutlas(){	
-		//this.cambioVentana(this, new CdorListadoConsutlas());
+	public void actionListadoConsutlas(){
+		try {
+			CdorListadoDetalleAfiliado cdor = new CdorListadoDetalleAfiliado();
+			cdor.setdAfil(super.getMod().getAfiliado(super.getUsu().getIdUsu()));
+			this.cambioVentana(this, cdor);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void actionReservaTurno(){

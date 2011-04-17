@@ -5,33 +5,32 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
-import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorFiltroListFecha;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.Date;
 
-public class FrmFiltroListadoPorFechas extends JFrame {
+public class FrmFiltroListadoPorFecha extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
-	private JLabel jLabel3 = null;
 	private JPanel jPanelFechaDesde = null;
-	private JPanel jPanelFechaHasta = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
-	private String titulo;
+	private CdorFiltroListFecha cdor;
+	JDateChooser calendar = new JDateChooser();
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmFiltroListadoPorFechas(CdorAltaEsp cdor) {
+	public FrmFiltroListadoPorFecha(CdorFiltroListFecha cdorFiltroListFecha) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorFiltroListFecha;
 		initialize();
-
 	}
 
 	/**
@@ -61,28 +60,22 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
-			jLabel3 = new JLabel();
-			jLabel3.setBounds(new Rectangle(171, 187, 90, 19));
-			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Fecha Hasta");
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new Rectangle(165, 13, 242, 33));
+			jLabel1.setBounds(new Rectangle(217, 13, 190, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText(titulo);
+			jLabel1.setText("Listado de Conultas");
 			jLabel2 = new JLabel();
-			jLabel2.setBounds(new Rectangle(171, 159, 90, 19));
+			jLabel2.setBounds(new Rectangle(212, 159, 90, 19));
 			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Fecha Desde");
+			jLabel2.setText("Fecha a listar");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel1, null);
 			jContentPane.add(jLabel2, null);
-			jContentPane.add(jLabel3, null);
 			jContentPane.add(getJPanelFechaDesde(), null);
-			jContentPane.add(getJPanelFechaHasta(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 		}
@@ -100,29 +93,10 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFechaDesde = new JPanel();
 			jPanelFechaDesde.setLayout(gridLayout1);
-			jPanelFechaDesde.setBounds(new Rectangle(278, 158, 90, 19));
-			JDateChooser calendar = new JDateChooser();
+			jPanelFechaDesde.setBounds(new Rectangle(310, 158, 90, 19));
 			jPanelFechaDesde.add(calendar, null);
 		}
 		return jPanelFechaDesde;
-	}
-
-	/**
-	 * This method initializes jPanelFechaHasta
-	 *
-	 * @return javax.swing.JPanel
-	 */
-	private JPanel getJPanelFechaHasta() {
-		if (jPanelFechaHasta == null) {
-			GridLayout gridLayout1 = new GridLayout();
-			gridLayout1.setRows(1);
-			jPanelFechaHasta = new JPanel();
-			jPanelFechaHasta.setLayout(gridLayout1);
-			jPanelFechaHasta.setBounds(new Rectangle(278, 187, 90, 19));
-			JDateChooser calendar = new JDateChooser();
-			jPanelFechaHasta.add(calendar, null);
-		}
-		return jPanelFechaHasta;
 	}
 
 	/**
@@ -133,7 +107,7 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
+			jButton1.setBounds(new Rectangle(198, 346, 85, 21));
 			jButton1.setBackground(java.awt.Color.lightGray);
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -154,13 +128,16 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBounds(new Rectangle(312, 346, 79, 21));
 			jButton2.setBackground(java.awt.Color.lightGray);
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Filtro Listado por Fechas");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					Date fecha = calendar.getDate();
+					Calendar fechaList = Calendar.getInstance();
+					fechaList.setTime(fecha);
+					cdor.actionListar(fechaList);
 				}
 			});
 		}

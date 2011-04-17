@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataUsu;
 import vista.dataobjet.DataUsuario;
 import excepciones.PersistenciaException;
 
@@ -96,10 +97,8 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		return h.toString();
 	}
 
-
 	public String getTipo(Transaccion trn, String idUsuario) throws PersistenciaException {
-
-		System.out.println("Validando usuario: "+idUsuario);
+		System.out.println("Obteneiendo tipo de usuario: "+idUsuario);
 		String tipo = null ;
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select tipo from Usuarios where id=?");
@@ -110,8 +109,6 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			}
 			rst.close();
 			pst.close();
-	
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
@@ -120,5 +117,4 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		}
 		return tipo;	
 	}
-	
 }

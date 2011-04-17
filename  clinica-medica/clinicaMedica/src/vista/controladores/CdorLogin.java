@@ -5,8 +5,7 @@ import javax.swing.JOptionPane;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 import logica.fachada.ProxyFachadaLogica;
-import vista.dataobjet.DataAdmin;
-import vista.dataobjet.VosLogin;
+import vista.dataobjet.DataUsu;
 import vista.ventanas.FrmLogin;
 
 public class CdorLogin extends CdorManejoVentanas {
@@ -19,7 +18,6 @@ public class CdorLogin extends CdorManejoVentanas {
 		try {
 			ventana = new FrmLogin(this);
 		} catch (Throwable e) {
-
 			e.printStackTrace();
 		}
 	}
@@ -51,18 +49,30 @@ public class CdorLogin extends CdorManejoVentanas {
 	    			String tipo = super.getMod().getTipo(usu);
 	    			if (tipo.equals("ME")){
 	    				CdorMenuMed cdorMenu = new CdorMenuMed();
+	    				DataUsu dUsu = new DataUsu(usu, tipo);
+	    				this.setUsu(dUsu);
+	    				cdorMenu.setUsu(dUsu);
 	    				this.cambioVentana(this, cdorMenu);
 	    			}else {
 	    				if (tipo.equals("AF")){
 	    					CdorMenuAfil cdorMenu = new CdorMenuAfil();
+		    				DataUsu dUsu = new DataUsu(usu, tipo);
+		    				this.setUsu(dUsu);
+		    				cdorMenu.setUsu(dUsu);
 	    					this.cambioVentana(this, cdorMenu);						
 	    				}else {
 	    					if (tipo.equals("AD")){
 	    						CdorMenuAdmin cdorMenu = new CdorMenuAdmin();
+    		    				DataUsu dUsu = new DataUsu(usu, tipo);
+    		    				this.setUsu(dUsu);
+    		    				cdorMenu.setUsu(dUsu);
 	    						this.cambioVentana(this, cdorMenu);
 	    					}else{
 	    						if (tipo.equals("GE")){
 	    							CdorMenuGerente cdorMenu = new CdorMenuGerente();
+	    		    				DataUsu dUsu = new DataUsu(usu, tipo);
+	    		    				this.setUsu(dUsu);
+	    		    				cdorMenu.setUsu(dUsu);
 	    							this.cambioVentana(this, cdorMenu);
 	    						}
 	    					}

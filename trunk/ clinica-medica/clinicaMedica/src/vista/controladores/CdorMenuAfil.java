@@ -34,7 +34,7 @@ public class CdorMenuAfil extends CdorManejoVentanas {
 	}
 	
 	public void actionReservaTurno(){
-		//this.cambioVentana(this, new CdorReservaTurno()); 
+		this.cambioVentana(this, new CdorReservaTurno()); 
 	}
 	
 	public void actionModifPass(){	

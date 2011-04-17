@@ -53,12 +53,12 @@ public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 			e.printStackTrace();
 		}
 		return modelo;
-
 	}
+	
 	public void cerrar() {
 		ventana.dispose();
-
 	}
+	
 	public void habilitarVentana(){
 		ventana.setFocusable(true);
 		ventana.setEnabled(true);

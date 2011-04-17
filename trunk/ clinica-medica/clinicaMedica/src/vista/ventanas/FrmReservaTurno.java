@@ -5,17 +5,23 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+
 import logica.observer.IObserver;
-import vista.controladores.CdorListadoEsp;
-import vista.controladores.ModeloTablaListEsp;
+import vista.controladores.CdorReservaTurno;
+import vista.controladores.ModeloTablaListConsDisp;
 import java.awt.Dimension;
 import javax.swing.JButton;
+import javax.swing.table.TableRowSorter;
 
 public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 
@@ -35,17 +41,19 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JComboBox jComboBox2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private ModeloTablaListEsp modelo = null;
+	//private ModeloTablaListConsDisp modelo = null;
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
-
+	private TableRowSorter<ModeloTablaListConsDisp> sorter;
+	private CdorReservaTurno cdor;
+	
 	/**
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmReservaTurno(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
-		this.modelo = modelo;
-		//cdor = control;
+	public FrmReservaTurno(CdorReservaTurno control)throws Throwable {
+		//this.modelo = modelo;
+		cdor = control;
 		initialize();
 	}
 
@@ -66,8 +74,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		frm.setVisible(true);
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				//cdor.actionCerrar();
-				frm.dispose();
+				cdor.actionCerrar();
 			}
 		});
 	}
@@ -120,18 +127,15 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(jTextField1, null);
 			jContentPane.add(getJTextField(), null);
 			jContentPane.add(getJComboBox1(), null);
 			jContentPane.add(getJComboBox2(), null);
 			jContentPane.add(getJScrollPane(), null);
-			jContentPane.add(getJTable1(), null);
 		}
 		return jContentPane;
 	}
 
 	public void update() throws RemoteException {
-		//JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
 		try {
 			initialize();
 		} catch (ClassNotFoundException e) {
@@ -139,32 +143,6 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * This method initializes jScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
-	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
-			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(149, 165, 346, 96));
-		}
-		return jScrollPane;
-	}
-
-	/**
-	 * This method initializes jTable1
-	 *
-	 * @return javax.swing.JTable
-	 */
-	private JTable getJTable1() {
-		if (jTable1 == null) {
-			jTable1 = new JTable(modelo);
-			jTable1.setBounds(new Rectangle(149, 165, 346, 96));
-		}
-		return jTable1;
 	}
 
 	/**
@@ -177,8 +155,10 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(226, 73, 86, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getUsu().getIdUsu());
+		}
+		return jTextField1;
 	}
-		return jTextField1;}
 
 	/**
 	 * This method initializes TextField2
@@ -215,8 +195,14 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 */
 	private JComboBox getJComboBox1() {
 		if (jComboBox1 == null) {
-			jComboBox1 = new JComboBox();
+			jComboBox1 = new JComboBox(cdor.cargarEsp());
 			jComboBox1.setBounds(new Rectangle(226, 101, 137, 19));
+			jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					cdor.cargarMed(jComboBox1.getSelectedIndex());
+					jComboBox2.setModel(cdor.cargarMed(jComboBox1.getSelectedIndex()));
+				}
+			});
 		}
 		return jComboBox1;
 	}
@@ -230,10 +216,59 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 		if (jComboBox2 == null) {
 			jComboBox2 = new JComboBox();
 			jComboBox2.setBounds(new Rectangle(226, 130, 137, 19));
+			jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					if(e.getSource()== jComboBox2){
+						//tomo el contenido del texto ingresado en el jcombo
+						String text = jComboBox2.getSelectedItem().toString();
+						//si todavia no se eligio nada, que no haya ningun filtro
+						if (text.length() == 0) {
+							sorter.setRowFilter(null);
+						} else {
+							//se le agrega al sorter el filtro
+							sorter.setRowFilter(RowFilter.regexFilter(text));
+							// como es la columna 0, no es necesario ponerla
+							//si quisiera que el filtro fuera en otra columna
+							//si hay que aclarar en cual:
+							// sorter.setRowFilter(RowFilter.regexFilter(text,1));
+							//con esto logramos que el filtro se ejecute sobre la columna 2
+						}
+					}
+				}
+			});
 		}
 		return jComboBox2;
 	}
 
+	/**
+	 * This method initializes jScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
+	 */
+	private JScrollPane getJScrollPane() {
+		if (jScrollPane == null) {
+			jScrollPane = new JScrollPane();
+			jScrollPane.setBounds(new Rectangle(149, 165, 346, 96));
+		}
+		return jScrollPane;
+	}
+
+	/**
+	 * This method initializes jTable1
+	 *
+	 * @return javax.swing.JTable
+	 */
+	private JTable getJTable1() {
+		if (jTable1 == null) {
+			ModeloTablaListConsDisp modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
+			jTable1 = new JTable(modelo);
+			sorter = new TableRowSorter<ModeloTablaListConsDisp>(modelo);
+			jTable1.setRowSorter(sorter);
+			jTable1.setBounds(new Rectangle(149, 165, 346, 96));
+		}
+		return jTable1;
+	}
+	
 	public JFrame getVentana(){
 		return frm;
 	}
@@ -252,7 +287,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Cancelar Reserva de Turno.");
-					//cdor.actionCerrar();
+					cdor.actionCerrar();
 				}
 			});
 		}
@@ -273,7 +308,10 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Reserva de Turno.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					/*Date fecha = calendar.getDate();
+					Calendar fechaList = Calendar.getInstance();
+					fechaList.setTime(fecha);
+					cdor.actionReservar(jTextField1.getText(), jTextField2.getText(), jTextField.getText());*/
 				}
 			});
 		}

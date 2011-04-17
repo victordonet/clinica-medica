@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import logica.Afiliado;
 import logica.Medico;
 import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
@@ -122,7 +121,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.listarExPend(idAfil);
 	}
-	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
+	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.getAfiliado(idAfil);
 	}
 	

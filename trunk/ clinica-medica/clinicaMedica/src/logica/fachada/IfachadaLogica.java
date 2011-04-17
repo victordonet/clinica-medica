@@ -3,7 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-import logica.Afiliado;
 import logica.Medico;
 import logica.observer.IObservable;
 import excepciones.PersistenciaException;
@@ -39,7 +38,7 @@ public interface IfachadaLogica extends IObservable{
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException;
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException;
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
-	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
+	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;

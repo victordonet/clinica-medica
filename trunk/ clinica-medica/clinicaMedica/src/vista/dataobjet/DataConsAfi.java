@@ -11,7 +11,6 @@ public class DataConsAfi implements Serializable {
 	
 	public DataConsAfi() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public DataConsAfi(Calendar fecha, String nomMed, String apeMed) {
@@ -44,6 +43,4 @@ public class DataConsAfi implements Serializable {
 	public void setApeMed(String apeMed) {
 		this.apeMed = apeMed;
 	}
-	
-	
 }

@@ -6,7 +6,6 @@ import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VosLogin;
-import logica.Afiliado;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 
@@ -40,7 +39,7 @@ public class MainDaoAfiliados {
 		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDireccion(), "26199911", false);
 		
 		//Obtener
-		Afiliado af = fachada.getAfiliado(afil.getId());
+		DataAfiliado af = fachada.getAfiliado(afil.getId());
 		System.out.println("Nombre afiliado buscado = "+af.getNombre());
 		
 		//Validar

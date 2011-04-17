@@ -6,7 +6,6 @@ import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.VosLogin;
-import logica.Afiliado;
 
 public interface IDaoAfiliado {
 
@@ -17,6 +16,6 @@ public interface IDaoAfiliado {
 	public VosLogin getDataAfiliado(Transaccion trn, String id) throws PersistenciaException;
 	public boolean validarAfil(Transaccion trn, String idAfil) throws PersistenciaException;
 	public Vector<DataExamen> listarExPend(Transaccion trn, String idAfil) throws PersistenciaException;
-	public Afiliado getAfiliado(String idAfil, Transaccion trn) throws PersistenciaException;
+	public DataAfiliado getAfiliado(String idAfil, Transaccion trn) throws PersistenciaException;
 	
 }

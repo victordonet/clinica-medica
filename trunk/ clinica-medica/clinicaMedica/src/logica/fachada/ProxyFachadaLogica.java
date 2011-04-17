@@ -6,7 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-import logica.Afiliado;
 import logica.Configuracion;
 import logica.Medico;
 import logica.observer.IObserver;
@@ -96,7 +95,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.listarExPend(idAfil);
 	}
-	public Afiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
+	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.getAfiliado(idAfil);
 	}
 	

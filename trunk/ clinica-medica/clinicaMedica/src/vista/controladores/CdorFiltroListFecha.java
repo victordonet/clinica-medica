@@ -1,29 +1,30 @@
 package vista.controladores;
 
-import vista.ventanas.FrmMenuMed;
+import java.util.Calendar;
 
-public class CdorMenuMed extends CdorManejoVentanas {
+import vista.ventanas.FrmFiltroListadoPorFecha;
+import vista.ventanas.FrmMantMedicos;
 
-	private FrmMenuMed ventana;
+public class CdorFiltroListFecha extends CdorManejoVentanas {
+
+	private FrmFiltroListadoPorFecha ventana;
 	private CdorManejoVentanas vino;
 
-	public CdorMenuMed() {}
+	public CdorFiltroListFecha() {}
 
 	public void desplegarVentana (CdorManejoVentanas vino){
 		this.vino = vino;
 		try {
-			ventana = new FrmMenuMed(this);
+			ventana = new FrmFiltroListadoPorFecha(this);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void actionListadoConsutlas(){	
-		this.cambioVentana(this, new CdorFiltroListFecha());
-	}
-	
-	public void actionModifPass(){	
-		this.cambioVentana(this, new CdorModifPass());
+	public void actionListar(Calendar fecha){
+		CdorListadoConsultas cdor = new CdorListadoConsultas();
+		cdor.setFecha(fecha);
+		this.cambioVentana(this, cdor);
 	}
 	
 	public void habilitarVentana() {
@@ -41,15 +42,15 @@ public class CdorMenuMed extends CdorManejoVentanas {
 		ventana.setFocusable(false);
 	}
 
-	public FrmMenuMed getVentana() {
+	public FrmFiltroListadoPorFecha getVentana() {
 		return ventana;
 	}
 
-	public void setVentana(FrmMenuMed ventana) {
+	public void setVentana(FrmFiltroListadoPorFecha ventana) {
 		this.ventana = ventana;
 	}
 
 	public void actionCerrar() {
-		cerrar();
+		cerrarVentana(this, vino);
 	}
 }

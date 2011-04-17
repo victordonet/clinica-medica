@@ -21,13 +21,11 @@ public class FrmModifPass extends JFrame{
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
 	private JLabel jLabel5 = null;
-	private JLabel jLabel6 = null;
 	private JTextField jTextField1 = null;
 	private JPasswordField jPassField = null;
 	private JPasswordField jPassField2 = null;
 	private JPasswordField jPassField3 = null;
 	private CdorModifPass cdor;
-	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 
@@ -68,20 +66,16 @@ public class FrmModifPass extends JFrame{
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
-			jLabel6 = new JLabel();
-			jLabel6.setBounds(new Rectangle(163, 245, 110, 19));
-			jLabel6.setText("Tipo/Cargo");
-			jLabel6.setForeground(Color.black);
 			jLabel5 = new JLabel();
-			jLabel5.setBounds(new Rectangle(163, 212, 112, 19));
+			jLabel5.setBounds(new Rectangle(159, 228, 112, 19));
 			jLabel5.setText("Repetir Contraseña");
 			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
-			jLabel4.setBounds(new Rectangle(163, 179, 110, 19));
+			jLabel4.setBounds(new Rectangle(159, 195, 110, 19));
 			jLabel4.setForeground(java.awt.Color.black);
 			jLabel4.setText("Contraseña Nueva");
 			jLabel3 = new JLabel();
-			jLabel3.setBounds(new Rectangle(163, 146, 110, 19));
+			jLabel3.setBounds(new Rectangle(159, 162, 110, 19));
 			jLabel3.setForeground(java.awt.Color.black);
 			jLabel3.setText("Contraseña Actual");
 			jLabel1 = new JLabel();
@@ -90,7 +84,7 @@ public class FrmModifPass extends JFrame{
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Modificación de Contraseña");
 			jLabel2 = new JLabel();
-			jLabel2.setBounds(new Rectangle(163, 113, 106, 19));
+			jLabel2.setBounds(new Rectangle(159, 129, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Usuario");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
@@ -102,14 +96,12 @@ public class FrmModifPass extends JFrame{
 			jContentPane.add(jLabel3, null);
 			jContentPane.add(jLabel4, null);
 			jContentPane.add(jLabel5, null);
-			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJPassField2(), null);
 			jContentPane.add(getJPassField(), null);
 			jContentPane.add(getJPassField3(), null);
-			jContentPane.add(getJComboBox(), null);
 		}
 		return jContentPane;
 	}
@@ -122,7 +114,12 @@ public class FrmModifPass extends JFrame{
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setBounds(new Rectangle(293, 113, 94, 19));
+			jTextField1.setBounds(new Rectangle(289, 129, 94, 19));
+			if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
+				jTextField1.setText(cdor.getUsu().getIdUsu());	
+			}else{
+				jTextField1.setText("grilla");
+			}	
 			jTextField1.setEditable(false);
 		}
 		return jTextField1;
@@ -136,7 +133,7 @@ public class FrmModifPass extends JFrame{
 	private JPasswordField getJPassField2() {
 		if (jPassField2 == null) {
 			jPassField2 = new JPasswordField();
-			jPassField2.setBounds(new Rectangle(293, 146, 150, 19));
+			jPassField2.setBounds(new Rectangle(289, 162, 150, 19));
 		}
 		return jPassField2;
 	}
@@ -150,7 +147,7 @@ public class FrmModifPass extends JFrame{
 	private JPasswordField getJPassField() {
 		if (jPassField == null) {
 			jPassField = new JPasswordField();
-			jPassField.setBounds(new Rectangle(293, 179, 150, 19));
+			jPassField.setBounds(new Rectangle(289, 195, 150, 19));
 		}
 		return jPassField;
 	}
@@ -163,22 +160,9 @@ public class FrmModifPass extends JFrame{
 	private JPasswordField getJPassField3() {
 		if (jPassField3 == null) {
 			jPassField3 = new JPasswordField();
-			jPassField3.setBounds(new Rectangle(293, 212, 150, 19));
+			jPassField3.setBounds(new Rectangle(289, 228, 150, 19));
 		}
 		return jPassField3;
-	}
-
-	/**
-	 * This method initializes jComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
-	private JComboBox getJComboBox() {
-		if (jComboBox == null) {
-			jComboBox = new JComboBox();
-			jComboBox.setBounds(new Rectangle(293, 245, 150, 19));
-		}
-		return jComboBox;
 	}
 
 	/**
@@ -217,7 +201,7 @@ public class FrmModifPass extends JFrame{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Contraseña.");
 					//Valido datos
-					boolean validar = cdor.validarPass(jPassField.getText(), jPassField2.getText());
+					boolean validar = cdor.validarPass(jPassField.getText(), jPassField3.getText());
 					if (validar){
 						//Modifico
 						cdor.modifPass(jTextField1.getText(), jPassField.getText());	

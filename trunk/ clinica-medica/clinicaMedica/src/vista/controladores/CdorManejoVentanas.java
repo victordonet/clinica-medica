@@ -1,5 +1,6 @@
 package vista.controladores;
 
+import vista.dataobjet.DataUsu;
 import logica.fachada.ProxyFachadaLogica;
 
 public abstract class CdorManejoVentanas {
@@ -7,7 +8,7 @@ public abstract class CdorManejoVentanas {
 	private ProxyFachadaLogica mod;
 	private CdorManejoVentanas vengo= null;
 	private CdorManejoVentanas voy = null;
-	private String idUsu;
+	private DataUsu usu;
 
 	public CdorManejoVentanas() {}	
 	public abstract void desplegarVentana(CdorManejoVentanas vino);
@@ -19,12 +20,14 @@ public abstract class CdorManejoVentanas {
 	public final void cambioVentana(CdorManejoVentanas vengo, CdorManejoVentanas voy){
 		this.voy=voy;
 		voy.setMod(vengo.getMod());
+		voy.setUsu(vengo.getUsu());
 		voy.desplegarVentana(vengo);
 		vengo.deshabilitarVentana();
 	}
 	
 	public final void cerrarVentana(CdorManejoVentanas vengo, CdorManejoVentanas voy) {
 		voy.setMod(vengo.getMod());
+		voy.setUsu(vengo.getUsu());
 		voy.habilitarVentana();
 		System.out.println("En el manejador de ventana = "+vengo.toString());
 		vengo.cerrar();
@@ -54,12 +57,12 @@ public abstract class CdorManejoVentanas {
 		this.voy = voy;
 	}
 	
-	public String getIdUsu() {
-		return idUsu;
+	public DataUsu getUsu() {
+		return usu;
 	}
 	
-	public void setIdUsu(String idUsu) {
-		this.idUsu = idUsu;
+	public void setUsu(DataUsu usu) {
+		this.usu = usu;
 	}
 }
 

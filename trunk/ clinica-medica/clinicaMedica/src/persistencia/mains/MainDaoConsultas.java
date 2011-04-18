@@ -21,7 +21,7 @@ public class MainDaoConsultas {
 		String idAfil = "1001";
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(2010, 02, 20);
-		DataReservaTurno dataResTurno = new DataReservaTurno(fecha, 4, 12, idAfil, 3, idMed);
+		DataReservaTurno dataResTurno = new DataReservaTurno(fecha, 4, 12, idAfil, 3, idMed, 1);
 		fachada.altaConsulta(dataResTurno);
 
 		//Alta prox mes

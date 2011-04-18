@@ -30,8 +30,8 @@ public class CdorMantMedico extends CdorManejoVentanas {
 		this.cambioVentana(this, new CdorModifMedico());
 	}
 	
-	public void actionModifConsultas(){	
-		//this.cambioVentana(this, new CdorModifConsultas());
+	public void actionDisponibilidad(){	
+		this.cambioVentana(this, new CdorMantDisp());
 	}
 	
 	public void actionModifPass(){	

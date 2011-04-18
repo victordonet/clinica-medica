@@ -18,8 +18,8 @@ public class FrmMantAfiliados extends JFrame {
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
 	private CdorMantAfil cdor;
-	private JButton jButton21 = null;
-	private JButton jButton211 = null;
+	private JButton jButton3 = null;
+	private JButton jButton4 = null;
 
 	/**
 	 * This is the default constructor
@@ -77,8 +77,8 @@ public class FrmMantAfiliados extends JFrame {
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJButton21(), null);
-			jContentPane.add(getJButton211(), null);
+			jContentPane.add(getJButton3(), null);
+			jContentPane.add(getJButton4(), null);
 		}
 		return jContentPane;
 	}
@@ -134,14 +134,14 @@ public class FrmMantAfiliados extends JFrame {
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton21() {
-		if (jButton21 == null) {
-			jButton21 = new JButton();
-			jButton21.setBounds(new Rectangle(59, 176, 204, 32));
-			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación");
-			jButton21.setBackground(Color.lightGray);
-			jButton21.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton3() {
+		if (jButton3 == null) {
+			jButton3 = new JButton();
+			jButton3.setBounds(new Rectangle(59, 176, 204, 32));
+			jButton3.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton3.setText("Modificación");
+			jButton3.setBackground(Color.lightGray);
+			jButton3.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación Afiliados");
 					System.out.println(cdor.toString());
@@ -149,7 +149,7 @@ public class FrmMantAfiliados extends JFrame {
 				}
 			});
 		}
-		return jButton21;
+		return jButton3;
 	}
 
 	/**
@@ -157,14 +157,14 @@ public class FrmMantAfiliados extends JFrame {
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton211() {
-		if (jButton211 == null) {
-			jButton211 = new JButton();
-			jButton211.setBounds(new Rectangle(58, 229, 204, 32));
-			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton211.setText("Modificación de Usuario");
-			jButton211.setBackground(Color.lightGray);
-			jButton211.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton4() {
+		if (jButton4 == null) {
+			jButton4 = new JButton();
+			jButton4.setBounds(new Rectangle(58, 229, 204, 32));
+			jButton4.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton4.setText("Modificación de Usuario");
+			jButton4.setBackground(Color.lightGray);
+			jButton4.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación Usuario");
 					System.out.println(cdor.toString());
@@ -172,6 +172,6 @@ public class FrmMantAfiliados extends JFrame {
 				}
 			});
 		}
-		return jButton211;
+		return jButton4;
 	}
 }

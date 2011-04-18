@@ -1,12 +1,10 @@
 package vista.controladores;
 
-
-
-import vista.ventanas.FrmMantenerDisp;
+import vista.ventanas.FrmMantDisp;
 
 public class CdorMantDisp extends CdorManejoVentanas {
 
-	private FrmMantenerDisp ventana;
+	private FrmMantDisp ventana;
 	//private ModeloTablaListEsp modelo = null;
 	private CdorManejoVentanas vino;
 
@@ -14,7 +12,7 @@ public class CdorMantDisp extends CdorManejoVentanas {
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		    this.vino = vino;
 			try {
-				ventana = new FrmMantenerDisp(this);
+				ventana = new FrmMantDisp(this);
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}

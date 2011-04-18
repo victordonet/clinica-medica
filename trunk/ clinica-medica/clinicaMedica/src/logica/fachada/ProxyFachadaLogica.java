@@ -25,7 +25,7 @@ import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.VoDispo;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
@@ -152,10 +152,10 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {
+	public void altaDisponibilidad(DataDisp dataDsip) throws PersistenciaException, RemoteException {
 		fachada.altaDisponibilidad(dataDsip);
 	}
-	public void eliminarDisponibilidad(VoDispo vo) throws PersistenciaException, RemoteException {
+	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException, RemoteException {
 		fachada.eliminarDisponibilidad(vo);
 	}
 	
@@ -218,7 +218,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public VoResumCont calcSalarioTotal(Calendar fDesde, Calendar fHasta)  throws PersistenciaException, RemoteException {
  		return fachada.calcSalarioTotal(fDesde, fHasta);
  	}
- 	public Vector<VoDispo> listarDispMed(String idMed)  throws PersistenciaException, RemoteException {
+ 	public Vector<DataDisp> listarDispMed(String idMed)  throws PersistenciaException, RemoteException {
  		return fachada.listarDispMed(idMed);
  	}
  	public void cargaConsultasProxMes(String id)  throws PersistenciaException, RemoteException {

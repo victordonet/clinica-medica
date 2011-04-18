@@ -3,6 +3,9 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -119,7 +122,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
-
 		Transaccion trn = pool.obtenerTrn(8);
 		String idAfil = afil.getId();
 		try {
@@ -263,6 +265,24 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 		return af;
+	}
+	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		boolean resultado = true;
+		try {
+			DataAfiliado af =  iDaoAfil.getAfiliado(idAfil, trn);
+			boolean fonasa = af.getFonasa();
+			if (fonasa){
+				int cantConsultas = iDaoTC.getCantConsult(trn, idAfil);
+				if (cantConsultas<11){
+					resultado = false;
+				}
+			}
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+			e.printStackTrace();
+		}
+		return resultado;
 	}
 	
 	//ADMINS-GERENTES

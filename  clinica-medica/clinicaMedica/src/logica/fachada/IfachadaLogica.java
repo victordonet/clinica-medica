@@ -39,6 +39,7 @@ public interface IfachadaLogica extends IObservable{
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException;
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
 	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
+	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;

@@ -153,6 +153,12 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(226, 276, 34, 19));
 			jTextField2.setEditable(false);
+			boolean timbre = cdor.cobraTimbre();
+			if (timbre){
+				jTextField2.setText("S");
+			}else{
+				jTextField2.setText("N");
+			}
 		}
 		return jTextField2;
 	}
@@ -235,7 +241,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
+			jButton1.setBounds(new java.awt.Rectangle(194,346,90,21));
 			jButton1.setBackground(java.awt.Color.lightGray);
 			jButton1.setText("Cancelar Reserva Turno.");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -256,13 +262,13 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBounds(new java.awt.Rectangle(308,346,90,21));
 			jButton2.setBackground(java.awt.Color.lightGray);
 			jButton2.setText("Aceptar Reserva Turno.");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Reserva de Turno.");
-					/*Date fecha = calendar.getDate();
+					Date fecha = calendar.getDate();
 					Calendar fechaList = Calendar.getInstance();
 					fechaList.setTime(fecha);
 					cdor.actionReservar(jTextField1.getText(), jTextField2.getText(), jTextField.getText());*/

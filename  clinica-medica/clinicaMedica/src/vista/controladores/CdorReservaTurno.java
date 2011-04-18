@@ -3,13 +3,9 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-
 import excepciones.PersistenciaException;
-
-import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.VoMedEsp;
@@ -19,11 +15,10 @@ import vista.ventanas.FrmReservaTurno;
 public class CdorReservaTurno extends CdorManejoVentanas {
 	
 	private FrmReservaTurno ventana;
-	//private ModeloTablaListConsDisp modelo = null;
 	private CdorManejoVentanas vino;
 	private Vector<DataEsp> vEsp = null;
 	private Vector<VoMedEsp> vMEsp = null;
-	
+
 	public CdorReservaTurno() {
 		super();
 	}

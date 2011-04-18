@@ -19,6 +19,7 @@ public class ModeloTablaListConsDisp extends AbstractTableModel {
 		columnas.add("Dia");
 		columnas.add("Horario");
 		columnas.add("Consultorio");
+		columnas.add("Prox.Turno");
 	}
 
 	public int getRowCount() {
@@ -45,6 +46,9 @@ public class ModeloTablaListConsDisp extends AbstractTableModel {
 		}
 		case 3:{
 			return (datos.get(row)).getIdConsultorio();
+		}
+		case 4:{
+			return (datos.get(row)).getTurno();
 		}
 		default: return null;
 		}

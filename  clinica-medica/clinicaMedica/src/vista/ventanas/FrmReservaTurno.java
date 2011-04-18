@@ -247,7 +247,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,79,21));
+			jButton1.setBounds(new java.awt.Rectangle(194,346,85,21));
 			jButton1.setBackground(java.awt.Color.lightGray);
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -268,18 +268,18 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
+			jButton2.setBounds(new java.awt.Rectangle(308,346,85,21));
 			jButton2.setBackground(java.awt.Color.lightGray);
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Reserva de Turno.");
 					Calendar fecha = cdor.getvConsultas().get(jTable1.getSelectedRow()).getFecha();
-					int dia = cdor.getvConsultas().get(jTable1.getSelectedRow()).getDia();
-					int horario = cdor.getvConsultas().get(jTable1.getSelectedRow()).getHorario();
+					String diaSem = cdor.getvConsultas().get(jTable1.getSelectedRow()).getDia();	
+					String horario = cdor.getvConsultas().get(jTable1.getSelectedRow()).getHorario();
 					int idConsultorio = cdor.getvConsultas().get(jTable1.getSelectedRow()).getIdConsultorio();
 					int turno = cdor.getvConsultas().get(jTable1.getSelectedRow()).getTurno();
-					cdor.actionReservar(fecha, dia, horario, idConsultorio, turno, jComboBox2.getSelectedIndex());
+					cdor.actionReservar(fecha, diaSem, horario, idConsultorio, turno, jComboBox2.getSelectedIndex());
 				}
 			});
 		}

@@ -71,12 +71,39 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			while(rst.next()){
 				Date fecha = rst.getDate("fecha");
 				int dia = rst.getInt("dia");
-				int horario = rst.getInt("horario");
+				String diaSem = "";
+				switch (dia) {
+					case 0: diaSem="Domingo"; break;
+					case 1: diaSem="Lunes"; break;
+					case 2: diaSem="Martes"; break;
+					case 3: diaSem="Miércoles"; break;
+					case 4: diaSem="Jueves"; break;
+					case 5: diaSem="Viernes"; break;
+					case 6: diaSem="Sábado"; break;
+					default: diaSem="sin día"; break;
+				}
+				int hora = rst.getInt("horario");
+				String horario = "";
+				switch (hora) {
+					case 0: horario="00 a 02"; break;
+					case 2: horario="02 a 04"; break;
+					case 4: horario="04 a 06"; break;
+					case 6: horario="06 a 08"; break;
+					case 8: horario="08 a 10"; break;
+					case 10: horario="10 a 12"; break;
+					case 12: horario="12 a 14"; break;
+					case 14: horario="14 a 16"; break;
+					case 16: horario="16 a 18"; break;
+					case 18: horario="18 a 20"; break;
+					case 20: horario="20 a 22"; break;
+					case 22: horario="22 a 24"; break;
+					default: horario="sin horario"; break;
+				}
 				int proxTurno = rst.getInt("proxTurno");
 				int idConsultorio = rst.getInt("idConsultorio");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(fecha);
-				VoTurnosDisp data = new VoTurnosDisp(cal, dia, horario, proxTurno, idConsultorio);
+				VoTurnosDisp data = new VoTurnosDisp(cal, diaSem, horario, proxTurno, idConsultorio);
 				consultas.add(data);
 			}
 			rst.close();
@@ -132,7 +159,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			throws PersistenciaException {
 		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, CONCAT(m.nombre,' ',m.apellido) as nomMed, c.horario from consultas c, medicos m where fecha=? and c.idmedico=m.id");
+			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, CONCAT(m.nombre,' ',m.apellido) as nomMed, c.horario from consultas c, medicos m where turno = 0 and fecha=? and c.idmedico=m.id");
 			Calendar hoy = Calendar.getInstance();
 			java.sql.Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(1, fhoy);

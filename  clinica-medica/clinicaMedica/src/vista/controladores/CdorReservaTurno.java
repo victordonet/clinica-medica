@@ -122,10 +122,46 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		return resultado;
 	}
 	
-	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio, int turno, int selecMed) {
+	public void actionReservar(Calendar fecha,String diaSem, String horario, int idConsultorio, int turno, int selecMed) {
 		try {
+			int dia = 0;
+			if(diaSem.equals("Lunes")) {
+				dia = 1;}
+			if(diaSem.equals("Martes")) {
+				dia = 2;}
+			if(diaSem.equals("Miércoles")) {
+				dia = 3;}
+			if(diaSem.equals("Jueves")) {
+				dia = 4;}
+			if(diaSem.equals("Viernes")) {
+				dia = 5;}
+			if(diaSem.equals("Sábado")) {
+				dia = 6;}
+			int hora = 0;
+			if(horario.equals("02 a 04")) {
+				hora = 2;}
+			if(horario.equals("04 a 06")) {
+				hora = 4;}
+			if(horario.equals("06 a 08")) {
+				hora = 6;}
+			if(horario.equals("08 a 10")) {
+				hora = 8;}
+			if(horario.equals("10 a 12")) {
+				hora = 10;}
+			if(horario.equals("12 a 14")) {
+				hora = 12;}
+			if(horario.equals("14 a 16")) {
+				hora = 14;}
+			if(horario.equals("16 a 18")) {
+				hora = 16;}
+			if(horario.equals("18 a 20")) {
+				hora = 18;}
+			if(horario.equals("20 a 22")) {
+				hora = 20;}
+			if(horario.equals("22 a 24")) {
+				hora = 22;}
 			String idMed = vMEsp.get(selecMed).getId();
-			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, horario, super.getUsu().getIdUsu(), idConsultorio, idMed, turno);
+			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, hora, super.getUsu().getIdUsu(), idConsultorio, idMed, turno);
 			super.getMod().altaConsulta(dataResTurno);
 			JOptionPane.showMessageDialog(null, "Su reserva ha sido realizada con éxito.");
 		} catch (RemoteException e) {

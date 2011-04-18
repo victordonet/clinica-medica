@@ -7,9 +7,10 @@ public class VoTurnosDisp implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Calendar fecha;
-	private int dia,horario,turno,idConsultorio;
+	private String dia,horario;
+	private int turno,idConsultorio;
 	
-	public VoTurnosDisp(Calendar fecha, int dia, int horario, int turno,
+	public VoTurnosDisp(Calendar fecha, String dia, String horario, int turno,
 			int idConsultorio) {
 		super();
 		this.fecha = fecha;
@@ -24,16 +25,16 @@ public class VoTurnosDisp implements Serializable {
 	public void setFecha(Calendar fecha) {
 		this.fecha = fecha;
 	}
-	public int getDia() {
+	public String getDia() {
 		return dia;
 	}
-	public void setDia(int dia) {
+	public void setDia(String dia) {
 		this.dia = dia;
 	}
-	public int getHorario() {
+	public String getHorario() {
 		return horario;
 	}
-	public void setHorario(int horario) {
+	public void setHorario(String horario) {
 		this.horario = horario;
 	}
 	public int getTurno() {

@@ -930,11 +930,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//TOTAL CONSULTAS
-	public int getCantConsult(String x) throws PersistenciaException, RemoteException {
+	public int getCantConsult(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
-			resultado = iDaoTC.getCantConsult(trn, x);
+			resultado = iDaoTC.getCantConsult(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

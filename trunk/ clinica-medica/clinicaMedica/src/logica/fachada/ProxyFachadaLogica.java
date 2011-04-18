@@ -234,8 +234,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	
 	//TOTAL CONSULTAS
-	public int getCantConsult(String x) throws PersistenciaException, RemoteException {
-		return fachada.getCantConsult(x);
+	public int getCantConsult(String idAfil) throws PersistenciaException, RemoteException {
+		return fachada.getCantConsult(idAfil);
 	}
 	public int getCantConsultasPagas(Calendar fDesde,Calendar fHasta) throws PersistenciaException, RemoteException {
 		return fachada.getCantConsultasPagas(fDesde, fHasta);

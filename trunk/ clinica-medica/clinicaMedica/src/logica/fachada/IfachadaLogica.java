@@ -95,7 +95,7 @@ public interface IfachadaLogica extends IObservable{
 	public Vector<DataTipoExamen> listarTipoEx() throws PersistenciaException, RemoteException;
 	
 	//TOTAL CONSULTAS
-	public int getCantConsult(String x) throws PersistenciaException, RemoteException;
+	public int getCantConsult(String idAfil) throws PersistenciaException, RemoteException;
 	public int getCantConsultasPagas(Calendar fDesde,Calendar fHasta) throws PersistenciaException, RemoteException;
 	public Vector<DataConsAfi> listarConsultasAfi(String id) throws PersistenciaException, RemoteException;
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException;

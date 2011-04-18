@@ -16,7 +16,7 @@ import logica.observer.IObserver;
 import vista.controladores.CdorMantDisp;
 import vista.controladores.ModeloTablaListEsp;
 
-public class FrmMantenerDisp extends UnicastRemoteObject implements IObserver{
+public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
@@ -48,7 +48,7 @@ public class FrmMantenerDisp extends UnicastRemoteObject implements IObserver{
 	private JFrame frm = new JFrame();
 
 
-	public FrmMantenerDisp(CdorMantDisp cdor)throws Throwable{
+	public FrmMantDisp(CdorMantDisp cdor)throws Throwable{
 		super();
 		this.cdor = cdor;
 		//this.modelo = cdor.listarEspecialidades();
@@ -75,7 +75,7 @@ public class FrmMantenerDisp extends UnicastRemoteObject implements IObserver{
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new Rectangle(188, 13, 200, 33));
+			jLabel1.setBounds(new Rectangle(188, 7, 200, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Mantener disponibilidad");

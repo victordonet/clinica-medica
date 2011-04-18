@@ -2,18 +2,18 @@ package vista.dataobjet;
 
 import java.io.Serializable;
 
-public class VoDispo implements Serializable {
+public class DataDisp implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private int dia,horario;
 	private String idMed;
 	
-	public VoDispo() {
+	public DataDisp() {
 		super();
 	}
 
 	
-	public VoDispo(int dia, int horario, String idMed) {
+	public DataDisp(int dia, int horario, String idMed) {
 		super();
 		this.dia = dia;
 		this.horario = horario;
@@ -43,4 +43,5 @@ public class VoDispo implements Serializable {
 	public String getIdMed() {
 		return idMed;
 	}
+
 }

@@ -42,7 +42,7 @@ import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.VoDispo;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
@@ -557,7 +557,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(VoDispo dataDsip) throws PersistenciaException, RemoteException {
+	public void altaDisponibilidad(DataDisp dataDsip) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoD.altaDisponibilidad(trn, dataDsip);
@@ -569,7 +569,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public void eliminarDisponibilidad(VoDispo vo) throws PersistenciaException {
+	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoD.eliminarDisponibilidad(vo, trn);
@@ -876,9 +876,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
  	}
- 	public Vector<VoDispo> listarDispMed(String idMed) throws PersistenciaException, RemoteException {
+ 	public Vector<DataDisp> listarDispMed(String idMed) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
-		Vector<VoDispo> resultado = null;
+		Vector<DataDisp> resultado = null;
 		try {
 			resultado = iDaoM.listarDispMed(idMed, trn);
 			trn.finalizarTrn(true);

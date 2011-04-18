@@ -37,7 +37,7 @@ public class ModeloTablaListadoConsultas extends AbstractTableModel {
 		switch (col){
 		case 0: {
 			return (datos.get(row)).getFecha().getTime();
-		}
+		}	
 		case 1: {
 			return (datos.get(row)).getNomMed()+" "+(datos.get(row)).getApeMed();
 		}

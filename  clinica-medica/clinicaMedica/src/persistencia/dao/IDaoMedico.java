@@ -8,7 +8,7 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
-import vista.dataobjet.VoDispo;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
@@ -28,7 +28,7 @@ public interface IDaoMedico {
  	public Vector<DataSalario> listarSalarios(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
  	public Vector<DataCantConsu> listarMedPremiado(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
  	public VoResumCont calcSalarioTotal(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException;
- 	public Vector<VoDispo> listarDispMed(String idMed,Transaccion trn) throws PersistenciaException;
+ 	public Vector<DataDisp> listarDispMed(String idMed,Transaccion trn) throws PersistenciaException;
  	public void cargaConsultasProxMes(Transaccion trn, String id, int totalConsultorios) throws PersistenciaException;
  	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException;
 	

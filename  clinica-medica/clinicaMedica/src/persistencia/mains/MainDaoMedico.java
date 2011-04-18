@@ -8,7 +8,7 @@ import vista.dataobjet.DataMed;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.VoDispo;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
@@ -97,9 +97,9 @@ public class MainDaoMedico {
 			System.out.println("Listado salario total = "+vSalTot.getValor());
 		
 		//Listar Disponibilidad
-		Vector<VoDispo> vDisp = fachada.listarDispMed(med.getId());
+		Vector<DataDisp> vDisp = fachada.listarDispMed(med.getId());
 		for (int i = 0; i < vDisp.size(); i++) {
-			VoDispo dispo = vDisp.get(i);
+			DataDisp dispo = vDisp.get(i);
 			System.out.println("Lista dispo, dia = "+dispo.getDia()+", horario = "+dispo.getHorario());
 		}
 		

@@ -1,17 +1,22 @@
 package vista.ventanas;
 
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import vista.controladores.CdorAltaEsp;
-import vista.controladores.ModeloTablaListEsp;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 
-public class FrmMantenerDisp extends JFrame {
+import logica.observer.IObserver;
+import vista.controladores.CdorMantDisp;
+import vista.controladores.ModeloTablaListEsp;
+
+public class FrmMantenerDisp extends UnicastRemoteObject implements IObserver{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
@@ -19,7 +24,6 @@ public class FrmMantenerDisp extends JFrame {
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
-
 	private JLabel jLabel5 = null;
 	private JLabel jLabel6 = null;
 	private JLabel jLabel7 = null;
@@ -33,51 +37,41 @@ public class FrmMantenerDisp extends JFrame {
 	private JLabel jLabel15 = null;
 	private JLabel jLabel16 = null;
 	private JLabel jLabel17 = null;
-
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
-	private CdorAltaEsp cdor;
-	private ModeloTablaListEsp modelo = null;
+	private CdorMantDisp cdor;
+	//private ModeloTablaListEsp modelo = null;
+	private JFrame frm = new JFrame();
 
-	/**
-	 * This is the default constructor
-	 */
-	public FrmMantenerDisp(CdorAltaEsp cdor) {
+
+	public FrmMantenerDisp(CdorMantDisp cdor)throws Throwable{
 		super();
 		this.cdor = cdor;
 		//this.modelo = cdor.listarEspecialidades();
 		initialize();
 	}
 
-	/**
-	 * This method initializes this
-	 *
-	 * @return void
-	 */
+
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(611,413));
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
-		this.setResizable(false);
-		this.setTitle("Disponibilidad");
-		this.setContentPane(getJContentPane());
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		frm.setSize(new java.awt.Dimension(611,413));
+		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
+		frm.setResizable(false);
+		frm.setTitle("Disponibilidad");
+		frm.setContentPane(getJContentPane());
+		frm.setLocationRelativeTo(null);
+		frm.setVisible(true);
+		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
 			}
 		});
 	}
 
-	/**
-	 * This method initializes ContentPane
-	 *
-	 * @return javax.swing.JPanel
-	 */
+
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel1 = new JLabel();
@@ -89,7 +83,6 @@ public class FrmMantenerDisp extends JFrame {
 			jLabel2.setBounds(new Rectangle(56, 65, 56, 19));
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Médico");
-
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(96, 104, 20, 19));
 			jLabel3.setForeground(java.awt.Color.GRAY);
@@ -178,16 +171,11 @@ public class FrmMantenerDisp extends JFrame {
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
-			jContentPane.add(getJScrollPane(modelo), null);
+			jContentPane.add(getJScrollPane(), null);
 		}
 		return jContentPane;
 	}
 
-	/**
-	 * This method initializes TextField1
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
@@ -197,11 +185,6 @@ public class FrmMantenerDisp extends JFrame {
 	}
 		return jTextField1;}
 
-	/**
-	 * This method initializes TextField2
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
@@ -211,37 +194,22 @@ public class FrmMantenerDisp extends JFrame {
 		return jTextField2;
 	}
 
-	/**
-	 * This method initializes jScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
-	private JScrollPane getJScrollPane(ModeloTablaListEsp modelo) {
+	private JScrollPane getJScrollPane() {
 		if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(125, 104, 330, 224));
-			jScrollPane.setViewportView(getJTable1(modelo));
+			jScrollPane.setViewportView(getJTable1());
 		}
 		return jScrollPane;
 	}
 
-	/**
-	 * This method initializes jTable1
-	 *
-	 * @return javax.swing.JTable
-	 */
-	private JTable getJTable1(ModeloTablaListEsp modelo) {
+	private JTable getJTable1() {
 		if (jTable1 == null) {
-			jTable1 = new JTable(modelo);
+			jTable1 = new JTable();
 		}
 		return jTable1;
 	}
 
-	/**
-	 * This method initializes Button1
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
@@ -258,11 +226,6 @@ public class FrmMantenerDisp extends JFrame {
 		return jButton1;
 	}
 
-	/**
-	 * This method initializes Button2
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
@@ -277,5 +240,15 @@ public class FrmMantenerDisp extends JFrame {
 			});
 		}
 		return jButton2;
+	}
+
+	@Override
+	public void update() throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public JFrame getVentana() {
+		return frm;
 	}
 }

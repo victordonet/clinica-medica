@@ -163,12 +163,12 @@ public class FrmMantMedicos extends JFrame {
 			jButton211 = new JButton();
 			jButton211.setBounds(new Rectangle(59, 201, 204, 32));
 			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton211.setText("Modificación de Consultas");
+			jButton211.setText("Disponibilidad");
 			jButton211.setBackground(Color.lightGray);
 			jButton211.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Modificación Consultas");
-					cdor.actionModifConsultas();
+					System.out.println("Disponibilidad");
+					cdor.actionDisponibilidad();
 				}
 			});
 		}

@@ -18,9 +18,9 @@ public class FrmMantMedicos extends JFrame {
 	private JButton jButton2 = null;
 	private JLabel jLabel = null;
 	private CdorMantMedico cdor;
-	private JButton jButton21 = null;
-	private JButton jButton211 = null;
-	private JButton jButton2111 = null;
+	private JButton jButton3 = null;
+	private JButton jButton4 = null;
+	private JButton jButton5 = null;
 
 	/**
 	 * This is the default constructor
@@ -79,9 +79,9 @@ public class FrmMantMedicos extends JFrame {
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJButton21(), null);
-			jContentPane.add(getJButton211(), null);
-			jContentPane.add(getJButton2111(), null);
+			jContentPane.add(getJButton3(), null);
+			jContentPane.add(getJButton4(), null);
+			jContentPane.add(getJButton5(), null);
 		}
 		return jContentPane;
 	}
@@ -136,21 +136,21 @@ public class FrmMantMedicos extends JFrame {
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton21() {
-		if (jButton21 == null) {
-			jButton21 = new JButton();
-			jButton21.setBounds(new Rectangle(59, 151, 204, 32));
-			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton21.setText("Modificación");
-			jButton21.setBackground(Color.lightGray);
-			jButton21.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton3() {
+		if (jButton3 == null) {
+			jButton3 = new JButton();
+			jButton3.setBounds(new Rectangle(59, 151, 204, 32));
+			jButton3.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton3.setText("Modificación");
+			jButton3.setBackground(Color.lightGray);
+			jButton3.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación Medicos");
 					cdor.actionModifMed();
 				}
 			});
 		}
-		return jButton21;
+		return jButton3;
 	}
 
 	/**
@@ -158,21 +158,21 @@ public class FrmMantMedicos extends JFrame {
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton211() {
-		if (jButton211 == null) {
-			jButton211 = new JButton();
-			jButton211.setBounds(new Rectangle(59, 201, 204, 32));
-			jButton211.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton211.setText("Disponibilidad");
-			jButton211.setBackground(Color.lightGray);
-			jButton211.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton4() {
+		if (jButton4 == null) {
+			jButton4 = new JButton();
+			jButton4.setBounds(new Rectangle(59, 201, 204, 32));
+			jButton4.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton4.setText("Disponibilidad");
+			jButton4.setBackground(Color.lightGray);
+			jButton4.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Disponibilidad");
 					cdor.actionDisponibilidad();
 				}
 			});
 		}
-		return jButton211;
+		return jButton4;
 	}
 
 	/**
@@ -180,20 +180,20 @@ public class FrmMantMedicos extends JFrame {
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton2111() {
-		if (jButton2111 == null) {
-			jButton2111 = new JButton();
-			jButton2111.setBounds(new Rectangle(59, 251, 204, 32));
-			jButton2111.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2111.setText("Modificación de Usuario");
-			jButton2111.setBackground(Color.lightGray);
-			jButton211.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton5() {
+		if (jButton5 == null) {
+			jButton5 = new JButton();
+			jButton5.setBounds(new Rectangle(59, 251, 204, 32));
+			jButton5.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton5.setText("Modificación de Usuario");
+			jButton5.setBackground(Color.lightGray);
+			jButton5.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Modificación Usuario");
 					cdor.actionModifPass();
 				}
 			});
 		}
-		return jButton2111;
+		return jButton5;
 	}
 }

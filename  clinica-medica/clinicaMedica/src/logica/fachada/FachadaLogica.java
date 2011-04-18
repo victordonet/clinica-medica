@@ -279,9 +279,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				}
 			}
 		} catch (PersistenciaException e) {
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
 			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
 			e.printStackTrace();
 		}
+		trn.finalizarTrn(true);
+		pool.liberarTrn(trn);
 		return resultado;
 	}
 	

@@ -278,7 +278,8 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 					int dia = cdor.getvConsultas().get(jTable1.getSelectedRow()).getDia();
 					int horario = cdor.getvConsultas().get(jTable1.getSelectedRow()).getHorario();
 					int idConsultorio = cdor.getvConsultas().get(jTable1.getSelectedRow()).getIdConsultorio();
-					cdor.actionReservar(fecha, dia, horario, idConsultorio, jComboBox2.getSelectedIndex());
+					int turno = cdor.getvConsultas().get(jTable1.getSelectedRow()).getTurno();
+					cdor.actionReservar(fecha, dia, horario, idConsultorio, turno, jComboBox2.getSelectedIndex());
 				}
 			});
 		}

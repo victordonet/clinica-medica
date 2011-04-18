@@ -122,10 +122,10 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		return resultado;
 	}
 	
-	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio, int selecMed) {
+	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio, int turno, int selecMed) {
 		try {
 			String idMed = vMEsp.get(selecMed).getId();
-			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, horario, super.getUsu().getIdUsu(), idConsultorio, idMed);
+			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, horario, super.getUsu().getIdUsu(), idConsultorio, idMed, turno);
 			super.getMod().altaConsulta(dataResTurno);
 			JOptionPane.showMessageDialog(null, "Su reserva ha sido realizada con éxito.");
 		} catch (RemoteException e) {

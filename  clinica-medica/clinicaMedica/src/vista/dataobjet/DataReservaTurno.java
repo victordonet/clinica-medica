@@ -11,7 +11,7 @@ public class DataReservaTurno implements Serializable{
 	private String idAfil, idMedico;
 	
 	public DataReservaTurno(Calendar fecha, int dia, int horario, String idAfil,
-			int idConsultorio, String idMedico) {
+			int idConsultorio, String idMedico, int turno) {
 		super();
 		this.fecha = fecha;
 		this.dia = dia;
@@ -19,6 +19,7 @@ public class DataReservaTurno implements Serializable{
 		this.idAfil = idAfil;
 		this.idConsultorio = idConsultorio;
 		this.idMedico = idMedico;
+		this.turno = turno;
 	}
 
 	public Calendar getFecha() {

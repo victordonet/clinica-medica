@@ -116,7 +116,7 @@ public class MainDaoMedico {
 		}
 		
 		//Alta Consulta
-		DataReservaTurno dataResTurno = new DataReservaTurno(fecha, 3, 10, "1001", 3, med.getId());
+		DataReservaTurno dataResTurno = new DataReservaTurno(fecha, 3, 10, "1001", 3, med.getId(), 2);
 		fachada.altaConsulta(dataResTurno);
 	}
 }

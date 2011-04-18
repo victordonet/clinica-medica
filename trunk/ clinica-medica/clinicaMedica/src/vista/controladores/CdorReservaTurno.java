@@ -6,6 +6,7 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.VoMedEsp;
@@ -95,9 +96,7 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		String idMed = vMEsp.get(selecMed).getId();
 		try {
 			Vector<VoTurnosDisp> vec = super.getMod().listarConsultasDisp(idMed);
-			System.out.println(vec.toString());
 			modelo = new ModeloTablaListConsDisp(vec);
-			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();
@@ -106,6 +105,21 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 			e.printStackTrace();
 		}
 		return modelo;
+	}
+	
+	public boolean cobraTimbre(){
+		boolean resultado = false;
+		try {
+			String idAfil =  super.getUsu().getIdUsu();
+			resultado = super.getMod().cobraTimbre(idAfil);
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+			e.printStackTrace();
+		}
+		return resultado;
 	}
 	
 	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio,String idMedico) {

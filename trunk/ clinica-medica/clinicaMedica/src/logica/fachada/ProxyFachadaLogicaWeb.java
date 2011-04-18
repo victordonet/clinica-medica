@@ -124,6 +124,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.getAfiliado(idAfil);
 	}
+	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException {
+		return fachada.cobraTimbre(idAfil);
+	}
 	
 	//ADMIN-GERENTE
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {

@@ -201,15 +201,20 @@ public class FrmModifPass extends JFrame{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Contraseña.");
 					//Valido datos
-					boolean validar = cdor.validarPass(jPassField.getText(), jPassField3.getText());
-					if (validar){
-						//Modifico
-						cdor.modifPass(jTextField1.getText(), jPassField.getText());	
-					}else{
-						JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
+					boolean validar = cdor.validarPass(jPassField.getText().toString(), jPassField3.getText().toString());
+					boolean validarUsu = cdor.validarUsu(jTextField1.getText().toString(), jPassField2.getText().toString());
+					if (validarUsu==false){
+						JOptionPane.showMessageDialog(null,"La contraseña actual es incorrecta.");
 					}
-				}
-			});
+					else{
+						if(validar){
+							//Modifico
+						cdor.modifPass(jTextField1.getText(), jPassField.getText());	
+						}else{
+							JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
+						}
+					}
+			}});
 		}
 		return jButton2;
 	}

@@ -56,6 +56,26 @@ public class CdorModifPass extends CdorManejoVentanas {
 		return resultado;
 	}
 	
+	public boolean validarUsu (String clave, String pass){
+		boolean valido = false;
+		try {
+			if (super.getMod().validarUsuario(clave, pass)){
+				valido = true;
+			}
+			else{
+				valido = false;
+			}
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return valido;
+	}
+	
 	public void modifPass(String clave, String pass){
 		try {
 			super.getMod().modifContrasena(clave, pass);

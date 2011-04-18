@@ -5,12 +5,15 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Calendar;
+
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import logica.observer.IObserver;
 import vista.controladores.CdorReservaTurno;
 import vista.controladores.ModeloTablaListConsDisp;
@@ -196,6 +199,9 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 					ModeloTablaListConsDisp modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
 					getJTable1().setVisible(true);
 					getJTable1().setModel(modelo);
+					getJTable1().setSelectionMode(0);
+					ListSelectionModel selectionModel = getJTable1().getSelectionModel();
+					selectionModel.setSelectionInterval(0, 0);
 				}
 			});
 		}
@@ -241,9 +247,9 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setBounds(new java.awt.Rectangle(194,346,90,21));
+			jButton1.setBounds(new java.awt.Rectangle(194,346,79,21));
 			jButton1.setBackground(java.awt.Color.lightGray);
-			jButton1.setText("Cancelar Reserva Turno.");
+			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Cancelar Reserva de Turno.");
@@ -262,16 +268,17 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JButton getJButton2() {
 		if (jButton2 == null) {
 			jButton2 = new JButton();
-			jButton2.setBounds(new java.awt.Rectangle(308,346,90,21));
+			jButton2.setBounds(new java.awt.Rectangle(308,346,79,21));
 			jButton2.setBackground(java.awt.Color.lightGray);
-			jButton2.setText("Aceptar Reserva Turno.");
+			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Reserva de Turno.");
-					Date fecha = calendar.getDate();
-					Calendar fechaList = Calendar.getInstance();
-					fechaList.setTime(fecha);
-					cdor.actionReservar(jTextField1.getText(), jTextField2.getText(), jTextField.getText());*/
+					Calendar fecha = cdor.getvConsultas().get(jTable1.getSelectedRow()).getFecha();
+					int dia = cdor.getvConsultas().get(jTable1.getSelectedRow()).getDia();
+					int horario = cdor.getvConsultas().get(jTable1.getSelectedRow()).getHorario();
+					int idConsultorio = cdor.getvConsultas().get(jTable1.getSelectedRow()).getIdConsultorio();
+					cdor.actionReservar(fecha, dia, horario, idConsultorio, jComboBox2.getSelectedIndex());
 				}
 			});
 		}

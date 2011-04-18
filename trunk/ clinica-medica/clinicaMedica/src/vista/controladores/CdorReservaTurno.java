@@ -6,7 +6,6 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
-import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.VoMedEsp;
@@ -19,6 +18,7 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 	private CdorManejoVentanas vino;
 	private Vector<DataEsp> vEsp = null;
 	private Vector<VoMedEsp> vMEsp = null;
+	private Vector<VoTurnosDisp> vConsultas = null;
 
 	public CdorReservaTurno() {
 		super();
@@ -95,8 +95,8 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		ModeloTablaListConsDisp modelo =null;
 		String idMed = vMEsp.get(selecMed).getId();
 		try {
-			Vector<VoTurnosDisp> vec = super.getMod().listarConsultasDisp(idMed);
-			modelo = new ModeloTablaListConsDisp(vec);
+			vConsultas = super.getMod().listarConsultasDisp(idMed);
+			modelo = new ModeloTablaListConsDisp(vConsultas);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();
@@ -122,9 +122,10 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		return resultado;
 	}
 	
-	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio,String idMedico) {
+	public void actionReservar(Calendar fecha,int dia, int horario, int idConsultorio, int selecMed) {
 		try {
-			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, horario, super.getUsu().getIdUsu(), idConsultorio, idMedico);
+			String idMed = vMEsp.get(selecMed).getId();
+			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, horario, super.getUsu().getIdUsu(), idConsultorio, idMed);
 			super.getMod().altaConsulta(dataResTurno);
 			JOptionPane.showMessageDialog(null, "Su reserva ha sido realizada con éxito.");
 		} catch (RemoteException e) {
@@ -149,5 +150,13 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 
 	public void setvMEsp(Vector<VoMedEsp> vMEsp) {
 		this.vMEsp = vMEsp;
+	}
+
+	public Vector<VoTurnosDisp> getvConsultas() {
+		return vConsultas;
+	}
+
+	public void setvConsultas(Vector<VoTurnosDisp> vConsultas) {
+		this.vConsultas = vConsultas;
 	}
 }

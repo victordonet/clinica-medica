@@ -1,9 +1,7 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-
 import javax.swing.JOptionPane;
-
 import excepciones.PersistenciaException;
 import vista.ventanas.FrmModifPass;
 
@@ -79,7 +77,7 @@ public class CdorModifPass extends CdorManejoVentanas {
 	public void modifPass(String clave, String pass){
 		try {
 			super.getMod().modifContrasena(clave, pass);
-			JOptionPane.showMessageDialog(null,"Su contraseña fue cambiada con éxito.");
+			JOptionPane.showMessageDialog(null,"La contraseña fue cambiada con éxito.");
 			actionCerrar();
 		} catch (RemoteException e) {
 			e.printStackTrace();

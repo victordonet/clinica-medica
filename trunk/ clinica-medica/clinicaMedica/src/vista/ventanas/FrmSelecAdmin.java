@@ -55,7 +55,6 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
-				frm.dispose();
 			}
 		});
 	}
@@ -68,7 +67,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
-		//if (jContentPane == null) {
+		if (jContentPane == null) {
 			jLabel = new JLabel();
 			jLabel.setBounds(new Rectangle(177, 15, 239, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
@@ -82,7 +81,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJButton21(), null);
 			jContentPane.add(getJScrollPane(), null);
-		//}
+		}
 		return jContentPane;
 			
 	}
@@ -167,9 +166,12 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21.setText("Aceptar");
 			jButton21.setBackground(Color.lightGray);
-			jButton2.addActionListener(new java.awt.event.ActionListener() {
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Listado Administrativos");
+					String id = cdor.getvAdmin().get(jTable.getSelectedRow()).getId();
+					cdor.setId(id);
+					cdor.actionAceptar();
 				}
 			});
 		}

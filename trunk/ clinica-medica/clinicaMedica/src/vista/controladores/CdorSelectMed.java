@@ -30,8 +30,7 @@ public class CdorSelectMed extends CdorManejoVentanas {
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		this.vino = vino;
 		try {
-			modelo = listarMed();
-			ventana = new FrmSelecMedico(modelo, this);
+			ventana = new FrmSelecMedico(this);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}

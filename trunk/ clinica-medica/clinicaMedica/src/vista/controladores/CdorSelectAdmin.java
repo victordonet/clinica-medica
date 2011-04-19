@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataEsp;
+import vista.dataobjet.DataMed;
 import vista.ventanas.FrmSelecAdmin;
 
 public class CdorSelectAdmin extends CdorManejoVentanas {
@@ -15,6 +16,8 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 	private FrmSelecAdmin ventana;
 	private ModeloTablaListAdmin modelo = null;
 	private CdorManejoVentanas vino;
+	private CdorManejoVentanas ventanaVoy;
+	private Vector<DataAdmin> vAdmin;
 
 	public CdorSelectAdmin() {
 		super();
@@ -26,6 +29,22 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 
 	public void setVentana(FrmSelecAdmin ventana) {
 		this.ventana = ventana;
+	}
+
+	public CdorManejoVentanas getVentanaVoy() {
+		return ventanaVoy;
+	}
+
+	public void setVentanaVoy(CdorManejoVentanas ventanaVoy) {
+		this.ventanaVoy = ventanaVoy;
+	}
+
+	public Vector<DataAdmin> getvAdmin() {
+		return vAdmin;
+	}
+
+	public void setvAdmin(Vector<DataAdmin> vAdmin) {
+		this.vAdmin = vAdmin;
 	}
 
 	public void desplegarVentana(CdorManejoVentanas vino) {
@@ -55,14 +74,17 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
 	}
-	
+	public void actionAceptar() {
+		this.cambioVentana(this, ventanaVoy);
+	}
+		
 	public ModeloTablaListAdmin listarAdmin (){
 
 		ModeloTablaListAdmin modelo =null;
 		try {
-			Vector<DataAdmin> vec = super.getMod().listarAdmin();
-			System.out.println(vec.toString());
-			modelo = new ModeloTablaListAdmin(vec);
+			vAdmin = super.getMod().listarAdmin();
+			System.out.println(vAdmin.toString());
+			modelo = new ModeloTablaListAdmin(vAdmin);
 			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");

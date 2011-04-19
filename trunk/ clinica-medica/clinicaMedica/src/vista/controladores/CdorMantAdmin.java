@@ -23,15 +23,21 @@ public class CdorMantAdmin extends CdorManejoVentanas {
 	}
 	
 	public void actionBajaAdmin(){
-		this.cambioVentana(this, new CdorSelectAdmin()); 
+		CdorSelectAdmin cdorSelec = new CdorSelectAdmin();
+		cdorSelec.setVentanaVoy(new CdorBajaAdmin());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionModifAdmin(){	
-		this.cambioVentana(this, new CdorSelectAdmin());
+		CdorSelectAdmin cdorSelec = new CdorSelectAdmin();
+		cdorSelec.setVentanaVoy(new CdorModifAdmin());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionModifPass(){
-		this.cambioVentana(this, new CdorSelectAdmin());
+		CdorSelectAdmin cdorSelec = new CdorSelectAdmin();
+		cdorSelec.setVentanaVoy(new CdorModifPass());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void habilitarVentana() {

@@ -1,13 +1,9 @@
 package logica.fachada;
 
 import java.rmi.RemoteException;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Vector;
-
 import javax.swing.JOptionPane;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
-
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -312,11 +308,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw new PersistenciaException(e.getMessage());
 		}
 	}
-	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException {
+	public void modificarAdmin(String id, String nom, String cargo, String estado) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)){
-			iDaoAdmin.modificarAdmin(trn, id, nom, cargo);
+			iDaoAdmin.modificarAdmin(trn, id, nom, cargo, estado);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 			}
@@ -454,6 +450,27 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw e;
 		}
 		return resultado;
+	}
+	public DataAdmin getAdmin(String id) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		DataAdmin data = null;
+		try {
+			if (iDaoAdmin.validarAdmin(trn, id)==false){
+				trn.finalizarTrn(false);
+				pool.liberarTrn(trn);
+				throw new PersistenciaException("El administrativo no existe");
+			}
+			else{
+				data = iDaoAdmin.getAdmin(trn, id);
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
+			}
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			e.printStackTrace();
+		}
+		return data;
 	}
 	
 	//CONSULTAS

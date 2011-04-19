@@ -5,8 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import vista.controladores.CdorModifAdmin;
+
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import javax.swing.JComboBox;
 
 public class FrmModifAdmin extends JFrame {
 
@@ -16,13 +19,14 @@ public class FrmModifAdmin extends JFrame {
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
 	private JLabel jLabel4 = null;
+	private JLabel jLabel5 = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
-	private JTextField jTextField3 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private CdorModifAdmin cdor;
-
+	private JComboBox jComboBox = null;
+	private JComboBox jComboBox1 = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -77,6 +81,10 @@ public class FrmModifAdmin extends JFrame {
 			jLabel4.setBounds(new java.awt.Rectangle(99,207,106,19));
 			jLabel4.setForeground(java.awt.Color.black);
 			jLabel4.setText("Cargo");
+			jLabel5 = new JLabel();
+			jLabel5.setBounds(new java.awt.Rectangle(99,236,106,19));
+			jLabel5.setForeground(java.awt.Color.black);
+			jLabel5.setText("Estado");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -85,11 +93,13 @@ public class FrmModifAdmin extends JFrame {
 			jContentPane.add(jLabel2, null);
 			jContentPane.add(jLabel3, null);
 			jContentPane.add(jLabel4, null);
-			jContentPane.add(getJTextField3(), null);
+			jContentPane.add(jLabel5, null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
+			jContentPane.add(getJComboBox(), null);
+			jContentPane.add(getJComboBox1(), null);
 		}
 		return jContentPane;
 	}
@@ -104,9 +114,10 @@ public class FrmModifAdmin extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(222, 149, 86, 19));
 			jTextField1.setEditable(false);
-
+			jTextField1.setText(cdor.getDatos().getId());
+		}
+		return jTextField1;
 	}
-		return jTextField1;}
 
 	/**
 	 * This method initializes TextField2
@@ -117,21 +128,9 @@ public class FrmModifAdmin extends JFrame {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(222, 178, 292, 19));
+			jTextField2.setText(cdor.getDatos().getNombre());
 		}
 		return jTextField2;
-	}
-
-	/**
-	 * This method initializes jTextField3
-	 *
-	 * @return javax.swing.JTextField
-	 */
-	private JTextField getJTextField3() {
-		if (jTextField3 == null) {
-			jTextField3 = new JTextField();
-			jTextField3.setBounds(new java.awt.Rectangle(222,207,87,19));
-		}
-		return jTextField3;
 	}
 
 	/**
@@ -169,11 +168,50 @@ public class FrmModifAdmin extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Administrativo.");
-					cdor.modifAdmin(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
+					String estado = "I";
+					if(jComboBox1.getSelectedIndex()==0){
+						estado = "A";
+					}
+					cdor.modifAdmin(jTextField1.getText(), jTextField2.getText(), jComboBox.getSelectedIndex(),estado);
 				}
 			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes jComboBox	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJComboBox() {
+		if (jComboBox == null) {
+			jComboBox = new JComboBox(cdor.cargarBox());
+			jComboBox.setBounds(new Rectangle(222, 207, 161, 19));
+			jComboBox.setBackground(Color.WHITE);
+			jComboBox.setSelectedIndex(cdor.getDatos().getCargo()-1);
+		}
+		return jComboBox;
+	}
+
+	/**
+	 * This method initializes jComboBox1	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJComboBox1() {
+		if (jComboBox1 == null) {
+			jComboBox1 = new JComboBox();
+			jComboBox1.setBounds(new Rectangle(222, 236, 126, 19));
+			jComboBox1.addItem("Activo");
+			jComboBox1.addItem("Inactivo");
+			jComboBox1.setBackground(Color.WHITE);
+			if (cdor.getDatos().getEstado().equals("A")){
+				jComboBox1.setSelectedIndex(0);
+			}else
+				jComboBox1.setSelectedIndex(1);
+		}
+		return jComboBox1;
 	}
 }
 

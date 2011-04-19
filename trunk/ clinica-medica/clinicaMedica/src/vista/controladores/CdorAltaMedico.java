@@ -6,6 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
+import vista.dataobjet.DataUsuario;
 import vista.ventanas.FrmAltaMedico;
 import excepciones.PersistenciaException;
 
@@ -24,6 +25,8 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 			int idEspecialidad = esp.get(indexEsp).getCodigo();
 			DataMed med = new DataMed(id, nombre, apellido, ci, tel, "A", idEspecialidad);
 			super.getMod().altaMedico(med);
+			DataUsuario usu = new DataUsuario(id, nombre, "ME", "A");
+			super.getMod().altaUsuario(usu);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 		} catch (RemoteException e) {

@@ -110,28 +110,19 @@ public class FrmAltaAdmin extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(222, 150, 86, 19));
 			jTextField1.addKeyListener(new KeyAdapter()
-					{
-					   public void keyTyped(KeyEvent e)
-					   {
-						// Verificar si la tecla pulsada no es un digito
-						   char caracter = e.getKeyChar();
-						   if(((caracter < '0') ||
-								   (caracter > '9')) &&
-								   (caracter != KeyEvent.VK_BACK_SPACE))
-						   {
-							   e.consume();  // ignorar el evento de teclado
-						   }
+			{
+				public void keyTyped(KeyEvent e)
+				{
+					//Controlar el largo del text
+					String s = jTextField1.getText();
+					int n=s.length();
+					if(n >= 30){
+						e.consume();  // ignorar el evento de teclado
+					}
+				}
+			});
 
-					      //Controlar el largo del text
-					      String s = jTextField1.getText();
-					      int n=s.length();
-					      if(n >= 30){
-					    	  e.consume();  // ignorar el evento de teclado
-					      }
-					   }
-					});
-
-	}
+		}
 		return jTextField1;}
 
 	/**
@@ -168,7 +159,7 @@ public class FrmAltaAdmin extends JFrame {
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
 			jComboBox = new JComboBox();
-			jComboBox.setBounds(new Rectangle(223, 208, 156, 18));
+			jComboBox.setBounds(new Rectangle(223, 208, 184, 18));
 			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new java.awt.Rectangle(222,207,87,19));
 		}

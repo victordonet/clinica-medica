@@ -104,6 +104,7 @@ public class FrmBajaAdmin extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(223, 149, 86, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getDatos().getId());
 		}
 		return jTextField1;
 	}
@@ -118,6 +119,7 @@ public class FrmBajaAdmin extends JFrame {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new java.awt.Rectangle(221,178,292,19));
 			jTextField2.setEditable(false);
+			jTextField2.setText(cdor.getDatos().getNombre());
 		}
 		return jTextField2;
 	}
@@ -130,8 +132,9 @@ public class FrmBajaAdmin extends JFrame {
 	private JTextField getJTextField3() {
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
-			jTextField3.setBounds(new java.awt.Rectangle(222,207,87,19));
+			jTextField3.setBounds(new Rectangle(222, 207, 142, 19));
 			jTextField3.setEditable(false);
+			jTextField3.setText(cdor.getDescCargo());
 		}
 		return jTextField3;
 	}

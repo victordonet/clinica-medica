@@ -375,7 +375,27 @@ public class FrmModifAfiliado extends JFrame{
 		}
 		return jTextField7;
 	}
-
+	
+	/**
+	 * This method initializes jComboBox	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJComboBox() {
+		if (jComboBox == null) {
+			jComboBox = new JComboBox();
+			jComboBox.addItem("Activo");
+			jComboBox.addItem("Inactivo");
+			jComboBox.setBackground(Color.WHITE);
+			if (cdor.getDatos().getEstado().equals("A")){
+				jComboBox.setSelectedIndex(0);
+			}else
+				jComboBox.setSelectedIndex(1);
+			jComboBox.setBounds(new Rectangle(248, 316, 88, 20));
+		}
+		return jComboBox;
+	}
+	
 	/**
 	 * This method initializes Button1
 	 *
@@ -415,32 +435,11 @@ public class FrmModifAfiliado extends JFrame{
 					if(jComboBox.getSelectedIndex()==0){
 						estado = "A";
 					}
-					//boolean fonasa = jCheckBox.getSelectedObjects();
-					boolean fonasa = false;
+					boolean fonasa = jCheckBox.isSelected();
 					cdor.modifAfil(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), fonasa, estado);
 				}
 			});
 		}
 		return jButton2;
-	}
-
-	/**
-	 * This method initializes jComboBox	
-	 * 	
-	 * @return javax.swing.JComboBox	
-	 */
-	private JComboBox getJComboBox() {
-		if (jComboBox == null) {
-			jComboBox = new JComboBox();
-			jComboBox.addItem("Activo");
-			jComboBox.addItem("Inactivo");
-			jComboBox.setBackground(Color.WHITE);
-			if (cdor.getDatos().getEstado().equals("A")){
-				jComboBox.setSelectedIndex(0);
-			}else
-				jComboBox.setSelectedIndex(1);
-			jComboBox.setBounds(new Rectangle(248, 316, 88, 20));
-		}
-		return jComboBox;
 	}
 }

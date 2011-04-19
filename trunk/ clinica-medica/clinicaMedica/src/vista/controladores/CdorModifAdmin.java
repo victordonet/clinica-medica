@@ -1,13 +1,17 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAdmin;
 import vista.ventanas.FrmModifAdmin;
 
 public class CdorModifAdmin extends CdorManejoVentanas {
 	
 	private FrmModifAdmin ventana;
 	private CdorManejoVentanas vino;
+	private Vector<String> vCargos;
 	
 	public CdorModifAdmin() {
 		super();
@@ -45,14 +49,40 @@ public class CdorModifAdmin extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
-	public void modifAdmin(String id, String nom, String cargo){
+	public DataAdmin getDatos(){
+		DataAdmin datosAdm = null;
 		try {
-			super.getMod().modificarAdmin(id, nom, cargo);
+			datosAdm = super.getMod().getAdmin(super.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return datosAdm;
+	}
+	
+	public void modifAdmin(String id, String nom, int selCargo, String estado){
+		try {
+			selCargo = selCargo+1;
+			String cargo = String.valueOf(selCargo);
+			super.getMod().modificarAdmin(id, nom, cargo, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public DefaultComboBoxModel cargarBox(){
+		vCargos = new Vector<String>();
+		vCargos.add("Gerente");
+		vCargos.add("Administrador");
+		vCargos.add("Cajero");
+		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
+		for (int i = 0; i < vCargos.size(); i++) {
+			boxMod.addElement(vCargos.get(i));
+		}
+		return boxMod;
 	}
 }

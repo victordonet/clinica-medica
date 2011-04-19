@@ -106,8 +106,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {
 		fachada.altaAdmin(adm);
 	}
-	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException {
-		fachada.modificarAdmin(id, nom, cargo);
+	public void modificarAdmin(String id, String nom, String cargo, String estado) throws PersistenciaException, RemoteException {
+		fachada.modificarAdmin(id, nom, cargo, estado);
 	}
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException {
 		fachada.bajaAdmin(id);
@@ -129,6 +129,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
 		return fachada.listarCargos();
+	}
+	public DataAdmin getAdmin(String id) throws PersistenciaException, RemoteException {
+		return fachada.getAdmin(id);
 	}
 	
 	//CONSULTAS

@@ -28,8 +28,7 @@ public class FrmSelecMedico extends JFrame{
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmSelecMedico(ModeloTablaListMed modelo, CdorSelectMed cdorSelectMed)throws Throwable {
-		this.modelo = modelo;
+	public FrmSelecMedico(CdorSelectMed cdorSelectMed)throws Throwable {
 		cdor = cdorSelectMed;
 		initialize();
 	}
@@ -103,6 +102,7 @@ public class FrmSelecMedico extends JFrame{
 	 */
 	private JTable getJTable1() {
 		if (jTable1 == null) {
+			modelo = cdor.listarMed();
 			jTable1 = new JTable(modelo);
 		}
 		return jTable1;

@@ -399,7 +399,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		int idEsp = 0;
 		DataMed med = null;
 		try {
-			PreparedStatement pst = trn.preparedStatement("SELECT M.NOMBRE, M.APELLIDO, M.CI, M.TELEFONO, M.ESTADO FROM MEDICOS M WHERE M.ID=?");
+			PreparedStatement pst = trn.preparedStatement("SELECT M.NOMBRE, M.APELLIDO, M.CI, M.TELEFONO, M.ESTADO, IDESPECIALIDAD FROM MEDICOS M WHERE M.ID=?");
 			pst.setString(1, id);
  			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

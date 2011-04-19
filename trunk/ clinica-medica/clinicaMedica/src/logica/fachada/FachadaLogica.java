@@ -583,6 +583,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException {
+
 		Transaccion trn = pool.obtenerTrn(8);
 		int matriz[][] = new int [12][7];
 		try {
@@ -735,6 +736,163 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		int a = matriz [2][7];
 		return matriz;
 	}
+	
+	public int[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException {
+	
+		Transaccion trn = pool.obtenerTrn(8);
+		int matriz[][] = new int [11][7];
+		try {
+			Vector <DataDisp> dispo = iDaoD.listarDispMedico(idMedico, trn);
+			 
+			for(DataDisp ladis :dispo){
+				switch (ladis.getHorario()){
+				case 0:{
+					switch (ladis.getDia()){
+					case 1: matriz[0][1]++;
+					case 2: matriz[0][2]++;
+					case 3: matriz[0][3]++;
+					case 4: matriz[0][4]++;
+					case 5: matriz[0][5]++;
+					case 6: matriz[0][6]++;
+					case 7: matriz[0][7]++;
+					}
+				}
+				case 1:{
+					switch (ladis.getDia()){
+					case 1: matriz[1][1]++;
+					case 2: matriz[1][2]++;
+					case 3: matriz[1][3]++;
+					case 4: matriz[1][4]++;
+					case 5: matriz[1][5]++;
+					case 6: matriz[1][6]++;
+					case 7: matriz[1][7]++;
+					}
+				}
+				case 2:{
+					switch (ladis.getDia()){
+					case 1: matriz[2][1]++;
+					case 2: matriz[2][2]++;
+					case 3: matriz[2][3]++;
+					case 4: matriz[2][4]++;
+					case 5: matriz[2][5]++;
+					case 6: matriz[2][6]++;
+					case 7: matriz[2][7]++;
+					}
+				}
+				case 3:{
+					switch (ladis.getDia()){
+					case 1: matriz[3][1]++;
+					case 2: matriz[3][2]++;
+					case 3: matriz[3][3]++;
+					case 4: matriz[3][4]++;
+					case 5: matriz[3][5]++;
+					case 6: matriz[3][6]++;
+					case 7: matriz[3][7]++;
+					}
+				}
+				case 4:{
+					switch (ladis.getDia()){
+					case 1: matriz[4][1]++;
+					case 2: matriz[4][2]++;
+					case 3: matriz[4][3]++;
+					case 4: matriz[4][4]++;
+					case 5: matriz[4][5]++;
+					case 6: matriz[4][6]++;
+					case 7: matriz[4][7]++;
+					}
+				}
+				case 5:{
+					switch (ladis.getDia()){
+					case 1: matriz[5][1]++;
+					case 2: matriz[5][2]++;
+					case 3: matriz[5][3]++;
+					case 4: matriz[5][4]++;
+					case 5: matriz[5][5]++;
+					case 6: matriz[5][6]++;
+					case 7: matriz[5][7]++;
+					}
+				}
+				case 6:{
+					switch (ladis.getDia()){
+					case 1: matriz[6][1]++;
+					case 2: matriz[6][2]++;
+					case 3: matriz[6][3]++;
+					case 4: matriz[6][4]++;
+					case 5: matriz[6][5]++;
+					case 6: matriz[6][6]++;
+					case 7: matriz[6][7]++;
+					}
+				}
+				case 7:{
+					switch (ladis.getDia()){
+					case 1: matriz[7][1]++;
+					case 2: matriz[7][2]++;
+					case 3: matriz[7][3]++;
+					case 4: matriz[7][4]++;
+					case 5: matriz[7][5]++;
+					case 6: matriz[7][6]++;
+					case 7: matriz[7][7]++;
+					}
+				}
+				case 8:{
+					switch (ladis.getDia()){
+					case 1: matriz[8][1]++;
+					case 2: matriz[8][2]++;
+					case 3: matriz[8][3]++;
+					case 4: matriz[8][4]++;
+					case 5: matriz[8][5]++;
+					case 6: matriz[8][6]++;
+					case 7: matriz[8][7]++;
+					}
+				}
+				case 9:{
+					switch (ladis.getDia()){
+					case 1: matriz[9][1]++;
+					case 2: matriz[9][2]++;
+					case 3: matriz[9][3]++;
+					case 4: matriz[9][4]++;
+					case 5: matriz[9][5]++;
+					case 6: matriz[9][6]++;
+					case 7: matriz[9][7]++;
+					}
+				}
+				case 10:{
+					switch (ladis.getDia()){
+					case 1: matriz[10][1]++;
+					case 2: matriz[10][2]++;
+					case 3: matriz[10][3]++;
+					case 4: matriz[10][4]++;
+					case 5: matriz[10][5]++;
+					case 6: matriz[10][6]++;
+					case 7: matriz[10][7]++;
+					}
+				}
+				case 11:{
+					switch (ladis.getDia()){
+					case 1: matriz[11][1]++;
+					case 2: matriz[11][2]++;
+					case 3: matriz[12][3]++;
+					case 4: matriz[13][4]++;
+					case 5: matriz[14][5]++;
+					case 6: matriz[15][6]++;
+					case 7: matriz[16][7]++;
+					}
+				}
+				}
+			}	
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw e;
+		}
+		trn.finalizarTrn(true);
+		pool.liberarTrn(trn);
+		int a = matriz [2][7];
+		return matriz;
+	}
+	
+	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException  {
 		Transaccion trn = pool.obtenerTrn(8);

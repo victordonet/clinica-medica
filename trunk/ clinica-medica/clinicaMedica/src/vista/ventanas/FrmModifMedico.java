@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import vista.controladores.CdorModifMedico;
 
@@ -24,6 +25,7 @@ public class FrmModifMedico extends JFrame{
 	private JLabel jLabel5 = null;
 	private JLabel jLabel6 = null;
 	private JLabel jLabel7 = null;
+	private JLabel jLabel8 = null;
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
@@ -33,7 +35,7 @@ public class FrmModifMedico extends JFrame{
 	private JComboBox jComboBox = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-
+	private JComboBox jComboBox1 = null;
 	/**
 	 * This is the default constructor
 	 * @return
@@ -72,6 +74,10 @@ public class FrmModifMedico extends JFrame{
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
+			jLabel8 = new JLabel();
+			jLabel8.setBounds(new Rectangle(110, 297, 106, 19));
+			jLabel8.setText("Estado");
+			jLabel8.setForeground(Color.black);
 			jLabel7 = new JLabel();
 			jLabel7.setBounds(new Rectangle(110, 263, 106, 19));
 			jLabel7.setText("Especialidad");
@@ -109,17 +115,19 @@ public class FrmModifMedico extends JFrame{
 			jContentPane.add(jLabel2, null);
 			jContentPane.add(jLabel3, null);
 			jContentPane.add(jLabel4, null);
+			jContentPane.add(jLabel5, null);
+			jContentPane.add(jLabel6, null);
+			jContentPane.add(jLabel7, null);
+			jContentPane.add(jLabel8, null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJTextField(), null);
-			jContentPane.add(jLabel5, null);
 			jContentPane.add(getJTextField3(), null);
-			jContentPane.add(jLabel6, null);
 			jContentPane.add(getJTextField4(), null);
-			jContentPane.add(jLabel7, null);
 			jContentPane.add(getJComboBox(), null);
+			jContentPane.add(getJComboBox1(), null);
 		}
 		return jContentPane;
 	}
@@ -134,6 +142,7 @@ public class FrmModifMedico extends JFrame{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(240, 97, 94, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getDatos().getId());
 		}
 		return jTextField1;
 	}
@@ -147,6 +156,7 @@ public class FrmModifMedico extends JFrame{
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(240, 130, 282, 19));
+			jTextField2.setText(cdor.getDatos().getNombre());
 			jTextField2.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -172,6 +182,7 @@ public class FrmModifMedico extends JFrame{
 		if (jTextField == null) {
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(240, 160, 282, 19));
+			jTextField.setText(cdor.getDatos().getApellido());
 			jTextField.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -197,6 +208,7 @@ public class FrmModifMedico extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(240, 196, 143, 19));
+			jTextField3.setText(cdor.getDatos().getCi());
 			jTextField3.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -230,6 +242,7 @@ public class FrmModifMedico extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(240, 229, 282, 19));
+			jTextField4.setText(cdor.getDatos().getTel());
 			jTextField4.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -261,7 +274,9 @@ public class FrmModifMedico extends JFrame{
 	 */
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
-			jComboBox = new JComboBox();
+			jComboBox = new JComboBox(cdor.cargarEsp());
+			jComboBox.setBackground(Color.WHITE);
+			jComboBox.setSelectedIndex(cdor.selecEsp(cdor.getDatos().getEsp()));
 			jComboBox.setBounds(new Rectangle(240, 263, 164, 19));
 		}
 		return jComboBox;
@@ -302,10 +317,34 @@ public class FrmModifMedico extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Médico.");
-					cdor.modifMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(),jTextField3.getText(), jTextField4.getText(),jComboBox.getToolTipText());
+					String estado = "I";
+					if(jComboBox1.getSelectedIndex()==0){
+						estado = "A";
+					}
+					cdor.modifMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(),jTextField3.getText(), jTextField4.getText(),jComboBox.getSelectedIndex(), estado);
 				}
 			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes jComboBox1	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJComboBox1() {
+		if (jComboBox1 == null) {
+			jComboBox1 = new JComboBox();
+			jComboBox1.addItem("Activo");
+			jComboBox1.addItem("Inactivo");
+			jComboBox1.setBackground(Color.WHITE);
+			if (cdor.getDatos().getEstado().equals("A")){
+				jComboBox1.setSelectedIndex(0);
+			}else
+				jComboBox1.setSelectedIndex(1);
+			jComboBox1.setBounds(new Rectangle(240, 297, 88, 19));
+		}
+		return jComboBox1;
 	}
 }

@@ -53,7 +53,7 @@ public class MainDaoMedico {
 		
 		//Modificacion
 		DataEsp esp = new DataEsp(4, "Traumatologia", 140);
-		fachada.modifMedico("1234", "Jose Maria", med.getApellido(), med.getCi(), "24860101", esp);
+		fachada.modifMedico("1234", "Jose Maria", med.getApellido(), med.getCi(), "24860101", esp, "I");
 		
 		//Listar Mededico Esp.
 		Vector<VoMedEsp> vMedEsp = fachada.listarMedEsp(med.getEsp());

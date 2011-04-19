@@ -219,8 +219,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void altaMedico(DataMed med)  throws PersistenciaException, RemoteException {
 		fachada.altaMedico(med);
 	}
- 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp)  throws PersistenciaException, RemoteException {
- 		fachada.modifMedico(id, nom, apell, ci, tel, esp);
+ 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado)  throws PersistenciaException, RemoteException {
+ 		fachada.modifMedico(id, nom, apell, ci, tel, esp, estado);
  	}
  	public void bajarMedico(String id)  throws PersistenciaException, RemoteException {
  		fachada.bajarMedico(id);

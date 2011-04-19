@@ -1082,7 +1082,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			
 		}
 	}
- 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException, RemoteException {
+ 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoM.validarMed(trn, id)==false){
@@ -1091,7 +1091,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El médico no existe");
 			}
 			else{
-				iDaoM.modifMedico(trn, id, nom, apell, ci, tel, esp);
+				iDaoM.modifMedico(trn, id, nom, apell, ci, tel, esp, estado);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

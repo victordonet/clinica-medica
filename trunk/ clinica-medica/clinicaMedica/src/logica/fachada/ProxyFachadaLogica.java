@@ -158,7 +158,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException, RemoteException {
 		fachada.eliminarDisponibilidad(vo);
 	}
-	
+	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
+		return fachada.obetnerDispoDiaHora();
+	}
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException {
 			fachada.altaEspecialidad(datEsp);

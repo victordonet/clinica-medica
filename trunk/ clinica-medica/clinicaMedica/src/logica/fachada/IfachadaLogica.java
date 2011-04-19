@@ -63,6 +63,7 @@ public interface IfachadaLogica extends IObservable{
 	//DISPONIBILIDAD
 	public void altaDisponibilidad(DataDisp dataDsip) throws PersistenciaException, RemoteException;
 	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException, RemoteException;
+	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException;
 	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws PersistenciaException, RemoteException;

@@ -6,6 +6,8 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+import contrib.ch.randelshofer.quaqua.colorchooser.NominalCMYKColorSliderModel;
+
 import excepciones.PersistenciaException;
 
 import logica.fachada.IfachadaLogica;
@@ -21,24 +23,16 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 	private Vector columnas;
 	private Vector <DataAdmin> datos;
 	
-	public ModeloTablaListAdmin (ProxyFachadaLogica mode){
+	public ModeloTablaListAdmin (Vector <DataAdmin> vec){
 		super ();
-		mod = mode;
+		this.datos = vec;
 		columnas = new Vector();
 		
-		try {
-			this.datos = mod.listarAdmin();
-			columnas.add("id");
-			columnas.add("Nombre");
-			columnas.add("Cargo");
-			columnas.add("Estado");
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PersistenciaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.datos = vec;
+		columnas.add("id");
+		columnas.add("Nombre");
+//		columnas.add("Cargo");
+//		columnas.add("Estado");
 
 	}
 
@@ -64,8 +58,8 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 			System.out.println((datos.get(row)).getNombre());
 			return (datos.get(row)).getNombre();
 		}
-		case 2:{
-			System.out.println((datos.get(row)).getCargo());
+//		case 2:{
+//			System.out.println((datos.get(row)).getCargo());
 //			Vector<DataCargo> vec = new Vector<DataCargo>();
 //			try {
 //				vec = mod.listarCargos();
@@ -83,13 +77,14 @@ public class ModeloTablaListAdmin extends AbstractTableModel {
 //					nomCargo = (vec.get(i)).getDescripcion();
 //				}
 //			}
-			return (datos.get(row)).getCargo();
-		}
-		case 3: {
-			System.out.println((datos.get(row)).getEstado());
-			return (datos.get(row)).getEstado();
-		}
-		
+//			return nomCargo;
+//			//return (datos.get(row)).getCargo();
+//		}
+//		case 3: {
+//			System.out.println((datos.get(row)).getEstado());
+//			return (datos.get(row)).getEstado();
+//		}
+//		
 		default: return null;
 		}
 	}

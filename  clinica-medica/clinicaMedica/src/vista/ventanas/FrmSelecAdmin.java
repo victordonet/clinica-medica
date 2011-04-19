@@ -34,7 +34,6 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 	 */
 	public FrmSelecAdmin(CdorSelectAdmin control)throws Throwable {
 		cdor = control;
-		modelo = control.listarAdmin();
 		initialize();
 	}
 
@@ -93,7 +92,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 		try {
 			//cdor.listarEspecialidades();
 			//frm.setVisible(false);
-			this.modelo = cdor.listarAdmin();
+			//this.modelo = cdor.listarAdmin();
 			initialize();
 			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
 		} catch (ClassNotFoundException e) {
@@ -150,6 +149,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 	 */
 	private JTable getJTable() {
 		if (jTable == null) {
+			modelo = cdor.listarAdmin();
 			jTable = new JTable(modelo);
 		}
 		return jTable;

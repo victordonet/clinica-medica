@@ -32,8 +32,7 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmListadoEspecialidades(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
-		this.modelo = modelo;
+	public FrmListadoEspecialidades(CdorListadoEsp control)throws Throwable {
 		cdor = control;
 		initialize();
 	}
@@ -123,6 +122,7 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 */
 	private JTable getJTable1(ModeloTablaListEsp modelo) {
 		//if (jTable1 == null) {
+			modelo = cdor.listarEspecialidades();
 			jTable1 = new JTable(modelo);
 		//}
 		return jTable1;

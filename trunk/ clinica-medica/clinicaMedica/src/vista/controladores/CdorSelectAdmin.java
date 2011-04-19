@@ -1,5 +1,13 @@
 package vista.controladores;
 
+import java.rmi.RemoteException;
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
+import excepciones.PersistenciaException;
+import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataEsp;
 import vista.ventanas.FrmSelecAdmin;
 
 public class CdorSelectAdmin extends CdorManejoVentanas {
@@ -49,7 +57,22 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 	}
 	
 	public ModeloTablaListAdmin listarAdmin (){
-		ModeloTablaListAdmin modelo = new ModeloTablaListAdmin(super.getMod());
+
+		ModeloTablaListAdmin modelo =null;
+		try {
+			Vector<DataAdmin> vec = super.getMod().listarAdmin();
+			System.out.println(vec.toString());
+			modelo = new ModeloTablaListAdmin(vec);
+			System.out.println(modelo.toString());
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+			
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+			e.printStackTrace();
+		}
 		return modelo;
+
 	}
 }

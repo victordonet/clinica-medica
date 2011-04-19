@@ -2,6 +2,7 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmModifAfiliado;
 
 public class CdorModifAfil extends CdorManejoVentanas {
@@ -45,12 +46,21 @@ public class CdorModifAfil extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, String fonasa){
+	public DataAfiliado getDatos(){
+		DataAfiliado datosAfi = null;
 		try {
-			boolean fon = false;
-			if(fonasa.equals("S"))
-				fon=true;
-			super.getMod().modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fon);
+			datosAfi = super.getMod().getAfiliado(super.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return datosAfi;
+	}
+	
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fonasa, String estado){
+		try {
+			super.getMod().modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fonasa, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
 			e.printStackTrace();

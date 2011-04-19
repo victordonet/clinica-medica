@@ -2,15 +2,15 @@ package vista.controladores;
 
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
-import vista.dataobjet.DataMed;
+import vista.dataobjet.DataAfiliado;;
 
-public class ModeloTablaListMed extends AbstractTableModel {
+public class ModeloTablaListAfil extends AbstractTableModel {
 	
 	private static final long serialVersionUID = 1L;
 	private Vector<String> columnas;
-	private Vector<DataMed> datos;
+	private Vector<DataAfiliado> datos;
 	
-	public ModeloTablaListMed(Vector<DataMed> vec){
+	public ModeloTablaListAfil(Vector<DataAfiliado> vec){
 		super();
 		columnas = new Vector<String>();
 		

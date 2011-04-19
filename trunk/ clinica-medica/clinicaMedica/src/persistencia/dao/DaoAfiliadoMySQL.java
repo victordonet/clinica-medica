@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 import java.sql.Date;
-import logica.Afiliado;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
@@ -43,10 +42,10 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		}
 	}
 
-	public void modifAfil(Transaccion trn, String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException {
+	public void modifAfil(Transaccion trn, String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon, String estado) throws PersistenciaException {
 		System.out.println("================================Modificando afiliado: "+ idAfil+"==============================================");
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fonasa=? where id=?");
+			PreparedStatement pst = trn.preparedStatement("update Afiliados set nombre=?, apellido=?, ci=?, mail=?, direccion=?, telefono=?, fonasa=?, estado=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, apel);
 			pst.setString(3, ci);
@@ -54,7 +53,8 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			pst.setString(5, dir);
 			pst.setString(6, tel);
 			pst.setBoolean(7, fon);
-			pst.setString(8, idAfil);
+			pst.setString(8, estado);
+			pst.setString(9, idAfil);
 			pst.executeUpdate();
 			pst.close();
 			System.out.println("==============Afiliado Modificado==============================");

@@ -27,6 +27,25 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 		this.vino = vino;
 		ventana = new FrmBajaMedico(this);
 	}
+	
+	public void habilitarVentana() {
+		ventana.setFocusable(true);
+		ventana.setEnabled(true);
+		ventana.setFocusableWindowState(true);
+	}
+	
+	public void deshabilitarVentana() {
+		ventana.setFocusable(false);
+		ventana.setEnabled(false);
+	}
+	
+	public void cerrar() {
+		ventana.dispose();
+	}
+	
+	public void actionCerrar() {
+		cerrarVentana(this, vino);
+	}
 
 	public DataMed getDatos(){
 		DataMed datosMed = null;
@@ -51,26 +70,7 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 		}
 		return descEsp;
 	}
-	
-	public void habilitarVentana() {
-		ventana.setFocusable(true);
-		ventana.setEnabled(true);
-		ventana.setFocusableWindowState(true);
-	}
-	
-	public void deshabilitarVentana() {
-		ventana.setFocusable(false);
-		ventana.setEnabled(false);
-	}
-	
-	public void cerrar() {
-		ventana.dispose();
-	}
-	
-	public void actionCerrar() {
-		cerrarVentana(this, vino);
-	}
-	
+
 	public void bajaMedico(String id){
 		try {
 			super.getMod().bajarMedico(id);

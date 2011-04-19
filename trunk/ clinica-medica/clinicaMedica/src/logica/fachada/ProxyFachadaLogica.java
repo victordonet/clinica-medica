@@ -77,8 +77,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		fachada.altaAfiliado(afil);
 	}
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException {
-		fachada.modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fon);
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon, String estado) throws PersistenciaException, RemoteException {
+		fachada.modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fon, estado);
 	}
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
 		fachada.bajaAfil(id);

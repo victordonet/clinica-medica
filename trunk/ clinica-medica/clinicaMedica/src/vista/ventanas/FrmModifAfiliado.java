@@ -10,7 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import vista.controladores.CdorModifAfil;
 import java.awt.Color;
+import java.util.Calendar;
+
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 
 
 public class FrmModifAfiliado extends JFrame{
@@ -27,6 +30,7 @@ public class FrmModifAfiliado extends JFrame{
 	private JLabel jLabel8 = null;
 	private JLabel jLabel9 = null;
 	private JLabel jLabel10 = null;
+	private JLabel jLabel11 = null;
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
@@ -39,6 +43,7 @@ public class FrmModifAfiliado extends JFrame{
 	private JButton jButton2 = null;
 	private CdorModifAfil cdor;
 	private JCheckBox jCheckBox = null;
+	private JComboBox jComboBox = null;
 
 	/**
 	 * This is the default constructor
@@ -78,6 +83,10 @@ public class FrmModifAfiliado extends JFrame{
 	 */
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
+			jLabel11 = new JLabel();
+			jLabel11.setBounds(new Rectangle(110, 318, 106, 19));
+			jLabel11.setText("Estado");
+			jLabel11.setForeground(Color.black);
 			jLabel10 = new JLabel();
 			jLabel10.setBounds(new Rectangle(110, 291, 106, 19));
 			jLabel10.setText("Fonasa");
@@ -110,15 +119,15 @@ public class FrmModifAfiliado extends JFrame{
 			jLabel3.setBounds(new Rectangle(110, 105, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
 			jLabel3.setText("Nombre");
+			jLabel2 = new JLabel();
+			jLabel2.setBounds(new Rectangle(110, 77, 106, 19));
+			jLabel2.setForeground(java.awt.Color.black);
+			jLabel2.setText("Nro. Afiliado");
 			jLabel1 = new JLabel();
 			jLabel1.setBounds(new Rectangle(174, 11, 216, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
 			jLabel1.setText("Modificación de Afiliado");
-			jLabel2 = new JLabel();
-			jLabel2.setBounds(new Rectangle(110, 77, 106, 19));
-			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Nro. Afiliado");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -133,6 +142,7 @@ public class FrmModifAfiliado extends JFrame{
 			jContentPane.add(jLabel8, null);
 			jContentPane.add(jLabel9, null);
 			jContentPane.add(jLabel10, null);
+			jContentPane.add(jLabel11, null);
 			jContentPane.add(getJTextField(), null);
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
@@ -144,6 +154,7 @@ public class FrmModifAfiliado extends JFrame{
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJCheckBox(), null);
+			jContentPane.add(getJComboBox(), null);
 		}
 		return jContentPane;
 	}
@@ -158,6 +169,7 @@ public class FrmModifAfiliado extends JFrame{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(246, 77, 80, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getDatos().getId());
 		}
 		return jTextField1;}
 
@@ -170,6 +182,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(246, 105, 282, 19));
+			jTextField2.setText(cdor.getDatos().getNombre());
 			jTextField2.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -195,6 +208,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField == null) {
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(246, 133, 282, 19));
+			jTextField.setText(cdor.getDatos().getApellido());
 			jTextField.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -220,6 +234,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(246, 159, 143, 19));
+			jTextField3.setText(cdor.getDatos().getCi());
 			jTextField3.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -254,6 +269,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(246, 236, 282, 19));
+			jTextField4.setText(cdor.getDatos().getTel());
 			jTextField4.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -288,6 +304,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(246, 184, 282, 19));
+			jTextField5.setText(cdor.getDatos().getMail());
 			jTextField5.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -313,6 +330,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jTextField6 == null) {
 			jTextField6 = new JTextField();
 			jTextField6.setBounds(new Rectangle(246, 210, 282, 19));
+			jTextField6.setText(cdor.getDatos().getDireccion());
 			jTextField6.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -338,6 +356,7 @@ public class FrmModifAfiliado extends JFrame{
 		if (jCheckBox == null) {
 			jCheckBox = new JCheckBox();
 			jCheckBox.setBounds(new Rectangle(243, 292, 17, 16));
+			jCheckBox.setSelected(cdor.getDatos().getFonasa());
 		}
 		return jCheckBox;
 	}
@@ -351,6 +370,8 @@ public class FrmModifAfiliado extends JFrame{
 			jTextField7 = new JTextField();
 			jTextField7.setBounds(new Rectangle(247, 265, 80, 19));
 			jTextField7.setEditable(false);
+			Calendar fecha = cdor.getDatos().getFechaIngreso();
+			jTextField7.setText(fecha.get(Calendar.DATE)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR));
 		}
 		return jTextField7;
 	}
@@ -390,10 +411,36 @@ public class FrmModifAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Afiliado.");
-					cdor.modifAfil(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), jCheckBox.getToolTipText());
+					String estado = "I";
+					if(jComboBox.getSelectedIndex()==0){
+						estado = "A";
+					}
+					//boolean fonasa = jCheckBox.getSelectedObjects();
+					boolean fonasa = false;
+					cdor.modifAfil(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), fonasa, estado);
 				}
 			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes jComboBox	
+	 * 	
+	 * @return javax.swing.JComboBox	
+	 */
+	private JComboBox getJComboBox() {
+		if (jComboBox == null) {
+			jComboBox = new JComboBox();
+			jComboBox.addItem("Activo");
+			jComboBox.addItem("Inactivo");
+			jComboBox.setBackground(Color.WHITE);
+			if (cdor.getDatos().getEstado().equals("A")){
+				jComboBox.setSelectedIndex(0);
+			}else
+				jComboBox.setSelectedIndex(1);
+			jComboBox.setBounds(new Rectangle(248, 316, 88, 20));
+		}
+		return jComboBox;
 	}
 }

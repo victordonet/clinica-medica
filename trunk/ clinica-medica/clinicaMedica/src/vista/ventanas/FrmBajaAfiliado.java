@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import vista.controladores.CdorBajaAfil;
 import java.awt.Color;
+import java.util.Calendar;
+
 import javax.swing.JCheckBox;
 
 public class FrmBajaAfiliado extends JFrame{
@@ -155,6 +157,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(246, 133, 282, 19));
 			jTextField.setEditable(false);
+			jTextField.setText(cdor.getDatos().getApellido());
 		}
 		return jTextField;
 	}
@@ -169,6 +172,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(246, 77, 80, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getDatos().getId());
 		}
 		return jTextField1;}
 
@@ -182,6 +186,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(246, 105, 282, 19));
 			jTextField2.setEditable(false);
+			jTextField2.setText(cdor.getDatos().getNombre());
 		}
 		return jTextField2;
 	}
@@ -197,6 +202,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(246, 159, 143, 19));
 			jTextField3.setEditable(false);
+			jTextField3.setText(cdor.getDatos().getCi());
 		}
 		return jTextField3;
 	}
@@ -211,6 +217,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(246, 236, 282, 19));
 			jTextField4.setEditable(false);
+			jTextField4.setText(cdor.getDatos().getTel());
 		}
 		return jTextField4;
 	}
@@ -225,6 +232,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(246, 184, 282, 19));
 			jTextField5.setEditable(false);
+			jTextField5.setText(cdor.getDatos().getMail());
 		}
 		return jTextField5;
 	}
@@ -239,6 +247,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField6 = new JTextField();
 			jTextField6.setBounds(new Rectangle(246, 210, 282, 19));
 			jTextField6.setEditable(false);
+			jTextField6.setText(cdor.getDatos().getDireccion());
 		}
 		return jTextField6;
 	}
@@ -252,6 +261,8 @@ public class FrmBajaAfiliado extends JFrame{
 			jTextField7 = new JTextField();
 			jTextField7.setBounds(new Rectangle(247, 265, 80, 19));
 			jTextField7.setEditable(false);
+			Calendar fecha = cdor.getDatos().getFechaIngreso();
+			jTextField7.setText(fecha.get(Calendar.DATE)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR));
 		}
 		return jTextField7;
 	}
@@ -266,6 +277,7 @@ public class FrmBajaAfiliado extends JFrame{
 			jCheckBox = new JCheckBox();
 			jCheckBox.setBounds(new Rectangle(243, 292, 17, 16));
 			jCheckBox.setEnabled(false);
+			jCheckBox.setSelected(cdor.getDatos().getFonasa());
 		}
 		return jCheckBox;
 	}

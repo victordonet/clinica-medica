@@ -9,6 +9,9 @@ import vista.controladores.CdorModifAdmin;
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JComboBox;
 
 public class FrmModifAdmin extends JFrame {
@@ -115,6 +118,18 @@ public class FrmModifAdmin extends JFrame {
 			jTextField1.setBounds(new Rectangle(222, 149, 86, 19));
 			jTextField1.setEditable(false);
 			jTextField1.setText(cdor.getDatos().getId());
+			jTextField1.addKeyListener(new KeyAdapter()
+			{
+			   public void keyTyped(KeyEvent e)
+			   {
+			      //Controlar el largo del text
+			      String s = jTextField1.getText();
+			      int n=s.length();
+			      if(n >= 20){
+			    	  e.consume();  // ignorar el evento de teclado
+			      }
+			   }
+			});
 		}
 		return jTextField1;
 	}

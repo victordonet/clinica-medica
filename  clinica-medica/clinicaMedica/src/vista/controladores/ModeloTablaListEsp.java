@@ -36,15 +36,12 @@ public class ModeloTablaListEsp extends AbstractTableModel {
 	public Object getValueAt(int row, int col) {
 		switch (col){
 		case 0: {
-			System.out.println((datos.get(row)).getCodigo());
 			return (datos.get(row)).getCodigo();
 		}
 		case 1: {
-			System.out.println((datos.get(row)).getDescripcion());
 			return (datos.get(row)).getDescripcion();
 		}
 		case 2:{
-			System.out.println((datos.get(row)).getMontoBase());
 			return (datos.get(row)).getMontoBase();
 		}
 		

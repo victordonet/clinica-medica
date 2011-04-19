@@ -161,7 +161,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
 		return fachada.obetnerDispoDiaHora();
 	}
-	public int[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException {
+	public boolean[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException {
 		return fachada.obtenerDispoDiaHoraMedico(idMedico);
 	}
 	//ESPECIALIDADES

@@ -10,13 +10,15 @@ import vista.dataobjet.DataEsp;
 
 public class ModeloTablaDisp extends AbstractTableModel {
 	private Vector<String> columnas;
-	private Vector<DataDisp> datos;
+	private int[][] matrizDatos;
+	private boolean [][] matrizDispMedico;
+	private int cantConsultorios;
 
-	public ModeloTablaDisp(Vector<DataDisp> vec){
+	public ModeloTablaDisp(int[][] matriz, int cantConsultorios){
 		super ();
 		columnas = new Vector<String>();
-		
-		this.datos = vec;
+		this.cantConsultorios = cantConsultorios;
+		matrizDatos = matriz;
 		columnas.add("D");
 		columnas.add("L");
 		columnas.add("M");
@@ -26,70 +28,33 @@ public class ModeloTablaDisp extends AbstractTableModel {
 		columnas.add("S");
 	}
 	public int getColumnCount() {
-		return columnas.size();
+		return 7;
 	}
 
 	
 	public int getRowCount() {
-		if (datos.size()!=0)
-			return datos.size();
-		else
-			return 0;
+		return 12;
 	}
 
 	
-	public Object getValueAt(int row, int col) {
-		
-		//return matriz [row][col];
-		for (DataDisp dispo : datos){
-			switch (dispo.getDia()){
-			case 0: switch (dispo.getHorario()){
-					case 1: 
-					case 2:
-					case 3:
-					case 4:
-					case 5:
-					case 6:
-					case 7:
-					case 8:
-					case 9:
-					case 10:
-					case 11:
-					case 12:
-					case 13:
-					case 14:
-					case 15:
-					case 16:
-					case 17:
-					case 18:	
-					case 19:
-					case 20:
-					case 21:
-					case 22:	
-			}
-			}
+	public Object getValueAt(int row,int col){
+		return matrizDispMedico[row][col];
 		}
-		return col;
-		
-//		switch (col){
-//		case 0: {
-//			case 
-//			return (datos.get(row));
-//		}
-//		case 1: {
-//			return (datos.get(row)).getNomMed()+" "+(datos.get(row)).getApeMed();
-//		}
-//		case 2:{
-//			return (datos.get(row)).getNomAfi()+" "+(datos.get(row)).getApeAfil();
-//		}
-//		case 3:{
-//			return (datos.get(row)).getIdConsultorio();
-//		}
-//		case 4:{
-//			return (datos.get(row)).getTurno();
-//		}
-//		default: return null;
-//		}
-	}
 
+    public void setValueAt(boolean v,int f,int c)
+    {
+        matrizDispMedico[f][c]=v;
+        fireTableCellUpdated(f,c);
+    }
+	
+	public boolean isCellEditable(int row, int col) { 
+        
+		if(matrizDatos[row][col]<cantConsultorios){
+        	return true;
+        }
+		else{
+			return false;
+		}
+    }
+	
 }

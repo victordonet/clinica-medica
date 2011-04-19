@@ -63,5 +63,26 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
-
+	public Vector<DataDisp> listarDispTotal(Transaccion trn) throws PersistenciaException {
+		
+		Vector<DataDisp> resultado = new Vector<DataDisp>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select dia, horario from Disponibilidad ");
+		
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				int dia = rst.getInt("dia");
+				int horario = rst.getInt("horario");
+				String idMed = rst.getString("idmedico");
+				DataDisp disp = new DataDisp(dia, horario, idMed);
+				resultado.add(disp);
+			}
+			rst.close();
+			pst.close();
+			return resultado;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+	}
 }

@@ -39,6 +39,8 @@ public class ModeloTablaDisp extends AbstractTableModel {
 
 	
 	public Object getValueAt(int row, int col) {
+		
+		//return matriz [row][col];
 		for (DataDisp dispo : datos){
 			switch (dispo.getDia()){
 			case 0: switch (dispo.getHorario()){

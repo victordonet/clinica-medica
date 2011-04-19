@@ -187,7 +187,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
 		return fachada.obetnerDispoDiaHora();
 	}
-	
+	public int[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException {
+		return fachada.obtenerDispoDiaHoraMedico(idMedico);
+	}
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException {
 			fachada.altaEspecialidad(datEsp);

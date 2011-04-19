@@ -18,7 +18,7 @@ import logica.Medico;
 public interface IDaoMedico {
 
  	public void altaMedico(Transaccion trn, DataMed med) throws PersistenciaException;
- 	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp)  throws PersistenciaException;
+ 	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado)  throws PersistenciaException;
  	public void bajarMedico(Transaccion trn, String id) throws PersistenciaException;
  	public Vector<DataMed> listarMedicos(Transaccion trn) throws PersistenciaException;
  	public Vector<VoMedEsp> listarMedEsp(int idEsp,Transaccion trn) throws PersistenciaException;

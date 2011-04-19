@@ -44,16 +44,17 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException {
+	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado) throws PersistenciaException {
 		System.out.println("Modificando medico: "+ id);
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=? where id=?");
+			PreparedStatement pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=?, estado=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, apell);
 			pst.setString(3, ci);
 			pst.setString(4, tel);
 			pst.setInt(5, esp.getCodigo());
-			pst.setString(6, id);
+			pst.setString(6, estado);
+			pst.setString(7, id);
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {

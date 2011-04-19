@@ -79,7 +79,7 @@ public interface IfachadaLogica extends IObservable{
 	
 	//MEDICOS
  	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException;
- 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp) throws PersistenciaException, RemoteException;
+ 	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado) throws PersistenciaException, RemoteException;
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException;
  	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException;
  	public Vector<VoMedEsp> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;

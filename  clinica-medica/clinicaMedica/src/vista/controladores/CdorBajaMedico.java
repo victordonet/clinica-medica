@@ -2,10 +2,7 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
-
-import logica.Especialidad;
 import excepciones.PersistenciaException;
-import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.ventanas.FrmBajaMedico;
 

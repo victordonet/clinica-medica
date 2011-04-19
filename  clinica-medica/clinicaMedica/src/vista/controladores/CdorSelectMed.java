@@ -69,7 +69,9 @@ public class CdorSelectMed extends CdorManejoVentanas {
 	}
 	
 	public void actionAceptar() {
-		this.cambioVentana(this, ventanaVoy);
+		vino.setId(this.getId());
+		this.cambioVentana(vino, ventanaVoy);
+		cerrar();
 	}
 	
 	public CdorManejoVentanas getVentanaVoy() {

@@ -14,11 +14,12 @@ public class ModeloTablaDisp extends AbstractTableModel {
 	private boolean [][] matrizDispMedico;
 	private int cantConsultorios;
 
-	public ModeloTablaDisp(int[][] matriz, int cantConsultorios){
+	public ModeloTablaDisp(int[][] matriz, boolean[][] matrizMed, int cantConsultorios){
 		super ();
 		columnas = new Vector<String>();
 		this.cantConsultorios = cantConsultorios;
 		matrizDatos = matriz;
+		matrizDispMedico = matrizMed;
 		columnas.add("D");
 		columnas.add("L");
 		columnas.add("M");
@@ -38,13 +39,38 @@ public class ModeloTablaDisp extends AbstractTableModel {
 
 	
 	public Object getValueAt(int row,int col){
-		return matrizDispMedico[row][col];
+
+		switch (col){
+		case 0: {
+			return matrizDispMedico[row][col];
+		}
+		case 1: {
+			return matrizDispMedico[row][col];
+		}
+		case 2:{
+			return matrizDispMedico[row][col];
+		}
+		case 3:{
+			return matrizDispMedico[row][col];
+		}
+		case 4: {
+			return matrizDispMedico[row][col];
+		}
+		case 5:{
+			return matrizDispMedico[row][col];
+		}
+		case 6:{
+			return matrizDispMedico[row][col];
 		}
 
-    public void setValueAt(boolean v,int f,int c)
+		default: return false;
+		}
+		}
+
+    public void setValueAt(boolean v,int row,int col)
     {
-        matrizDispMedico[f][c]=v;
-        fireTableCellUpdated(f,c);
+        matrizDispMedico[row][col]=v;
+        fireTableCellUpdated(row,col);
     }
 	
 	public boolean isCellEditable(int row, int col) { 
@@ -53,8 +79,14 @@ public class ModeloTablaDisp extends AbstractTableModel {
         	return true;
         }
 		else{
-			return false;
+			return true;
 		}
     }
+	public Class getColumnClass (int arg1){
+		return getValueAt(0,arg1).getClass();
+	}
+	public String getColumnName (int col){
+		return (String)columnas.elementAt(col);
+	}
 	
 }

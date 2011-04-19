@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import logica.observer.IObserver;
 import vista.controladores.CdorMantDisp;
+import vista.controladores.ModeloTablaDisp;
 import vista.controladores.ModeloTablaListEsp;
 
 public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
@@ -44,14 +45,13 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
 	private CdorMantDisp cdor;
-	//private ModeloTablaListEsp modelo = null;
-	private JFrame frm = new JFrame();
+	private ModeloTablaDisp modelo = null;  //  @jve:decl-index=0:visual-constraint="-131,25"
+	private JFrame frm = new JFrame();  //  @jve:decl-index=0:visual-constraint="-70,61"
 
 
 	public FrmMantDisp(CdorMantDisp cdor)throws Throwable{
 		super();
 		this.cdor = cdor;
-		//this.modelo = cdor.listarEspecialidades();
 		initialize();
 	}
 
@@ -84,53 +84,53 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Médico");
 			jLabel3 = new JLabel();
-			jLabel3.setBounds(new Rectangle(96, 104, 20, 19));
+			jLabel3.setBounds(new Rectangle(101, 115, 20, 19));
 			jLabel3.setForeground(java.awt.Color.GRAY);
 			jLabel3.setText("00");
 			jLabel4 = new JLabel();
-			jLabel4.setBounds(new Rectangle(96, 123, 20, 19));
+			jLabel4.setBounds(new Rectangle(101, 134, 20, 19));
 			jLabel4.setForeground(java.awt.Color.GRAY);
 			jLabel4.setText("02");
 			jLabel5 = new JLabel();
-			jLabel5.setBounds(new Rectangle(96, 142, 20, 19));
+			jLabel5.setBounds(new Rectangle(101, 153, 20, 19));
 			jLabel5.setForeground(java.awt.Color.GRAY);
 			jLabel5.setText("04");
 			jLabel6 = new JLabel();
-			jLabel6.setBounds(new Rectangle(96, 161, 20, 19));
+			jLabel6.setBounds(new Rectangle(101, 172, 20, 19));
 			jLabel6.setForeground(java.awt.Color.GRAY);
 			jLabel6.setText("06");
 			jLabel7 = new JLabel();
-			jLabel7.setBounds(new Rectangle(96, 180, 20, 19));
+			jLabel7.setBounds(new Rectangle(101, 191, 20, 19));
 			jLabel7.setForeground(java.awt.Color.GRAY);
 			jLabel7.setText("08");
 			jLabel8 = new JLabel();
-			jLabel8.setBounds(new Rectangle(96, 199, 20, 19));
+			jLabel8.setBounds(new Rectangle(101, 210, 20, 19));
 			jLabel8.setForeground(java.awt.Color.GRAY);
 			jLabel8.setText("10");
 			jLabel9 = new JLabel();
-			jLabel9.setBounds(new Rectangle(96, 218, 20, 19));
+			jLabel9.setBounds(new Rectangle(101, 229, 20, 19));
 			jLabel9.setForeground(java.awt.Color.GRAY);
 			jLabel9.setText("12");
 			jLabel10 = new JLabel();
-			jLabel10.setBounds(new Rectangle(96, 235, 20, 19));
+			jLabel10.setBounds(new Rectangle(101, 246, 20, 19));
 			jLabel10.setForeground(java.awt.Color.GRAY);
 			jLabel10.setText("14");
 			jLabel11 = new JLabel();
-			jLabel11.setBounds(new Rectangle(96, 252, 20, 19));
+			jLabel11.setBounds(new Rectangle(101, 263, 20, 19));
 			jLabel11.setForeground(java.awt.Color.GRAY);
 			jLabel11.setText("16");
 
 			jLabel12 = new JLabel();
 			jLabel12.setForeground(java.awt.Color.GRAY);
-			jLabel12.setBounds(new Rectangle(96, 271, 20, 19));
+			jLabel12.setBounds(new Rectangle(101, 282, 20, 19));
 			jLabel12.setText("18");
 			jLabel13 = new JLabel();
 			jLabel13.setForeground(java.awt.Color.GRAY);
-			jLabel13.setBounds(new Rectangle(96, 290, 20, 19));
+			jLabel13.setBounds(new Rectangle(101, 301, 20, 19));
 			jLabel13.setText("20");
 			jLabel14 = new JLabel();
 			jLabel14.setForeground(java.awt.Color.GRAY);
-			jLabel14.setBounds(new Rectangle(96, 309, 20, 19));
+			jLabel14.setBounds(new Rectangle(101, 320, 20, 19));
 			jLabel14.setText("22");
 
 			jLabel15 = new JLabel();
@@ -197,7 +197,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	private JScrollPane getJScrollPane() {
 		if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(125, 104, 330, 224));
+			jScrollPane.setBounds(new Rectangle(124, 89, 330, 250));
 			jScrollPane.setViewportView(getJTable1());
 		}
 		return jScrollPane;
@@ -205,7 +205,9 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 	private JTable getJTable1() {
 		if (jTable1 == null) {
-			jTable1 = new JTable();
+			modelo = cdor.obtenerDisp(jTextField1.getText());
+			jTable1 = new JTable(modelo);
+			jTable1.setCellSelectionEnabled(true);
 		}
 		return jTable1;
 	}

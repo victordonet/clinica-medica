@@ -6,6 +6,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import vista.controladores.CdorBajaMedico;
 import vista.controladores.CdorManejoVentanas;
 import java.awt.Color;
 
@@ -13,7 +15,7 @@ public class FrmBajaMedico extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
-	private CdorManejoVentanas cdor;
+	private CdorBajaMedico cdor;
 	private JLabel jLabel1 = null;
 	private JLabel jLabel2 = null;
 	private JLabel jLabel3 = null;
@@ -34,7 +36,7 @@ public class FrmBajaMedico extends JFrame{
 	 * This is the default constructor
 	 * @return
 	 */
-	public FrmBajaMedico(CdorManejoVentanas cdor) {
+	public FrmBajaMedico(CdorBajaMedico cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -129,7 +131,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(240, 97, 143, 19));
 			jTextField1.setEditable(false);
-			jTextField1.setText(cdor.getId());
+			jTextField1.setText(cdor.getDatos().getId());
 		}
 		return jTextField1;
 	}
@@ -144,6 +146,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(240, 130, 282, 19));
 			jTextField2.setEditable(false);
+			jTextField2.setText(cdor.getDatos().getNombre());
 		}
 		return jTextField2;
 	}
@@ -159,6 +162,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(240, 160, 282, 19));
 			jTextField.setEditable(false);
+			jTextField.setText(cdor.getDatos().getApellido());
 		}
 		return jTextField;
 	}
@@ -173,6 +177,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(240, 196, 143, 19));
 			jTextField3.setEditable(false);
+			jTextField3.setText(cdor.getDatos().getCi());
 		}
 		return jTextField3;
 	}
@@ -187,6 +192,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(240, 229, 282, 19));
 			jTextField4.setEditable(false);
+			jTextField4.setText(cdor.getDatos().getTel());
 		}
 		return jTextField4;
 	}
@@ -202,6 +208,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(240, 263, 143, 19));
 			jTextField5.setEditable(false);
+			jTextField5.setText(cdor.getDescEsp());
 		}
 		return jTextField5;
 	}
@@ -241,8 +248,7 @@ public class FrmBajaMedico extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Baja Médico.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-
+					cdor.bajaMedico(jTextField1.getText());
 				}
 			});
 		}

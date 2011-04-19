@@ -2,7 +2,10 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
+
+import logica.Especialidad;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.ventanas.FrmBajaMedico;
 
@@ -29,7 +32,27 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 	}
 
 	public DataMed getDatos(){
-		DataMed dMed = super.getMod().getMedico(super.getId());
+		DataMed datosMed = null;
+		try {
+			datosMed = super.getMod().getDataMed(super.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return datosMed;
+	}
+	
+	public String getDescEsp(){
+		String descEsp = null;
+		try {
+			descEsp = super.getMod().obtenerEspecialidad(this.getDatos().getEsp()).getDescripcion();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return descEsp;
 	}
 	
 	public void habilitarVentana() {
@@ -63,4 +86,6 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

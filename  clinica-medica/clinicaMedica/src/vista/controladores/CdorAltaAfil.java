@@ -5,6 +5,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAfiliado;
+import vista.dataobjet.DataUsuario;
 import vista.ventanas.FrmAltaAfiliado;
 
 public class CdorAltaAfil extends CdorManejoVentanas {
@@ -54,6 +55,8 @@ public class CdorAltaAfil extends CdorManejoVentanas {
 		afil = new DataAfiliado(id, ci, nombre, apellido, mail, direccion, tel, estado, fechaIngreso, fonasa);
 		try {
 			super.getMod().altaAfiliado(afil);
+			DataUsuario usu = new DataUsuario(id, nombre, "AF", "A");
+			super.getMod().altaUsuario(usu);
 			actionCerrar();
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());

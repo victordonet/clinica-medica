@@ -34,13 +34,14 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		}
 	}
 
-	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo) throws PersistenciaException {
+	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo, String estado) throws PersistenciaException {
 		System.out.println("Modificando administrativo: "+id);
 		try {
-			PreparedStatement pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=? where id=?");
+			PreparedStatement pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=?, estado=? where id=?");
 			pst.setString (1, nom);
 			pst.setString(2, cargo);
-			pst.setString (3, id);
+			pst.setString(3, estado);
+			pst.setString (4, id);
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
@@ -190,6 +191,27 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+	}
+
+	public DataAdmin getAdmin(Transaccion trn, String id) throws PersistenciaException {
+		DataAdmin data = null;
+		try{
+			PreparedStatement pst = trn.preparedStatement("Select * from Administrativos A WHERE id=?");
+			pst.setString (1, id);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				String nombre = rst.getString("nombre");
+				int cargo = rst.getInt("idcargo");
+				String estado = rst.getString("estado");
+				data = new DataAdmin(id, nombre, cargo, estado);
+			}
+			rst.close();
+			pst.close();
+			return data;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}
 }

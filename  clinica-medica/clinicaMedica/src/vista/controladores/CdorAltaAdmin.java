@@ -6,6 +6,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
+import vista.dataobjet.DataUsu;
+import vista.dataobjet.DataUsuario;
 import vista.ventanas.FrmAltaAdmin;
 
 public class CdorAltaAdmin extends CdorManejoVentanas {
@@ -54,6 +56,8 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
 			super.getMod().altaAdmin(da);
+			DataUsuario usu = new DataUsuario(id, nombre, "AD", "A");
+			super.getMod().altaUsuario(usu);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 			

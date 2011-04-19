@@ -43,7 +43,7 @@ public interface IfachadaLogica extends IObservable{
 	
 	//ADMINS-GERENTES
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;
-	public void modificarAdmin(String id, String nom, String cargo) throws PersistenciaException, RemoteException;
+	public void modificarAdmin(String id, String nom, String cargo, String estado) throws PersistenciaException, RemoteException;
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException;
 	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException;
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException;
@@ -51,6 +51,7 @@ public interface IfachadaLogica extends IObservable{
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException;
 	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException;
 	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException;
+	public DataAdmin getAdmin(String id) throws PersistenciaException, RemoteException;
 	
 	//CONSULTAS
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;

@@ -75,7 +75,9 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	public void actionAceptar() {
-		this.cambioVentana(this, ventanaVoy);
+		vino.setId(this.getId());
+		this.cambioVentana(vino, ventanaVoy);
+		cerrar();
 	}
 		
 	public ModeloTablaListAdmin listarAdmin (){

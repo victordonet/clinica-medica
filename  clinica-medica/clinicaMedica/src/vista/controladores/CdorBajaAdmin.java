@@ -1,8 +1,12 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+import java.util.Vector;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAdmin;
 import vista.ventanas.FrmBajaAdmin;
 
 public class CdorBajaAdmin extends CdorManejoVentanas {
@@ -44,6 +48,27 @@ public class CdorBajaAdmin extends CdorManejoVentanas {
 	
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
+	}
+	
+	public DataAdmin getDatos(){
+		DataAdmin datosAdm = null;
+		try {
+			datosAdm = super.getMod().getAdmin(super.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return datosAdm;
+	}
+	
+	public String getDescCargo(){
+		Vector<String> vecCargos = new Vector<String>();
+		vecCargos.add("Gerente");
+		vecCargos.add("Administrador");
+		vecCargos.add("Cajero");
+		String descripcion = vecCargos.get(getDatos().getCargo()-1);
+		return descripcion;
 	}
 	
 	public void bajaAdmin(String id){

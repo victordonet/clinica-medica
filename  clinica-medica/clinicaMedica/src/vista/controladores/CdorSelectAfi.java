@@ -2,34 +2,33 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
-
 import excepciones.PersistenciaException;
-import vista.dataobjet.DataMed;
-import vista.ventanas.FrmSelecMedico;
+import vista.dataobjet.DataAfiliado;
+import vista.ventanas.FrmSelecAfiliado;
 
-public class CdorSelectMed extends CdorManejoVentanas {
+public class CdorSelectAfi extends CdorManejoVentanas {
 	
-	private FrmSelecMedico ventana;
+	private FrmSelecAfiliado ventana;
 	private CdorManejoVentanas vino;
 	private CdorManejoVentanas ventanaVoy;
-	private Vector<DataMed> vMed;
+	private Vector<DataAfiliado> vAfi;
 
-	public CdorSelectMed() {
+	public CdorSelectAfi() {
 		super();
 	}
 	
-	public FrmSelecMedico getVentana() {
+	public FrmSelecAfiliado getVentana() {
 		return ventana;
 	}
 
-	public void setVentana(FrmSelecMedico ventana) {
+	public void setVentana(FrmSelecAfiliado ventana) {
 		this.ventana = ventana;
 	}
 
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		this.vino = vino;
 		try {
-			ventana = new FrmSelecMedico(this);
+			ventana = new FrmSelecAfiliado(this);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -54,11 +53,11 @@ public class CdorSelectMed extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
-	public ModeloTablaListMed listarMed(){
-		ModeloTablaListMed modelo = null;
+	public ModeloTablaListAfil listarAfi(){
+		ModeloTablaListAfil modelo = null;
 		try {
-			vMed = super.getMod().listarMedicos();
-			modelo = new ModeloTablaListMed(vMed);
+			vAfi = super.getMod().listarAfiliados();
+			modelo = new ModeloTablaListAfil(vAfi);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
@@ -81,11 +80,11 @@ public class CdorSelectMed extends CdorManejoVentanas {
 		this.ventanaVoy = ventanaVoy;
 	}
 
-	public Vector<DataMed> getvMed() {
-		return vMed;
+	public Vector<DataAfiliado> getvAfi() {
+		return vAfi;
 	}
 
-	public void setvMed(Vector<DataMed> vMed) {
-		this.vMed = vMed;
+	public void setvAfi(Vector<DataAfiliado> vAfi) {
+		this.vAfi = vAfi;
 	}
 }

@@ -3,6 +3,7 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmBajaAfiliado;
 
 public class CdorBajaAfil extends CdorManejoVentanas {
@@ -44,6 +45,18 @@ public class CdorBajaAfil extends CdorManejoVentanas {
 	
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
+	}
+	
+	public DataAfiliado getDatos(){
+		DataAfiliado datosAfi = null;
+		try {
+			datosAfi = super.getMod().getAfiliado(super.getId());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			e.printStackTrace();
+		}
+		return datosAfi;
 	}
 	
 	public void bajaAfil(String id){

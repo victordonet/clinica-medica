@@ -23,15 +23,21 @@ public class CdorMantAfil extends CdorManejoVentanas {
 	}
 	
 	public void actionBajaAfil(){
-		this.cambioVentana(this, new CdorBajaAfil()); 
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorBajaAfil());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
-	public void actionModifAfil(){	
-		this.cambioVentana(this, new CdorModifAfil());
+	public void actionModifAfil(){
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorModifAfil());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
-	public void actionModifPass(){	
-		this.cambioVentana(this, new CdorModifPass());
+	public void actionModifPass(){
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorModifPass());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void habilitarVentana() {

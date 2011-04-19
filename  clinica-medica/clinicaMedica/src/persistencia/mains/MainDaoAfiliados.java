@@ -36,7 +36,7 @@ public class MainDaoAfiliados {
 		}
 	
 		//Modificacion
-		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDireccion(), "26199911", false);
+		fachada.modifAfil(afil.getId(), "PedroModif", "ApellidoMod", afil.getCi(), "pj@gmail.com", afil.getDireccion(), "26199911", false, "I");
 		
 		//Obtener
 		DataAfiliado af = fachada.getAfiliado(afil.getId());

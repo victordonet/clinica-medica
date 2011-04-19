@@ -144,7 +144,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw new PersistenciaException(e.getMessage());
 		}
 	}
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException {
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon, String estado) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			if (iDaoAfil.validarAfil(trn, idAfil)==false){
@@ -153,7 +153,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El afiliado no existe");
 			}
 			else{
-				iDaoAfil.modifAfil(trn, idAfil, nom, apel, ci, mail, dir, tel, fon);
+				iDaoAfil.modifAfil(trn, idAfil, nom, apel, ci, mail, dir, tel, fon, estado);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

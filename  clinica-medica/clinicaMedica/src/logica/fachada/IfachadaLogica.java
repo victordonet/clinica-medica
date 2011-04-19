@@ -32,7 +32,7 @@ public interface IfachadaLogica extends IObservable{
 
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException;
-	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon) throws PersistenciaException, RemoteException;
+	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon, String estado) throws PersistenciaException, RemoteException;
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException;
 	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException;
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException;

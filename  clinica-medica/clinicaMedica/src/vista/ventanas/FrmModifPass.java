@@ -10,7 +10,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import vista.controladores.CdorModifPass;
 import java.awt.Color;
-import javax.swing.JComboBox;
 
 public class FrmModifPass extends JFrame{
 
@@ -118,7 +117,7 @@ public class FrmModifPass extends JFrame{
 			if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
 				jTextField1.setText(cdor.getUsu().getIdUsu());	
 			}else{
-				jTextField1.setText("grilla");
+				jTextField1.setText(cdor.getId());
 			}	
 			jTextField1.setEditable(false);
 		}
@@ -129,11 +128,16 @@ public class FrmModifPass extends JFrame{
 	 * This method initializes PassField2
 	 *
 	 * @return javax.swing.JPassField
-	 */
+	 */ 
 	private JPasswordField getJPassField2() {
 		if (jPassField2 == null) {
 			jPassField2 = new JPasswordField();
 			jPassField2.setBounds(new Rectangle(289, 162, 150, 19));
+			if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
+				jPassField2.setEditable(true);	
+			}else{
+				jPassField2.setEditable(false);
+			}	
 		}
 		return jPassField2;
 	}
@@ -201,18 +205,19 @@ public class FrmModifPass extends JFrame{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Contraseña.");
 					//Valido datos
-					boolean validar = cdor.validarPass(jPassField.getText().toString(), jPassField3.getText().toString());
-					boolean validarUsu = cdor.validarUsu(jTextField1.getText().toString(), jPassField2.getText().toString());
-					if (validarUsu==false){
-						JOptionPane.showMessageDialog(null,"La contraseña actual es incorrecta.");
-					}
-					else{
-						if(validar){
-							//Modifico
-						cdor.modifPass(jTextField1.getText(), jPassField.getText());	
-						}else{
-							JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
+					boolean validarUsu = false;
+					if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
+						validarUsu = cdor.validarUsu(jTextField1.getText().toString(), jPassField2.getText().toString());
+						if (validarUsu==false){
+							JOptionPane.showMessageDialog(null,"La contraseña actual es incorrecta.");
 						}
+					}
+					boolean validar = cdor.validarPass(jPassField.getText().toString(), jPassField3.getText().toString());
+					if(validar){
+						//Modifico
+					cdor.modifPass(jTextField1.getText(), jPassField.getText());	
+					}else{
+						JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
 					}
 			}});
 		}

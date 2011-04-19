@@ -9,6 +9,7 @@ public abstract class CdorManejoVentanas {
 	private CdorManejoVentanas vengo= null;
 	private CdorManejoVentanas voy = null;
 	private DataUsu usu;
+	private String id;
 
 	public CdorManejoVentanas() {}	
 	public abstract void desplegarVentana(CdorManejoVentanas vino);
@@ -21,6 +22,7 @@ public abstract class CdorManejoVentanas {
 		this.voy=voy;
 		voy.setMod(vengo.getMod());
 		voy.setUsu(vengo.getUsu());
+		voy.setId(vengo.getId());
 		voy.desplegarVentana(vengo);
 		vengo.deshabilitarVentana();
 	}
@@ -28,6 +30,7 @@ public abstract class CdorManejoVentanas {
 	public final void cerrarVentana(CdorManejoVentanas vengo, CdorManejoVentanas voy) {
 		voy.setMod(vengo.getMod());
 		voy.setUsu(vengo.getUsu());
+		voy.setId(vengo.getId());
 		voy.habilitarVentana();
 		System.out.println("En el manejador de ventana = "+vengo.toString());
 		vengo.cerrar();
@@ -63,6 +66,14 @@ public abstract class CdorManejoVentanas {
 	
 	public void setUsu(DataUsu usu) {
 		this.usu = usu;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 }
 

@@ -23,11 +23,15 @@ public class CdorMantMedico extends CdorManejoVentanas {
 	}
 	
 	public void actionBajaMed(){
-		this.cambioVentana(this, new CdorBajaMedico()); 
+		CdorSelectMed cdorSelec = new CdorSelectMed();
+		cdorSelec.setVentanaVoy(new CdorBajaMedico());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
-	public void actionModifMed(){	
-		this.cambioVentana(this, new CdorModifMedico());
+	public void actionModifMed(){
+		CdorSelectMed cdorSelec = new CdorSelectMed();
+		cdorSelec.setVentanaVoy(new CdorModifMedico());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionDisponibilidad(){	
@@ -35,7 +39,9 @@ public class CdorMantMedico extends CdorManejoVentanas {
 	}
 	
 	public void actionModifPass(){	
-		this.cambioVentana(this, new CdorModifPass());
+		CdorSelectMed cdorSelec = new CdorSelectMed();
+		cdorSelec.setVentanaVoy(new CdorModifPass());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void habilitarVentana() {

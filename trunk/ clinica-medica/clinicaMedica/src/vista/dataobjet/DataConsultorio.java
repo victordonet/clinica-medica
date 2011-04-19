@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class DataConsultorio {
+import java.io.Serializable;
+
+public class DataConsultorio implements Serializable {
 	
 	private int idConsultorio;
 	private String nombre;

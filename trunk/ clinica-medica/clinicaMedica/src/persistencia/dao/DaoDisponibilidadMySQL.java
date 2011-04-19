@@ -67,7 +67,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 		
 		Vector<DataDisp> resultado = new Vector<DataDisp>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select dia, horario from Disponibilidad ");
+			PreparedStatement pst = trn.preparedStatement("Select dia, horario, idmedico from Disponibilidad ");
 		
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

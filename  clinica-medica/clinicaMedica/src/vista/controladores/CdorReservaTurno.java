@@ -139,27 +139,27 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 				dia = 6;}
 			int hora = 0;
 			if(horario.equals("02 a 04")) {
-				hora = 2;}
+				hora = 1;}
 			if(horario.equals("04 a 06")) {
-				hora = 4;}
+				hora = 2;}
 			if(horario.equals("06 a 08")) {
-				hora = 6;}
+				hora = 3;}
 			if(horario.equals("08 a 10")) {
-				hora = 8;}
+				hora = 4;}
 			if(horario.equals("10 a 12")) {
-				hora = 10;}
+				hora = 5;}
 			if(horario.equals("12 a 14")) {
-				hora = 12;}
+				hora = 6;}
 			if(horario.equals("14 a 16")) {
-				hora = 14;}
+				hora = 7;}
 			if(horario.equals("16 a 18")) {
-				hora = 16;}
+				hora = 8;}
 			if(horario.equals("18 a 20")) {
-				hora = 18;}
+				hora = 9;}
 			if(horario.equals("20 a 22")) {
-				hora = 20;}
+				hora = 10;}
 			if(horario.equals("22 a 24")) {
-				hora = 22;}
+				hora = 11;}
 			String idMed = vMEsp.get(selecMed).getId();
 			DataReservaTurno dataResTurno = new DataReservaTurno(fecha, dia, hora, super.getUsu().getIdUsu(), idConsultorio, idMed, turno);
 			super.getMod().altaConsulta(dataResTurno);

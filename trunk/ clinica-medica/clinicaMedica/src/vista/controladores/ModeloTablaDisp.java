@@ -39,32 +39,33 @@ public class ModeloTablaDisp extends AbstractTableModel {
 
 	
 	public Object getValueAt(int row,int col){
-
-		switch (col){
-		case 0: {
-			return matrizDispMedico[row][col];
-		}
-		case 1: {
-			return matrizDispMedico[row][col];
-		}
-		case 2:{
-			return matrizDispMedico[row][col];
-		}
-		case 3:{
-			return matrizDispMedico[row][col];
-		}
-		case 4: {
-			return matrizDispMedico[row][col];
-		}
-		case 5:{
-			return matrizDispMedico[row][col];
-		}
-		case 6:{
-			return matrizDispMedico[row][col];
-		}
-
-		default: return false;
-		}
+		
+		return matrizDispMedico[row][col];
+//		switch (col){
+//		case 0: {
+//			return matrizDispMedico[row][0];
+//		}
+//		case 1: {
+//			return matrizDispMedico[row][1];
+//		}
+//		case 2:{
+//			return matrizDispMedico[row][2];
+//		}
+//		case 3:{
+//			return matrizDispMedico[row][3];
+//		}
+//		case 4: {
+//			return matrizDispMedico[row][4];
+//		}
+//		case 5:{
+//			return matrizDispMedico[row][5];
+//		}
+//		case 6:{
+//			return matrizDispMedico[row][6];
+//		}
+//
+//		default: return false;
+//		}
 		}
 
     public void setValueAt(boolean v,int row,int col)
@@ -74,14 +75,14 @@ public class ModeloTablaDisp extends AbstractTableModel {
     }
 	
 	public boolean isCellEditable(int row, int col) { 
-        
 		if(matrizDatos[row][col]<cantConsultorios){
         	return true;
         }
 		else{
-			return true;
+			return false;
 		}
     }
+
 	public Class getColumnClass (int arg1){
 		return getValueAt(0,arg1).getClass();
 	}

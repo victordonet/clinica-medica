@@ -204,11 +204,12 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	}
 
 	private JTable getJTable1() {
-		if (jTable1 == null) {
+		//if (jTable1 == null) {
 			modelo = cdor.obtenerDisp(jTextField1.getText());
 			jTable1 = new JTable(modelo);
-			jTable1.setCellSelectionEnabled(true);
-		}
+			//jTable1.setCellSelectionEnabled(true);
+			
+		//}
 		return jTable1;
 	}
 

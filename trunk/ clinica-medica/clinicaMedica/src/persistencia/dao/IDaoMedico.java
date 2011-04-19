@@ -31,5 +31,5 @@ public interface IDaoMedico {
  	public Vector<DataDisp> listarDispMed(String idMed,Transaccion trn) throws PersistenciaException;
  	public void cargaConsultasProxMes(Transaccion trn, String id, int totalConsultorios) throws PersistenciaException;
  	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException;
-	
+ 	public DataMed getDataMed(Transaccion trn, String id) throws PersistenciaException;
 }

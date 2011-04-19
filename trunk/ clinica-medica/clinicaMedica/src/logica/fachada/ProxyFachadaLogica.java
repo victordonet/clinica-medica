@@ -226,6 +226,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public void cargaConsultasProxMes(String id)  throws PersistenciaException, RemoteException {
  		fachada.cargaConsultasProxMes(id);
  	}
+ 	public DataMed getDataMed(String id)  throws PersistenciaException, RemoteException {
+ 		return fachada.getDataMed(id);
+ 	}
 	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {

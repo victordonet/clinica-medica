@@ -3,6 +3,7 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataMed;
 import vista.ventanas.FrmBajaMedico;
 
 public class CdorBajaMedico extends CdorManejoVentanas {
@@ -27,6 +28,10 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 		ventana = new FrmBajaMedico(this);
 	}
 
+	public DataMed getDatos(){
+		DataMed dMed = super.getMod().getMedico(super.getId());
+	}
+	
 	public void habilitarVentana() {
 		ventana.setFocusable(true);
 		ventana.setEnabled(true);

@@ -394,4 +394,29 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
+	public DataMed getDataMed(Transaccion trn, String id) throws PersistenciaException {
+		String nombre = null, apellido = null, ci = null, tel = null, estado = null;
+		int idEsp = 0;
+		DataMed med = null;
+		try {
+			PreparedStatement pst = trn.preparedStatement("SELECT M.NOMBRE, M.APELLIDO, M.CI, M.TELEFONO, M.ESTADO FROM MEDICOS M WHERE M.ID=?");
+			pst.setString(1, id);
+ 			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				nombre = rst.getString("NOMBRE");
+				apellido = rst.getString("APELLIDO");
+				ci = rst.getString("CI");
+				tel = rst.getString("TELEFONO");
+				idEsp = rst.getInt("IDESPECIALIDAD");
+				estado = rst.getString("ESTADO");
+			}
+			rst.close();
+			pst.close();
+			med = new DataMed(id, nombre, apellido, ci, tel, estado, idEsp);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return med;
+	}
 }

@@ -129,7 +129,7 @@ public class FrmBajaMedico extends JFrame{
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(240, 97, 143, 19));
 			jTextField1.setEditable(false);
-
+			jTextField1.setText(cdor.getId());
 		}
 		return jTextField1;
 	}

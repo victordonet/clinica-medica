@@ -1064,7 +1064,22 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
  	}
-	
+ 	public DataMed getDataMed(String id) throws PersistenciaException, RemoteException{
+ 		Transaccion trn = pool.obtenerTrn(8);
+ 		DataMed med = null;
+ 		try {
+ 			med = iDaoM.getDataMed(trn, id);
+ 			trn.finalizarTrn(true);
+ 			pool.liberarTrn(trn);
+ 		} catch (PersistenciaException e) {
+ 			e.printStackTrace();
+ 			trn.finalizarTrn(false);
+ 			pool.liberarTrn(trn);
+ 			throw e;
+ 		}
+ 		return med;
+ 	}
+ 	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);

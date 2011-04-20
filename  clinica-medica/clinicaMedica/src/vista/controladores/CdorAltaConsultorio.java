@@ -49,6 +49,7 @@ public class CdorAltaConsultorio extends CdorManejoVentanas {
 	public void altaConsultorio (String id, String nombre){
 		int idConsultorio = Integer.parseInt(id);
 		DataConsultorio dc = new DataConsultorio(idConsultorio, nombre);
+		actionCerrar();
 		try {
 			super.getMod().altaConsultorio(dc);
 		} catch (RemoteException e) {

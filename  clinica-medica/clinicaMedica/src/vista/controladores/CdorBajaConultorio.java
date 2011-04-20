@@ -1,14 +1,18 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
+import vista.dataobjet.DataConsultorio;
 import vista.ventanas.FrmBajaConsultorio;
 
 public class CdorBajaConultorio extends CdorManejoVentanas {
 	
 	private FrmBajaConsultorio ventana;
 	private CdorManejoVentanas vino;
+	private Vector<DataConsultorio> vCons = null;
 	
 	public CdorBajaConultorio() {
 		super();
@@ -20,11 +24,6 @@ public class CdorBajaConultorio extends CdorManejoVentanas {
 	
 	public void setVentana(FrmBajaConsultorio ventana) {
 		this.ventana = ventana;
-	}
-
-	public void desplegarVentana(CdorManejoVentanas vino) {
-		this.vino = vino;
-		ventana = new FrmBajaConsultorio(this);
 	}
 
 	public void habilitarVentana() {
@@ -46,8 +45,30 @@ public class CdorBajaConultorio extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
-	public void bajaConsultorio(int id){
+	public DefaultComboBoxModel cargarBox(){
+		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
 		try {
+			vCons = super.getMod().listarConsultorios();
+			for (DataConsultorio vConsecialidad : vCons){
+				boxMod.addElement(vConsecialidad.getIdConsultorio());
+			}
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			e.printStackTrace();
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			e.printStackTrace();
+		}
+		return boxMod;
+	}
+	
+	public String getNombre(int indexBox){
+		return vCons.get(indexBox).getNombre();
+	}
+	
+	public void bajaConsultorio(int indexBox){
+		try {
+			int id = vCons.get(indexBox).getIdConsultorio();
 			super.getMod().bajaConsultorio(id);
 			actionCerrar();
 		} catch (RemoteException e) {
@@ -57,5 +78,10 @@ public class CdorBajaConultorio extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	public void desplegarVentana(CdorManejoVentanas vino) {
+		this.vino = vino;
+		ventana = new FrmBajaConsultorio(this);
 	}
 }

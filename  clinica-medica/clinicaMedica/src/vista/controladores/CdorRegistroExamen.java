@@ -3,7 +3,6 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
@@ -75,7 +74,7 @@ public class CdorRegistroExamen extends CdorManejoVentanas {
 		boolean resultado = false;
 		try {
 			String idAfil =  super.getId();
-			resultado = super.getMod().cobraTimbre(idAfil);
+			resultado = super.getMod().cobraTicket(idAfil);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();

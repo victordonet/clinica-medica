@@ -159,13 +159,13 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField getJTextField() {
 		if (jTextField == null) {
 			jTextField = new JTextField();
-			jTextField.setBounds(new Rectangle(225, 243, 34, 19));
+			jTextField.setBounds(new Rectangle(225, 243, 20, 19));
 			jTextField.setEditable(false);
 			boolean timbre = cdor.cobraTimbre();
 			if (timbre){
-				jTextField.setText("S");
+				jTextField.setText("Si");
 			}else{
-				jTextField.setText("N");
+				jTextField.setText("No");
 			}
 		}
 		return jTextField;
@@ -237,7 +237,7 @@ public class FrmRegistroExamen extends JFrame {
 					Calendar fechaIni = Calendar.getInstance();
 					fechaIni.setTime(fecha);
 					boolean timbre = false;
-					if (jTextField.getText().equals("S")){
+					if (jTextField.getText().equals("Si")){
 						timbre=true;
 					}
 					cdor.altaRegistro(fechaIni, fechaIni, jCheckBox.isSelected(), timbre, jComboBox1.getSelectedIndex());

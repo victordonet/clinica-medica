@@ -399,7 +399,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			if (iDaoAdmin.validarAdmin(trn, idAfil)){
+			if (iDaoAfil.validarAfil(trn, idAfil)){
 			iDaoAdmin.modifEx(trn, idAfil, fIni, idTex, fRes);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);

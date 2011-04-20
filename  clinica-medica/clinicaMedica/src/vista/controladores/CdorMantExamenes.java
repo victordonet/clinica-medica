@@ -26,7 +26,7 @@ public class CdorMantExamenes extends CdorManejoVentanas {
 	
 	public void actionResultado(){
 		CdorSelectAfi cdorSelec = new CdorSelectAfi();
-		cdorSelec.setVentanaVoy(new CdorResultadoExamen());
+		cdorSelec.setVentanaVoy(new CdorSelectExam());
 		this.cambioVentana(this, cdorSelec);
 	}
 

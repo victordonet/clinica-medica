@@ -1,18 +1,23 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorMantDisp;
+import vista.controladores.DibujoDisp;
 import vista.controladores.ModeloTablaDisp;
+import javax.swing.JCheckBox;
 
 public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
@@ -44,6 +49,9 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	private CdorMantDisp cdor;
 	private ModeloTablaDisp modelo = null;
 	private JFrame frm = new JFrame();
+	private JLabel jLabel = null;
+	private JCheckBox jCheckBox = null;
+	private JCheckBox jCheckBox1 = null;
 
 	public FrmMantDisp(CdorMantDisp cdor)throws Throwable{
 		super();
@@ -68,6 +76,11 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
+			jLabel = new JLabel();
+			jLabel.setBounds(new Rectangle(471, 308, 24, 19));
+			jLabel.setText("");
+			jLabel.setOpaque(true);
+		    jLabel.setBackground(Color.RED);
 			jLabel1 = new JLabel();
 			jLabel1.setBounds(new Rectangle(188, 7, 200, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
@@ -126,15 +139,15 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jLabel14.setBounds(new Rectangle(101, 291, 20, 19));
 			jLabel14.setText("22");
 			jLabel15 = new JLabel();
-			jLabel15.setBounds(new Rectangle(498, 267, 80, 19));
+			jLabel15.setBounds(new Rectangle(505, 267, 80, 19));
 			jLabel15.setForeground(java.awt.Color.GRAY);
 			jLabel15.setText("Disponible");
 			jLabel16 = new JLabel();
-			jLabel16.setBounds(new Rectangle(498, 287, 80, 19));
+			jLabel16.setBounds(new Rectangle(505, 286, 80, 19));
 			jLabel16.setForeground(java.awt.Color.GRAY);
 			jLabel16.setText("Seleccionada");
 			jLabel17 = new JLabel();
-			jLabel17.setBounds(new Rectangle(498, 307, 80, 19));
+			jLabel17.setBounds(new Rectangle(505, 309, 80, 19));
 			jLabel17.setForeground(java.awt.Color.GRAY);
 			jLabel17.setText("No disponible");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
@@ -163,6 +176,9 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJScrollPane(), null);
+			jContentPane.add(jLabel, null);
+			jContentPane.add(getJCheckBox(), null);
+			jContentPane.add(getJCheckBox1(), null);
 		}
 		return jContentPane;
 	}
@@ -196,20 +212,11 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	}
 
 	private JTable getJTable1() {
-
-			modelo = cdor.obtenerDisp(jTextField1.getText());
-			
+			modelo = cdor.obtenerDisp();
 			jTable1 = new JTable(modelo);
-
-			jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-				public void mouseClicked(java.awt.event.MouseEvent e) {
-					
-					jTable1.setValueAt(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()), jTable1.getSelectedRow(), jTable1.getSelectedColumn());
-					
-				}
-			});
-			
-
+			jTable1.setCellSelectionEnabled(true);
+			DibujoDisp miDibujo = new DibujoDisp();
+			jTable1.setDefaultRenderer(Boolean.class, miDibujo);
 		return jTable1;
 	}
 
@@ -253,5 +260,35 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 	public JFrame getVentana() {
 		return frm;
+	}
+
+	/**
+	 * This method initializes jCheckBox	
+	 * 	
+	 * @return javax.swing.JCheckBox	
+	 */
+	private JCheckBox getJCheckBox() {
+		if (jCheckBox == null) {
+			jCheckBox = new JCheckBox();
+			jCheckBox.setBounds(new Rectangle(471, 267, 28, 19));
+			jCheckBox.setEnabled(false);
+			
+		}
+		return jCheckBox;
+	}
+
+	/**
+	 * This method initializes jCheckBox1	
+	 * 	
+	 * @return javax.swing.JCheckBox	
+	 */
+	private JCheckBox getJCheckBox1() {
+		if (jCheckBox1 == null) {
+			jCheckBox1 = new JCheckBox();
+			jCheckBox1.setBounds(new Rectangle(471, 288, 30, 19));
+			jCheckBox1.setSelected(true);
+			jCheckBox1.setEnabled(false);
+		}
+		return jCheckBox1;
 	}
 }

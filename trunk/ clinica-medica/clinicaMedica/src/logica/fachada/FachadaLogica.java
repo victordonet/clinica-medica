@@ -605,7 +605,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException {
 
 		Transaccion trn = pool.obtenerTrn(8);
-		int matriz[][] = new int [13][8];
+		int matriz[][] = new int [12][7];
 		try {
 			Vector <DataDisp> dispo = iDaoD.listarDispTotal(trn);
 			 
@@ -622,7 +622,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[0][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 2:{
 					switch (ladis.getDia()){
 					case 1: matriz[1][0]++;break;
@@ -634,7 +634,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[1][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 3:{
 					switch (ladis.getDia()){
 					case 1: matriz[2][0]++;break;
@@ -646,7 +646,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[2][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 4:{
 					switch (ladis.getDia()){
 					case 1: matriz[3][0]++;break;
@@ -658,7 +658,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[3][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 5:{
 					switch (ladis.getDia()){
 					case 1: matriz[4][0]++;break;
@@ -670,7 +670,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[4][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 6:{
 					switch (ladis.getDia()){
 					case 1: matriz[5][0]++;break;
@@ -682,7 +682,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[5][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 7:{
 					switch (ladis.getDia()){
 					case 1: matriz[6][0]++;break;
@@ -694,7 +694,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[6][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 8:{
 					switch (ladis.getDia()){
 					case 1: matriz[7][0]++;break;
@@ -706,7 +706,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[7][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 9:{
 					switch (ladis.getDia()){
 					case 1: matriz[8][0]++;break;
@@ -718,7 +718,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[8][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 10:{
 					switch (ladis.getDia()){
 					case 1: matriz[9][0]++;break;
@@ -730,7 +730,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[9][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 11:{
 					switch (ladis.getDia()){
 					case 1: matriz[10][0]++;break;
@@ -742,7 +742,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[10][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				case 12:{
 					switch (ladis.getDia()){
 					case 1: matriz[11][0]++;break;
@@ -754,7 +754,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[11][6]++;break;
 					default : break;
 					}
-				}
+				}break;
 				default:break;
 				}	
 			}
@@ -773,15 +773,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 		Transaccion trn = pool.obtenerTrn(8);
 		boolean matriz[][] = new boolean [12][7];
-		for (int i = 0; i== 12 ; i++){
-			for (int j = 0; j== 7 ; j++){
-				matriz [i][j]=false;
-			}
-		}
+	
+		
 		try {
 			Vector <DataDisp> dispo = iDaoD.listarDispMedico(idMedico, trn);
 			 
 			for(DataDisp ladis :dispo){
+				
 				switch (ladis.getHorario()){
 				case 1:{
 					switch (ladis.getDia()){
@@ -794,7 +792,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[0][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 2:{
 					switch (ladis.getDia()){
 					case 1: matriz[1][0]= true;break;
@@ -806,7 +804,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[1][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 3:{
 					switch (ladis.getDia()){
 					case 1: matriz[2][0]= true;break;
@@ -818,7 +816,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[2][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 4:{
 					switch (ladis.getDia()){
 					case 1: matriz[3][0]= true;break;
@@ -830,7 +828,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[3][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 5:{
 					switch (ladis.getDia()){
 					case 1: matriz[4][0]= true;break;
@@ -842,7 +840,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[4][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 6:{
 					switch (ladis.getDia()){
 					case 1: matriz[5][0]= true;break;
@@ -854,7 +852,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[5][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 7:{
 					switch (ladis.getDia()){
 					case 1: matriz[6][0]= true;break;
@@ -866,7 +864,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[6][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 8:{
 					switch (ladis.getDia()){
 					case 1: matriz[7][0]= true;break;
@@ -878,7 +876,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[7][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 9:{
 					switch (ladis.getDia()){
 					case 1: matriz[8][0]= true;break;
@@ -890,7 +888,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[8][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 10:{
 					switch (ladis.getDia()){
 					case 1: matriz[9][0]= true;break;
@@ -902,7 +900,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[9][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 11:{
 					switch (ladis.getDia()){
 					case 1: matriz[10][0]= true;break;
@@ -914,7 +912,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[10][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				case 12:{
 					switch (ladis.getDia()){
 					case 1: matriz[11][0]= true;break;
@@ -926,7 +924,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					case 7: matriz[11][6]= true;break;
 					default : break;
 					}
-				}
+				}break;
 				default:break;
 				}
 			}

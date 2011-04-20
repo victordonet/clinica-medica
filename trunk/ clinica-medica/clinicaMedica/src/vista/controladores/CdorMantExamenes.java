@@ -18,12 +18,16 @@ public class CdorMantExamenes extends CdorManejoVentanas {
 		}
 	}
 
-	public void actionRegistro(){	
-		//this.cambioVentana(this, new CdorRegistroExam());
+	public void actionRegistro(){
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorRegistroExamen());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionResultado(){
-		//this.cambioVentana(this, new CdorResultadoExam()); 
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorResultadoExamen());
+		this.cambioVentana(this, cdorSelec);
 	}
 
 	public void habilitarVentana() {

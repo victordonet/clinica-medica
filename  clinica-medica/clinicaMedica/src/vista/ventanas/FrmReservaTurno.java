@@ -1,12 +1,12 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Calendar;
-
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -98,7 +98,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Nro. Afiliado");
 			jLabel5 = new JLabel();
-			jLabel5.setBounds(new Rectangle(102, 276, 106, 19));
+			jLabel5.setBounds(new Rectangle(101, 306, 106, 19));
 			jLabel5.setForeground(java.awt.Color.black);
 			jLabel5.setText("Cobra timbre?");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
@@ -154,7 +154,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
-			jTextField2.setBounds(new Rectangle(226, 276, 34, 19));
+			jTextField2.setBounds(new Rectangle(225, 306, 34, 19));
 			jTextField2.setEditable(false);
 			boolean timbre = cdor.cobraTimbre();
 			if (timbre){
@@ -174,7 +174,8 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JComboBox getJComboBox1() {
 		if (jComboBox1 == null) {
 			jComboBox1 = new JComboBox(cdor.cargarEsp());
-			jComboBox1.setBounds(new Rectangle(226, 101, 137, 19));
+			jComboBox1.setBounds(new Rectangle(226, 101, 180, 19));
+			jComboBox1.setBackground(Color.WHITE);
 			jComboBox1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					jComboBox2.setModel(cdor.cargarMed(jComboBox1.getSelectedIndex()));
@@ -193,7 +194,8 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JComboBox getJComboBox2() {
 		if (jComboBox2 == null) {
 			jComboBox2 = new JComboBox();
-			jComboBox2.setBounds(new Rectangle(226, 130, 137, 19));
+			jComboBox2.setBounds(new Rectangle(226, 130, 180, 19));
+			jComboBox2.setBackground(Color.WHITE);
 			jComboBox2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					ModeloTablaListConsDisp modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
@@ -216,7 +218,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JScrollPane getJScrollPane() {
 		if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
-			jScrollPane.setBounds(new Rectangle(149, 165, 346, 96));
+			jScrollPane.setBounds(new Rectangle(149, 165, 346, 127));
 			jScrollPane.setViewportView(getJTable1());
 		}
 		return jScrollPane;
@@ -230,7 +232,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JTable getJTable1() {
 		if (jTable1 == null) {
 			jTable1 = new JTable();
-			jTable1.setBounds(new Rectangle(149, 165, 346, 96));
+			jTable1.setBounds(new Rectangle(149, 165, 346, 127));
 		}
 		return jTable1;
 	}

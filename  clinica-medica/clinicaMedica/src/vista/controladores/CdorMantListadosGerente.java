@@ -23,7 +23,7 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 	}
 	
 	public void actionListarMed(){
-		//this.cambioVentana(this, new CdorListarMed()); 
+		this.cambioVentana(this, new CdorListadoMed()); 
 	}
 	
 	public void actionDetalleAfil(){	

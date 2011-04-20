@@ -1,14 +1,11 @@
 package vista.controladores;
 
 import java.util.Vector;
-
 import javax.swing.table.AbstractTableModel;
 
-import vista.dataobjet.DataConsFecha;
-import vista.dataobjet.DataDisp;
-import vista.dataobjet.DataEsp;
-
 public class ModeloTablaDisp extends AbstractTableModel {
+
+	private static final long serialVersionUID = 1L;
 	private Vector<String> columnas;
 	private int[][] matrizDatos;
 	private boolean [][] matrizDispMedico;
@@ -31,31 +28,21 @@ public class ModeloTablaDisp extends AbstractTableModel {
 	public int getColumnCount() {
 		return 7;
 	}
-
 	
 	public int getRowCount() {
 		return 12;
 	}
-
 	
 	public Object getValueAt(int row,int col){
-		
 		return matrizDispMedico[row][col];
-
 		}
 
-    public void setValueAt(boolean v,int row,int col)
+    public void setValueAt(Object v,int row,int col)
     {
-    	if(v){
-    		v=false;
-    	}
-    	else{
-    		v=true;
-    	}
-        matrizDispMedico[row][col]=v;
+        matrizDispMedico[row][col]=(Boolean) v;
         fireTableCellUpdated(row,col);
     }
-	
+
 	public boolean isCellEditable(int row, int col) { 
 		if(matrizDatos[row][col]<cantConsultorios){
         	return true;
@@ -68,8 +55,8 @@ public class ModeloTablaDisp extends AbstractTableModel {
 	public Class getColumnClass (int arg1){
 		return getValueAt(0,arg1).getClass();
 	}
+	
 	public String getColumnName (int col){
 		return (String)columnas.elementAt(col);
 	}
-	
 }

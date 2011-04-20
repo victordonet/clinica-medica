@@ -12,10 +12,10 @@ public class CdorMantDisp extends CdorManejoVentanas {
 	private CdorManejoVentanas vino;
 	private DataMed dMed;
 
-	public ModeloTablaDisp obtenerDisp (String idMed){
+	public ModeloTablaDisp obtenerDisp (){
 		ModeloTablaDisp modelo =null;
 		try {
-			boolean[][] datosMed = this.getMod().obtenerDispoDiaHoraMedico(idMed);
+			boolean[][] datosMed = this.getMod().obtenerDispoDiaHoraMedico(super.getId());
 			int[][] confCelda = this.getMod().obetnerDispoDiaHora();
 			int consu = this.getMod().listarConsultorios().size();
 			modelo = new ModeloTablaDisp(confCelda,datosMed,consu);

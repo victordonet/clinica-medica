@@ -62,6 +62,7 @@ public class CdorBajaAfil extends CdorManejoVentanas {
 	public void bajaAfil(String id){
 		try {
 			super.getMod().bajaAfil(id);
+			super.getMod().elimConsultasAfil(id);
 			actionCerrar();
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());

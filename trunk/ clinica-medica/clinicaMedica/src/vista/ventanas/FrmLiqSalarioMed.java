@@ -10,7 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import logica.observer.IObserver;
+import vista.controladores.CdorLiqSalarioMed;
 import vista.controladores.CdorListadoEsp;
+import vista.controladores.ModeloTablaLiqSalarioMed;
 import vista.controladores.ModeloTablaListEsp;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -21,17 +23,17 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
-	private ModeloTablaListEsp modelo = null;
+	private ModeloTablaLiqSalarioMed modelo = null;
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
-	private CdorListadoEsp cdor;
+	private CdorLiqSalarioMed cdor;
 	private JButton jButton21 = null;
 
 	/**
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmLiqSalarioMed(ModeloTablaListEsp modelo, CdorListadoEsp control)throws Throwable {
+	public FrmLiqSalarioMed(CdorLiqSalarioMed control)throws Throwable {
 		this.modelo = modelo;
 		cdor = control;
 		initialize();
@@ -91,7 +93,7 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 		try {
 			//cdor.listarEspecialidades();
 			//frm.setVisible(false);
-			this.modelo = cdor.listarEspecialidades();
+			//this.modelo = cdor.listarEspecialidades();
 			initialize();
 			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
 		} catch (ClassNotFoundException e) {
@@ -106,7 +108,7 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 *
 	 * @return javax.swing.JScrollPane
 	 */
-	private JScrollPane getJScrollPane(ModeloTablaListEsp modelo) {
+	private JScrollPane getJScrollPane(ModeloTablaLiqSalarioMed modelo) {
 		//if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(65, 96, 475, 209));
@@ -120,10 +122,11 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 *
 	 * @return javax.swing.JTable
 	 */
-	private JTable getJTable1(ModeloTablaListEsp modelo) {
-		//if (jTable1 == null) {
+	private JTable getJTable1(ModeloTablaLiqSalarioMed modelo) {
+		if (jTable1 == null) {
+			modelo = cdor.liqSalarioMed();
 			jTable1 = new JTable(modelo);
-		//}
+		}
 		return jTable1;
 	}
 	public JFrame getVentana(){
@@ -142,6 +145,12 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton21.setText("Cancelar");
 			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					cdor.actionCerrar();
+				}
+			});
+
 		}
 		return jButton21;
 	}

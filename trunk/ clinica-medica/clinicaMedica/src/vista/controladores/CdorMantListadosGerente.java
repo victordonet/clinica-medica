@@ -35,7 +35,9 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 	}
 	
 	public void actionLiqSalarios(){
-		//this.cambioVentana(this, new CdorLiqSalarios()); 
+		CdorFiltroListFechas cdorFiltroFechas = new CdorFiltroListFechas();
+		cdorFiltroFechas.setVentanaVoy(new CdorLiqSalarioMed());
+		this.cambioVentana(this, cdorFiltroFechas); 
 	}
 	
 	public void actionMedPremiado(){	

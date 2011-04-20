@@ -773,6 +773,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	
 		Transaccion trn = pool.obtenerTrn(8);
 		boolean matriz[][] = new boolean [12][7];
+		for (int i = 0; i== 12 ; i++){
+			for (int j = 0; j== 7 ; j++){
+				matriz [i][j]=false;
+			}
+		}
 		try {
 			Vector <DataDisp> dispo = iDaoD.listarDispMedico(idMedico, trn);
 			 

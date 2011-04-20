@@ -27,8 +27,7 @@ public class FrmListadoConsultas extends JFrame{
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmListadoConsultas(ModeloTablaListadoConsultas modelo, CdorListadoConsultas cdorListadoConsultas)throws Throwable {
-		this.modelo = modelo;
+	public FrmListadoConsultas(CdorListadoConsultas cdorListadoConsultas)throws Throwable {
 		cdor = cdorListadoConsultas;
 		initialize();
 	}
@@ -101,6 +100,7 @@ public class FrmListadoConsultas extends JFrame{
 	 */
 	private JTable getJTable1() {
 		if (jTable1 == null) {
+			modelo = cdor.listarConsultas();
 			jTable1 = new JTable(modelo);
 		}
 		return jTable1;

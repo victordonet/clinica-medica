@@ -23,8 +23,7 @@ public class CdorListadoConsultas extends CdorManejoVentanas{
 	public void desplegarVentana (CdorManejoVentanas vino){
 			this.vino = vino;
 		try {
-			modelo = listarConsultas();
-			ventana = new FrmListadoConsultas(modelo,this);
+			ventana = new FrmListadoConsultas(this);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}

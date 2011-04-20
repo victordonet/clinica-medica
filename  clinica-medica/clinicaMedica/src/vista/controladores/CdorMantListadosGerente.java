@@ -31,7 +31,7 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 	}
 	
 	public void actionListarConsultas(){	
-		//this.cambioVentana(this, new CdorModifConsultas());
+		this.cambioVentana(this, new CdorFiltroListFecha());
 	}
 	
 	public void actionLiqSalarios(){

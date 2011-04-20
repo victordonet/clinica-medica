@@ -124,6 +124,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			pst.setString(2, idAfil);
 			Date date = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate(3, date);
+			System.out.println(date);
 			pst.setInt(4, dia);
 			pst.setInt(5, consult);
 			pst.setInt(6, turno);

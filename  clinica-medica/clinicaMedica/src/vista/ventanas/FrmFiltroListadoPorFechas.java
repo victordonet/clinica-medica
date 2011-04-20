@@ -6,9 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorFiltroListFechas;
+import vista.controladores.CdorLiqSalarioMed;
+
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.Date;
 
 public class FrmFiltroListadoPorFechas extends JFrame {
 
@@ -21,13 +26,15 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 	private JPanel jPanelFechaHasta = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
+	private CdorFiltroListFechas cdor;
 	private String titulo;
+	JDateChooser calendarDesde = new JDateChooser();
+	JDateChooser calendarHasta = new JDateChooser();
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmFiltroListadoPorFechas(CdorAltaEsp cdor) {
+	public FrmFiltroListadoPorFechas(CdorFiltroListFechas cdor) {
 		super();
 		this.cdor = cdor;
 		initialize();
@@ -101,8 +108,7 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			jPanelFechaDesde = new JPanel();
 			jPanelFechaDesde.setLayout(gridLayout1);
 			jPanelFechaDesde.setBounds(new Rectangle(278, 158, 90, 19));
-			JDateChooser calendar = new JDateChooser();
-			jPanelFechaDesde.add(calendar, null);
+			jPanelFechaDesde.add(calendarDesde, null);
 		}
 		return jPanelFechaDesde;
 	}
@@ -119,8 +125,7 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			jPanelFechaHasta = new JPanel();
 			jPanelFechaHasta.setLayout(gridLayout1);
 			jPanelFechaHasta.setBounds(new Rectangle(278, 187, 90, 19));
-			JDateChooser calendar = new JDateChooser();
-			jPanelFechaHasta.add(calendar, null);
+			jPanelFechaHasta.add(calendarHasta, null);
 		}
 		return jPanelFechaHasta;
 	}
@@ -160,7 +165,13 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Filtro Listado por Fechas");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					Date fDesde = calendarDesde.getDate();
+					Calendar fechaDesdeList = Calendar.getInstance();
+					fechaDesdeList.setTime(fDesde);
+					Date fHasta = calendarHasta.getDate();
+					Calendar fechaHastaList = Calendar.getInstance();
+					fechaHastaList.setTime(fHasta);
+					cdor.actionListar(fechaDesdeList, fechaHastaList);
 				}
 			});
 		}

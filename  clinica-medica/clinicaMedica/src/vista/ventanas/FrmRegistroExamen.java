@@ -1,19 +1,20 @@
 package vista.ventanas;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import vista.controladores.CdorAltaEsp;
-
+import vista.controladores.CdorRegistroExamen;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JComboBox;
-
 import com.toedter.calendar.JDateChooser;
-
 public class FrmRegistroExamen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -27,18 +28,19 @@ public class FrmRegistroExamen extends JFrame {
 	private JTextField jTextField = null;
 	private JTextField jTextField1 = null;
 	private JComboBox jComboBox1 = null;
-	private JComboBox jComboBox2 = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
+	private CdorRegistroExamen cdor;
+	private JCheckBox jCheckBox = null;
 	private JPanel jPanelFecha = null;
-	private CdorAltaEsp cdor;
-
+	JDateChooser calendar = new JDateChooser();
+	
 	/**
 	 * This is the default constructor
 	 */
-	public FrmRegistroExamen(CdorAltaEsp cdor) {
+	public FrmRegistroExamen(CdorRegistroExamen cdorRegistroExamen) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorRegistroExamen;
 		initialize();
 	}
 
@@ -48,6 +50,7 @@ public class FrmRegistroExamen extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
+		calendar.setBounds(new Rectangle(225, 156, 86, 19));
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
@@ -109,8 +112,8 @@ public class FrmRegistroExamen extends JFrame {
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJComboBox1(), null);
-			jContentPane.add(getJComboBox2(), null);
 			jContentPane.add(getJPanelFecha(), null);
+			jContentPane.add(getJCheckBox(), null);
 		}
 		return jContentPane;
 	}
@@ -125,6 +128,7 @@ public class FrmRegistroExamen extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(225, 127, 86, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getId());
 		}
 		return jTextField1;
 	}
@@ -140,8 +144,7 @@ public class FrmRegistroExamen extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFecha = new JPanel();
 			jPanelFecha.setLayout(gridLayout1);
-			jPanelFecha.setBounds(new Rectangle(225, 156, 86, 19));
-			JDateChooser calendar = new JDateChooser();
+			jPanelFecha.setBounds(new Rectangle(225, 156, 110, 19));
 			jPanelFecha.add(calendar, null);
 		}
 		return jPanelFecha;
@@ -158,6 +161,12 @@ public class FrmRegistroExamen extends JFrame {
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(225, 243, 34, 19));
 			jTextField.setEditable(false);
+			boolean timbre = cdor.cobraTimbre();
+			if (timbre){
+				jTextField.setText("S");
+			}else{
+				jTextField.setText("N");
+			}
 		}
 		return jTextField;
 	}
@@ -169,25 +178,26 @@ public class FrmRegistroExamen extends JFrame {
 	 */
 	private JComboBox getJComboBox1() {
 		if (jComboBox1 == null) {
-			jComboBox1 = new JComboBox();
+			jComboBox1 = new JComboBox(cdor.cargarTex());
 			jComboBox1.setBounds(new Rectangle(225, 185, 227, 19));
+			jComboBox1.setBackground(Color.WHITE);
 		}
 		return jComboBox1;
 	}
-
+	
 	/**
-	 * This method initializes jComboBox2
+	 * This method initializes jCheckBox
 	 *
-	 * @return javax.swing.JComboBox
+	 * @return javax.swing.JCheckBox
 	 */
-	private JComboBox getJComboBox2() {
-		if (jComboBox2 == null) {
-			jComboBox2 = new JComboBox();
-			jComboBox2.setBounds(new Rectangle(225, 214, 52, 19));
+	private JCheckBox getJCheckBox() {
+		if (jCheckBox == null) {
+			jCheckBox = new JCheckBox();
+			jCheckBox.setBounds(new Rectangle(222, 214, 19, 17));
 		}
-		return jComboBox2;
+		return jCheckBox;
 	}
-
+	
 	/**
 	 * This method initializes Button1
 	 *
@@ -223,8 +233,14 @@ public class FrmRegistroExamen extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Registro Exámen.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-
+					Date fecha = calendar.getDate();
+					Calendar fechaIni = Calendar.getInstance();
+					fechaIni.setTime(fecha);
+					boolean timbre = false;
+					if (jTextField.getText().equals("S")){
+						timbre=true;
+					}
+					cdor.altaRegistro(fechaIni, fechaIni, jCheckBox.isSelected(), timbre, jComboBox1.getSelectedIndex());
 				}
 			});
 		}

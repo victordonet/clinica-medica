@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
 
 import vista.controladores.CdorAltaEsp;
+import vista.controladores.CdorResultadoExamen;
 
 import java.awt.GridLayout;
 import java.awt.Rectangle;
@@ -33,14 +34,14 @@ public class FrmResultadoExamen extends JFrame {
 	private JPanel jPanelFecha = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
-	private CdorAltaEsp cdor;
+	private CdorResultadoExamen cdor;
 
 	/**
 	 * This is the default constructor
 	 */
-	public FrmResultadoExamen(CdorAltaEsp cdor) {
+	public FrmResultadoExamen(CdorResultadoExamen cdorResultadoExamen) {
 		super();
-		this.cdor = cdor;
+		this.cdor = cdorResultadoExamen;
 		initialize();
 
 	}
@@ -246,8 +247,7 @@ public class FrmResultadoExamen extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Resultado de Exámenes.");
-					cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
-
+					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
 				}
 			});
 		}

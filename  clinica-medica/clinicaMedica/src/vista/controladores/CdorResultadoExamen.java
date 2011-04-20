@@ -6,29 +6,31 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
-import vista.dataobjet.DataUsuario;
-import vista.ventanas.FrmAltaAdmin;
+import vista.dataobjet.DataExamen;
+import vista.dataobjet.DataTipoExamen;
+import vista.ventanas.FrmRegistroExamen;
+import vista.ventanas.FrmResultadoExamen;
 
-public class CdorAltaAdmin extends CdorManejoVentanas {
+public class CdorResultadoExamen extends CdorManejoVentanas {
 	
-	private FrmAltaAdmin ventana;
+	private FrmResultadoExamen ventana;
 	private CdorManejoVentanas vino;
 	
-	public CdorAltaAdmin() {
+	public CdorResultadoExamen() {
 		super();
 	}
 		
-	public FrmAltaAdmin getVentana() {
+	public FrmResultadoExamen getVentana() {
 		return ventana;
 	}
 	
-	public void setVentana(FrmAltaAdmin ventana) {
+	public void setVentana(FrmResultadoExamen ventana) {
 		this.ventana = ventana;
 	}
 	
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		this.vino = vino;
-		ventana = new FrmAltaAdmin(this);
+		ventana = new FrmResultadoExamen(this);
 	}
 
 	public void habilitarVentana() {
@@ -50,13 +52,11 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
-	public void altaAdmin (String id, String nombre, int cargo){
-		// el cargo es el lugar en el vector que recorro en el combobox
-		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
+/*	public void altaRegistro(Calendar fechaInicio,Calendar fechaResultado,boolean enviaMail,boolean cobroTimbre, tex){
+		DataTipoExamen tex = new DataTipoExamen(id, nombre);
+		DataExamen da = new DataExamen(fechaInicio, fechaResultado, enviaMail, cobroTimbre, tex);
 		try {
-			super.getMod().altaAdmin(da);
-			DataUsuario usu = new DataUsuario(id, nombre, "AD", "A");
-			super.getMod().altaUsuario(usu);
+			super.getMod().regEx(ex, idAfil);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 			
@@ -67,13 +67,5 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
-	}
-	
-	public DefaultComboBoxModel cargarBox(){
-		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
-		boxMod.addElement("Gerente");
-		boxMod.addElement("Administrador");
-		boxMod.addElement("Cajero");
-		return boxMod;
-	}
+	}*/
 }

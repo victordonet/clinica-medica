@@ -40,6 +40,7 @@ public interface IfachadaLogica extends IObservable{
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException;
 	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException;
 	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException;
+	public boolean cobraTicket(String idAfil) throws PersistenciaException, RemoteException;
 	
 	//ADMINS-GERENTES
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;
@@ -76,7 +77,7 @@ public interface IfachadaLogica extends IObservable{
 	//EXAMENES
 	public void regEx(DataExamen ex, String idAfil) throws PersistenciaException, RemoteException;
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException;
-	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException;
+	public int getCantExam(String idAfi) throws PersistenciaException, RemoteException;
 	
 	//MEDICOS
  	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException;

@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import vista.controladores.CdorAltaConsultorio;
-
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
@@ -184,7 +183,7 @@ public class FrmAltaConsultorio extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Consultorio.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					cdor.altaConsultorio(jTextField1.getText(), jTextField2.getText());
 				}
 			});
 		}

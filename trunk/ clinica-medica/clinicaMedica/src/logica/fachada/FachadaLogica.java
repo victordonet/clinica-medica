@@ -3,7 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-import javax.swing.JOptionPane;
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -265,25 +264,28 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return af;
 	}
 	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException {
-		Transaccion trn = pool.obtenerTrn(8);
 		boolean resultado = true;
-		try {
-			DataAfiliado af =  iDaoAfil.getAfiliado(idAfil, trn);
-			boolean fonasa = af.getFonasa();
-			if (fonasa){
-				int cantConsultas = iDaoTC.getCantConsult(trn, idAfil);
-				if (cantConsultas<11){
-					resultado = false;
-				}
+		DataAfiliado af =  this.getAfiliado(idAfil);
+		boolean fonasa = af.getFonasa();
+		if (fonasa){
+			int cantConsultas = this.getCantConsult(idAfil);
+			if (cantConsultas<11){
+				resultado = false;
 			}
-		} catch (PersistenciaException e) {
-			trn.finalizarTrn(true);
-			pool.liberarTrn(trn);
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
 		}
-		trn.finalizarTrn(true);
-		pool.liberarTrn(trn);
+		return resultado;
+	}
+	public boolean cobraTicket(String idAfil) throws PersistenciaException, RemoteException {
+		boolean resultado = true;
+		DataAfiliado af = this.getAfiliado(idAfil);
+		boolean fonasa = af.getFonasa();
+		if (fonasa){
+			int cantConsultas = this.getCantExam(idAfil);
+			
+			if (cantConsultas<11){
+				resultado = false;
+			}
+		}
 		return resultado;
 	}
 	
@@ -1061,11 +1063,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException {
+	public int getCantExam(String idAfi) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		int resultado = 0;
 		try {
-			resultado = iDaoEx.getCantExam(trn, fecha);
+			resultado = iDaoEx.getCantExam(trn, idAfi);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

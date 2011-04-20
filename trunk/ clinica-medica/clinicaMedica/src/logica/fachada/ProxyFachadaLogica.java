@@ -101,6 +101,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException {
 		return fachada.cobraTimbre(idAfil);
 	}
+	public boolean cobraTicket(String idAfil) throws PersistenciaException, RemoteException {
+		return fachada.cobraTicket(idAfil);
+	}
 	
 	//ADMIN-GERENTE
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException {
@@ -188,8 +191,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException {
 		return fachada.getCantExPagos(fini, ffin);
 	}
-	public int getCantExam(Calendar fecha) throws PersistenciaException, RemoteException {
-		return fachada.getCantExam(fecha);
+	public int getCantExam(String idAfil) throws PersistenciaException, RemoteException {
+		return fachada.getCantExam(idAfil);
 	}
 	
 	//MEDICOS

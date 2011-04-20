@@ -29,7 +29,7 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 	public boolean validaConsultorio(Transaccion trn, int idConsul) throws PersistenciaException {
 		Boolean validar;
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id from consultorio WHERE id=?");
+			PreparedStatement pst = trn.preparedStatement("Select id from consultorios WHERE id=?");
 			pst.setInt(1, idConsul);
 			ResultSet rst = pst.executeQuery();
 			if(rst.next()){

@@ -4,7 +4,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+
 import vista.controladores.CdorBajaConultorio;
+import vista.controladores.ModeloTablaListConsDisp;
+
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
@@ -93,8 +97,13 @@ public class FrmBajaConsultorio extends JFrame {
 	 */
 	private JComboBox getJComboBox() {
 		if (jComboBox == null) {
-			jComboBox = new JComboBox();
+			jComboBox = new JComboBox(cdor.cargarBox());
 			jComboBox.setBounds(new Rectangle(221, 150, 50, 19));
+			jComboBox.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					jTextField2.setText(cdor.getNombre(jComboBox.getSelectedIndex()));
+				}
+			});
 		}
 		return jComboBox;
 	}

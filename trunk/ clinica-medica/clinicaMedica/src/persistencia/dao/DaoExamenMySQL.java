@@ -15,6 +15,8 @@ import excepciones.PersistenciaException;
 
 public class DaoExamenMySQL implements IDaoExamen, Serializable{
 
+	private static final long serialVersionUID = 1L;
+
 	public int getCantExPagos(Transaccion trn, Calendar fini, Calendar ffin) throws PersistenciaException {
 		System.out.println("Listando cantidad de exámenes pagos");
 		int resultado = 0;
@@ -33,11 +35,15 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 		}
 	}
 
-	public int getCantExam(Transaccion trn, Calendar fecha) throws PersistenciaException {
+	public int getCantExam(Transaccion trn, String idAfi) throws PersistenciaException {
 		System.out.println("Listando cantidad de exámenes");
 		int resultado = 0;
+		Calendar calHoy = Calendar.getInstance();
+		Date hoy = new java.sql.Date(calHoy.getTimeInMillis());
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select count(*) as cantidad from Examenes");
+			PreparedStatement pst = trn.preparedStatement("Select count(*) as cantidad from Examenes where idAfiliado=? and YEAR(fechainicio)=YEAR(?)");
+			pst.setString(1, idAfi);
+			pst.setDate(2, hoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				resultado = rst.getInt("cantidad");

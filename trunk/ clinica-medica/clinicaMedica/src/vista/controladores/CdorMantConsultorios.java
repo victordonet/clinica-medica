@@ -19,11 +19,11 @@ public class CdorMantConsultorios extends CdorManejoVentanas {
 	}
 
 	public void actionAltaConsultorio(){	
-		this.cambioVentana(this, new CdorAltaAfil());
+		this.cambioVentana(this, new CdorAltaConsultorio());
 	}
 	
 	public void actionBajaConsultorio(){
-		this.cambioVentana(this, new CdorBajaAfil()); 
+		this.cambioVentana(this, new CdorBajaConultorio());
 	}
 
 	public void habilitarVentana() {

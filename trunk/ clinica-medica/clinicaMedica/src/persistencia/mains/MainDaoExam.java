@@ -30,7 +30,7 @@ public class MainDaoExam {
 		System.out.println("Cantidad Ex pagados = "+cantP);
 
 		//Cant Ex.
-		int cantE = fachada.getCantExam(fechaI);
+		int cantE = fachada.getCantExam(idAfil);
 		System.out.println("Cantidad Ex = "+cantE);
 
 	}

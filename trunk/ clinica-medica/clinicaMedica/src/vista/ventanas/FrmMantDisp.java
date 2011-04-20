@@ -196,12 +196,20 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	}
 
 	private JTable getJTable1() {
-		//if (jTable1 == null) {
+
 			modelo = cdor.obtenerDisp(jTextField1.getText());
-			jTable1 = new JTable(modelo);
-			//jTable1.setCellSelectionEnabled(true);
 			
-		//}
+			jTable1 = new JTable(modelo);
+
+			jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+					
+					jTable1.setValueAt(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()), jTable1.getSelectedRow(), jTable1.getSelectedColumn());
+					
+				}
+			});
+			
+
 		return jTable1;
 	}
 

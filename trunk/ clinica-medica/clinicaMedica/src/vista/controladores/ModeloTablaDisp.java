@@ -41,35 +41,17 @@ public class ModeloTablaDisp extends AbstractTableModel {
 	public Object getValueAt(int row,int col){
 		
 		return matrizDispMedico[row][col];
-//		switch (col){
-//		case 0: {
-//			return matrizDispMedico[row][0];
-//		}
-//		case 1: {
-//			return matrizDispMedico[row][1];
-//		}
-//		case 2:{
-//			return matrizDispMedico[row][2];
-//		}
-//		case 3:{
-//			return matrizDispMedico[row][3];
-//		}
-//		case 4: {
-//			return matrizDispMedico[row][4];
-//		}
-//		case 5:{
-//			return matrizDispMedico[row][5];
-//		}
-//		case 6:{
-//			return matrizDispMedico[row][6];
-//		}
-//
-//		default: return false;
-//		}
+
 		}
 
     public void setValueAt(boolean v,int row,int col)
     {
+    	if(v){
+    		v=false;
+    	}
+    	else{
+    		v=true;
+    	}
         matrizDispMedico[row][col]=v;
         fireTableCellUpdated(row,col);
     }

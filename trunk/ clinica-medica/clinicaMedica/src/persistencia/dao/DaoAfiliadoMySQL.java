@@ -149,17 +149,17 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 	public Vector<DataExamen> listarExPend(Transaccion trn, String idAfil) throws PersistenciaException {
 		System.out.println("Listando examenes pendientes de resolución");
 		Vector<DataExamen> resultado = new Vector<DataExamen>();
-		Date  fechaInicio, fechaResultado;
+		Date  fechaInicio;
 		Calendar fechaIni = Calendar.getInstance();
 		Calendar fechaRes = Calendar.getInstance();
 		int tipoEx;
 		boolean enviaMail, cobroTimbre;
 		
 		try {
-			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.ENVIAMAIL, " +
-														"E.COBRATIMBRE, E.FECHARESULTADO " +
+			PreparedStatement pst = trn.preparedStatement("SELECT E.IDTIPOEXAMEN, T.NOMBRE AS DESC_EXAMEN, E.FECHAINICIO, " +
+														"E.COBRATIMBRE, E.ENVIAMAIL " +
 														"FROM EXAMENES E, TIPOEXAMENES T " +
-														"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO=? AND E.FECHARESULTADO=NULL");
+														"WHERE E.IDTIPOEXAMEN=T.ID AND E.IDAFILIADO=? AND ISNULL(E.FECHARESULTADO)");
 		pst.setString(1, idAfil);
 		ResultSet rst = pst.executeQuery();
 		while(rst.next()){
@@ -172,8 +172,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			//----
 			enviaMail = rst.getBoolean("ENVIAMAIL");
 			cobroTimbre = rst.getBoolean("COBRATIMBRE");
-			fechaResultado = rst.getDate("FECHARESULTADO");
-			fechaRes.setTime(fechaResultado);
 			DataExamen ex = new DataExamen(fechaIni, fechaRes, enviaMail, cobroTimbre, tex);
 			resultado.add(ex);
 		}

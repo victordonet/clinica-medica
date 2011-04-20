@@ -1,20 +1,17 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-
-import javax.swing.DefaultComboBoxModel;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
-import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataExamen;
-import vista.dataobjet.DataTipoExamen;
-import vista.ventanas.FrmRegistroExamen;
 import vista.ventanas.FrmResultadoExamen;
 
 public class CdorResultadoExamen extends CdorManejoVentanas {
 	
 	private FrmResultadoExamen ventana;
 	private CdorManejoVentanas vino;
+	private DataExamen dataEx;
 	
 	public CdorResultadoExamen() {
 		super();
@@ -51,12 +48,18 @@ public class CdorResultadoExamen extends CdorManejoVentanas {
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
 	}
+
+	public DataExamen getDataEx() {
+		return dataEx;
+	}
+
+	public void setDataEx(DataExamen dataEx) {
+		this.dataEx = dataEx;
+	}
 	
-/*	public void altaRegistro(Calendar fechaInicio,Calendar fechaResultado,boolean enviaMail,boolean cobroTimbre, tex){
-		DataTipoExamen tex = new DataTipoExamen(id, nombre);
-		DataExamen da = new DataExamen(fechaInicio, fechaResultado, enviaMail, cobroTimbre, tex);
+	public void altaResultado(Calendar fechaResultado){
 		try {
-			super.getMod().regEx(ex, idAfil);
+			super.getMod().modifEx(super.getId(), dataEx.getFechaInicio(), dataEx.getTex().getId(), fechaResultado);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 			
@@ -67,5 +70,5 @@ public class CdorResultadoExamen extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
-	}*/
+	}
 }

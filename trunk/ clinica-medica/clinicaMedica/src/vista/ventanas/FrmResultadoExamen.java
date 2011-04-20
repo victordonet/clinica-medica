@@ -3,17 +3,18 @@ package vista.ventanas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import com.toedter.calendar.JDateChooser;
-
-import vista.controladores.CdorAltaEsp;
 import vista.controladores.CdorResultadoExamen;
-
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.swing.JCheckBox;
 
 public class FrmResultadoExamen extends JFrame {
 
@@ -30,11 +31,12 @@ public class FrmResultadoExamen extends JFrame {
 	private JTextField jTextField1 = null;
 	private JTextField jTextField2 = null;
 	private JTextField jTextField3 = null;
-	private JTextField jTextField4 = null;
-	private JPanel jPanelFecha = null;
 	private JButton jButton1 = null;
 	private JButton jButton2 = null;
 	private CdorResultadoExamen cdor;
+	private JCheckBox jCheckBox = null;
+	private JPanel jPanelFecha = null;
+	JDateChooser calendar = new JDateChooser();
 
 	/**
 	 * This is the default constructor
@@ -43,7 +45,6 @@ public class FrmResultadoExamen extends JFrame {
 		super();
 		this.cdor = cdorResultadoExamen;
 		initialize();
-
 	}
 
 	/**
@@ -117,10 +118,10 @@ public class FrmResultadoExamen extends JFrame {
 			jContentPane.add(getJTextField1(), null);
 			jContentPane.add(getJTextField2(), null);
 			jContentPane.add(getJTextField3(), null);
-			jContentPane.add(getJTextField4(), null);
 			jContentPane.add(getJPanelFecha(), null);
 			jContentPane.add(getJButton1(), null);
 			jContentPane.add(getJButton2(), null);
+			jContentPane.add(getJCheckBox(), null);
 		}
 		return jContentPane;
 	}
@@ -135,6 +136,7 @@ public class FrmResultadoExamen extends JFrame {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(225, 128, 86, 19));
 			jTextField1.setEditable(false);
+			jTextField1.setText(cdor.getId());
 	}
 		return jTextField1;}
 
@@ -148,6 +150,8 @@ public class FrmResultadoExamen extends JFrame {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(225, 156, 86, 19));
 			jTextField2.setEditable(false);
+			Calendar fecha = cdor.getDataEx().getFechaInicio();
+			jTextField2.setText(fecha.get(Calendar.DATE)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR));
 		}
 		return jTextField2;
 	}
@@ -162,24 +166,26 @@ public class FrmResultadoExamen extends JFrame {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(225, 185, 268, 19));
 			jTextField3.setEditable(false);
+			jTextField3.setText(cdor.getDataEx().getTex().getNombre());
 		}
 		return jTextField3;
 	}
 
 	/**
-	 * This method initializes TextField4
-	 *
-	 * @return javax.swing.JTextField
+	 * This method initializes jCheckBox	
+	 * 	
+	 * @return javax.swing.JCheckBox	
 	 */
-	private JTextField getJTextField4() {
-		if (jTextField4 == null) {
-			jTextField4 = new JTextField();
-			jTextField4.setBounds(new Rectangle(225, 214, 34, 19));
-			jTextField4.setEditable(false);
+	private JCheckBox getJCheckBox() {
+		if (jCheckBox == null) {
+			jCheckBox = new JCheckBox();
+			jCheckBox.setBounds(new Rectangle(222, 215, 17, 19));
+			jCheckBox.setEnabled(false);
+			jCheckBox.setSelected(cdor.getDataEx().isEnviaMail());
 		}
-		return jTextField4;
+		return jCheckBox;
 	}
-
+	
 	/**
 	 * This method initializes jPanelFecha
 	 *
@@ -191,8 +197,7 @@ public class FrmResultadoExamen extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFecha = new JPanel();
 			jPanelFecha.setLayout(gridLayout1);
-			jPanelFecha.setBounds(new Rectangle(224, 272, 86, 19));
-			JDateChooser calendar = new JDateChooser();
+			jPanelFecha.setBounds(new Rectangle(224, 272, 95, 19));
 			jPanelFecha.add(calendar, null);
 		}
 		return jPanelFecha;
@@ -206,8 +211,14 @@ public class FrmResultadoExamen extends JFrame {
 	private JTextField getJTextField() {
 		if (jTextField == null) {
 			jTextField = new JTextField();
-			jTextField.setBounds(new Rectangle(225, 243, 34, 19));
+			jTextField.setBounds(new Rectangle(225, 243, 22, 19));
 			jTextField.setEditable(false);
+			boolean timbre = cdor.getDataEx().isCobroTimbre();
+			if (timbre){
+				jTextField.setText("Si");
+			}else{
+				jTextField.setText("No");
+			}
 		}
 		return jTextField;
 	}
@@ -247,7 +258,10 @@ public class FrmResultadoExamen extends JFrame {
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Resultado de Exámenes.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					Date fecha = calendar.getDate();
+					Calendar fechaRes = Calendar.getInstance();
+					fechaRes.setTime(fecha);
+					cdor.altaResultado(fechaRes);
 				}
 			});
 		}

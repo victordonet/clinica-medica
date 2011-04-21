@@ -203,11 +203,11 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	}
 
 	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
+		//if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(124, 100, 330, 211));
 			jScrollPane.setViewportView(getJTable1());
-		}
+		//}
 		return jScrollPane;
 	}
 

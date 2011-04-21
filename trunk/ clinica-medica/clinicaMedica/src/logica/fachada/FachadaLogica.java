@@ -578,10 +578,15 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(DataDisp dataDsip) throws PersistenciaException, RemoteException {
+	public void altaDisponibilidad(boolean[][] dataDisp, String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoD.altaDisponibilidad(trn, dataDsip);
+			for(int i = 0 ; i <12;i++){
+				for(int j = 0 ; j <12;j++){
+					dataDisp
+				}
+			}
+			iDaoD.altaDisponibilidad(trn, dataDisp);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -590,7 +595,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			e.printStackTrace();
 		}
 	}
-	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException {
+	public void eliminarDisponibilidad(boolean[][] vo, String idMed) throws PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoD.eliminarDisponibilidad(vo, trn);

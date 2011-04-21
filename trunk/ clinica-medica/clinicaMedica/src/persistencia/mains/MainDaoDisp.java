@@ -16,16 +16,16 @@ public class MainDaoDisp {
 		//Modificacion
 		String idMed = "1234";
 		DataDisp vo = new DataDisp(04, 12, idMed);
-		fachada.altaDisponibilidad(vo);
+		fachada.altaDisponibilidad(vo, null);
 		DataDisp vo1 = new DataDisp(2, 10, idMed);
-		fachada.altaDisponibilidad(vo1);
+		fachada.altaDisponibilidad(vo1, null);
 		DataDisp vo2 = new DataDisp(6, 18, idMed);
-		fachada.altaDisponibilidad(vo2);
+		fachada.altaDisponibilidad(vo2, null);
 		System.out.println("Carga de Disponibilidad del medico = "+vo.getIdMed());
 		
 		//Eliminacion
 		DataDisp vo3 = new DataDisp(6, 18, idMed);
-		fachada.eliminarDisponibilidad(vo3);
+		fachada.eliminarDisponibilidad(vo3, null);
 		System.out.println("Elimino Disponibilidad del medico = "+vo.getIdMed()+" para el dia = "+vo.getDia());
 		
 		//Listar Disp. Medico

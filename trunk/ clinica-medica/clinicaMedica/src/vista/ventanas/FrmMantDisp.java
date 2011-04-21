@@ -245,7 +245,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Mantenimiento Disponibilidad");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					cdor.action
 				}
 			});
 		}

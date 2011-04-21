@@ -59,4 +59,8 @@ public class ModeloTablaDisp extends AbstractTableModel {
 	public String getColumnName (int col){
 		return (String)columnas.elementAt(col);
 	}
+	public boolean[][] getMatrizDispMedico() {
+		return matrizDispMedico;
+	}
+	
 }

@@ -11,9 +11,10 @@ public class CdorMantDisp extends CdorManejoVentanas {
 	private FrmMantDisp ventana;
 	private CdorManejoVentanas vino;
 	private DataMed dMed;
+	ModeloTablaDisp modelo =null;
 
 	public ModeloTablaDisp obtenerDisp (){
-		ModeloTablaDisp modelo =null;
+		
 		try {
 			boolean[][] datosMed = this.getMod().obtenerDispoDiaHoraMedico(super.getId());
 			int[][] confCelda = this.getMod().obetnerDispoDiaHora();
@@ -66,16 +67,8 @@ public class CdorMantDisp extends CdorManejoVentanas {
 		this.dMed = dMed;
 	}
 	
-/*	public String getNombre(){
-		String nomMed = null;
-		try {
-			nomMed = super.getMod().getDataMed(super.getId()).getNombre();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
-		return nomMed;
-	}*/
+	public void actionAceptar(){
+		super.getMod().altaDisponibilidad(dataDsip, null)modelo.getMatrizDispMedico()
+	}
 	
 }

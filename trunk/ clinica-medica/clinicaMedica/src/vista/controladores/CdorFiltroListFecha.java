@@ -1,9 +1,7 @@
 package vista.controladores;
 
 import java.util.Calendar;
-
 import vista.ventanas.FrmFiltroListadoPorFecha;
-import vista.ventanas.FrmMantMedicos;
 
 public class CdorFiltroListFecha extends CdorManejoVentanas {
 

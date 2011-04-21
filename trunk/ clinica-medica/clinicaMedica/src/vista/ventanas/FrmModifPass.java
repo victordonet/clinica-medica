@@ -114,11 +114,7 @@ public class FrmModifPass extends JFrame{
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(289, 129, 94, 19));
-			if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
-				jTextField1.setText(cdor.getUsu().getIdUsu());	
-			}else{
-				jTextField1.setText(cdor.getId());
-			}	
+			jTextField1.setText(cdor.getIdUsuario());
 			jTextField1.setEditable(false);
 		}
 		return jTextField1;
@@ -133,11 +129,12 @@ public class FrmModifPass extends JFrame{
 		if (jPassField2 == null) {
 			jPassField2 = new JPasswordField();
 			jPassField2.setBounds(new Rectangle(289, 162, 150, 19));
-			if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
-				jPassField2.setEditable(true);	
-			}else{
+			if(cdor.resertPass()){
 				jPassField2.setEditable(false);
-			}	
+				jPassField2.setText(jTextField1.getText());
+			}else{
+				jPassField2.setEditable(true);
+			}
 		}
 		return jPassField2;
 	}
@@ -152,6 +149,12 @@ public class FrmModifPass extends JFrame{
 		if (jPassField == null) {
 			jPassField = new JPasswordField();
 			jPassField.setBounds(new Rectangle(289, 195, 150, 19));
+			if(cdor.resertPass()){
+				jPassField.setEditable(false);
+				jPassField.setText(jTextField1.getText());
+			}else{
+				jPassField.setEditable(true);
+			}
 		}
 		return jPassField;
 	}
@@ -165,6 +168,12 @@ public class FrmModifPass extends JFrame{
 		if (jPassField3 == null) {
 			jPassField3 = new JPasswordField();
 			jPassField3.setBounds(new Rectangle(289, 228, 150, 19));
+			if(cdor.resertPass()){
+				jPassField3.setEditable(false);
+				jPassField3.setText(jTextField1.getText());
+			}else{
+				jPassField3.setEditable(true);
+			}
 		}
 		return jPassField3;
 	}
@@ -204,22 +213,25 @@ public class FrmModifPass extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Contraseña.");
-					//Valido datos
-					boolean validarUsu = false;
-					if(cdor.getUsu().getTipo().equals("ME") || cdor.getUsu().getTipo().equals("AF")){
-						validarUsu = cdor.validarUsu(jTextField1.getText().toString(), jPassField2.getText().toString());
+					if (cdor.resertPass()){
+						//Modifico
+						cdor.modifPass(jTextField1.getText(), jPassField.getText());
+					}else{
+						//Valido datos
+						boolean validarUsu = cdor.validarUsu(jTextField1.getText().toString(), jPassField2.getText().toString());
 						if (validarUsu==false){
 							JOptionPane.showMessageDialog(null,"La contraseña actual es incorrecta.");
+						}else{
+							boolean validar = cdor.validarPass(jPassField.getText().toString(), jPassField3.getText().toString());
+							if(validar){
+								//Modifico
+								cdor.modifPass(jTextField1.getText(), jPassField.getText());	
+							}else{
+								JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
+							}
 						}
 					}
-					boolean validar = cdor.validarPass(jPassField.getText().toString(), jPassField3.getText().toString());
-					if(validar){
-						//Modifico
-					cdor.modifPass(jTextField1.getText(), jPassField.getText());	
-					}else{
-						JOptionPane.showMessageDialog(null,"Los campos Contraseña Nueva y Repetir Contraseña debse ser identicos.");
-					}
-			}});
+				}});
 		}
 		return jButton2;
 	}

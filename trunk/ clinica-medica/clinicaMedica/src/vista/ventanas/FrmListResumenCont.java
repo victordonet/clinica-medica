@@ -1,34 +1,37 @@
 package vista.ventanas;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import vista.controladores.CdorListadoConsultas;
-import vista.controladores.ModeloTablaListadoConsultas;
+import vista.controladores.CdorListMedPremiado;
+import vista.controladores.CdorListResumenCont;
+import vista.controladores.ModeloTablaListMedPremiado;
+import vista.controladores.ModeloTablaListResumenCont;
 
-public class FrmListadoConsultas extends JFrame{
+import javax.swing.JButton;
+import java.awt.Color;
+
+public class FrmListResumenCont extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
-	private ModeloTablaListadoConsultas modelo = null;
+	private ModeloTablaListResumenCont modelo = null;
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
-	private CdorListadoConsultas cdor;
-	private JButton jButton2 = null;
+	private CdorListResumenCont cdor;
+	private JButton jButton21 = null;
 
 	/**
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmListadoConsultas(CdorListadoConsultas cdorListadoConsultas)throws Throwable {
-		cdor = cdorListadoConsultas;
+	public FrmListResumenCont(CdorListResumenCont cdorListResumenCont) throws Throwable {
+		cdor = cdorListResumenCont;
 		initialize();
 	}
 
@@ -64,17 +67,18 @@ public class FrmListadoConsultas extends JFrame{
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(203, 15, 230, 24));
+			jLabel.setBounds(new Rectangle(175, 13, 264, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("Listado: Consultas");
+			jLabel.setText("Listado: Resumen Contable");
 			jLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane());
-			jContentPane.add(getJButton2(), null);
+			jContentPane.add(getJScrollPane(), null);
+			jContentPane.add(getJButton21(), null);
+
 		}
 		return jContentPane;
 	}
@@ -100,31 +104,31 @@ public class FrmListadoConsultas extends JFrame{
 	 */
 	private JTable getJTable1() {
 		if (jTable1 == null) {
-			modelo = cdor.listarConsultas();
+			modelo = cdor.listarResumenCont();
 			jTable1 = new JTable(modelo);
 		}
 		return jTable1;
 	}
 
 	/**
-	 * This method initializes jButton2
+	 * This method initializes jButton21
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setBounds(new Rectangle(243, 335, 110, 26));
-			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
-			jButton2.setText("Cancelar");
-			jButton2.setBackground(Color.lightGray);
-			jButton2.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getJButton21() {
+		if (jButton21 == null) {
+			jButton21 = new JButton();
+			jButton21.setBounds(new Rectangle(245, 340, 110, 26));
+			jButton21.setFont(new Font("Arial", Font.BOLD, 12));
+			jButton21.setText("Cancelar");
+			jButton21.setBackground(Color.lightGray);
+			jButton21.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Listado Consultas");
 					cdor.actionCerrar();
 				}
 			});
+
 		}
-		return jButton2;
+		return jButton21;
 	}
 }

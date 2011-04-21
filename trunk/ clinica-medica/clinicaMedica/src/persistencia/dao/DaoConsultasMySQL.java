@@ -5,11 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Vector;
-
-import javax.swing.JOptionPane;
-
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataConsultas;
@@ -21,7 +17,7 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 	public int getCantidadConsultas(Transaccion trn, Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException {
 		int cantidadConsulta = 0;	
 		try {
-			PreparedStatement pst = trn.preparedStatement("select count(*) as cantidad from consultas where idMedico = ?");
+			PreparedStatement pst = trn.preparedStatement("select count(*) as cantidad from consultas where idMedico = ? and turno>0");
 			pst.setString (1, idMed);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

@@ -19,7 +19,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		Date hoy = new java.sql.Date(calHoy.getTimeInMillis());
 		try {
 			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas " +
-															"where idafiliado = ? and YEAR(fecha)=YEAR(?)");
+															"where idafiliado = ? and YEAR(fecha)=YEAR(?) and turno>0");
 			pst.setString(1, idAfi);
 			pst.setDate(2, hoy);
 			ResultSet rst = pst.executeQuery();
@@ -39,7 +39,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		int cantidadConsulta = 0;
 		try {
 			PreparedStatement pst = trn.preparedStatement("select count(idafiliado) as cantidad from consultas " +
-															"where fecha between ? and ? and timbre = 'S'");
+															"where fecha between ? and ? and timbre = 'S' and turno>0");
 			Date desde = new java.sql.Date(fDesde.getTimeInMillis());
 			Date hasta = new java.sql.Date(fHasta.getTimeInMillis());
 			pst.setDate(1,desde);
@@ -62,7 +62,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		Vector<DataConsAfi> consultas  = new Vector<DataConsAfi>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select c.fecha, m.nombre, m.apellido from consultas c, medicos m " +
-															"where c.idmedico = m.id and c.idafiliado = ?");
+															"where c.idmedico = m.id and c.idafiliado = ? and turno>0");
 			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
@@ -88,7 +88,7 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		try {
 			PreparedStatement pst = trn.preparedStatement("select m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
 					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliados a, medicos m " +
-					"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ?");
+					"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha = ? and turno>0");
 			Date dia = new java.sql.Date(fecha.getTimeInMillis());
 			pst.setDate (1, dia);
 			ResultSet rst = pst.executeQuery();

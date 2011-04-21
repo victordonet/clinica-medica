@@ -1,5 +1,7 @@
 package vista.controladores;
 
+import java.util.Calendar;
+
 import vista.dataobjet.DataUsu;
 import logica.fachada.ProxyFachadaLogica;
 
@@ -10,6 +12,7 @@ public abstract class CdorManejoVentanas {
 	private CdorManejoVentanas voy = null;
 	private DataUsu usu;
 	private String id;
+	private Calendar fDesde, fHasta;
 
 	public CdorManejoVentanas() {}	
 	public abstract void desplegarVentana(CdorManejoVentanas vino);
@@ -75,5 +78,20 @@ public abstract class CdorManejoVentanas {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
+	public Calendar getfDesde() {
+		return fDesde;
+	}
+	
+	public void setfDesde(Calendar fDesde) {
+		this.fDesde = fDesde;
+	}
+	
+	public Calendar getfHasta() {
+		return fHasta;
+	}
+	
+	public void setfHasta(Calendar fHasta) {
+		this.fHasta = fHasta;
+	}
 }
-

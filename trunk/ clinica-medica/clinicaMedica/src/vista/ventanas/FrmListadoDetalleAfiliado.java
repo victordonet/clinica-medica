@@ -64,7 +64,7 @@ public class FrmListadoDetalleAfiliado extends JFrame{
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
-		this.setTitle("Afiliados");
+		this.setTitle("Listados");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -121,9 +121,9 @@ public class FrmListadoDetalleAfiliado extends JFrame{
 			jLabel2.setForeground(java.awt.Color.black);
 			jLabel2.setText("Nro.Afiliado");
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(207, 13, 163, 24));
+			jLabel.setBounds(new Rectangle(174, 13, 230, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("Detalle del Afiliado");
+			jLabel.setText("Listado: Detalle del Afiliado");
 			jLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);

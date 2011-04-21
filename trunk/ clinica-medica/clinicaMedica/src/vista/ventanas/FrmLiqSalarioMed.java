@@ -3,24 +3,18 @@ package vista.ventanas;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import logica.observer.IObserver;
 import vista.controladores.CdorLiqSalarioMed;
-import vista.controladores.CdorListadoEsp;
 import vista.controladores.ModeloTablaLiqSalarioMed;
-import vista.controladores.ModeloTablaListEsp;
 import javax.swing.JButton;
 import java.awt.Color;
 
-public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
+public class FrmLiqSalarioMed extends JFrame{
 
 	private static final long serialVersionUID = 1L;
-	private JFrame frm = new JFrame();
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
 	private ModeloTablaLiqSalarioMed modelo = null;
@@ -34,7 +28,6 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable
 	 */
 	public FrmLiqSalarioMed(CdorLiqSalarioMed control)throws Throwable {
-		this.modelo = modelo;
 		cdor = control;
 		initialize();
 	}
@@ -47,17 +40,16 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 * @throws ClassNotFoundException
 	 */
 	private void initialize() throws ClassNotFoundException, Throwable {
-		frm.setSize(new java.awt.Dimension(611,413));
-		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
-		frm.setResizable(false);
-		frm.setTitle("Liquidación de Salarios");
-		frm.setContentPane(getJContentPane());
-		frm.setLocationRelativeTo(null);
-		frm.setVisible(true);
-		frm.addWindowListener(new java.awt.event.WindowAdapter() {
+		this.setSize(new java.awt.Dimension(611,413));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
+		this.setResizable(false);
+		this.setTitle("Listados");
+		this.setContentPane(getJContentPane());
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
 				cdor.actionCerrar();
-				frm.dispose();
 			}
 		});
 	}
@@ -70,37 +62,22 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
-		//if (jContentPane == null) {
+		if (jContentPane == null) {
 			jLabel = new JLabel();
-			jLabel.setBounds(new Rectangle(207, 13, 163, 24));
+			jLabel.setBounds(new Rectangle(154, 13, 272, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("Listado de Salarios");
+			jLabel.setText("Listado: Liquidación de Salarios");
 			jLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
 			jContentPane.setBackground(new java.awt.Color(80,80,80));
 			jContentPane.add(jLabel, null);
-			jContentPane.add(getJScrollPane(modelo), null);
+			jContentPane.add(getJScrollPane(), null);
 			jContentPane.add(getJButton21(), null);
 
-		//}
-		return jContentPane;
-	}
-
-	public void update() throws RemoteException {
-		//JOptionPane.showMessageDialog(null,"Update del Observer FrmListado NUEVO");
-		try {
-			//cdor.listarEspecialidades();
-			//frm.setVisible(false);
-			//this.modelo = cdor.listarEspecialidades();
-			initialize();
-			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (Throwable e) {
-			e.printStackTrace();
 		}
+		return jContentPane;
 	}
 
 	/**
@@ -108,12 +85,12 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 *
 	 * @return javax.swing.JScrollPane
 	 */
-	private JScrollPane getJScrollPane(ModeloTablaLiqSalarioMed modelo) {
-		//if (jScrollPane == null) {
+	private JScrollPane getJScrollPane() {
+		if (jScrollPane == null) {
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(65, 96, 475, 209));
-			jScrollPane.setViewportView(getJTable1(modelo));
-		//}
+			jScrollPane.setViewportView(getJTable1());
+		}
 		return jScrollPane;
 	}
 
@@ -122,15 +99,12 @@ public class FrmLiqSalarioMed extends UnicastRemoteObject implements IObserver{
 	 *
 	 * @return javax.swing.JTable
 	 */
-	private JTable getJTable1(ModeloTablaLiqSalarioMed modelo) {
+	private JTable getJTable1() {
 		if (jTable1 == null) {
 			modelo = cdor.liqSalarioMed();
 			jTable1 = new JTable(modelo);
 		}
 		return jTable1;
-	}
-	public JFrame getVentana(){
-		return frm;
 	}
 
 	/**

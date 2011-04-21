@@ -19,19 +19,21 @@ public class CdorMantListadosAdmin extends CdorManejoVentanas {
 	}
 
 	public void actionListarAfil(){	
-		//this.cambioVentana(this, new CdorListarAfil());
+		this.cambioVentana(this, new CdorListadoAfil());
 	}
 	
 	public void actionListarMed(){
-		//this.cambioVentana(this, new CdorListarMed()); 
+		this.cambioVentana(this, new CdorListadoMed()); 
 	}
 	
-	public void actionDetalleAfil(){	
-		//this.cambioVentana(this, new CdorDetalleAfil());
+	public void actionDetalleAfil(){
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorListadoDetalleAfiliado());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionListarConsultas(){	
-		//this.cambioVentana(this, new CdorListarConsultas());
+		this.cambioVentana(this, new CdorFiltroListFecha());
 	}
 	
 	public void habilitarVentana() {

@@ -431,7 +431,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		resultado.add(timbres);
 		//busco tikets
 		int cantTikets = iDaoEx.getCantExPagos(trn, fDesde, fHasta);
-		VoResumCont tikets = new VoResumCont("Timbres", valor*cantTikets);
+		VoResumCont tikets = new VoResumCont("Tickets", valor*cantTikets);
 		resultado.add(tikets);
 		trn.finalizarTrn(true);
 		pool.liberarTrn(trn);

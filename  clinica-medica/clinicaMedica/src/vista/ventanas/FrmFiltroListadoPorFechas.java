@@ -163,12 +163,18 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 					System.out.println("Aceptar Filtro Listado por Fechas");
 					Date fDesde = calendarDesde.getDate();
 					Date fHasta = calendarHasta.getDate();
+					Calendar fechaActual = Calendar.getInstance();
+					Date fActualDate = fechaActual.getTime();
 					if(fDesde==null || fHasta==null){
 						JOptionPane.showMessageDialog(null, "Debe cargar las fechas a listar.");
 					}else{
 						if(fDesde.getTime()>fHasta.getTime()){
 							JOptionPane.showMessageDialog(null, "La Fecha Hasta no puede ser menor que la Fecha Desde.");
 						}else{
+							if(fDesde.compareTo(fActualDate)>0 || fHasta.compareTo(fActualDate)>0){
+								JOptionPane.showMessageDialog(null, "Las fechas ingresadas no pueden ser mayores a la fecha actual.");
+							}
+							else{
 							Calendar fechaDesdeList = Calendar.getInstance();
 							fechaDesdeList.setTime(fDesde);
 							Calendar fechaHastaList = Calendar.getInstance();
@@ -176,7 +182,8 @@ public class FrmFiltroListadoPorFechas extends JFrame {
 							cdor.setfDesde(fechaDesdeList);
 							cdor.setfHasta(fechaHastaList);
 							cdor.actionListar();
-							cdor.actionCerrar();							
+							cdor.actionCerrar();
+							}
 						}
 					}
 				}

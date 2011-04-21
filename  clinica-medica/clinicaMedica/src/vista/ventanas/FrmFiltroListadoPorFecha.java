@@ -96,7 +96,7 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 			jPanelFechaDesde.setLayout(gridLayout1);
 			jPanelFechaDesde.setBounds(new Rectangle(310, 158, 95, 19));
 			jPanelFechaDesde.add(calendar, null);
-		}
+					}
 		return jPanelFechaDesde;
 	}
 
@@ -136,13 +136,20 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Filtro Listado por Fechas");
 					Date fecha = calendar.getDate();
+					Calendar fechaActual = Calendar.getInstance();
+					Date fechaActualDate = fechaActual.getTime();
 					if(fecha==null){
 						JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha a listar.");
 					}else{
+						if(fecha.compareTo(fechaActualDate)>0){
+							JOptionPane.showMessageDialog(null, "La fecha ingresada no puede ser mayor a la fecha actual.");
+						}
+						else{
 						Calendar fechaList = Calendar.getInstance();
 						fechaList.setTime(fecha);
 						cdor.actionListar(fechaList);
-						cdor.actionCerrar();						
+						cdor.actionCerrar();
+						}
 					}
 				}
 			});

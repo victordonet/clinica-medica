@@ -184,11 +184,11 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(DataDisp dataDsip) throws PersistenciaException, RemoteException {
-		fachada.altaDisponibilidad(dataDsip);
+	public void altaDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException {
+		fachada.altaDisponibilidad(dataDsip, null);
 	}
-	public void eliminarDisponibilidad(DataDisp vo) throws PersistenciaException, RemoteException {
-		fachada.eliminarDisponibilidad(vo);
+	public void eliminarDisponibilidad(boolean[][] vo, String idMed) throws PersistenciaException, RemoteException {
+		fachada.eliminarDisponibilidad(vo, null);
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
 		return fachada.obetnerDispoDiaHora();

@@ -591,12 +591,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					if(dataDisp[i][j]){
 						System.out.println("el id del medico en la fachada3: "+idMed);
 						DataDisp dsp =  new DataDisp(j+1,i+1,idMed);
-						notificarDispMed();
 						iDaoD.altaDisponibilidad(trn,dsp);
 						trn.finalizarTrn(true);
 					}
 				}
 			}
+			notificarDispMed();
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);

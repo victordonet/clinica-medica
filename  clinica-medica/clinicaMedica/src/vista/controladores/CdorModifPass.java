@@ -46,6 +46,26 @@ public class CdorModifPass extends CdorManejoVentanas {
 		cerrarVentana(this, vino);
 	}
 	
+	public boolean resertPass(){
+		boolean resultado=false;
+		if (this.getUsu().getTipo().equals("ME") || this.getUsu().getTipo().equals("AF")){
+			resultado = false;	
+		}else{
+			resultado = true;
+		}
+		return resultado;
+	}
+	
+	public String getIdUsuario(){
+		String resultado = "";
+		if (resertPass()){
+			resultado = this.getId();
+		}else{
+			resultado = this.getUsu().getIdUsu();
+		}
+		return resultado;
+	}
+	
 	public boolean validarPass(String passNueva, String repPass){
 		boolean resultado = false;
 		if (passNueva.equals(repPass)){

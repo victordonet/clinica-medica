@@ -8,6 +8,7 @@ public class CdorFiltroListFechas extends CdorManejoVentanas {
 	private FrmFiltroListadoPorFechas ventana;
 	private CdorManejoVentanas vino;
 	private CdorManejoVentanas ventanaVoy;
+	private Calendar fDesde, fHasta;
 
 	public CdorFiltroListFechas() {}
 
@@ -20,11 +21,8 @@ public class CdorFiltroListFechas extends CdorManejoVentanas {
 		}
 	}
 
-	public void actionListar(Calendar fDesde, Calendar fHasta){
-		CdorLiqSalarioMed cdor = new CdorLiqSalarioMed();
-		cdor.setfDesde(fDesde);
-		cdor.setfHasta(fHasta);
-		this.cambioVentana(this, cdor);
+	public void actionListar(){
+		this.cambioVentana(this, ventanaVoy);
 	}
 	
 	public void habilitarVentana() {
@@ -60,5 +58,21 @@ public class CdorFiltroListFechas extends CdorManejoVentanas {
 
 	public CdorManejoVentanas getVentanaVoy() {
 		return ventanaVoy;
+	}
+
+	public Calendar getfDesde() {
+		return fDesde;
+	}
+
+	public void setfDesde(Calendar fDesde) {
+		this.fDesde = fDesde;
+	}
+
+	public Calendar getfHasta() {
+		return fHasta;
+	}
+
+	public void setfHasta(Calendar fHasta) {
+		this.fHasta = fHasta;
 	}
 }

@@ -4,25 +4,25 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import excepciones.PersistenciaException;
-import vista.dataobjet.DataSalario;
-import vista.ventanas.FrmLiqSalarioMed;
+import vista.dataobjet.VoResumCont;
+import vista.ventanas.FrmListResumenCont;
 
-public class CdorLiqSalarioMed extends CdorManejoVentanas {
+public class CdorListResumenCont extends CdorManejoVentanas {
 	
-	private FrmLiqSalarioMed ventana;
-	private ModeloTablaLiqSalarioMed modelo = null;
+	private FrmListResumenCont ventana;
+	private ModeloTablaListResumenCont modelo = null;
 	private CdorManejoVentanas vino;
 	private CdorManejoVentanas ventanaVoy;
 		
-	public CdorLiqSalarioMed() {
+	public CdorListResumenCont() {
 		super();
 	}
 
-	public FrmLiqSalarioMed getVentana() {
+	public FrmListResumenCont getVentana() {
 		return ventana;
 	}
 
-	public void setVentana(FrmLiqSalarioMed ventana) {
+	public void setVentana(FrmListResumenCont ventana) {
 		this.ventana = ventana;
 	}
 
@@ -33,11 +33,11 @@ public class CdorLiqSalarioMed extends CdorManejoVentanas {
 	public void setVentanaVoy(CdorManejoVentanas ventanaVoy) {
 		this.ventanaVoy = ventanaVoy;
 	}
-	
+
 	public void desplegarVentana(CdorManejoVentanas vino) {
 		this.vino = vino;
 		try {
-			ventana = new FrmLiqSalarioMed(this);
+			ventana = new FrmListResumenCont(this);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -61,12 +61,12 @@ public class CdorLiqSalarioMed extends CdorManejoVentanas {
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
 	}
-	
-	public ModeloTablaLiqSalarioMed liqSalarioMed (){
-		ModeloTablaLiqSalarioMed modelo =null;
+	public ModeloTablaListResumenCont listarResumenCont(){
+
+		ModeloTablaListResumenCont modelo =null;
 		try {
-			Vector<DataSalario> vSalario = super.getMod().listarSalarios(vino.getfDesde(), vino.getfHasta());
-			modelo = new ModeloTablaLiqSalarioMed(vSalario);
+			Vector<VoResumCont> vResumen = super.getMod().listarResContable(vino.getfDesde(), vino.getfHasta());
+			modelo = new ModeloTablaListResumenCont(vResumen);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			
@@ -76,5 +76,7 @@ public class CdorLiqSalarioMed extends CdorManejoVentanas {
 			e.printStackTrace();
 		}
 		return modelo;
-	}
+
+
+}
 }

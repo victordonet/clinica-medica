@@ -43,7 +43,7 @@ public class FrmListadoMedicos extends JFrame{
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
-		this.setTitle("Médicos");
+		this.setTitle("Listados");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -66,7 +66,7 @@ public class FrmListadoMedicos extends JFrame{
 			jLabel = new JLabel();
 			jLabel.setBounds(new Rectangle(209, 14, 170, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
-			jLabel.setText("Listado de Médicos");
+			jLabel.setText("Listado: Médicos");
 			jLabel.setFont(new Font("Arial", Font.PLAIN, 18));
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);

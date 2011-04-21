@@ -19,15 +19,17 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 	}
 
 	public void actionListarAfil(){	
-		//this.cambioVentana(this, new CdorListarAfil());
+		this.cambioVentana(this, new CdorListadoAfil());
 	}
 	
 	public void actionListarMed(){
 		this.cambioVentana(this, new CdorListadoMed()); 
 	}
 	
-	public void actionDetalleAfil(){	
-		//this.cambioVentana(this, new CdorDetalleAfil());
+	public void actionDetalleAfil(){
+		CdorSelectAfi cdorSelec = new CdorSelectAfi();
+		cdorSelec.setVentanaVoy(new CdorListadoDetalleAfiliado());
+		this.cambioVentana(this, cdorSelec);
 	}
 	
 	public void actionListarConsultas(){	
@@ -40,12 +42,16 @@ public class CdorMantListadosGerente extends CdorManejoVentanas {
 		this.cambioVentana(this, cdorFiltroFechas); 
 	}
 	
-	public void actionMedPremiado(){	
-		//this.cambioVentana(this, new CdorMedPremiado());
+	public void actionMedPremiado(){
+		CdorFiltroListFechas cdorFiltroFechas = new CdorFiltroListFechas();
+		cdorFiltroFechas.setVentanaVoy(new CdorListMedPremiado());
+		this.cambioVentana(this, cdorFiltroFechas); 
 	}
 	
-	public void actionResumentCont(){	
-		//this.cambioVentana(this, new CdorResumentCont());
+	public void actionResumentCont(){
+		CdorFiltroListFechas cdorFiltroFechas = new CdorFiltroListFechas();
+		cdorFiltroFechas.setVentanaVoy(new CdorListResumenCont());
+		this.cambioVentana(this, cdorFiltroFechas);
 	}
 	
 	public void habilitarVentana() {

@@ -23,6 +23,9 @@ public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 	public void desplegarVentana (CdorManejoVentanas vino){
 			this.vino = vino;
 		try {
+			if(dAfil==null){
+				setdAfil(super.getMod().getAfiliado(super.getId()));
+			}
 			modelo = listarConsultas();
 			ventana = new FrmListadoDetalleAfiliado(modelo,this);
 		} catch (Throwable e) {
@@ -42,9 +45,7 @@ public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 		ModeloTablaListadoConsAfi modelo =null;
 		try {
 			Vector<DataConsAfi> vec = super.getMod().listarConsultasAfi(dAfil.getId());
-			System.out.println(vec.toString());
 			modelo = new ModeloTablaListadoConsAfi(vec);
-			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 			e.printStackTrace();

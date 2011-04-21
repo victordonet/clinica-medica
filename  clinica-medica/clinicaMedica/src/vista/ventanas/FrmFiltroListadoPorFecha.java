@@ -3,6 +3,7 @@ package vista.ventanas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import com.toedter.calendar.JDateChooser;
 import vista.controladores.CdorFiltroListFecha;
@@ -42,7 +43,7 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 		this.setSize(new java.awt.Dimension(611,413));
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		this.setResizable(false);
-		this.setTitle("Filtro de Listados por fecha");
+		this.setTitle("Listados");
 		this.setContentPane(getJContentPane());
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -61,10 +62,10 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (jContentPane == null) {
 			jLabel1 = new JLabel();
-			jLabel1.setBounds(new Rectangle(217, 13, 190, 33));
+			jLabel1.setBounds(new Rectangle(188, 13, 219, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
 			jLabel1.setForeground(new java.awt.Color(118,144,201));
-			jLabel1.setText("Listado de Conultas");
+			jLabel1.setText("Selección de fecha a listar");
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(212, 159, 90, 19));
 			jLabel2.setForeground(java.awt.Color.black);
@@ -93,7 +94,7 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFechaDesde = new JPanel();
 			jPanelFechaDesde.setLayout(gridLayout1);
-			jPanelFechaDesde.setBounds(new Rectangle(310, 158, 90, 19));
+			jPanelFechaDesde.setBounds(new Rectangle(310, 158, 95, 19));
 			jPanelFechaDesde.add(calendar, null);
 		}
 		return jPanelFechaDesde;
@@ -135,9 +136,14 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Filtro Listado por Fechas");
 					Date fecha = calendar.getDate();
-					Calendar fechaList = Calendar.getInstance();
-					fechaList.setTime(fecha);
-					cdor.actionListar(fechaList);
+					if(fecha==null){
+						JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha a listar.");
+					}else{
+						Calendar fechaList = Calendar.getInstance();
+						fechaList.setTime(fecha);
+						cdor.actionListar(fechaList);
+						cdor.actionCerrar();						
+					}
 				}
 			});
 		}

@@ -75,7 +75,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 	}
 
 	private PanelConImagen getJContentPane() {
-		if (jContentPane == null) {
+		//if (jContentPane == null) {
 			jLabel = new JLabel();
 			jLabel.setBounds(new Rectangle(471, 308, 24, 19));
 			jLabel.setText("");
@@ -179,7 +179,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(jLabel, null);
 			jContentPane.add(getJCheckBox(), null);
 			jContentPane.add(getJCheckBox1(), null);
-		}
+		//}
 		return jContentPane;
 	}
 

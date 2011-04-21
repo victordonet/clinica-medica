@@ -35,13 +35,20 @@ public class CdorMantDisp extends CdorManejoVentanas {
 		try {
 			dMed = super.getMod().getDataMed(super.getId());
 			ventana = new FrmMantDisp(this);
+			super.getMod().addObsDispMed(ventana);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}				
 	}
 	
 	public void cerrar() {
-		ventana.getVentana().dispose();
+		try {
+			super.getMod().remObsDispMed(ventana);
+			ventana.getVentana().dispose();
+		} catch (RemoteException e) {
+			new RemoteException(e.getMessage());
+		}
+		
 	}
 	
 	public void habilitarVentana(){
@@ -68,7 +75,15 @@ public class CdorMantDisp extends CdorManejoVentanas {
 	}
 	
 	public void actionAceptar(){
-		super.getMod().altaDisponibilidad(dataDsip, null)modelo.getMatrizDispMedico()
+
+		try {
+			super.getMod().modificarDisponibilidad(modelo.getMatrizDispMedico(),this.getId());
+			JOptionPane.showMessageDialog(null, "Disponibilidad Actualizada con exito");
+		} catch (RemoteException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		} catch (PersistenciaException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 	
 }

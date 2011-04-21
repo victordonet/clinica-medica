@@ -244,19 +244,26 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Mantenimiento Disponibilidad");
-					cdor.action
+					cdor.actionAceptar();
 				}
 			});
 		}
 		return jButton2;
 	}
 
-	@Override
+
 	public void update() throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		try {
+			this.modelo = cdor.obtenerDisp();
+			initialize();
+	
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 	}
+
+		
+	
 
 	public JFrame getVentana() {
 		return frm;

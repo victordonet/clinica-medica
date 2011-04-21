@@ -11,7 +11,7 @@ import excepciones.PersistenciaException;
 public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 
 	public void altaDisponibilidad(Transaccion trn, DataDisp dataDsip) throws PersistenciaException {
-		System.out.println("Insertando disponibilidad del medico: "+dataDsip.getIdMed());
+		System.out.println("Insertando disponibilidad del medico en el dao: "+dataDsip.getIdMed());
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Disponibilidad values (?,?,?)");
 			pst.setString(1, dataDsip.getIdMed());
@@ -27,13 +27,11 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			e.printStackTrace();
 		}
 	}
-	public void eliminarDisponibilidad(DataDisp vo, Transaccion trn) throws PersistenciaException {
-		System.out.println("Eliminando disponibilidad del medico: "+vo.getIdMed());
+	public void eliminarDisponibilidad(Transaccion trn, String idMed) throws PersistenciaException {
+		
 		try {
-			PreparedStatement pst = trn.preparedStatement("delete from Disponibilidad where idmedico=? and dia=? and horario=?");
-			pst.setInt(1, vo.getDia());
-			pst.setInt(2, vo.getHorario());
-			pst.setString(3, vo.getIdMed());
+			PreparedStatement pst = trn.preparedStatement("delete from Disponibilidad where idmedico=?");
+			pst.setString(1, idMed);
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {

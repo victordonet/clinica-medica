@@ -98,7 +98,15 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void notificarReservaTurno() throws RemoteException {
 		fachada.notificarReservaTurno();
 	}
-
+	public void addObsDispMed(IObserver obs) throws RemoteException {
+		fachada.addObsDispMed(obs);
+	}
+	public void remObsDispMed(IObserver obs) throws RemoteException {
+		fachada.remObsDispMed(obs);
+	}
+	public void notificarDispMed() throws RemoteException {
+		fachada.notificarDispMed();
+	}
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		fachada.altaAfiliado(afil);
@@ -184,11 +192,11 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException {
-		fachada.altaDisponibilidad(dataDsip, null);
+	public void modificarDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException {
+		fachada.modificarDisponibilidad(dataDsip, null);
 	}
-	public void eliminarDisponibilidad(boolean[][] vo, String idMed) throws PersistenciaException, RemoteException {
-		fachada.eliminarDisponibilidad(vo, null);
+	public void eliminarDisponibilidad(String idMed) throws PersistenciaException, RemoteException {
+		fachada.eliminarDisponibilidad(null);
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
 		return fachada.obetnerDispoDiaHora();

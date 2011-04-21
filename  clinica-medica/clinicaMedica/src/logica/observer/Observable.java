@@ -8,12 +8,13 @@ import java.util.LinkedList;
 
 public class Observable extends UnicastRemoteObject implements IObservable
 {
-    private LinkedList colMenuGA, colReservaTurno;
+    private LinkedList colMenuGA, colReservaTurno, colDispoMed;
 
     public Observable() throws RemoteException
     {
         colMenuGA = new LinkedList();
         colReservaTurno = new LinkedList();
+        colDispoMed = new LinkedList();
         
     }
 
@@ -53,6 +54,28 @@ public class Observable extends UnicastRemoteObject implements IObservable
             obs.update();
         }
     }
+
+
+	public void addObsDispMed(IObserver obs) throws RemoteException {
+
+		colDispoMed.add(obs);
+	}
+
+
+	public void remObsDispMed(IObserver obs) throws RemoteException {
+
+		colDispoMed.remove(obs);
+	}
+
+
+	public void notificarDispMed() throws RemoteException {
+		 for (int i=0; i<colDispoMed.size(); i++)
+	        {
+	            IObserver obs = (IObserver) colDispoMed.get(i);
+	            obs.update();
+	        }
+		
+	}
 
 	
 }

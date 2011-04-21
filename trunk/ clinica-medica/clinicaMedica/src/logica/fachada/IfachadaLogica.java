@@ -63,8 +63,8 @@ public interface IfachadaLogica extends IObservable{
 	public Vector<DataConsultas> listarConsultas() throws PersistenciaException, RemoteException;
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException;
-	public void eliminarDisponibilidad(boolean[][] vo, String idMed) throws PersistenciaException, RemoteException;
+	public void modificarDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException;
+	public void eliminarDisponibilidad(String idMed) throws PersistenciaException, RemoteException;
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException;
 	public boolean[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException;
 	

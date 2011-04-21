@@ -40,6 +40,12 @@ public class ModeloTablaDisp extends AbstractTableModel {
     public void setValueAt(Object v,int row,int col)
     {
         matrizDispMedico[row][col]=(Boolean) v;
+        if((Boolean) v){
+        	matrizDatos[row][col]++;
+        }
+        else{
+        	matrizDatos[row][col]--;
+        }
         fireTableCellUpdated(row,col);
     }
 
@@ -48,6 +54,9 @@ public class ModeloTablaDisp extends AbstractTableModel {
         	return true;
         }
 		else{
+			if(matrizDispMedico[row][col]){
+				return true;
+			}
 			return false;
 		}
     }

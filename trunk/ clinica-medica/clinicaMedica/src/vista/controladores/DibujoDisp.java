@@ -17,7 +17,7 @@ public class DibujoDisp implements TableCellRenderer {
 
 	public Component getTableCellRendererComponent(JTable tabla, Object valor,
 			boolean isSelected, boolean hasFocus, int row, int column) {
-		//super.getTableCellRendererComponent (tabla, valor, isSelected, hasFocus, row, column);
+		
 		JCheckBox jchk = new JCheckBox();
 		jchk.setSelected((Boolean) valor);
 	if(tabla.isCellEditable(row, column)==false){

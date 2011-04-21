@@ -16,4 +16,10 @@ public interface IObservable extends Remote
     public void remObsRservaTurno (IObserver obs) throws RemoteException;    
  
     public void notificarReservaTurno() throws RemoteException;
+    
+    public void addObsDispMed (IObserver obs) throws RemoteException;
+    
+    public void remObsDispMed (IObserver obs) throws RemoteException;    
+ 
+    public void notificarDispMed() throws RemoteException;
 }

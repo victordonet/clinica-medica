@@ -117,6 +117,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		return INSTANCE;
 	}
 	
+	
+	
 	//AFILIADOS
 	public void altaAfiliado(DataAfiliado afil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -578,33 +580,40 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	}
 	
 	//DISPONIBILIDAD
-	public void altaDisponibilidad(boolean[][] dataDisp, String idMed) throws PersistenciaException, RemoteException {
+	public void modificarDisponibilidad(boolean[][] dataDisp, String idMed) throws PersistenciaException, RemoteException{
 		Transaccion trn = pool.obtenerTrn(8);
+		System.out.println("el id del medico en la fachada1: "+idMed);
 		try {
+			iDaoD.eliminarDisponibilidad(trn,idMed);
+			System.out.println("el id del medico en la fachada2: "+idMed);
 			for(int i = 0 ; i <12;i++){
-				for(int j = 0 ; j <12;j++){
-					dataDisp
+				for(int j = 0 ; j <7;j++){
+					if(dataDisp[i][j]){
+						System.out.println("el id del medico en la fachada3: "+idMed);
+						DataDisp dsp =  new DataDisp(j+1,i+1,idMed);
+						notificarDispMed();
+						iDaoD.altaDisponibilidad(trn,dsp);
+						trn.finalizarTrn(true);
+					}
 				}
 			}
-			iDaoD.altaDisponibilidad(trn, dataDisp);
-			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			new PersistenciaException(e.getLocalizedMessage());
 		}
 	}
-	public void eliminarDisponibilidad(boolean[][] vo, String idMed) throws PersistenciaException {
+	public void eliminarDisponibilidad(String idMed) throws PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoD.eliminarDisponibilidad(vo, trn);
+			iDaoD.eliminarDisponibilidad(trn,idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			new PersistenciaException(e.getLocalizedMessage());
 		}
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException {
@@ -782,9 +791,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		
 		try {
 			Vector <DataDisp> dispo = iDaoD.listarDispMedico(idMedico, trn);
-			 
-			for(DataDisp ladis :dispo){
-				
+			 for(DataDisp ladis :dispo){
 				switch (ladis.getHorario()){
 				case 1:{
 					switch (ladis.getDia()){

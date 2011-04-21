@@ -40,15 +40,12 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 		ModeloTablaListEsp modelo =null;
 		try {
 			Vector<DataEsp> vec = super.getMod().listarEspecialidades();
-			System.out.println(vec.toString());
 			modelo = new ModeloTablaListEsp(vec);
-			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
+			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
 		}
 		return modelo;

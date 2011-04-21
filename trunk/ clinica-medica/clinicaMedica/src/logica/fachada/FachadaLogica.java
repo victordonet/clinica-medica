@@ -772,14 +772,15 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				default:break;
 				}	
 			}
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
 			} catch (PersistenciaException e) {
 			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
 			throw e;
 		}
-		trn.finalizarTrn(true);
-		pool.liberarTrn(trn);
+	
 		return matriz;
 	}
 	
@@ -940,15 +941,16 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				default:break;
 				}
 			}
+				trn.finalizarTrn(true);
+				pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		trn.finalizarTrn(true);
 		pool.liberarTrn(trn);
-		
 		return matriz;
 	}
 	

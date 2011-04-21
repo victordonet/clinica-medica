@@ -254,7 +254,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 	public void update() throws RemoteException {
 		try {
-			this.modelo = cdor.obtenerDisp();
+			
 			initialize();
 	
 		} catch (Throwable e) {

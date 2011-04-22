@@ -68,6 +68,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	private IDaoParametros iDaoP;
 	private IDaoConsultorios iDaoConsultorios;
 	private IDaoCargos iDaoCargos;
+
 	
 	private FachadaLogica() throws LogicaException, PersistenciaException, RemoteException{
 		
@@ -172,6 +173,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				iDaoAfil.bajaAfil(trn, id);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
+				notificarReservaTurno();
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
@@ -544,6 +546,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				iDaoC.altaConsulta(trn, fecha, idMed, dia, idAfil, consultorio, turno, horario, timbre);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
+				notificarReservaTurno();
+				notificarMenuGA();
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
@@ -554,9 +558,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoC.elimConsultasAfil(trn, idAfil);
+			iDaoTC.elimConsultaAfi(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			notificarReservaTurno();
+			notificarMenuGA();
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -604,12 +610,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			new PersistenciaException(e.getLocalizedMessage());
 		}
 	}
-	public void eliminarDisponibilidad(String idMed) throws PersistenciaException {
+	public void eliminarDisponibilidad(String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
 			iDaoD.eliminarDisponibilidad(trn,idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			notificarDispMed();
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -1079,6 +1086,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoM.altaMedico(trn, med);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			
 			}
 			else{
 				trn.finalizarTrn(false);
@@ -1104,6 +1112,8 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				iDaoM.modifMedico(trn, id, nom, apell, ci, tel, esp, estado);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
+				notificarMenuGA();
+				notificarReservaTurno();
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
@@ -1121,8 +1131,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 			else{
 				iDaoM.bajarMedico(trn, id);
+				iDaoD.eliminarDisponibilidad(trn, id);
+				iDaoTC.elimConsultaMed(trn, id);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
+				notificarDispMed();
+				notificarMenuGA();
+				notificarReservaTurno();				
 			}
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
@@ -1405,9 +1420,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 	public void elimConsulta(String idAfil) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {
-			iDaoTC.elimConsulta(trn, idAfil);
+			iDaoTC.elimConsultaAfi(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			notificarMenuGA();
+			notificarReservaTurno();
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
@@ -1492,6 +1509,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoConsultorios.altaConsultorio(trn, consultorio);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
+			notificarDispMed();
 			}
 			else{
 			
@@ -1511,6 +1529,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				iDaoConsultorios.bajaConsultorio(trn, idConsultorio);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
+				notificarDispMed();
 			}
 			else{
 				throw new PersistenciaException("El consultorio no existe");

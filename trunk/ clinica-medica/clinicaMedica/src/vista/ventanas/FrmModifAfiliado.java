@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import vista.controladores.CdorModifAfil;
 import java.awt.Color;
@@ -109,16 +110,16 @@ public class FrmModifAfiliado extends JFrame{
 			jLabel6.setForeground(Color.black);
 			jLabel5 = new JLabel();
 			jLabel5.setBounds(new Rectangle(110, 159, 106, 19));
-			jLabel5.setText("C.I");
+			jLabel5.setText("C.I *");
 			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(110, 133, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
-			jLabel4.setText("Apellido");
+			jLabel4.setText("Apellido *");
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(110, 105, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Nombre");
+			jLabel3.setText("Nombre *");
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(110, 77, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
@@ -431,12 +432,16 @@ public class FrmModifAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Modificación Afiliado.");
+					if(jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "Los campos identificados con * no pueden quedar en blanco.");
+					}else{
 					String estado = "I";
 					if(jComboBox.getSelectedIndex()==0){
 						estado = "A";
 					}
 					boolean fonasa = jCheckBox.isSelected();
 					cdor.modifAfil(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(), fonasa, estado);
+					}
 				}
 			});
 		}

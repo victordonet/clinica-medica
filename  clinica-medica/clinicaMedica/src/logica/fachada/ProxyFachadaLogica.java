@@ -149,8 +149,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
 		return fachada.getCantidadConsultas(fDesde, fHasta, idMed);
 	}
-	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException {
-		fachada.altaConsultaProxMes(cons, idMed);
+	public void altaConsultaProxMes() throws PersistenciaException, RemoteException {
+		fachada.altaConsultaProxMes();
 	}
 	public Vector<VoTurnosDisp> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		return fachada.listarConsultasDisp(idMed);
@@ -247,6 +247,12 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  		return fachada.getDataMed(id);
  	}
 	
+	public void modifConsultasMedFuturas(String idMed)
+			throws PersistenciaException, RemoteException {
+		fachada.modifConsultasMedFuturas(idMed);
+			
+	}
+	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
 		fachada.agregar(tex);
@@ -302,6 +308,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
 	}
+
+
 
 
 }

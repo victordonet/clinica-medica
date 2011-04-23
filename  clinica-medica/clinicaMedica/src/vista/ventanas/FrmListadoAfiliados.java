@@ -15,7 +15,10 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.MessageFormat;
+
 import javax.swing.table.TableRowSorter;
+import javax.swing.ImageIcon;
 
 public class FrmListadoAfiliados extends JFrame{
 
@@ -37,6 +40,7 @@ public class FrmListadoAfiliados extends JFrame{
 	private TableRowSorter<ModeloTablaListAfil> filtroNombre;
 	private TableRowSorter<ModeloTablaListAfil> filtroApellido;
 	private JButton jButton = null;
+	private JButton jButton1 = null;
 
 	/**
 	 * This is the default constructor
@@ -109,6 +113,7 @@ public class FrmListadoAfiliados extends JFrame{
 			jContentPane.add(getJScrollPane(), null);
 			jContentPane.add(getJButton2(), null);
 			jContentPane.add(getJButton(), null);
+			jContentPane.add(getJButton1(), null);
 		}
 		return jContentPane;
 			
@@ -311,5 +316,35 @@ public class FrmListadoAfiliados extends JFrame{
 			});
 		}
 		return jButton;
+	}
+
+	/**
+	 * This method initializes jButton1	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton1() {
+		if (jButton1 == null) {
+			jButton1 = new JButton();
+			jButton1.setBounds(new Rectangle(558, 349, 28, 26));
+			jButton1.setIcon(new ImageIcon("./fondos/Impresora.jpg"));
+			jButton1.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					MessageFormat encabezado = new MessageFormat("Page {0,number,integer}");
+					
+					try {
+					
+					jTable1.print(JTable.PrintMode.FIT_WIDTH, encabezado, null);
+					
+					} catch (java.awt.print.PrinterException f) {
+					
+					System.err.format("No se puede imprimir %s%n", f.getMessage());
+					
+					}
+					
+				}
+			});
+		}
+		return jButton1;
 	}
 }

@@ -11,6 +11,9 @@ import vista.controladores.CdorListMedPremiado;
 import vista.controladores.ModeloTablaListMedPremiado;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.text.MessageFormat;
+
+import javax.swing.ImageIcon;
 
 public class FrmListMedPremiado extends JFrame{
 
@@ -22,6 +25,7 @@ public class FrmListMedPremiado extends JFrame{
 	private JTable jTable1 = null;
 	private CdorListMedPremiado cdor;
 	private JButton jButton21 = null;
+	private JButton jButton = null;
 
 	/**
 	 * This is the default constructor
@@ -76,6 +80,7 @@ public class FrmListMedPremiado extends JFrame{
 			jContentPane.add(getJScrollPane(), null);
 			jContentPane.add(getJButton21(), null);
 
+			jContentPane.add(getJButton(), null);
 		}
 		return jContentPane;
 	}
@@ -127,5 +132,35 @@ public class FrmListMedPremiado extends JFrame{
 
 		}
 		return jButton21;
+	}
+
+	/**
+	 * This method initializes jButton	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton() {
+		if (jButton == null) {
+			jButton = new JButton();
+			jButton.setBounds(new Rectangle(558, 340, 28, 26));
+			jButton.setIcon(new ImageIcon("./fondos/Impresora.jpg"));
+			jButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					MessageFormat encabezado = new MessageFormat("Page {0,number,integer}");
+					
+					try {
+					
+					jTable1.print(JTable.PrintMode.FIT_WIDTH, encabezado, null);
+					
+					} catch (java.awt.print.PrinterException f) {
+					
+					System.err.format("No se puede imprimir %s%n", f.getMessage());
+					
+					}
+					
+				}
+			});
+		}
+		return jButton;
 	}
 }

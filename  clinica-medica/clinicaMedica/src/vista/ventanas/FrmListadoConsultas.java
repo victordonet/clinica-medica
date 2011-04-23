@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.text.MessageFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -144,7 +145,9 @@ public class FrmListadoConsultas extends JFrame{
 	private JButton getJButton() {
 		if (jButton == null) {
 			jButton = new JButton();
-			jButton.setBounds(new Rectangle(543, 312, 28, 24));
+			jButton.setBounds(new Rectangle(558, 337, 28, 26));
+			ImageIcon imagen = new ImageIcon("./fondos/Impresora.jpg");
+			jButton.setIcon(imagen);
 			jButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					MessageFormat encabezado = new MessageFormat("Page {0,number,integer}");

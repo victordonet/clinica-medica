@@ -51,7 +51,7 @@ public class CdorAltaAfil extends CdorManejoVentanas {
 	
 	public void altaAfil(String id,String ci,String nombre,String apellido,String mail,String direccion,String tel,String estado,Calendar fechaIngreso,boolean fonasa){
 		DataAfiliado afil=null;
-		if(fonasa==true)
+		//if(fonasa==true)
 		afil = new DataAfiliado(id, ci, nombre, apellido, mail, direccion, tel, estado, fechaIngreso, fonasa);
 		try {
 			super.getMod().altaAfiliado(afil);

@@ -48,7 +48,7 @@ public class Observable extends UnicastRemoteObject implements IObservable
 
     public void notificarReservaTurno() throws RemoteException
     {
-        for (int i=0; i<colReservaTurno.size(); i++)
+    	for (int i=0; i<colReservaTurno.size(); i++)
         {
             IObserver obs = (IObserver) colReservaTurno.get(i);
             obs.update();

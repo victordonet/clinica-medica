@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import vista.controladores.CdorAltaAfil;
@@ -96,7 +97,7 @@ public class FrmAltaAfiliado extends JFrame{
 			jLabel8.setForeground(Color.black);
 			jLabel7 = new JLabel();
 			jLabel7.setBounds(new Rectangle(107, 268, 106, 19));
-			jLabel7.setText("Fecha Ingreso");
+			jLabel7.setText("Fecha Ingreso *");
 			jLabel7.setForeground(Color.black);
 			jLabel6 = new JLabel();
 			jLabel6.setBounds(new Rectangle(107, 243, 106, 19));
@@ -104,16 +105,16 @@ public class FrmAltaAfiliado extends JFrame{
 			jLabel6.setForeground(Color.black);
 			jLabel5 = new JLabel();
 			jLabel5.setBounds(new Rectangle(107, 166, 106, 19));
-			jLabel5.setText("C.I");
+			jLabel5.setText("C.I *");
 			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(107, 140, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
-			jLabel4.setText("Apellido");
+			jLabel4.setText("Apellido *");
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(107, 112, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Nombre");
+			jLabel3.setText("Nombre *");
 			jLabel1 = new JLabel();
 			jLabel1.setBounds(new Rectangle(214, 9, 136, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
@@ -122,7 +123,7 @@ public class FrmAltaAfiliado extends JFrame{
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(107, 84, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Nro. Afiliado");
+			jLabel2.setText("Nro. Afiliado *");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -309,12 +310,17 @@ public class FrmAltaAfiliado extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Afiliado.");
+					if(jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("") || calendar.getDate()==null){
+						JOptionPane.showMessageDialog(null, "Debe ingresar los campos obligatorios identificados con *.");
+					}
+					else{
 					Date fecha = calendar.getDate();
 					Calendar fechaIngr = Calendar.getInstance();
 					fechaIngr.setTime(fecha);
 					boolean fona = jCheckBox.isSelected();
 					cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
-					cdor.actionCerrar();		
+					cdor.actionCerrar();
+					}
 				}
 			});
 		}

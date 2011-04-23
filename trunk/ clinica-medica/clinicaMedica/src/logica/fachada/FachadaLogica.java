@@ -3,6 +3,9 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -495,10 +498,32 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
-	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException {
+	public void altaConsultaProxMes() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
+		int[][] consultorios =new int [35][13];
+		Calendar hasta = Calendar.getInstance();
+		hasta.add(hasta.MONTH, 3);
 		try {
-			iDaoC.altaConsultaProxMes(trn, cons, idMed);
+			Vector <DataMed> medicos = iDaoM.listarMedicos(trn);
+			for (DataMed medi:medicos){
+				Vector <DataDisp> dispoDelMedico = iDaoD.listarDispMedico(medi.getId(), trn);
+				Calendar desde = Calendar.getInstance();
+				desde.add(desde.MONTH, 2);
+				desde.add(desde.DATE, 1);
+
+				while (desde.getTimeInMillis() <= hasta.getTimeInMillis()){
+					for(DataDisp ladispo: dispoDelMedico){
+						int diaDeLaDiapo = ladispo.getDia();
+						int diaDeLaSemana =desde.get(Calendar.DAY_OF_WEEK); 
+						if(diaDeLaDiapo==diaDeLaSemana){
+							consultorios [desde.get(Calendar.DAY_OF_MONTH)][ladispo.getHorario()]++;
+							iDaoC.altaConsulta(trn, desde, medi.getId(), ladispo.getDia(), "0",consultorios [desde.get(Calendar.DAY_OF_MONTH)][ladispo.getHorario()] , 0,ladispo.getHorario(),false );
+						}
+					}
+					desde.add(desde.DATE, 1);
+				}
+
+			}
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
@@ -506,6 +531,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			pool.liberarTrn(trn);
 			e.printStackTrace();
 		}
+	}
+	public void modifConsultasMedFuturas(String idMed)throws PersistenciaException, RemoteException{
+		
 	}
 	public Vector<VoTurnosDisp> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);

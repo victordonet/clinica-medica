@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.text.MessageFormat;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import vista.controladores.CdorListadoConsultas;
 import vista.controladores.ModeloTablaListadoConsultas;
 
@@ -22,6 +25,7 @@ public class FrmListadoConsultas extends JFrame{
 	private JTable jTable1 = null;
 	private CdorListadoConsultas cdor;
 	private JButton jButton2 = null;
+	private JButton jButton = null;
 
 	/**
 	 * This is the default constructor
@@ -75,6 +79,7 @@ public class FrmListadoConsultas extends JFrame{
 			jContentPane.add(jLabel, null);
 			jContentPane.add(getJScrollPane());
 			jContentPane.add(getJButton2(), null);
+			jContentPane.add(getJButton(), null);
 		}
 		return jContentPane;
 	}
@@ -102,6 +107,9 @@ public class FrmListadoConsultas extends JFrame{
 		if (jTable1 == null) {
 			modelo = cdor.listarConsultas();
 			jTable1 = new JTable(modelo);
+			
+			
+
 		}
 		return jTable1;
 	}
@@ -126,5 +134,34 @@ public class FrmListadoConsultas extends JFrame{
 			});
 		}
 		return jButton2;
+	}
+
+	/**
+	 * This method initializes jButton	
+	 * 	
+	 * @return javax.swing.JButton	
+	 */
+	private JButton getJButton() {
+		if (jButton == null) {
+			jButton = new JButton();
+			jButton.setBounds(new Rectangle(543, 312, 28, 24));
+			jButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					MessageFormat encabezado = new MessageFormat("Page {0,number,integer}");
+					
+					try {
+					
+					jTable1.print(JTable.PrintMode.FIT_WIDTH, encabezado, null);
+					
+					} catch (java.awt.print.PrinterException f) {
+					
+					System.err.format("No se puede imprimir %s%n", f.getMessage());
+					
+					}
+					
+				}
+			});
+		}
+		return jButton;
 	}
 }

@@ -88,16 +88,16 @@ public class FrmModifMedico extends JFrame{
 			jLabel6.setForeground(Color.black);
 			jLabel5 = new JLabel();
 			jLabel5.setBounds(new Rectangle(110, 196, 106, 19));
-			jLabel5.setText("C.I");
+			jLabel5.setText("C.I *");
 			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(110, 160, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
-			jLabel4.setText("Apellido");
+			jLabel4.setText("Apellido *");
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(110, 130, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Nombre");
+			jLabel3.setText("Nombre *");
 			jLabel1 = new JLabel();
 			jLabel1.setBounds(new Rectangle(186, 9, 199, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
@@ -316,12 +316,16 @@ public class FrmModifMedico extends JFrame{
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Modificación Médico.");
+					if(jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "Debe ingresar los campos obligatorios identificados con *.");
+					}
+					else{
 					String estado = "I";
 					if(jComboBox1.getSelectedIndex()==0){
 						estado = "A";
 					}
 					cdor.modifMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(),jTextField3.getText(), jTextField4.getText(),jComboBox.getSelectedIndex(), estado);
+					}
 				}
 			});
 		}

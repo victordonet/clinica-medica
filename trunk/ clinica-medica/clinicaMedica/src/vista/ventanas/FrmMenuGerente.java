@@ -140,7 +140,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton1.setText("Afiliados");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de afiliados");
 					cdor.actionMantAfil();
 				}
 			});
@@ -162,7 +161,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton2.setText("Médicos");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de médicos");
 					cdor.actionMantMed();
 				}
 			});
@@ -184,7 +182,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton3.setText("Administrativos");
 			jButton3.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de administrativos");
 					cdor.actionMantAdmin();
 				}
 			});
@@ -206,7 +203,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton4.setText("Exámenes");
 			jButton4.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de exámenes");
 					cdor.actionMantExamenes();
 				}
 			});
@@ -228,7 +224,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton5.setText("Consultorios");
 			jButton5.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de consultorios");
 					cdor.actionMantConsultorios();
 				}
 			});
@@ -250,7 +245,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton6.setText("Especialidades");
 			jButton6.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Mantenimiento de especialidades");
 					cdor.actionMantEsp();
 				}
 			});
@@ -272,7 +266,6 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jButton7.setText("Listados");
 			jButton7.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Listados");
 					cdor.actionListados();
 				}
 			});

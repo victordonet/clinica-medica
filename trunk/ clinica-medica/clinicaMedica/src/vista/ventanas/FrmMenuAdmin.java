@@ -1,20 +1,22 @@
 package vista.ventanas;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorMenuAdmin;
 import vista.controladores.ModeloTablaListConsultas;
-import java.awt.Dimension;
-import javax.swing.JButton;
 
 public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 

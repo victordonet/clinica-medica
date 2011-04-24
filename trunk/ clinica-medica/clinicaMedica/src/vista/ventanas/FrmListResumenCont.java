@@ -1,22 +1,20 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.text.MessageFormat;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import vista.controladores.CdorListMedPremiado;
+
 import vista.controladores.CdorListResumenCont;
-import vista.controladores.ModeloTablaListMedPremiado;
 import vista.controladores.ModeloTablaListResumenCont;
-
-import javax.swing.JButton;
-import java.awt.Color;
-import java.text.MessageFormat;
-
-import javax.swing.ImageIcon;
 
 public class FrmListResumenCont extends JFrame{
 

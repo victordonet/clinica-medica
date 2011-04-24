@@ -2,10 +2,12 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.DefaultComboBoxModel;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAdmin;
 import vista.ventanas.FrmModifAdmin;
+import excepciones.PersistenciaException;
 
 public class CdorModifAdmin extends CdorManejoVentanas {
 	

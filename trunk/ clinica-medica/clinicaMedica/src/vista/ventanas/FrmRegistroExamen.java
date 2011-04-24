@@ -1,19 +1,22 @@
 package vista.ventanas;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import vista.controladores.CdorRegistroExamen;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import vista.controladores.CdorRegistroExamen;
+
 import com.toedter.calendar.JDateChooser;
 public class FrmRegistroExamen extends JFrame {
 

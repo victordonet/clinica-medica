@@ -2,9 +2,10 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmSelecAfiliado;
+import excepciones.PersistenciaException;
 
 public class CdorSelectAfi extends CdorManejoVentanas {
 	

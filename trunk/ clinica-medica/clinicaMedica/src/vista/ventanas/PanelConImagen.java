@@ -1,7 +1,10 @@
 package vista.ventanas;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+import javax.swing.ImageIcon;
 
 public class PanelConImagen extends Container
 {

@@ -1,17 +1,20 @@
 package vista.ventanas;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import com.toedter.calendar.JDateChooser;
-import vista.controladores.CdorFiltroListFechas;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.util.Calendar;
 import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import vista.controladores.CdorFiltroListFechas;
+
+import com.toedter.calendar.JDateChooser;
 
 public class FrmFiltroListadoPorFechas extends JFrame {
 

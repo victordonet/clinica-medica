@@ -5,11 +5,9 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
-import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
-import vista.dataobjet.DataEsp;
-import vista.dataobjet.DataMed;
 import vista.ventanas.FrmSelecAdmin;
+import excepciones.PersistenciaException;
 
 public class CdorSelectAdmin extends CdorManejoVentanas {
 	

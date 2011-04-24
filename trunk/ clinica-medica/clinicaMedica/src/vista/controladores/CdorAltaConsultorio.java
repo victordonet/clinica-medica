@@ -1,9 +1,10 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataConsultorio;
 import vista.ventanas.FrmAltaConsultorio;
+import excepciones.PersistenciaException;
 
 public class CdorAltaConsultorio extends CdorManejoVentanas {
 	

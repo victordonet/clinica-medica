@@ -2,11 +2,12 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataCantConsu;
-import vista.dataobjet.VoResumCont;
 import vista.ventanas.FrmListMedPremiado;
+import excepciones.PersistenciaException;
 
 public class CdorListMedPremiado extends CdorManejoVentanas {
 	

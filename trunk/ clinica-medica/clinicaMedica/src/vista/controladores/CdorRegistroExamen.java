@@ -3,12 +3,14 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataTipoExamen;
 import vista.ventanas.FrmRegistroExamen;
+import excepciones.PersistenciaException;
 
 public class CdorRegistroExamen extends CdorManejoVentanas {
 	

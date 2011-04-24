@@ -1,15 +1,15 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import vista.controladores.CdorBajaMedico;
-import vista.controladores.CdorManejoVentanas;
-import java.awt.Color;
 
 public class FrmBajaMedico extends JFrame{
 

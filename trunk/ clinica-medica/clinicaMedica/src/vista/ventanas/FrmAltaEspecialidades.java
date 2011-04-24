@@ -1,14 +1,16 @@
 package vista.ventanas;
 
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import vista.controladores.CdorAltaEsp;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 
 public class FrmAltaEspecialidades extends JFrame {
 

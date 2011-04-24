@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -17,7 +18,6 @@ import logica.observer.IObserver;
 import vista.controladores.CdorMantDisp;
 import vista.controladores.DibujoDisp;
 import vista.controladores.ModeloTablaDisp;
-import javax.swing.JCheckBox;
 
 public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 

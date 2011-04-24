@@ -8,15 +8,16 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.MessageFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorListadoEsp;
 import vista.controladores.ModeloTablaListEsp;
-import javax.swing.ImageIcon;
 
 public class FrmListadoEspecialidades extends UnicastRemoteObject implements IObserver{
 

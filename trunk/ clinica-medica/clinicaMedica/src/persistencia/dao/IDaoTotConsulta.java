@@ -2,10 +2,11 @@ package persistencia.dao;
 
 import java.util.Calendar;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
+import excepciones.PersistenciaException;
 
 public interface IDaoTotConsulta {
 

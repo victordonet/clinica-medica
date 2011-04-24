@@ -1,6 +1,7 @@
 package vista.controladores;
 
 import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
 
 public class ModeloTablaDisp extends AbstractTableModel {

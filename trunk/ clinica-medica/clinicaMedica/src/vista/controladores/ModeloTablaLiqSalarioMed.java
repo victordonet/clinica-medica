@@ -1,9 +1,11 @@
 package vista.controladores;
 
 import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
-import vista.dataobjet.DataSalario;
+
 import logica.fachada.ProxyFachadaLogica;
+import vista.dataobjet.DataSalario;
 
 public class ModeloTablaLiqSalarioMed extends AbstractTableModel {
 

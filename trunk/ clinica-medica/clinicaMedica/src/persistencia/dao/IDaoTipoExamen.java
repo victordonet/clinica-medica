@@ -1,9 +1,10 @@
 package persistencia.dao;
 
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataTipoExamen;
+import excepciones.PersistenciaException;
 
 public interface IDaoTipoExamen {
 

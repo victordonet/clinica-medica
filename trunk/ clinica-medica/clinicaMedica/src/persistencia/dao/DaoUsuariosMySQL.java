@@ -4,8 +4,8 @@ import java.security.MessageDigest;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataUsu;
 import vista.dataobjet.DataUsuario;
 import excepciones.PersistenciaException;
 

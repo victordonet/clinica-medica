@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 import persistencia.transacciones.Transaccion;
-
 import vista.dataobjet.DataCargo;
-import vista.dataobjet.DataEsp;
 import excepciones.PersistenciaException;
 
 public class DaoCargosMySQL implements IDaoCargos {

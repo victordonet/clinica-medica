@@ -2,7 +2,6 @@ package vista.controladores;
 
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import vista.dataobjet.DataEsp;

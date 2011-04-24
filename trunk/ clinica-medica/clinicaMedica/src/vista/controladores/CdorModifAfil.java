@@ -1,9 +1,10 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmModifAfiliado;
+import excepciones.PersistenciaException;
 
 public class CdorModifAfil extends CdorManejoVentanas {
 	

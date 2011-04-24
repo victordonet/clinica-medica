@@ -1,18 +1,20 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
 import vista.controladores.CdorListadoDetalleAfiliado;
 import vista.controladores.ModeloTablaListadoConsAfi;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.util.Calendar;
 
 public class FrmListadoDetalleAfiliado extends JFrame{
 

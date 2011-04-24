@@ -1,8 +1,10 @@
 package vista.controladores;
 
 import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
-import vista.dataobjet.DataAfiliado;;
+
+import vista.dataobjet.DataAfiliado;
 
 public class ModeloTablaListAfil extends AbstractTableModel {
 	

@@ -3,9 +3,9 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-import excepciones.PersistenciaException;
 import vista.dataobjet.DataMed;
 import vista.ventanas.FrmSelecMedico;
+import excepciones.PersistenciaException;
 
 public class CdorSelectMed extends CdorManejoVentanas {
 	

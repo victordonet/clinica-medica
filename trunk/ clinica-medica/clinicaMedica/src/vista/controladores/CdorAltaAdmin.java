@@ -4,10 +4,11 @@ import java.rmi.RemoteException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataUsuario;
 import vista.ventanas.FrmAltaAdmin;
+import excepciones.PersistenciaException;
 
 public class CdorAltaAdmin extends CdorManejoVentanas {
 	

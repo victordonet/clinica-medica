@@ -1,7 +1,7 @@
 package persistencia.dao;
 
-import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
+import excepciones.PersistenciaException;
 
 public interface IDaoParametros {
 

@@ -1,10 +1,5 @@
 package persistencia.mains;
 
-import java.util.Calendar;
-import java.util.Vector;
-import vista.dataobjet.DataConsulta;
-import vista.dataobjet.DataReservaTurno;
-import vista.dataobjet.VoTurnosDisp;
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
 

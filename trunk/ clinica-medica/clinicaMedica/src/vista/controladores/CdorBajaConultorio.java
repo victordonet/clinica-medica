@@ -2,11 +2,13 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataConsultorio;
 import vista.ventanas.FrmBajaConsultorio;
+import excepciones.PersistenciaException;
 
 public class CdorBajaConultorio extends CdorManejoVentanas {
 	

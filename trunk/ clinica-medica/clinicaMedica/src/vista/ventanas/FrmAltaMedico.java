@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import vista.controladores.CdorAltaMedico;
-import vista.controladores.CdorManejoVentanas;
 
 public class FrmAltaMedico extends JFrame{
 

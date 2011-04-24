@@ -2,10 +2,12 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataConsultas;
 import vista.ventanas.FrmMenuGerente;
+import excepciones.PersistenciaException;
 
 public class CdorMenuGerente extends CdorManejoVentanas {
 

@@ -2,17 +2,18 @@ package vista.web.servlet;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.List;
 import java.util.Vector;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import excepciones.PersistenciaException;
+
 import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataEsp;
+import excepciones.PersistenciaException;
 
 /**
  * Servlet implementation class svtAltaEspecialidad

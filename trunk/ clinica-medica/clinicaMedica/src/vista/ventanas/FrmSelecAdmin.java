@@ -6,11 +6,13 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorSelectAdmin;
 import vista.controladores.ModeloTablaListAdmin;

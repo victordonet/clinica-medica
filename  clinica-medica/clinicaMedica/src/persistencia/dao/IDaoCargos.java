@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 
 import persistencia.transacciones.Transaccion;
-
 import vista.dataobjet.DataCargo;
 import excepciones.PersistenciaException;
 

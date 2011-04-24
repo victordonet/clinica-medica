@@ -1,19 +1,20 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.text.MessageFormat;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import vista.controladores.CdorLiqSalarioMed;
 import vista.controladores.ModeloTablaLiqSalarioMed;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.text.MessageFormat;
-
-import javax.swing.ImageIcon;
 
 public class FrmLiqSalarioMed extends JFrame{
 

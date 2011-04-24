@@ -2,10 +2,12 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataSalario;
 import vista.ventanas.FrmLiqSalarioMed;
+import excepciones.PersistenciaException;
 
 public class CdorLiqSalarioMed extends CdorManejoVentanas {
 	

@@ -1,16 +1,17 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import vista.controladores.CdorBajaAfil;
-import java.awt.Color;
-import java.util.Calendar;
 
-import javax.swing.JCheckBox;
+import vista.controladores.CdorBajaAfil;
 
 public class FrmBajaAfiliado extends JFrame{
 

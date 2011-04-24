@@ -1,24 +1,25 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.text.MessageFormat;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+
 import vista.controladores.CdorListadoAfil;
 import vista.controladores.ModeloTablaListAfil;
-import javax.swing.JButton;
-import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.text.MessageFormat;
-
-import javax.swing.table.TableRowSorter;
-import javax.swing.ImageIcon;
 
 public class FrmListadoAfiliados extends JFrame{
 

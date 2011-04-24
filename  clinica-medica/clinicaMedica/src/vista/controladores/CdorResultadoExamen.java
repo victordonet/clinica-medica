@@ -2,10 +2,12 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Calendar;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataExamen;
 import vista.ventanas.FrmResultadoExamen;
+import excepciones.PersistenciaException;
 
 public class CdorResultadoExamen extends CdorManejoVentanas {
 	

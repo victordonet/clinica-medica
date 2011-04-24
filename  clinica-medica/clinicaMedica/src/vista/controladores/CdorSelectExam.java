@@ -2,9 +2,10 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataExamen;
 import vista.ventanas.FrmSelecExamen;
+import excepciones.PersistenciaException;
 
 public class CdorSelectExam extends CdorManejoVentanas {
 	

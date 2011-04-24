@@ -1,8 +1,18 @@
 package persistencia.fabrica;
 
+import persistencia.dao.DaoAdmGenMySQL;
+import persistencia.dao.DaoAfiliadoMySQL;
 import persistencia.dao.DaoCargosMySQL;
+import persistencia.dao.DaoConsultasMySQL;
 import persistencia.dao.DaoConsultoriosMySQL;
+import persistencia.dao.DaoDisponibilidadMySQL;
+import persistencia.dao.DaoEspecialidadesMySQL;
+import persistencia.dao.DaoExamenMySQL;
+import persistencia.dao.DaoMedicoMySQL;
 import persistencia.dao.DaoParametrosMySQL;
+import persistencia.dao.DaoTipoExamenMySQL;
+import persistencia.dao.DaoTotConsultaMySQL;
+import persistencia.dao.DaoUsuariosMySQL;
 import persistencia.dao.IDaoAdmGen;
 import persistencia.dao.IDaoAfiliado;
 import persistencia.dao.IDaoCargos;
@@ -16,16 +26,6 @@ import persistencia.dao.IDaoParametros;
 import persistencia.dao.IDaoTipoExamen;
 import persistencia.dao.IDaoTotConsulta;
 import persistencia.dao.IDaoUsuarios;
-import persistencia.dao.DaoAdmGenMySQL;
-import persistencia.dao.DaoAfiliadoMySQL;
-import persistencia.dao.DaoConsultasMySQL;
-import persistencia.dao.DaoDisponibilidadMySQL;
-import persistencia.dao.DaoEspecialidadesMySQL;
-import persistencia.dao.DaoExamenMySQL;
-import persistencia.dao.DaoMedicoMySQL;
-import persistencia.dao.DaoTipoExamenMySQL;
-import persistencia.dao.DaoTotConsultaMySQL;
-import persistencia.dao.DaoUsuariosMySQL;
 
 public class FabricaMySQL implements IabsFactory {
 	

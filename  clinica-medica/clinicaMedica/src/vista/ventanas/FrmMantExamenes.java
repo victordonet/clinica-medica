@@ -1,12 +1,13 @@
 package vista.ventanas;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import vista.controladores.CdorMantExamenes;
-
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import vista.controladores.CdorMantExamenes;
 
 public class FrmMantExamenes extends JFrame {
 

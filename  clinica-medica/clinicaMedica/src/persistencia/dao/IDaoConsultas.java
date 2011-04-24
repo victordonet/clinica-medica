@@ -2,11 +2,12 @@ package persistencia.dao;
 
 import java.util.Calendar;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataConsultas;
 import vista.dataobjet.VoTurnosDisp;
+import excepciones.PersistenciaException;
 
 public interface IDaoConsultas {
 

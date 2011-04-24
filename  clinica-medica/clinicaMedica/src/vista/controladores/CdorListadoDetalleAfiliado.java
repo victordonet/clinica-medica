@@ -3,11 +3,13 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Vector;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataConsAfi;
 import vista.ventanas.FrmListadoDetalleAfiliado;
+import excepciones.PersistenciaException;
 
 public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 

@@ -3,18 +3,18 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
+
 import logica.Medico;
 import logica.observer.IObservable;
-import excepciones.PersistenciaException;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
-import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataConsultas;
 import vista.dataobjet.DataConsultorio;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -22,11 +22,11 @@ import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
+import excepciones.PersistenciaException;
 
 public interface IfachadaLogica extends IObservable{
 

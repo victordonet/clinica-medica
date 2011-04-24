@@ -2,11 +2,10 @@ package persistencia.dao;
 
 import java.util.Vector;
 
-import excepciones.PersistenciaException;
-
+import logica.Especialidad;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataEsp;
-import logica.Especialidad;
+import excepciones.PersistenciaException;
 
 public interface IDaoEspecialidades {
 

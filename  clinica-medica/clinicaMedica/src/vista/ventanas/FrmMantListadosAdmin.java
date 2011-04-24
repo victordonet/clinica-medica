@@ -1,14 +1,16 @@
 package vista.ventanas;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
+
 import vista.controladores.CdorMantListadosAdmin;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Toolkit;
 
 public class FrmMantListadosAdmin extends JFrame {
 

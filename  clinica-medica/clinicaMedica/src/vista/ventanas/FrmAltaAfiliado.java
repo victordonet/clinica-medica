@@ -1,22 +1,23 @@
 package vista.ventanas;
 
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import vista.controladores.CdorAltaAfil;
-import vista.controladores.CdorManejoVentanas;
-import javax.swing.JPanel;
+
 import com.toedter.calendar.JDateChooser;
-import java.awt.GridLayout;
-import java.util.Calendar;
-import java.util.Date;
 
 public class FrmAltaAfiliado extends JFrame{
 

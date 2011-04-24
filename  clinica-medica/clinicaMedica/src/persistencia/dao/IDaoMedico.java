@@ -2,18 +2,19 @@ package persistencia.dao;
 
 import java.util.Calendar;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
+import logica.Medico;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
-import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
-import logica.Medico;
+import excepciones.PersistenciaException;
 
 public interface IDaoMedico {
 

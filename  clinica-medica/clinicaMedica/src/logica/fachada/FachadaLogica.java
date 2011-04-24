@@ -4,8 +4,6 @@ import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
-
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -32,9 +30,9 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
-import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataConsultas;
 import vista.dataobjet.DataConsultorio;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataMed;
@@ -42,7 +40,6 @@ import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataTipoExamen;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;

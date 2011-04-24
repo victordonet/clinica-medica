@@ -1,7 +1,9 @@
 package vista.controladores;
 
 import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
+
 import vista.dataobjet.DataConsultas;
 
 public class ModeloTablaListConsultas extends AbstractTableModel {

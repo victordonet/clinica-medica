@@ -1,14 +1,15 @@
 package vista.ventanas;
 
+import java.awt.Rectangle;
 import java.awt.Toolkit;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import vista.controladores.CdorLogin;
-import vista.ventanas.PanelConImagen;
-import java.awt.Rectangle;
 
 public class FrmLogin extends JFrame {
 

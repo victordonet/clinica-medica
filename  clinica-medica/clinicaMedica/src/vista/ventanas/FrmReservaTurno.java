@@ -1,12 +1,15 @@
 package vista.ventanas;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Calendar;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,11 +17,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+
 import logica.observer.IObserver;
 import vista.controladores.CdorReservaTurno;
 import vista.controladores.ModeloTablaListConsDisp;
-import java.awt.Dimension;
-import javax.swing.JButton;
 
 public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 

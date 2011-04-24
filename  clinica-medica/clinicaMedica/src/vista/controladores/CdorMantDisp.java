@@ -1,10 +1,12 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataMed;
 import vista.ventanas.FrmMantDisp;
+import excepciones.PersistenciaException;
 
 public class CdorMantDisp extends CdorManejoVentanas {
 

@@ -1,9 +1,8 @@
 package persistencia.dao;
 
-import excepciones.PersistenciaException;
 import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataUsu;
 import vista.dataobjet.DataUsuario;
+import excepciones.PersistenciaException;
 
 public interface IDaoUsuarios {
 

@@ -6,13 +6,7 @@ import javax.swing.JOptionPane;
 
 import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
-import vista.controladores.CdorAltaAdmin;
-import vista.controladores.CdorAltaMedico;
 import vista.controladores.CdorLogin;
-import vista.controladores.CdorManejoVentanas;
-import vista.ventanas.FrmAltaAdmin;
-import vista.ventanas.FrmAltaMedico;
-import vista.ventanas.FrmLogin;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 

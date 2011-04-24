@@ -3,9 +3,9 @@ package persistencia.dao;
 import java.util.Calendar;
 import java.util.Vector;
 
+import logica.Examen;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataExamen;
-import logica.Examen;
 import excepciones.PersistenciaException;
 
 public interface IDaoExamen {

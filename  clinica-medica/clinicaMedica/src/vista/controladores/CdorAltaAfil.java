@@ -2,11 +2,13 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 import java.util.Calendar;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataUsuario;
 import vista.ventanas.FrmAltaAfiliado;
+import excepciones.PersistenciaException;
 
 public class CdorAltaAfil extends CdorManejoVentanas {
 	

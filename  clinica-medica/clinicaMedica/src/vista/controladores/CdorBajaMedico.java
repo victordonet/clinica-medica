@@ -1,10 +1,12 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.dataobjet.DataMed;
 import vista.ventanas.FrmBajaMedico;
+import excepciones.PersistenciaException;
 
 public class CdorBajaMedico extends CdorManejoVentanas {
 	

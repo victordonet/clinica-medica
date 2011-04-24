@@ -1,9 +1,11 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+
 import javax.swing.JOptionPane;
-import excepciones.PersistenciaException;
+
 import vista.ventanas.FrmModifPass;
+import excepciones.PersistenciaException;
 
 public class CdorModifPass extends CdorManejoVentanas {
 	

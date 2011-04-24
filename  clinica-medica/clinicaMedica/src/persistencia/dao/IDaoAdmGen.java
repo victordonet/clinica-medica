@@ -2,11 +2,12 @@ package persistencia.dao;
 
 import java.util.Calendar;
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.VosLogin;
+import excepciones.PersistenciaException;
 
 public interface IDaoAdmGen {
 

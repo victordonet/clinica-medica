@@ -1,11 +1,12 @@
 package persistencia.dao;
 
 import java.util.Vector;
-import excepciones.PersistenciaException;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.VosLogin;
+import excepciones.PersistenciaException;
 
 public interface IDaoAfiliado {
 

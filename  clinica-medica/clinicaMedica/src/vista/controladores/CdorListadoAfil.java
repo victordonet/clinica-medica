@@ -3,9 +3,9 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
-import excepciones.PersistenciaException;
 import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmListadoAfiliados;
+import excepciones.PersistenciaException;
 
 public class CdorListadoAfil extends CdorManejoVentanas {
 	

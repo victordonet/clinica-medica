@@ -1,21 +1,11 @@
 package vista.controladores;
 
-import java.rmi.RemoteException;
 import java.util.Vector;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
-import contrib.ch.randelshofer.quaqua.colorchooser.NominalCMYKColorSliderModel;
-
-import excepciones.PersistenciaException;
-
-import logica.fachada.IfachadaLogica;
 import logica.fachada.ProxyFachadaLogica;
-
 import vista.dataobjet.DataAdmin;
-import vista.dataobjet.DataCargo;
-import vista.dataobjet.DataEsp;
 
 public class ModeloTablaListAdmin extends AbstractTableModel {
 	

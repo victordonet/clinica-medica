@@ -1,12 +1,14 @@
 package vista.ventanas;
 
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
 import vista.controladores.CdorBajaAdmin;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 
 public class FrmBajaAdmin extends JFrame {
 

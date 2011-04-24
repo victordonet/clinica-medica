@@ -1,20 +1,21 @@
 package vista.ventanas;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Calendar;
+
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import vista.controladores.CdorModifAfil;
-import java.awt.Color;
-import java.util.Calendar;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
+import vista.controladores.CdorModifAfil;
 
 
 public class FrmModifAfiliado extends JFrame{

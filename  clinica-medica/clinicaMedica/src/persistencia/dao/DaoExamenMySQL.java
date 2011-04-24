@@ -7,10 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-import persistencia.transacciones.Transaccion;
-import vista.dataobjet.DataExamen;
+
 import logica.Examen;
 import logica.TipoExamen;
+import persistencia.transacciones.Transaccion;
+import vista.dataobjet.DataExamen;
 import excepciones.PersistenciaException;
 
 public class DaoExamenMySQL implements IDaoExamen, Serializable{

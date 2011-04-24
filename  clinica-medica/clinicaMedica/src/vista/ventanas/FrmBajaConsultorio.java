@@ -1,17 +1,15 @@
 package vista.ventanas;
 
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 
 import vista.controladores.CdorBajaConultorio;
-import vista.controladores.ModeloTablaListConsDisp;
-
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import javax.swing.JComboBox;
 
 public class FrmBajaConsultorio extends JFrame {
 

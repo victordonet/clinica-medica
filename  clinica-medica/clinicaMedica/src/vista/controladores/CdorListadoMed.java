@@ -1,8 +1,9 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
-import excepciones.PersistenciaException;
+
 import vista.ventanas.FrmListadoMedicos;
+import excepciones.PersistenciaException;
 
 public class CdorListadoMed extends CdorManejoVentanas {
 	

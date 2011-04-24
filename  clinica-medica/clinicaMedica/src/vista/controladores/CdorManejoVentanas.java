@@ -2,8 +2,8 @@ package vista.controladores;
 
 import java.util.Calendar;
 
-import vista.dataobjet.DataUsu;
 import logica.fachada.ProxyFachadaLogica;
+import vista.dataobjet.DataUsu;
 
 public abstract class CdorManejoVentanas {
 

@@ -2,7 +2,8 @@ package logica;
 
 import java.io.Serializable;
 import java.util.Calendar;
-import persistencia.dao.*;
+
+import persistencia.dao.IDaoExamen;
 
 public class Afiliado extends Usuario implements Serializable {
 

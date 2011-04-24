@@ -2,20 +2,20 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import logica.fachada.IfachadaLogica;
+import logica.fachada.ProxyFachadaLogica;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataReservaTurno;
 import vista.dataobjet.DataSalario;
 import vista.dataobjet.DataUsuario;
-import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;
 import vista.dataobjet.VosLogin;
-import logica.Medico;
-import logica.fachada.IfachadaLogica;
-import logica.fachada.ProxyFachadaLogica;
 
 public class MainDaoMedico {
 

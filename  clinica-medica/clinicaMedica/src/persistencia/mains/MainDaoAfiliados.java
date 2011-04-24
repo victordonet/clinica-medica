@@ -2,12 +2,13 @@ package persistencia.mains;
 
 import java.util.Calendar;
 import java.util.Vector;
+
+import logica.fachada.IfachadaLogica;
+import logica.fachada.ProxyFachadaLogica;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataUsuario;
 import vista.dataobjet.VosLogin;
-import logica.fachada.IfachadaLogica;
-import logica.fachada.ProxyFachadaLogica;
 
 public class MainDaoAfiliados {
 

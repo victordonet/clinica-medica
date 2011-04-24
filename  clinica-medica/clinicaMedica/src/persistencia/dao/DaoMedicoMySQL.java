@@ -6,15 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
+
 import logica.DateIterator;
 import logica.Especialidad;
 import logica.Medico;
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataCantConsu;
+import vista.dataobjet.DataDisp;
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
 import vista.dataobjet.DataSalario;
-import vista.dataobjet.DataDisp;
 import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoResumCont;
 import vista.dataobjet.VoTurnosDisp;

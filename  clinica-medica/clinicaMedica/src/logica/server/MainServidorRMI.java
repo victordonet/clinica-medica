@@ -1,7 +1,6 @@
 package logica.server;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -37,6 +36,7 @@ public class MainServidorRMI
 			Naming.rebind(ruta+"logica", facade);
 			System.out.println("Servidor iniciado");
 			JOptionPane.showMessageDialog(null,"Servidor iniciado");
+			
 		} 
 		catch (RemoteException e) 
 		{

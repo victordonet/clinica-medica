@@ -1,11 +1,13 @@
 package vista.ventanas;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import vista.controladores.CdorMenuMed;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import vista.controladores.CdorMenuMed;
 
 public class FrmMenuMed extends JFrame {
 

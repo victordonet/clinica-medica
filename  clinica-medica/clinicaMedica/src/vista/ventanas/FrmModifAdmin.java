@@ -1,18 +1,18 @@
 package vista.ventanas;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import vista.controladores.CdorModifAdmin;
-
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import vista.controladores.CdorModifAdmin;
 
 public class FrmModifAdmin extends JFrame {
 

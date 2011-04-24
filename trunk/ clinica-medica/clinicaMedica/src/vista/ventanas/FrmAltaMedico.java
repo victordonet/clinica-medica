@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import vista.controladores.CdorAltaMedico;
@@ -83,16 +84,16 @@ public class FrmAltaMedico extends JFrame{
 			jLabel6.setForeground(Color.black);
 			jLabel5 = new JLabel();
 			jLabel5.setBounds(new Rectangle(110, 196, 106, 19));
-			jLabel5.setText("C.I");
+			jLabel5.setText("C.I *");
 			jLabel5.setForeground(Color.black);
 			jLabel4 = new JLabel();
 			jLabel4.setBounds(new Rectangle(110, 160, 106, 19));
 			jLabel4.setForeground(java.awt.Color.black);
-			jLabel4.setText("Apellido");
+			jLabel4.setText("Apellido *");
 			jLabel3 = new JLabel();
 			jLabel3.setBounds(new Rectangle(110, 130, 106, 19));
 			jLabel3.setForeground(java.awt.Color.black);
-			jLabel3.setText("Nombre");
+			jLabel3.setText("Nombre *");
 			jLabel1 = new JLabel();
 			jLabel1.setBounds(new Rectangle(214, 9, 136, 33));
 			jLabel1.setFont(new java.awt.Font("Arial", java.awt.Font.PLAIN, 18));
@@ -101,7 +102,7 @@ public class FrmAltaMedico extends JFrame{
 			jLabel2 = new JLabel();
 			jLabel2.setBounds(new Rectangle(110, 97, 106, 19));
 			jLabel2.setForeground(java.awt.Color.black);
-			jLabel2.setText("Nro. BPS");
+			jLabel2.setText("Nro. BPS *");
 			jContentPane = new PanelConImagen("./fondos/imgFondoGrl.jpg");
 			jContentPane.setLayout(null);
 			jContentPane.setForeground(java.awt.Color.white);
@@ -288,11 +289,15 @@ public class FrmAltaMedico extends JFrame{
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					System.out.println("Aceptar Alta Médico.");
-					//cdor.altaEsp(jTextField1.getText(), jTextField2.getText(), jTextField.getText());
+					if(jTextField1.getText().equals("") || jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "Debe ingresar los campos obligatorios identificados con *.");
+					}
+					else{
 					int espIndex = jComboBox.getSelectedIndex();
 					cdor.AltaMedico(jTextField1.getText(), jTextField2.getText(), jTextField.getText(), 
 									jTextField3.getText(), jTextField4.getText(), espIndex);
 					cdor.actionCerrar();
+					}
 				}
 			});
 		}

@@ -176,7 +176,7 @@ public class FrmAltaMedico extends JFrame{
 				  //Controlar el largo del text
 				  String s = jTextField2.getText();
 				  int n=s.length();
-				  if(n >= 50){
+				  if(n >= 20){
 					  e.consume();  // ignorar el evento de teclado
 				  }
 			   }
@@ -203,7 +203,7 @@ public class FrmAltaMedico extends JFrame{
 			      //Controlar el largo del text
 			      String s = jTextField.getText();
 			      int n=s.length();
-			      if(n >= 50){
+			      if(n >= 20){
 			    	  e.consume();  // ignorar el evento de teclado
 			      }
 			   }
@@ -221,6 +221,27 @@ public class FrmAltaMedico extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(240, 196, 143, 19));
+			jTextField3.addKeyListener(new KeyAdapter()
+			{
+			   public void keyTyped(KeyEvent e)
+			   {
+				   // Verificar si la tecla pulsada no es un digito
+				   char caracter = e.getKeyChar();
+				   if(((caracter < '0') ||
+						   (caracter > '9')) &&
+						   (caracter != KeyEvent.VK_BACK_SPACE))
+				   {
+					   e.consume();  // ignorar el evento de teclado
+				   }
+
+				  //Controlar el largo del text
+				  String s = jTextField3.getText();
+				  int n=s.length();
+				  if(n >= 8){
+					  e.consume();  // ignorar el evento de teclado
+				  }
+			   }
+			});
 		}
 		return jTextField3;
 	}
@@ -234,6 +255,19 @@ public class FrmAltaMedico extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(240, 229, 282, 19));
+			jTextField4.addKeyListener(new KeyAdapter()
+			{
+			   public void keyTyped(KeyEvent e)
+			   {
+				   
+			      //Controlar el largo del text
+			      String s = jTextField4.getText();
+			      int n=s.length();
+			      if(n >= 50){
+			    	  e.consume();  // ignorar el evento de teclado
+			      }
+			   }
+			});
 		}
 		return jTextField4;
 	}

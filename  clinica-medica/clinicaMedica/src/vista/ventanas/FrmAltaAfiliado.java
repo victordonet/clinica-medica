@@ -4,8 +4,12 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -164,6 +168,27 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
 			jTextField1.setBounds(new Rectangle(243, 84, 143, 19));
+			jTextField1.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					   // Verificar si la tecla pulsada no es un digito
+					   char caracter = e.getKeyChar();
+					   if(((caracter < '0') ||
+							   (caracter > '9')) &&
+							   (caracter != KeyEvent.VK_BACK_SPACE))
+					   {
+						   e.consume();  // ignorar el evento de teclado
+					   }
+
+				      //Controlar el largo del text
+				      String s = jTextField1.getText();
+				      int n=s.length();
+				      if(n >= 10){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField1;
 	}
@@ -177,6 +202,18 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(243, 112, 282, 19));
+			jTextField2.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					  //Controlar el largo del text
+				      String s = jTextField2.getText();
+				      int n=s.length();
+				      if(n >= 20){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField2;
 	}
@@ -190,6 +227,19 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField == null) {
 			jTextField = new JTextField();
 			jTextField.setBounds(new Rectangle(243, 140, 282, 19));
+			jTextField.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					  //Controlar el largo del text
+				      String s = jTextField.getText();
+				      int n=s.length();
+				      if(n >= 20){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
+			
 		}
 		return jTextField;
 	}
@@ -203,6 +253,27 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setBounds(new Rectangle(243, 166, 143, 19));
+			jTextField3.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					   // Verificar si la tecla pulsada no es un digito
+					   char caracter = e.getKeyChar();
+					   if(((caracter < '0') ||
+							   (caracter > '9')) &&
+							   (caracter != KeyEvent.VK_BACK_SPACE))
+					   {
+						   e.consume();  // ignorar el evento de teclado
+					   }
+
+				      //Controlar el largo del text
+				      String s = jTextField3.getText();
+				      int n=s.length();
+				      if(n >= 8){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField3;
 	}
@@ -216,6 +287,18 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			jTextField4.setBounds(new Rectangle(243, 243, 282, 19));
+			jTextField4.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					  //Controlar el largo del text
+				      String s = jTextField4.getText();
+				      int n=s.length();
+				      if(n >= 50){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField4;
 	}
@@ -228,7 +311,7 @@ public class FrmAltaAfiliado extends JFrame{
 	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
-			jTextField5.setBounds(new Rectangle(243, 191, 143, 19));
+			jTextField5.setBounds(new Rectangle(243, 191, 282, 19));
 		}
 		return jTextField5;
 	}
@@ -242,6 +325,18 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField6 == null) {
 			jTextField6 = new JTextField();
 			jTextField6.setBounds(new Rectangle(243, 217, 282, 19));
+			jTextField6.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					  //Controlar el largo del text
+				      String s = jTextField3.getText();
+				      int n=s.length();
+				      if(n >= 50){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField6;
 	}
@@ -313,18 +408,33 @@ public class FrmAltaAfiliado extends JFrame{
 					System.out.println("Aceptar Alta Afiliado.");
 					if(jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("") || calendar.getDate()==null){
 						JOptionPane.showMessageDialog(null, "Debe ingresar los campos obligatorios identificados con *.");
+
 					}
 					else{
-					Date fecha = calendar.getDate();
-					Calendar fechaIngr = Calendar.getInstance();
-					fechaIngr.setTime(fecha);
-					boolean fona = jCheckBox.isSelected();
-					cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
-					cdor.actionCerrar();
+						if(!validateEmail(jTextField5.getText())){
+							JOptionPane.showMessageDialog(null, "Formato de E-mail incorrecto");
+						}
+						else{
+							Date fecha = calendar.getDate();
+							Calendar fechaIngr = Calendar.getInstance();
+							fechaIngr.setTime(fecha);
+							boolean fona = jCheckBox.isSelected();
+							cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
+							cdor.actionCerrar();
+						}
 					}
 				}
 			});
 		}
 		return jButton2;
 	}
+	   public boolean validateEmail(String email) {
+		   
+	       Pattern p = Pattern.compile("[a-zA-Z0-9]+[.[a-zA-Z0-9_-]+]*@[a-z0-9][\\w\\.-]*[a-z0-9]\\.[a-z][a-z\\.]*[a-z]$");//me gusta esta
+	 
+	       Matcher m = p.matcher(email);
+	       return m.matches();
+	   }
+
+	
 }

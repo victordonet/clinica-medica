@@ -3,7 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import logica.Medico;
 import logica.observer.IObservable;
 import vista.dataobjet.DataAdmin;
@@ -106,6 +105,7 @@ public interface IfachadaLogica extends IObservable{
 	public int getCantConsultasPagas(Calendar fDesde,Calendar fHasta) throws PersistenciaException, RemoteException;
 	public Vector<DataConsAfi> listarConsultasAfi(String id) throws PersistenciaException, RemoteException;
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException;
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException;
 	public void elimConsulta(String idAfi) throws PersistenciaException, RemoteException;
 	
 	//USUARIOS

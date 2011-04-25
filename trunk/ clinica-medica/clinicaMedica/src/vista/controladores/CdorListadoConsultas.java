@@ -4,9 +4,7 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import javax.swing.JOptionPane;
-
 import vista.dataobjet.DataConsFecha;
 import vista.ventanas.FrmListadoConsultas;
 import excepciones.PersistenciaException;

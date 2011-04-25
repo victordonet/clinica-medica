@@ -3,7 +3,6 @@ package logica.fachada;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import logica.Configuracion;
 import logica.Especialidad;
 import logica.Medico;
@@ -531,7 +530,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				Calendar desde = Calendar.getInstance();
 				desde.add(desde.MONTH, 2);
 				desde.add(desde.DATE, 1);
-
 				while (desde.getTimeInMillis() <= hasta.getTimeInMillis()){
 					for(DataDisp ladispo: dispoDelMedico){
 						int diaDeLaDiapo = ladispo.getDia();
@@ -543,7 +541,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 					}
 					desde.add(desde.DATE, 1);
 				}
-
 			}
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
@@ -1473,12 +1470,26 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
-	}
+	}	
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<DataConsFecha> resultado = null;
 		try {
 			resultado = iDaoTC.listarConsFecha(trn, fecha);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new PersistenciaException(e.getMessage());
+		}
+		return resultado;
+	}
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
+		Transaccion trn = pool.obtenerTrn(8);
+		Vector<DataConsFecha> resultado = null;
+		try {
+			resultado = iDaoTC.listarConsFechasMed(trn, fDesde, fHasta, idMed);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

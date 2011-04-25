@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
@@ -101,6 +103,40 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 				int consultorio = rst.getInt("idconsultorio");
 				int turno = rst.getInt("turno");
 				DataConsFecha data = new DataConsFecha(fecha, nomMed, apeMed, nomAfi, apeAfi, consultorio, turno);
+				consultas.add(data);
+			}
+			rst.close();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		return consultas;
+	}
+	
+	public Vector<DataConsFecha> listarConsFechasMed(Transaccion trn, Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException {
+		Vector<DataConsFecha> consultas  = new Vector<DataConsFecha>();
+		try {
+			PreparedStatement pst = trn.preparedStatement("select c.fecha, m.nombre as nomMed, m.apellido as apeMed, a.nombre as nomAfi, " +
+					"a.apellido as apeAfi, c.idconsultorio, c.turno from consultas c, afiliados a, medicos m " +
+					"where c.idmedico = m.id and c.idafiliado = a.id and c.fecha>=? and c.fecha<=? and turno>0 and m.id=?");
+			Date diaDesde = new java.sql.Date(fDesde.getTimeInMillis());
+			Date diaHasta = new java.sql.Date(fHasta.getTimeInMillis());
+			pst.setDate(1, diaDesde);
+			pst.setDate(2, diaHasta);
+			pst.setString(3, idMed);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				Date fecha = rst.getDate("fecha");
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(fecha);
+				String nomMed = rst.getString("nomMed");
+				String apeMed = rst.getString("apeMed");
+				String nomAfi = rst.getString("nomAfi");
+				String apeAfi = rst.getString("apeAfi");
+				int consultorio = rst.getInt("idconsultorio");
+				int turno = rst.getInt("turno");
+				DataConsFecha data = new DataConsFecha(cal, nomMed, apeMed, nomAfi, apeAfi, consultorio, turno);
 				consultas.add(data);
 			}
 			rst.close();

@@ -14,6 +14,7 @@ public class CdorFiltroListFecha extends CdorManejoVentanas {
 	private FrmFiltroListadoPorFecha ventana;
 	private CdorManejoVentanas vino;
 
+
 	public CdorFiltroListFecha() {}
 
 	public void desplegarVentana (CdorManejoVentanas vino){
@@ -61,4 +62,6 @@ public class CdorFiltroListFecha extends CdorManejoVentanas {
 	public void actionCerrar() {
 		cerrarVentana(this, vino);
 	}
+
+
 }

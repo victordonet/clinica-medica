@@ -107,6 +107,7 @@ public class FrmSelecExamen extends JFrame{
 		if (jTable1 == null) {
 			modelo = cdor.listarExam();
 			jTable1 = new JTable(modelo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable1;
 	}

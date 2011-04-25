@@ -106,6 +106,7 @@ public class FrmSelecMedico extends JFrame{
 		if (jTable1 == null) {
 			modelo = cdor.listarMed();
 			jTable1 = new JTable(modelo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable1;
 	}

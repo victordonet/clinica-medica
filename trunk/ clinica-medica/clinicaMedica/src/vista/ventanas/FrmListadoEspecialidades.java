@@ -126,10 +126,11 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 	 * @return javax.swing.JTable
 	 */
 	private JTable getJTable1(ModeloTablaListEsp modelo) {
-		//if (jTable1 == null) {
+		
 			modelo = cdor.listarEspecialidades();
 			jTable1 = new JTable(modelo);
-		//}
+			jTable1.getTableHeader().setReorderingAllowed(false);
+		
 		return jTable1;
 	}
 

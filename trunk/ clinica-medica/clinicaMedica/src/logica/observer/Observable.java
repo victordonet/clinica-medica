@@ -30,11 +30,13 @@ public class Observable extends UnicastRemoteObject implements IObservable
 
     public void notificarMenuGA() throws RemoteException
     {
-        for (int i=0; i<colMenuGA.size(); i++)
-        {
-            IObserver obs = (IObserver) colMenuGA.get(i);
-            obs.update();
-        }
+    	if(colMenuGA.size()>0){
+    		for (int i=0; i<colMenuGA.size(); i++)
+    		{
+    			IObserver obs = (IObserver) colMenuGA.get(i);
+    			obs.update();
+    		}
+    	}
     }
     public void addObsReservaTurno (IObserver obs) throws RemoteException
     {
@@ -48,11 +50,13 @@ public class Observable extends UnicastRemoteObject implements IObservable
 
     public void notificarReservaTurno() throws RemoteException
     {
-    	for (int i=0; i<colReservaTurno.size(); i++)
-        {
-            IObserver obs = (IObserver) colReservaTurno.get(i);
-            obs.update();
-        }
+    	if(colReservaTurno.size()>0){
+    		for (int i=0; i<colReservaTurno.size(); i++)
+    		{
+    			IObserver obs = (IObserver) colReservaTurno.get(i);
+    			obs.update();
+    		}
+    	}
     }
 
 
@@ -69,12 +73,13 @@ public class Observable extends UnicastRemoteObject implements IObservable
 
 
 	public void notificarDispMed() throws RemoteException {
-		 for (int i=0; i<colDispoMed.size(); i++)
-	        {
-	            IObserver obs = (IObserver) colDispoMed.get(i);
-	            obs.update();
-	        }
-		
+		if(colDispoMed.size()>0){ 
+			for (int i=0; i<colDispoMed.size(); i++)
+			{
+				IObserver obs = (IObserver) colDispoMed.get(i);
+				obs.update();
+			}
+		}
 	}
 
 	

@@ -109,6 +109,7 @@ public class FrmListMedPremiado extends JFrame{
 		if (jTable1 == null) {
 			modelo = cdor.listarMedPremiado();
 			jTable1 = new JTable(modelo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable1;
 	}

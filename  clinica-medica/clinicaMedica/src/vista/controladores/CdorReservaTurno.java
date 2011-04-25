@@ -38,6 +38,7 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 		this.vino = vino;
 		try {
 			ventana = new FrmReservaTurno(this);
+			super.getMod().addObsReservaTurno(ventana);
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -55,7 +56,14 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 	}
 
 	public void cerrar() {
-		ventana.getVentana().dispose();
+		try {
+			super.getMod().remObsRservaTurno(ventana);
+			ventana.getVentana().dispose();
+		} catch (RemoteException e) {
+			
+			e.printStackTrace();
+		}
+	
 	}
 
 	public void actionCerrar() {

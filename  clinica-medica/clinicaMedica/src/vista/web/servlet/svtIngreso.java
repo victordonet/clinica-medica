@@ -2,14 +2,13 @@ package vista.web.servlet;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import vista.dataobjet.VosLogin;
 import logica.fachada.IfachadaLogica;
 import excepciones.PersistenciaException;
 
@@ -52,8 +51,20 @@ public class svtIngreso extends HttpServlet {
 				try {
 					usuOk = mod.validarUsuario(usu, pass);
 					if(usuOk){
-				    	session.setAttribute("nombre", usu);
-				    	response.sendRedirect("menu.jsp");	
+						String tipo = mod.getTipo(usu);
+		    			if (tipo.equals("ME")){
+		    				VosLogin dMed = mod.getDataMedico(usu);
+							String nombre = "Dr. "+dMed.getNombre()+" "+dMed.getApellido();	
+					    	session.setAttribute("nombre", nombre);
+					    	response.sendRedirect("menuMedico.jsp");
+		    			}else {
+		    				if (tipo.equals("AF")){
+			    				VosLogin dAf = mod.getDataAfiliado(usu);
+								String nombre = dAf.getNombre()+" "+dAf.getApellido();	
+						    	session.setAttribute("nombre", nombre);
+						    	response.sendRedirect("menuAfiliado.jsp");				
+		    				}
+		    			}
 					} else {
 				    	String msg = "ERROR: Usuario o Contraseña invalido.";
 				    	session.setAttribute("usu", usu);

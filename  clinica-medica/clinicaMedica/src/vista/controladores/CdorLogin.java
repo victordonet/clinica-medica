@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 
 import javax.swing.JOptionPane;
 
-import logica.fachada.ProxyFachadaLogica;
+import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataUsu;
 import vista.ventanas.FrmLogin;
 import excepciones.LogicaException;

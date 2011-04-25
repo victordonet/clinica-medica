@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import logica.fachada.ProxyFachadaLogica;
+import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataAdmin;
 
 public class ModeloTablaListAdmin extends AbstractTableModel {

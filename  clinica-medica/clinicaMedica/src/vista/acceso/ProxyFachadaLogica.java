@@ -1,4 +1,4 @@
-package logica.fachada;
+package vista.acceso;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import logica.Configuracion;
 import logica.Medico;
+import logica.fachada.IfachadaLogica;
 import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
@@ -246,8 +247,11 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public DataMed getDataMed(String id)  throws PersistenciaException, RemoteException {
  		return fachada.getDataMed(id);
  	}
-	public void modifConsultasMedFuturas(String idMed) throws PersistenciaException, RemoteException {
+	
+	public void modifConsultasMedFuturas(String idMed)
+			throws PersistenciaException, RemoteException {
 		fachada.modifConsultasMedFuturas(idMed);
+			
 	}
 	
 	//TIPO DE EXAMEN
@@ -273,9 +277,6 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
 		return fachada.listarConsFecha(fecha);
-	}
-	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
-		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
 	}
 	public void elimConsulta(String idAfi)	throws PersistenciaException, RemoteException {
 		fachada.elimConsulta(idAfi);

@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Vector;
 
 import logica.fachada.IfachadaLogica;
-import logica.fachada.ProxyFachadaLogica;
+import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
 

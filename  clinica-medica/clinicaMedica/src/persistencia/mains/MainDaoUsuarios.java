@@ -1,7 +1,7 @@
 package persistencia.mains;
 
 import logica.fachada.IfachadaLogica;
-import logica.fachada.ProxyFachadaLogica;
+import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataUsuario;
 
 public class MainDaoUsuarios {

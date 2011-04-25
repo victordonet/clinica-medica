@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import vista.controladores.CdorListadoConsultasMed;
 import vista.controladores.ModeloTablaListadoConsultasMed;
 
-public class FrmListadoConsultasM extends JFrame{
+public class FrmListadoConsultasMed extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private PanelConImagen jContentPane = null;
@@ -30,7 +30,7 @@ public class FrmListadoConsultasM extends JFrame{
 	 * This is the default constructor
 	 * @throws Throwable
 	 */
-	public FrmListadoConsultasM(CdorListadoConsultasMed cdorListadoConsultasMed)throws Throwable {
+	public FrmListadoConsultasMed(CdorListadoConsultasMed cdorListadoConsultasMed)throws Throwable {
 		cdor = cdorListadoConsultasMed;
 		initialize();
 	}

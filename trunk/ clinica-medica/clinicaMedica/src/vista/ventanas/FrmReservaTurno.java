@@ -178,6 +178,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jComboBox1 = new JComboBox(cdor.cargarEsp());
 			jComboBox1.setBounds(new Rectangle(226, 101, 180, 19));
 			jComboBox1.setBackground(Color.WHITE);
+			jComboBox1.setSelectedIndex(1);
 			jComboBox1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					jComboBox2.setModel(cdor.cargarMed(jComboBox1.getSelectedIndex()));
@@ -198,8 +199,10 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jComboBox2 = new JComboBox();
 			jComboBox2.setBounds(new Rectangle(226, 130, 180, 19));
 			jComboBox2.setBackground(Color.WHITE);
+			jComboBox2.setModel(cdor.cargarMed(jComboBox1.getSelectedIndex()));
 			jComboBox2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
+					
 					ModeloTablaListConsDisp modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
 					getJTable1().setVisible(true);
 					getJTable1().setModel(modelo);

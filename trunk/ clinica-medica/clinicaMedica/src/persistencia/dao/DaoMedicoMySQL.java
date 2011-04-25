@@ -248,11 +248,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			String nombre = medicos.get(i).getNombre();
 			String apellido = medicos.get(i).getApellido();
 			DataCantConsu dataCantCons = new DataCantConsu(id, nombre, apellido, cant);
-			if(medicoPremiado.getCantConsultas()==dataCantCons.getCantConsultas()){
-				vMedPremiado.add(medicoPremiado);
+			if(medicoPremiado.getCantConsultas()==dataCantCons.getCantConsultas()&&cant!=0){
+				vMedPremiado.add(dataCantCons);
+				medicoPremiado = dataCantCons; 
 			}else{
 				if(medicoPremiado.getCantConsultas()<dataCantCons.getCantConsultas()){
-					//vMedPremiado = null;
+					vMedPremiado = new Vector<DataCantConsu>();
 					medicoPremiado=dataCantCons;
 					vMedPremiado.add(medicoPremiado);
 				}

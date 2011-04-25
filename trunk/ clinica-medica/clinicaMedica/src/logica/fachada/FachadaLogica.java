@@ -1494,7 +1494,6 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoTC.elimConsultaAfi(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-			notificarMenuGA();
 			notificarReservaTurno();
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);

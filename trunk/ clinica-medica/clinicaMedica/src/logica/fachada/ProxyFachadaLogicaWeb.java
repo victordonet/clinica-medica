@@ -177,8 +177,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public int getCantidadConsultas(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
 		return fachada.getCantidadConsultas(fDesde, fHasta, idMed);
 	}
-	public void altaConsultaProxMes(DataConsulta cons, String idMed) throws PersistenciaException, RemoteException {
-		fachada.altaConsultaProxMes(cons, idMed);
+	public void altaConsultaProxMes() throws PersistenciaException, RemoteException {
+		fachada.altaConsultaProxMes();
 	}
 	public Vector<VoTurnosDisp> listarConsultasDisp(String idMed) throws PersistenciaException, RemoteException {
 		return fachada.listarConsultasDisp(idMed);
@@ -195,10 +195,10 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	
 	//DISPONIBILIDAD
 	public void modificarDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException {
-		fachada.modificarDisponibilidad(dataDsip, null);
+		fachada.modificarDisponibilidad(dataDsip, idMed);
 	}
 	public void eliminarDisponibilidad(String idMed) throws PersistenciaException, RemoteException {
-		fachada.eliminarDisponibilidad(null);
+		fachada.eliminarDisponibilidad(idMed);
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException{
 		return fachada.obetnerDispoDiaHora();
@@ -274,7 +274,13 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
  	public DataMed getDataMed(String id)  throws PersistenciaException, RemoteException {
  		return fachada.getDataMed(id);
  	}
- 	
+	
+	public void modifConsultasMedFuturas(String idMed)
+			throws PersistenciaException, RemoteException {
+		fachada.modifConsultasMedFuturas(idMed);
+			
+	}
+	
 	//TIPO DE EXAMEN
 	public void agregar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
 		fachada.agregar(tex);
@@ -316,7 +322,7 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
 		return fachada.getTipo(idUsuario);
 	}
-	
+
 	//CONSULTORIOS
 	public boolean validarConsultorio(int id) throws PersistenciaException,RemoteException {
 		return fachada.validarConsultorio(id);
@@ -330,4 +336,6 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
 	}
+
+
 }

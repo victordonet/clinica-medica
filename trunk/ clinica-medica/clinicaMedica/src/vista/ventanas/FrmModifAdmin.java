@@ -144,6 +144,18 @@ public class FrmModifAdmin extends JFrame {
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(222, 178, 292, 19));
 			jTextField2.setText(cdor.getDatos().getNombre());
+			jTextField2.addKeyListener(new KeyAdapter()
+			{
+			   public void keyTyped(KeyEvent e)
+			   {
+				  //Controlar el largo del text
+			      String s = jTextField2.getText();
+			      int n=s.length();
+			      if(n >= 20){
+			    	  e.consume();  // ignorar el evento de teclado
+			      }
+			   }
+			});
 		}
 		return jTextField2;
 	}

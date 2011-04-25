@@ -276,16 +276,7 @@ public class FrmModifAfiliado extends JFrame{
 			{
 			   public void keyTyped(KeyEvent e)
 			   {
-				   // Verificar si la tecla pulsada no es un digito
-				   char caracter = e.getKeyChar();
-				   if(((caracter < '0') ||
-						   (caracter > '9')) &&
-						   (caracter != KeyEvent.VK_BACK_SPACE))
-				   {
-					   e.consume();  // ignorar el evento de teclado
-				   }
-
-			      //Controlar el largo del text
+				  //Controlar el largo del text
 			      String s = jTextField4.getText();
 			      int n=s.length();
 			      if(n >= 50){
@@ -314,7 +305,7 @@ public class FrmModifAfiliado extends JFrame{
 			      //Controlar el largo del text
 			      String s = jTextField5.getText();
 			      int n=s.length();
-			      if(n >= 20){
+			      if(n >= 50){
 			    	  e.consume();  // ignorar el evento de teclado
 			      }
 			   }

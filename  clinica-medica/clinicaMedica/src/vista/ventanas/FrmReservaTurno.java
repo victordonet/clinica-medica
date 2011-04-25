@@ -41,6 +41,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	private JScrollPane jScrollPane = null;
 	private JTable jTable1 = null;
 	private CdorReservaTurno cdor;
+	ModeloTablaListConsDisp modelo=null;
 	
 	/**
 	 * This is the default constructor
@@ -154,7 +155,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getJTextField2() {
-		if (jTextField2 == null) {
+	
 			jTextField2 = new JTextField();
 			jTextField2.setBounds(new Rectangle(225, 306, 34, 19));
 			jTextField2.setEditable(false);
@@ -164,7 +165,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			}else{
 				jTextField2.setText("N");
 			}
-		}
+	
 		return jTextField2;
 	}
 
@@ -174,7 +175,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getJComboBox1() {
-		if (jComboBox1 == null) {
+		
 			jComboBox1 = new JComboBox(cdor.cargarEsp());
 			jComboBox1.setBounds(new Rectangle(226, 101, 180, 19));
 			jComboBox1.setBackground(Color.WHITE);
@@ -185,7 +186,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 					getJTable1().setVisible(false);
 				}
 			});
-		}
+		
 		return jComboBox1;
 	}
 
@@ -195,7 +196,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getJComboBox2() {
-		if (jComboBox2 == null) {
+	
 			jComboBox2 = new JComboBox();
 			jComboBox2.setBounds(new Rectangle(226, 130, 180, 19));
 			jComboBox2.setBackground(Color.WHITE);
@@ -203,7 +204,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 			jComboBox2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					
-					ModeloTablaListConsDisp modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
+					modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
 					getJTable1().setVisible(true);
 					getJTable1().setModel(modelo);
 					getJTable1().setSelectionMode(0);
@@ -211,7 +212,7 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 					selectionModel.setSelectionInterval(0, 0);
 				}
 			});
-		}
+		
 		return jComboBox2;
 	}
 
@@ -235,10 +236,11 @@ public class FrmReservaTurno extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JTable
 	 */
 	private JTable getJTable1() {
-		if (jTable1 == null) {
-			jTable1 = new JTable();
+	
+			modelo = cdor.listarConsultasDisp(jComboBox2.getSelectedIndex());
+			jTable1 = new JTable(modelo);
 			jTable1.setBounds(new Rectangle(149, 165, 346, 127));
-		}
+
 		return jTable1;
 	}
 	

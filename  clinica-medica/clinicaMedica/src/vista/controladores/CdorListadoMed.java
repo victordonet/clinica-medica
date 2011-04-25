@@ -2,6 +2,8 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
+
 import vista.ventanas.FrmListadoMedicos;
 import excepciones.PersistenciaException;
 
@@ -27,7 +29,8 @@ public class CdorListadoMed extends CdorManejoVentanas {
 		try {
 			ventana = new FrmListadoMedicos(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");
+		
 		}
 	}
 
@@ -55,9 +58,11 @@ public class CdorListadoMed extends CdorManejoVentanas {
 		try {
 			modelo = new ModeloTablaListMed(super.getMod().listarMedicos());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+	
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			
 		}
 		return modelo;
 	}

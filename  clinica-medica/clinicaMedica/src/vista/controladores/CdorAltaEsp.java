@@ -26,11 +26,12 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
+		
 
 		}catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null,"El campo Codigo y monto no pueden estar vacios ");

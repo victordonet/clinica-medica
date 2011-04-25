@@ -54,9 +54,11 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 		try {
 			datosMed = super.getMod().getDataMed(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 		return datosMed;
 	}
@@ -66,9 +68,11 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 		try {
 			descEsp = super.getMod().obtenerEspecialidad(this.getDatos().getEsp()).getDescripcion();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 		return descEsp;
 	}
@@ -78,11 +82,11 @@ public class CdorBajaMedico extends CdorManejoVentanas {
 			super.getMod().bajarMedico(id);
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
 		}
 	}
 	

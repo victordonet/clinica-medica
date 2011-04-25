@@ -1,6 +1,11 @@
 package vista.controladores;
 
+import java.rmi.RemoteException;
 import java.util.Calendar;
+
+import javax.swing.JOptionPane;
+
+import excepciones.PersistenciaException;
 
 import vista.ventanas.FrmFiltroListadoPorFecha;
 
@@ -16,8 +21,12 @@ public class CdorFiltroListFecha extends CdorManejoVentanas {
 		try {
 			ventana = new FrmFiltroListadoPorFecha(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");
+		
 		}
+	
+	
+	
 	}
 
 	public void actionListar(Calendar fecha){

@@ -312,6 +312,18 @@ public class FrmAltaAfiliado extends JFrame{
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			jTextField5.setBounds(new Rectangle(243, 191, 282, 19));
+			jTextField5.addKeyListener(new KeyAdapter()
+			{
+				   public void keyTyped(KeyEvent e)
+				   {
+					  //Controlar el largo del text
+				      String s = jTextField5.getText();
+				      int n=s.length();
+				      if(n >= 50){
+				    	  e.consume();  // ignorar el evento de teclado
+				      }
+				   }
+				});
 		}
 		return jTextField5;
 	}

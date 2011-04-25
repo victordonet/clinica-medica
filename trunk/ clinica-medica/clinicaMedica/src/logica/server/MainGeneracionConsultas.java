@@ -15,12 +15,39 @@ public class MainGeneracionConsultas {
 
 	public static void main(String[] args) {
 		
-		Calendar fecha = Calendar.getInstance();
+		
+	
+//		TimerTask tarea = new TimerTask() {
+//			public void run() {
+//				try {
+//					int ultimoDia = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+//					int hoy = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+//					if (hoy == ultimoDia){
+//					FachadaLogica.getInstance().altaConsultaProxMes();
+//					}
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (PersistenciaException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} catch (LogicaException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		};
+//		Timer temporizador = new Timer();
+//		temporizador.schedule(tarea, 24*60*60*1000);
 		
 		TimerTask tarea = new TimerTask() {
 			public void run() {
 				try {
+					//int ultimoDia = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
+					//int hoy = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+					//if (hoy == ultimoDia){
 					FachadaLogica.getInstance().altaConsultaProxMes();
+					//}
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -34,8 +61,7 @@ public class MainGeneracionConsultas {
 			}
 		};
 		Timer temporizador = new Timer();
-		temporizador.schedule(tarea,fecha.getTimeInMillis());
-		
+		temporizador.schedule(tarea, 60*1000, 24*60*60*1000);
 
 	    }  
 }

@@ -21,7 +21,7 @@ import vista.controladores.ModeloTablaListConsultas;
 public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 
 	private static final long serialVersionUID = 1L;
-	private JFrame frm = new JFrame();
+	private JFrame frm = new JFrame();  //  @jve:decl-index=0:visual-constraint="-18,58"
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
 	private ModeloTablaListConsultas modelo = null;
@@ -90,7 +90,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable 
 	 */
 	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
-		if (jContentPane == null) {
+	
 			jLabel = new JLabel();
 			jLabel.setBounds(new Rectangle(35, 18, 210, 24));
 			jLabel.setForeground(new java.awt.Color(118,144,201));
@@ -109,12 +109,12 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 			jContentPane.add(getJButton6(), null);
 			jContentPane.add(getJButton7(), null);
 			jContentPane.add(getJScrollPane(), null);
-		}
+	
 		return jContentPane;
 	}
 
 	public void update() throws RemoteException {
-		JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
+		
 		try {
 			initialize();
 		} catch (ClassNotFoundException e) {
@@ -281,11 +281,11 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JScrollPane	
 	 */
 	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
+	
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(90, 440, 245, 155));
 			jScrollPane.setViewportView(getJTable());
-		}
+	
 		return jScrollPane;
 	}
 
@@ -301,4 +301,4 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	
 		return jTable;
 	}
-}  //  @jve:decl-index=0:visual-constraint="476,14"
+} 

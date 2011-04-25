@@ -112,7 +112,7 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	}
 
 	public void update() throws RemoteException {
-		JOptionPane.showMessageDialog(null,"Update del Observer FrmListado");
+		
 		try {
 			initialize();
 		} catch (ClassNotFoundException e) {

@@ -20,8 +20,10 @@ public class CdorMenuMed extends CdorManejoVentanas {
 		}
 	}
 
-	public void actionListadoConsutlas(){	
-		this.cambioVentana(this, new CdorFiltroListFecha());
+	public void actionListadoConsutlas(){
+		CdorFiltroListFechas cdorFiltroFechas = new CdorFiltroListFechas();
+		cdorFiltroFechas.setVentanaVoy(new CdorListadoConsultasMed());
+		this.cambioVentana(this, cdorFiltroFechas); 
 	}
 	
 	public void actionModifPass(){	

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import vista.dataobjet.DataEsp;
 import vista.dataobjet.DataMed;
@@ -57,9 +58,9 @@ public class CdorModifMedico extends CdorManejoVentanas {
 		try {
 			datosMed = super.getMod().getDataMed(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return datosMed;
 	}
@@ -72,9 +73,9 @@ public class CdorModifMedico extends CdorManejoVentanas {
 				boxModEsp.addElement(vEsp.get(i).getDescripcion());
 			}
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return boxModEsp;
 	}
@@ -95,9 +96,9 @@ public class CdorModifMedico extends CdorManejoVentanas {
 			super.getMod().modifMedico(id, nom, apell, ci, tel, esp, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 }

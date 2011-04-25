@@ -3,6 +3,8 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataExamen;
 import vista.ventanas.FrmSelecExamen;
 import excepciones.PersistenciaException;
@@ -31,7 +33,7 @@ public class CdorSelectExam extends CdorManejoVentanas {
 		try {
 			ventana = new FrmSelecExamen(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -60,9 +62,9 @@ public class CdorSelectExam extends CdorManejoVentanas {
 			vEx = super.getMod().listarExPend(super.getId());
 			modelo = new ModeloTablaListExam(vEx);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}

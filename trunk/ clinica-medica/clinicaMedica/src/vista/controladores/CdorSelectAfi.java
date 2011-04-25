@@ -3,6 +3,8 @@ package vista.controladores;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmSelecAfiliado;
 import excepciones.PersistenciaException;
@@ -31,7 +33,7 @@ public class CdorSelectAfi extends CdorManejoVentanas {
 		try {
 			ventana = new FrmSelecAfiliado(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -60,9 +62,9 @@ public class CdorSelectAfi extends CdorManejoVentanas {
 			vAfi = super.getMod().listarAfiliados();
 			modelo = new ModeloTablaListAfil(vAfi);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}

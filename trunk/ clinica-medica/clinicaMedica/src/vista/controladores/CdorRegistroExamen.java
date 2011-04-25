@@ -62,11 +62,9 @@ public class CdorRegistroExamen extends CdorManejoVentanas {
 				boxMod.addElement(vTex.get(i).getNombre());
 			}
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
 		}
 		
 		return boxMod;
@@ -78,11 +76,9 @@ public class CdorRegistroExamen extends CdorManejoVentanas {
 			String idAfil =  super.getId();
 			resultado = super.getMod().cobraTicket(idAfil);
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return resultado;
 	}
@@ -97,11 +93,9 @@ public class CdorRegistroExamen extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
 		}
 	}
 }

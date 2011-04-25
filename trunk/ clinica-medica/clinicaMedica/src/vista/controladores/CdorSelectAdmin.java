@@ -50,7 +50,7 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 		try {
 			ventana = new FrmSelecAdmin(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -85,14 +85,10 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 			vAdmin = super.getMod().listarAdmin();
 			System.out.println(vAdmin.toString());
 			modelo = new ModeloTablaListAdmin(vAdmin);
-			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			
-			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 

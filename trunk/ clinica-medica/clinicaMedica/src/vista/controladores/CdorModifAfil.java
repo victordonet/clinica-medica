@@ -2,6 +2,8 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataAfiliado;
 import vista.ventanas.FrmModifAfiliado;
 import excepciones.PersistenciaException;
@@ -52,9 +54,9 @@ public class CdorModifAfil extends CdorManejoVentanas {
 		try {
 			datosAfi = super.getMod().getAfiliado(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return datosAfi;
 	}
@@ -64,9 +66,9 @@ public class CdorModifAfil extends CdorManejoVentanas {
 			super.getMod().modifAfil(idAfil, nom, apel, ci, mail, dir, tel, fonasa, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 }

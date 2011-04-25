@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Vector;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 import vista.dataobjet.DataAdmin;
 import vista.ventanas.FrmModifAdmin;
@@ -56,9 +57,9 @@ public class CdorModifAdmin extends CdorManejoVentanas {
 		try {
 			datosAdm = super.getMod().getAdmin(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return datosAdm;
 	}
@@ -70,9 +71,9 @@ public class CdorModifAdmin extends CdorManejoVentanas {
 			super.getMod().modificarAdmin(id, nom, cargo, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 	

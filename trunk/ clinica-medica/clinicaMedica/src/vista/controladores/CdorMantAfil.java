@@ -1,5 +1,7 @@
 package vista.controladores;
 
+import javax.swing.JOptionPane;
+
 import vista.ventanas.FrmMantAfiliados;
 
 public class CdorMantAfil extends CdorManejoVentanas {
@@ -14,7 +16,7 @@ public class CdorMantAfil extends CdorManejoVentanas {
 		try {
 			ventana = new FrmMantAfiliados(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 

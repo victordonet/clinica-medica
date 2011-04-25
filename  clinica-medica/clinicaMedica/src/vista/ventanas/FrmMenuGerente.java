@@ -42,7 +42,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 */
 	public FrmMenuGerente(CdorMenuGerente control)throws Throwable {
 		cdor = control;
-		modelo = cdor.listarConsultas();
+		
 		initialize();
 	}
 
@@ -295,9 +295,10 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JTable	
 	 */
 	private JTable getJTable() {
-		if (jTable == null) {
-			jTable = new JTable(modelo);
-		}
+			
+		modelo = cdor.listarConsultas();
+		jTable = new JTable(modelo);
+	
 		return jTable;
 	}
 }  //  @jve:decl-index=0:visual-constraint="476,14"

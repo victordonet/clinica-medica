@@ -106,6 +106,7 @@ public class FrmSelecAfiliado extends JFrame {
 		if (jTable1 == null) {
 			modelo = cdor.listarAfi();
 			jTable1 = new JTable(modelo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable1;
 	}

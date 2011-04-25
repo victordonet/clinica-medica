@@ -59,9 +59,10 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn, String idMed) throws PersistenciaException {
 		Vector<VoTurnosDisp> consultas  = new Vector<VoTurnosDisp>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("select fecha, dia, horario, (select count(turno)+1 from consultas co where co.idMedico=c.idMedico and co.fecha=c.fecha and co.idconsultorio=c.idConsultorio and co.horario= c.horario and co.turno>0) as proxTurno, idConsultorio from consultas c where idmedico = ? and fecha>= ? and  turno = 0");
+			PreparedStatement pst = trn.preparedStatement("select fecha, dia, horario, (select count(turno)+1 from consultas co where co.idMedico=c.idMedico and co.fecha=c.fecha and co.idconsultorio=c.idConsultorio and co.horario=c.horario and co.turno>0) as proxTurno, idConsultorio from consultas c where idmedico = ? and fecha>= ? and  turno = 0");
 			pst.setString(1, idMed);
-			Calendar hoy = Calendar.getInstance(); 
+			Calendar hoy = Calendar.getInstance();
+			hoy.setTime(Calendar.getInstance().getTime());
 			Date fechaHoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(2, fechaHoy);
 			ResultSet rst = pst.executeQuery();
@@ -142,7 +143,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 		try {
 			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, CONCAT(m.nombre,' ',m.apellido) as nomMed, c.horario from consultas c, medicos m where turno = 0 and fecha=? and c.idmedico=m.id");
 			Calendar hoy = Calendar.getInstance();
-			java.sql.Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
+			hoy.setTime(Calendar.getInstance().getTime());
+			Date fhoy = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(1, fhoy);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

@@ -136,11 +136,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El afiliado ya existe");
 			}
 				
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
 			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public void modifAfil(String idAfil, String nom, String apel, String ci, String mail, String dir, String tel, boolean fon, String estado) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -155,11 +156,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(1);
@@ -175,11 +177,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				pool.liberarTrn(trn);
 				notificarReservaTurno();
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -188,12 +191,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			resultado = iDaoAfil.listarAfiliados(trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-			trn.finalizarTrn(true);
+		}catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException {
@@ -210,11 +213,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return vosL;
 	}
 	public boolean validarAfil(String idAfil) throws PersistenciaException, RemoteException {
@@ -224,11 +228,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			resultado = iDaoAfil.validarAfil(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public Vector<DataExamen> listarExPend(String idAfil) throws PersistenciaException, RemoteException {
@@ -238,12 +243,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			resultado = iDaoAfil.listarExPend(trn, idAfil);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public DataAfiliado getAfiliado(String idAfil) throws PersistenciaException, RemoteException {
@@ -260,11 +265,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return af;
 	}
 	public boolean cobraTimbre(String idAfil) throws PersistenciaException, RemoteException {
@@ -327,11 +333,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 				}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -346,11 +353,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -359,12 +367,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			resultado = iDaoAdmin.listarAdmin(trn);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException {
@@ -384,8 +392,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+	
 		return vosL;
 	}
 	public boolean validarAdmin(String id) throws PersistenciaException, RemoteException {
@@ -395,11 +404,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			resultado = iDaoAdmin.validarAdmin(trn, id);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException {
@@ -415,16 +425,19 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				pool.liberarTrn(trn);
 				throw new PersistenciaException("El administrativo no existe");
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
-	}
+
+		}
+	
 	public Vector<VoResumCont> listarResContable(Calendar fDesde, Calendar fHasta) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<VoResumCont> resultado = new Vector<VoResumCont>();
-		//busco salarios
+		
+		try {//busco salarios
 		VoResumCont salarios = iDaoM.calcSalarioTotal(trn, fDesde, fHasta);
 		resultado.add(salarios);
 		//busco valor tikets/timbres
@@ -439,6 +452,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		resultado.add(tikets);
 		trn.finalizarTrn(true);
 		pool.liberarTrn(trn);
+		}catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new PersistenciaException(e.getMessage());
+		}
+	
 		return resultado;
 	}
 	public Vector<DataCargo> listarCargos() throws PersistenciaException, RemoteException {
@@ -450,10 +469,14 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 		return resultado;
 	}
@@ -474,8 +497,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return data;
 	}
 	
@@ -488,11 +512,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public void altaConsultaProxMes() throws PersistenciaException, RemoteException {
@@ -526,8 +550,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public void modifConsultasMedFuturas(String idMed)throws PersistenciaException, RemoteException{
 		
@@ -540,11 +565,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public void altaConsulta(DataReservaTurno dataResTurno) throws PersistenciaException, RemoteException {
@@ -577,7 +602,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public void elimConsultasAfil(String idAfil) throws PersistenciaException, RemoteException {
@@ -591,7 +621,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public Vector<DataConsultas> listarConsultas() throws PersistenciaException, RemoteException {
@@ -602,11 +637,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	
@@ -632,7 +667,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			new PersistenciaException(e.getLocalizedMessage());
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public void eliminarDisponibilidad(String idMed) throws PersistenciaException, RemoteException {
@@ -645,7 +685,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			new PersistenciaException(e.getLocalizedMessage());
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public int[][] obetnerDispoDiaHora() throws PersistenciaException, RemoteException {
@@ -806,12 +851,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			}
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
-			} catch (PersistenciaException e) {
-			e.printStackTrace();
+		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	
 		return matriz;
 	}
@@ -1006,8 +1051,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public Vector<DataEsp> listarEspecialidades() throws RemoteException, PersistenciaException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -1017,11 +1063,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
+	
 		return resultado;
 	}
 	public DataEsp obtenerEspecialidad(int idEsp) throws PersistenciaException, RemoteException {
@@ -1032,11 +1079,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return es;
 	}
 	public void bajaEspecialidad(int idEsp) throws RemoteException, PersistenciaException  {
@@ -1054,8 +1101,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	
 	//EXAMENES
@@ -1068,8 +1116,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
+
 	}
 	public int getCantExPagos(Calendar fini,Calendar ffin) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
@@ -1079,11 +1128,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	public int getCantExam(String idAfi) throws PersistenciaException, RemoteException {
@@ -1094,11 +1143,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
+
 		return resultado;
 	}
 	
@@ -1143,7 +1192,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
  	}
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException {
@@ -1167,7 +1221,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
  	}
  	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException {
@@ -1178,10 +1237,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1208,10 +1266,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return med;
  	}
@@ -1223,10 +1280,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return vosL;
  	}
@@ -1240,7 +1296,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1252,10 +1308,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1267,10 +1322,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1282,10 +1336,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1297,10 +1350,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
  	}
@@ -1321,7 +1373,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
  	}
  	public DataMed getDataMed(String id) throws PersistenciaException, RemoteException{
@@ -1332,10 +1384,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
  			trn.finalizarTrn(true);
  			pool.liberarTrn(trn);
  		} catch (PersistenciaException e) {
- 			e.printStackTrace();
- 			trn.finalizarTrn(false);
- 			pool.liberarTrn(trn);
- 			throw e;
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new PersistenciaException(e.getMessage());
  		}
  		return med;
  	}
@@ -1350,7 +1401,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public void modificar(DataTipoExamen tex) throws PersistenciaException, RemoteException {
@@ -1362,7 +1413,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public Vector<DataTipoExamen> listarTipoEx() throws PersistenciaException, RemoteException {
@@ -1373,10 +1424,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1390,10 +1440,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1405,10 +1454,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1420,10 +1468,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1435,10 +1482,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1453,7 +1499,12 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());
 		}
 	}
 	
@@ -1467,7 +1518,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException{
@@ -1480,7 +1531,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1493,7 +1544,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 	}
 	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
@@ -1504,10 +1555,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -1521,7 +1571,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		} catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 
@@ -1541,10 +1591,15 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 				throw new PersistenciaException("El consultorio ya existe");
 			}
 				
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException {
@@ -1559,10 +1614,15 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			else{
 				throw new PersistenciaException("El consultorio no existe");
 			}
-		} catch (PersistenciaException e) {
+		}catch (PersistenciaException e) {
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			e.printStackTrace();
+			throw new PersistenciaException(e.getMessage());
+		}
+		catch (RemoteException e){
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new RemoteException(e.getMessage());	
 		}
 	}
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
@@ -1573,10 +1633,9 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
 			trn.finalizarTrn(false);
 			pool.liberarTrn(trn);
-			throw e;
+			throw new PersistenciaException(e.getMessage());
 		}
 		return resultado;
 	}

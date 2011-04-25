@@ -270,7 +270,9 @@ public class FrmListadoAfiliados extends JFrame{
 	 */
 	private JTable getJTable1() {
 		modelo = cdor.listarAfil();
-	    return jTable1 = new JTable(modelo);
+	    JTable jTable1 = new JTable(modelo);
+	    jTable1.getTableHeader().setReorderingAllowed(false);
+	    return jTable1;
 	}
 	
 	/**

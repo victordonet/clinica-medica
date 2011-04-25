@@ -322,6 +322,7 @@ public class FrmListadoDetalleAfiliado extends JFrame{
 	private JTable getJTable1() {
 		if (jTable1 == null) {
 			jTable1 = new JTable(modelo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable1;
 	}

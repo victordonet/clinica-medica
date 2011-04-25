@@ -117,7 +117,8 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 		try {
 			PreparedStatement pst = trn.preparedStatement("delete from Consultas where idAfiliado = ? and fecha >= ?");
 			pst.setString(1,idAfi);
-			Calendar hoy = Calendar.getInstance(); 
+			Calendar hoy = Calendar.getInstance();
+			hoy.setTime(Calendar.getInstance().getTime());
 			Date dia = new java.sql.Date(hoy.getTimeInMillis());
 			pst.setDate(2, dia);
 			pst.executeUpdate();

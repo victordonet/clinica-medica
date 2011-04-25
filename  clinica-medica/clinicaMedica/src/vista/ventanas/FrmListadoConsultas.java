@@ -108,7 +108,7 @@ public class FrmListadoConsultas extends JFrame{
 		if (jTable1 == null) {
 			modelo = cdor.listarConsultas();
 			jTable1 = new JTable(modelo);
-			
+			jTable1.getTableHeader().setReorderingAllowed(false);
 			
 
 		}

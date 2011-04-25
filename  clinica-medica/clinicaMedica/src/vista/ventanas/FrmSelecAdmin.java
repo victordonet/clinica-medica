@@ -17,7 +17,7 @@ import logica.observer.IObserver;
 import vista.controladores.CdorSelectAdmin;
 import vista.controladores.ModeloTablaListAdmin;
 
-public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
+public class FrmSelecAdmin{
 
 	private static final long serialVersionUID = 1L;
 	private JFrame frm = new JFrame();
@@ -46,7 +46,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 	 * @throws Throwable
 	 * @throws ClassNotFoundException
 	 */
-	private void initialize() throws ClassNotFoundException, Throwable {
+	private void initialize() {
 		frm.setSize(new java.awt.Dimension(611,413));
 		frm.setIconImage(Toolkit.getDefaultToolkit().getImage("./fondos/miniLogo.gif"));
 		frm.setResizable(false);
@@ -68,7 +68,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 	 * @throws ClassNotFoundException
 	 * @throws Throwable
 	 */
-	private PanelConImagen getJContentPane() throws Throwable, ClassNotFoundException {
+	private PanelConImagen getJContentPane()  {
 		if (jContentPane == null) {
 			jLabel = new JLabel();
 			jLabel.setBounds(new Rectangle(177, 15, 239, 24));
@@ -88,20 +88,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 			
 	}
 
-	public void update() throws RemoteException {
-		//JOptionPane.showMessageDialog(null,"Update del Observer FrmListado NUEVO");
-		try {
-			//cdor.listarEspecialidades();
-			//frm.setVisible(false);
-			//this.modelo = cdor.listarAdmin();
-			initialize();
-			//new FrmListadoEspecialidades(cdor.listarEspecialidades(), cdor);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	public JFrame getVentana(){
 		return frm;
@@ -152,6 +139,7 @@ public class FrmSelecAdmin extends UnicastRemoteObject implements IObserver{
 		if (jTable == null) {
 			modelo = cdor.listarAdmin();
 			jTable = new JTable(modelo);
+			jTable.getTableHeader().setReorderingAllowed(false);
 		}
 		return jTable;
 	}

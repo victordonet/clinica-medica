@@ -217,6 +217,7 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 			jTable1.setCellSelectionEnabled(true);
 			DibujoDisp miDibujo = new DibujoDisp();
 			jTable1.setDefaultRenderer(Boolean.class, miDibujo);
+			jTable1.getTableHeader().setReorderingAllowed(false);
 		return jTable1;
 	}
 

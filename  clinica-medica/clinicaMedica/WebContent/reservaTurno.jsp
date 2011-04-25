@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.List" %>
+
 <html>
 
 <head>
@@ -5,31 +7,38 @@
 <script language="javascript" type="text/javascript" src="funciones.js"></script>
 <title>Reserva de Turno</title>
 
-<SCRIPT LANGUAGE="Javascript">
- function Permut (flag,img) {
-    if (document.images) {
-         if (document.images[img].permloaded) {
-             if (flag==1) document.images[img].src = document.images[img].perm.src
-             else document.images[img].src = document.images[img].perm.oldsrc
-         }
-    }
- }
- function preloadPermut (img,adresse) {
-    if (document.images) {
-         img.onload = null;
-         img.perm = new Image ();
-         img.perm.oldsrc = img.src;
-         img.perm.src = adresse;
-         img.permloaded = true;
-    }
- }
-</SCRIPT>
-
 </head>
+
+<%
+String usu = (String) session.getValue("usu");
+String nombre = (String) session.getValue("nombre");
+String timbre = (String) session.getValue("timbre");
+List listIdEsp = (List) session.getValue("listIdEsp");
+List listNomEsp = (List) session.getValue("listNomEsp");
+List listIdMed = (List) session.getValue("listMed");
+List listNomMed = (List) session.getValue("listNomMed");
+List consultasDisp = (List) session.getValue("listConsultas");
+%>
+
+<script>  
+function cargoIdEsp(especialidad) {
+	document.getElementById("idEsp").value=especialidad;
+}
+function cargoIdMed(medico) {
+	document.getElementById("idMed").value=medico;
+}
+function cargaConsulta(i) {
+	document.getElementById("fecha").value=<%=fechas.get(i)%>;
+	document.getElementById("dia").value=<%=dias.get(i)%>;
+	document.getElementById("horario").value=<%=horarios.get(i)%>;
+	document.getElementById("consultorio").value=<%=consultorios.get(i)%>;
+	document.getElementById("turno").value=<%=turnos.get(i)%>;
+}
+</script>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
 <body class="Base" background="imagenes/fondoGrl.jpg">
-<form name="form1" method="post" action="menuAfiliado.jsp">
+<form name="form1" method="post" action="aplicarReserva.jsp">
 <center>
 
 <table align="center" width="99%">
@@ -40,7 +49,7 @@
     <td width="8%" height="28">&nbsp;</td>
 </tr>
 <tr valign="Middle" height="100%">
-    <td width="31%" height="39" valign="bottom"><font color="#FFFFFF">Bienvenido! FULANITO DE TAL</font></td>
+    <td width="31%" height="39" valign="bottom"><font color="#FFFFFF">Bienvenido! <%=nombre%></font></td>
     <td width="46%" height="39">&nbsp;</td>
     <td width="15%" height="39">&nbsp;</td>
     <td width="8%" height="39" align="right" valign="bottom"><font color="#FFFFFF">cerrar sesi&oacute;n</font></td>
@@ -72,44 +81,66 @@
 <table width="100%">
         	<tr>
             	<td width="18%" height="20">Nro.Afiliado</td>
-           	  <td width="82%" height="20"><input type="text" name="Afiliado" size="15" disabled></td>
+           	  <td width="82%" height="20"><input type="text" name="afiliado" size="15" value="<%=usu%>" disabled></td>
           </tr>
         	<tr>
             	<td height="20">Especialidad</td>
-            	<td height="20"><input type="text" name="Especialidad"></td>
+            	<td height="20">
+                    <select name="especialidad" onChange="listarMed.jsp">
+                    <%for (int i = 0; i < listIdEsp.size(); i++) {%>
+                        <option value="<%=listIdEsp.get(i)%>" onClick="cargoIdEsp(this.value)"><%=listNomEsp.get(i)%></option>
+                    <%}%>
+                    </select>
+                    <!--input type="hidden" name="idEsp"-->
+                    <input type="text" name="idEsp" disabled>
+                </td>
             </tr>
         	<tr>
             	<td height="20">Médico</td>
-            	<td height="20"><input type="text" name="Medico"></td>
+            	<td height="20">
+                    <select name="medico" onFocus="" onChange="listarConsultas.jsp">
+						<%for (int i = 0; i < listIdMed.size(); i++) {%>
+                            <option value="<%=listIdMed.get(i)%>" onClick="cargoIdMed(this.value)"><%=listNomMed.get(i)%></option>
+                        <%}%>
+                    </select>
+                    <!--input type="hidden" name="idMed"-->
+                    <input type="text" name="idMed" disabled>
+                </td>
             </tr>
         	<tr>
             	<td height="20" valign="top">Consulta</td>
             	<td height="20" valign="top">
                     <table width="100%" border="1" bordercolor="#666666" class="BaseTablas">
                         <tr bgcolor="#999999" align="center" bordercolor="#666666">
-                            <td height="20">Campo1</td>
-                            <td height="20">Campo2</td>
-                            <td height="20">Campo3</td>
-                            <td height="20">Campo4</td>
-                        </tr>
-                        <tr bordercolor="#666666">
-                            <td height="69"></td>
-                            <td height="69"></td>
-                            <td height="69"></td>
-                            <td height="69"></td>
+                          <td width="21%">Fecha</td>
+                          <td width="22%">Dia</td>
+                          <td width="24%">Horario</td>
+                          <td width="22%">Consultorio</td>
+                          <td width="11%">Turno</td>
                       </tr>
+                      <%for (int i = 0; i < consultasDisp.size(); i++) {%>
+                       <tr bordercolor="#666666" onClick="cargaConsulta(<%=i%>)">
+                            <td width="21%"><%=fechas.get(i)%></td>
+                          	<td width="22%"><%=dias.get(i)%></td>
+                            <td width="24%"><%=horarios.get(i)%></td>
+                            <td width="22%"><%=consultorios.get(i)%></td>
+                            <td width="11%"><%=turnos.get(i)%></td>
+                      </tr>
+                      <%}%>
                     </table>
-                </td>
-            </tr>
-        	<tr>
-            	<td height="20">Nro. Turno</td>
-            	<td height="20"><input type="text" name="Turno" size="5" disabled></td>
+				</td>
             </tr>
         	<tr>
             	<td height="20">Cobra Timbre?</td>
-            	<td height="20"><input type="text" name="Timbre" size="5" disabled></td>
+           	  <td height="20"><input type="text" name="turno" size="5" value="<%=timbre%>" disabled>
+            </td>
             </tr>
 		</table>
+        <input type="text" name="fecha" disabled>
+        <input type="text" name="dia" disabled>
+        <input type="text" name="horario" disabled>
+        <input type="text" name="consultorio" disabled>
+        <input type="text" name="turno" disabled>
     </td>
     <td>&nbsp;</td>
     <td width="8%" height="238">&nbsp;</td>

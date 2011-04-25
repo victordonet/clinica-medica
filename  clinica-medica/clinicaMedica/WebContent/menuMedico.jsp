@@ -27,6 +27,10 @@
 
 </head>
 
+<%
+String nombre = (String) session.getValue("nombre");
+%>
+
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
 <body class="Base" background="imagenes/menuMedico.jpg">
 <form name="form1" method="post" action="listadoConsultas.jsp">
@@ -39,7 +43,7 @@
     <td width="11%" height="22">&nbsp;</td>
 </tr>
 <tr valign="Middle" height="100%">
-    <td width="43%" height="45" valign="bottom"><font color="#FFFFFF">Bienvenido! Dr. FULANITO DE TAL</font></td>
+    <td width="43%" height="45" valign="bottom"><font color="#FFFFFF">Bienvenido! <%=nombre%></font></td>
     <td width="46%" height="45">&nbsp;</td>
     <td width="11%" height="45" align="right" valign="bottom"><font color="#FFFFFF">cerrar sesi&oacute;n</font></td>
 </tr>
@@ -50,7 +54,7 @@
 </tr>
 <tr height="100%">
     <td width="43%" height="53">&nbsp;</td>
-    <td valign="top"><input type="button" name="Listado" value="Listado de Consultas" style="height:50px; width:200px" onclick="window.location='listadoConsultas.jsp'"></td>
+    <td valign="top"><input type="button" name="Listado" value="Listado de Consultas" style="height:50px; width:200px" onClick="window.location='listadoConsultasMed.jsp'"></td>
     <td width="11%" height="53">&nbsp;</td>
 </tr>
 <tr height="100%">

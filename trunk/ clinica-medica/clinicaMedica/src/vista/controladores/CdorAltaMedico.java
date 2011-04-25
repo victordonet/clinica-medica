@@ -32,11 +32,11 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
 		}
 	}
 	
@@ -48,13 +48,12 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 				boxMod.addElement(especialidad.getDescripcion());
 			}
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
 		}
-		
 		return boxMod;
 	}
 	

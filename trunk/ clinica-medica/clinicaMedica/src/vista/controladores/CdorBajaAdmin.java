@@ -55,9 +55,11 @@ public class CdorBajaAdmin extends CdorManejoVentanas {
 		try {
 			datosAdm = super.getMod().getAdmin(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 		return datosAdm;
 	}
@@ -76,11 +78,11 @@ public class CdorBajaAdmin extends CdorManejoVentanas {
 			super.getMod().bajaAdmin(id);
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
 		}
 	}
 }

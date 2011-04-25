@@ -41,7 +41,8 @@ public class CdorLiqSalarioMed extends CdorManejoVentanas {
 		try {
 			ventana = new FrmLiqSalarioMed(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");
+		
 		}
 	}
 
@@ -71,11 +72,8 @@ public class CdorLiqSalarioMed extends CdorManejoVentanas {
 			modelo = new ModeloTablaLiqSalarioMed(vSalario);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			
-			e.printStackTrace();
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}

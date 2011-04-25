@@ -62,11 +62,11 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 			actionCerrar();
 			
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+
 		}
 	}
 	

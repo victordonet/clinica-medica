@@ -2,6 +2,8 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
+
 import vista.dataobjet.DataConsultorio;
 import vista.ventanas.FrmAltaConsultorio;
 import excepciones.PersistenciaException;
@@ -54,9 +56,11 @@ public class CdorAltaConsultorio extends CdorManejoVentanas {
 		try {
 			super.getMod().altaConsultorio(dc);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 	}
 }

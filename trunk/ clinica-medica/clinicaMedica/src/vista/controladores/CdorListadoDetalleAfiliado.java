@@ -31,7 +31,8 @@ public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 			modelo = listarConsultas();
 			ventana = new FrmListadoDetalleAfiliado(modelo,this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");
+		
 		}
 	}
 
@@ -50,10 +51,10 @@ public class CdorListadoDetalleAfiliado extends CdorManejoVentanas{
 			modelo = new ModeloTablaListadoConsAfi(vec);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+	
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			
 		}
 		return modelo;
 	}

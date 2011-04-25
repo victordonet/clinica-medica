@@ -54,9 +54,11 @@ public class CdorBajaAfil extends CdorManejoVentanas {
 		try {
 			datosAfi = super.getMod().getAfiliado(super.getId());
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 		return datosAfi;
 	}
@@ -67,11 +69,11 @@ public class CdorBajaAfil extends CdorManejoVentanas {
 			super.getMod().bajaAfil(id);
 			actionCerrar();
 		} catch (RemoteException e) {
-//			JOptionPane.showMessageDialog(null,"Remote Exception");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+		
 		} catch (PersistenciaException e) {
-//			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+
 		}
 	}
 }

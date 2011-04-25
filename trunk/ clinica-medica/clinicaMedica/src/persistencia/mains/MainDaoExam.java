@@ -3,7 +3,7 @@ package persistencia.mains;
 import java.util.Calendar;
 
 import logica.fachada.IfachadaLogica;
-import logica.fachada.ProxyFachadaLogica;
+import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataExamen;
 import vista.dataobjet.DataTipoExamen;
 

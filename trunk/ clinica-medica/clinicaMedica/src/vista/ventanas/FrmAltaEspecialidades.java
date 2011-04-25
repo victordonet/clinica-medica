@@ -147,7 +147,7 @@ public class FrmAltaEspecialidades extends JFrame {
 						  //Controlar el largo del text
 					      String s = jTextField2.getText();
 					      int n=s.length();
-					      if(n >= 50){
+					      if(n >= 40){
 					    	  e.consume();  // ignorar el evento de teclado
 					      }
 					   }
@@ -222,7 +222,7 @@ public class FrmAltaEspecialidades extends JFrame {
 			      //Controlar el largo del text
 			      String s = jTextField.getText();
 			      int n=s.length();
-			      if(n >= 10){
+			      if(n >= 15){
 			    	  e.consume();  // ignorar el evento de teclado
 			      }
 			   }

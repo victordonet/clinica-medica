@@ -24,8 +24,7 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 			ventana = new FrmMenuAdmin(this);
 			super.getMod().addObsMenuGA(ventana);
 		} catch (Throwable e) {
-
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -33,15 +32,11 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 		ModeloTablaListConsultas modelo =null;
 		try {
 			Vector<DataConsultas> vec = super.getMod().listarConsultas();
-			System.out.println(vec.toString());
 			modelo = new ModeloTablaListConsultas(vec);
-			System.out.println(modelo.toString());
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}

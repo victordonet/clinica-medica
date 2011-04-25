@@ -40,7 +40,7 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 			ventana = new FrmReservaTurno(this);
 			super.getMod().addObsReservaTurno(ventana);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -78,9 +78,9 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 				boxModEsp.addElement(vEsp.get(i).getDescripcion());
 			}
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return boxModEsp;
 	}
@@ -94,9 +94,9 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 				boxModMed.addElement(vMEsp.get(i).getNombre()+" "+vMEsp.get(i).getApellido());
 			}
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return boxModMed;
 	}
@@ -108,11 +108,9 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 			vConsultas = super.getMod().listarConsultasDisp(idMed);
 			modelo = new ModeloTablaListConsDisp(vConsultas);
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}
@@ -123,11 +121,9 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 			String idAfil =  super.getUsu().getIdUsu();
 			resultado = super.getMod().cobraTimbre(idAfil);
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return resultado;
 	}
@@ -179,9 +175,9 @@ public class CdorReservaTurno extends CdorManejoVentanas {
 			super.getMod().altaConsulta(dataResTurno);
 			JOptionPane.showMessageDialog(null, "Su reserva ha sido realizada con éxito.");
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		cerrarVentana(this, vino);
 	}

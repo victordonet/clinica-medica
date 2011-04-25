@@ -23,11 +23,9 @@ public class CdorMantDisp extends CdorManejoVentanas {
 			int consu = this.getMod().listarConsultorios().size();
 			modelo = new ModeloTablaDisp(confCelda,datosMed,consu);
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}
@@ -39,7 +37,7 @@ public class CdorMantDisp extends CdorManejoVentanas {
 			ventana = new FrmMantDisp(this);
 			super.getMod().addObsDispMed(ventana);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}				
 	}
 	
@@ -48,7 +46,7 @@ public class CdorMantDisp extends CdorManejoVentanas {
 			super.getMod().remObsDispMed(ventana);
 			ventana.getVentana().dispose();
 		} catch (RemoteException e) {
-			new RemoteException(e.getMessage());
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		}
 		
 	}

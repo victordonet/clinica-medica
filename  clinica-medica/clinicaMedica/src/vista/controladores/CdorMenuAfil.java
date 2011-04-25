@@ -2,6 +2,8 @@ package vista.controladores;
 
 import java.rmi.RemoteException;
 
+import javax.swing.JOptionPane;
+
 import vista.ventanas.FrmMenuAfil;
 import excepciones.PersistenciaException;
 
@@ -17,7 +19,7 @@ public class CdorMenuAfil extends CdorManejoVentanas {
 		try {
 			ventana = new FrmMenuAfil(this);
 		} catch (Throwable e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al admnistrador.");
 		}
 	}
 
@@ -27,9 +29,9 @@ public class CdorMenuAfil extends CdorManejoVentanas {
 			cdor.setdAfil(super.getMod().getAfiliado(super.getUsu().getIdUsu()));
 			this.cambioVentana(this, cdor);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 	

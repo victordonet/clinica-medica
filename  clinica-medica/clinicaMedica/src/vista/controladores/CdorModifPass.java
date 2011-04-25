@@ -86,11 +86,9 @@ public class CdorModifPass extends CdorManejoVentanas {
 				valido = false;
 			}
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
 		}
 		
 		return valido;
@@ -102,9 +100,9 @@ public class CdorModifPass extends CdorManejoVentanas {
 			JOptionPane.showMessageDialog(null,"La contraseña fue cambiada con éxito.");
 			actionCerrar();
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 	}
 }

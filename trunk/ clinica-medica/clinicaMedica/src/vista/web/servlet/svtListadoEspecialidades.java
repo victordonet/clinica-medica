@@ -2,7 +2,6 @@ package vista.web.servlet;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.Calendar;
 import java.util.Vector;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import logica.fachada.IfachadaLogica;
-import vista.dataobjet.DataConsAfi;
 import excepciones.PersistenciaException;
+import logica.fachada.IfachadaLogica;
+import vista.dataobjet.DataEsp;
 
 /**
  * Servlet implementation class svtAltaEspecialidad
  */
-public class svtListadoConsultasAf extends HttpServlet {
+public class svtListadoEspecialidades extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IfachadaLogica mod;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public svtListadoConsultasAf() {
+    public svtListadoEspecialidades() {
         super();
     }
 
@@ -36,24 +35,20 @@ public class svtListadoConsultasAf extends HttpServlet {
     	ServletContext sc = getServletContext();
     	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
     	
-    	String id = (String) sc.getAttribute("usuario");
-    	
-    	Vector<DataConsAfi> listado = new Vector<DataConsAfi>();
-    	Vector<Calendar> fechas = new Vector<Calendar>();
-    	Vector<String> nombres = new Vector<String>();
-    	Vector<String> apellidos = new Vector<String>();
+    	Vector<DataEsp> listadoDataEsp = new Vector<DataEsp>();
+    	Vector<Integer> codigos = new Vector<Integer>();
+    	Vector<String> descripciones = new Vector<String>();
 	    try {
-			listado = mod.listarConsultasAfi(id);
-	    	for (int i = 0; i < listado.size(); i++) {
-	    		DataConsAfi cons = listado.get(i);
-	    		fechas.add(cons.getFecha());
-	    		nombres.add(cons.getNomMed());
-	    		apellidos.add(cons.getApeMed());
+			listadoDataEsp = mod.listarEspecialidades();
+			System.out.println("tamaño="+listadoDataEsp.size());
+	    	for (int i = 0; i < listadoDataEsp.size(); i++) {
+	    		DataEsp esp = listadoDataEsp.get(i);
+	    		codigos.add(esp.getCodigo());
+	    		descripciones.add(esp.getDescripcion());
 	    	}
-    		session.setAttribute("listFechas", fechas);
-    		session.setAttribute("listNombres", nombres);
-    		session.setAttribute("listApellidos", apellidos);
-			response.sendRedirect("listarConsultasAf.jsp");
+    		session.setAttribute("listIdEsp", codigos);
+    		session.setAttribute("listNomEsp", descripciones);
+			response.sendRedirect("reservaTurno.jsp");
 		} catch (PersistenciaException e) {
 			String msg = "ERROR: No se pudo acceder a la información almacenada.";
 			request.setAttribute("msg", msg);

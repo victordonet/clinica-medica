@@ -2,7 +2,7 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
 <title>Nuestra Instituci&oacute;n</title>
 
 <SCRIPT LANGUAGE="Javascript">

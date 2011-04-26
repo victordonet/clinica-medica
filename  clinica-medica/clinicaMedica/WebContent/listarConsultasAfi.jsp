@@ -4,8 +4,8 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
 <title>Listado de Consultas</title>
 </head>
 
@@ -44,7 +44,7 @@ List apellidos = (List) session.getValue("listApellidos");
 				<td width="36%" height="87">
 					<table width="109%" height="51" h>
 						<tr>
-							<td width="27%" height="65" align="right"><a href="menu.jsp"><img
+							<td width="27%" height="65" align="right"><a href="menuAfiliado.jsp"><img
 									src="imagenes/botonMenu.jpg" alt="volver al menú" border="0">
 							</a>
 							</td>
@@ -70,16 +70,16 @@ List apellidos = (List) session.getValue("listApellidos");
 					<table width="100%" border="1" bordercolor="#666666"
 						class="BaseTablas">
 						<tr bgcolor="#999999" align="center" bordercolor="#666666">
-							<td height="20" width="15%">Fecha</td>
-							<td height="20" width="65%">Nombre M&eacute;dico</td>
-							<td height="20" width="20%">Apellido M&eacute;dico</td>
-						</tr>
+							<td height="20" width="21%">Fecha</td>
+						  <td height="20" width="37%">Nombre M&eacute;dico</td>
+						  <td height="20" width="42%">Apellido M&eacute;dico</td>
+					  </tr>
 						<%for (int i = 0; i < fechas.size(); i++) {%>
 						<tr bordercolor="#666666">
-							<td height="20" width="15%"><%=fechas.get(i)%></td>
-							<td height="20" width="65%"><%=nombres.get(i)%></td>
-							<td height="20" width="20%"><%=apellidos.get(i)%></td>
-						</tr>
+							<td height="20" width="21%"><%=fechas.get(i)%></td>
+							<td height="20" width="37%"><%=nombres.get(i)%></td>
+						  <td height="20" width="42%"><%=apellidos.get(i)%></td>
+					  </tr>
 						<%}%>
 					</table></td>
 				<td>&nbsp;</td>

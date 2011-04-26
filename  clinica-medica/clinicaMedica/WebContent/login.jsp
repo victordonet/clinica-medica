@@ -5,8 +5,9 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
+<Script language="JavaScript" type="text/javascript" src="funciones/teclado.js"></Script>
 <title>Ingreso al sistema</title>
 
 <SCRIPT LANGUAGE="Javascript">
@@ -41,7 +42,7 @@ if (msg==null)
 	msg="";
 %>
 
-<body class="Base" background="imagenes/login.jpg" OnLoad="document.form.usuario.focus();">
+<body class="Base" background="imagenes/login.jpg" onLoad="marcador('contenedor','pass','S');">
 
 	<form name="form" method="get" action="ingreso.jsp">
 		<center>
@@ -104,27 +105,44 @@ if (msg==null)
 										</tr>
 										<tr>
 											<td width="190" height="24" align="right">Contraseña:</td>
-											<td width="174" align="right"><input type="password"
-												name="pass"
-												onKeyUp="this.form.passEncript.value = MD5(this.form.pass.value)">
+											<td width="174" align="right"><input type="password" name="pass">
 											</td>
-											<td width="25" align="left"><input type="submit"
-												name="Submit" value=" > ">
+											<td width="25" align="left">
+                                            	<input type="submit" name="Submit" value=" > " onClick="this.form.passEncript.value = MD5(this.form.pass.value)">
 											</td>
 										</tr>
 									</table>
 									<table width="100%">
+                                    	<tr>
+											<td width="191" height="24" align="right" valign="top"><BR>Teclado Virtual:
+                                            <div align="right" class="txtencabezado">
+                                            May&uacute;s<input type="radio" name="Mayus" value="S" id="Mayus_0" checked onClick="marcador('contenedor','pass',this.value);">
+                                            <BR>
+                                            Min&uacute;s<input type="radio" name="Mayus" value="N" id="Mayus_1" onClick="marcador('contenedor','pass',this.value);">
+                                            </div>
+                                            </td>
+											<td width="20">&nbsp;</td>
+											<td width="530">
+                                            <br>
+											<table border="1" bordercolordark="#99CCFF">
+                                                <tr>
+                                                    <td align="center" valign="Top">
+                                                        <div id="contenedor"></div>
+                                                    </td>
+                                                </tr>
+                                              </table>
+                                            </td>
+								  	  </tr>
 										<tr>
-											<td width="190" height="24" align="right"></td>
-											<td width="27">&nbsp;</td>
-											<td><font size="+1" color="#FF9900"><%=msg%></font></td>
-										</tr>
+											<td width="191" height="24" align="right"></td>
+										  <td width="20">&nbsp;</td>
+										  <td width="530"><font size="+1" color="#FF9900"><%=msg%></font></td>
+									  </tr>
 										<tr>
-											<td width="190" height="24" align="right">&nbsp;</td>
-											<td width="27">&nbsp;</td>
-											<td><input type="hidden" name="passEncript" value=""
-												size="55" />
-											</td>
+											<td width="191" height="24" align="right">&nbsp;</td>
+										  <td width="20">&nbsp;</td>
+										  <td><input type="hidden" name="passEncript" value="" size="55" />
+										  </td>
 										</tr>
 									</table></td>
 							</tr>

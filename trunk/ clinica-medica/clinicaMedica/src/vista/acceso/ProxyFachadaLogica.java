@@ -291,6 +291,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException {
 		return fachada.validarUsuario(clave, pass);
 	}
+	public boolean validarUsuarioWeb(String clave,String pass) throws PersistenciaException, RemoteException {
+		return fachada.validarUsuario(clave, pass);
+	}
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
 		fachada.modifContrasena(clave, pass);
 	}

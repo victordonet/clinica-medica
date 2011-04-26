@@ -13,7 +13,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 
 
 	public void altaUsuario(Transaccion trn, DataUsuario usu) throws PersistenciaException {
-		System.out.println("Insertando usuario: "+ usu.getId());
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Usuarios values (?,?,?)");
 			pst.setString(1, usu.getId());
@@ -24,18 +24,16 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
+	//Catcheamos esta exception que se puede lanzar al aplicar el metodo md5 en la password
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error al encriptar clave ");
 		}
 
 	}
 
 	public boolean validarUsuario(String id, String pass, Transaccion trn) throws PersistenciaException {
-		System.out.println("Validando usuario: "+id);
+
 		boolean respuesta = false;
 		int encontre = 0;
 		try {
@@ -51,20 +49,20 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 				respuesta=false;
 			else
 				respuesta=true;
-			System.out.println("Validado: "+respuesta);
+
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
+//Catcheamos esta exception que se puede lanzar al aplicar el metodo md5 en la password			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error al encriptar clave ");
 		}
 		return respuesta;
 	}
 
 	public void modifContrasena(String clave, String pass, Transaccion trn) throws PersistenciaException {
-		System.out.println("Modificando contraseña del usu: "+clave);
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Usuarios set contrasena=? where id=?");
 			String passEncript =this.md5(pass);
@@ -73,13 +71,14 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+
 			throw new PersistenciaException("Error de conexion con la base de datos");
+//Catcheamos esta exception que se puede lanzar al aplicar el metodo md5 en la password
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error al encriptar clave ");
 		}
 	}
-	
+
 	public String md5(String clear) throws Exception {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] b = md.digest(clear.getBytes());
@@ -98,7 +97,7 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 	}
 
 	public String getTipo(Transaccion trn, String idUsuario) throws PersistenciaException {
-		System.out.println("Obteneiendo tipo de usuario: "+idUsuario);
+
 		String tipo = null ;
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select tipo from Usuarios where id=?");
@@ -110,10 +109,10 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
+//Catcheamos esta exception que se puede lanzar al aplicar el metodo md5 en la password
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error al encriptar clave ");
 		}
 		return tipo;	
 	}

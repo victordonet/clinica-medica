@@ -23,7 +23,6 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -43,7 +42,6 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			pst.close();
 			
 		}catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
@@ -57,11 +55,8 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			pst.close();
 	
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void bajaConsultorio(Transaccion trn, int idConsultorio) throws PersistenciaException {
@@ -71,11 +66,8 @@ public class DaoConsultoriosMySQL implements IDaoConsultorios {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public Vector<DataConsultorio> listarConsultorios(Transaccion trn) throws PersistenciaException {

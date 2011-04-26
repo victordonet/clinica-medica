@@ -27,14 +27,12 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return cantidadConsulta;
 	}
 
 	public void altaConsultaProxMes(Transaccion trn, DataConsulta cons, String idMed) throws PersistenciaException {
-		System.out.println("Insertando consulta proximo mes");
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
 			pst.setString(1, idMed);
@@ -49,11 +47,8 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn, String idMed) throws PersistenciaException {
@@ -107,14 +102,13 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return consultas;
 	}
 
 	public void altaConsulta(Transaccion trn, Calendar fecha, String idMed, int dia, String idAfil, int consult, int turno, int horario, boolean timbre) throws PersistenciaException {
-		System.out.println("Insertando nueva consulta para el medico: "+idMed);
+		
 		PreparedStatement pst;
 		try {
 			pst = trn.preparedStatement("insert into Consultas values (?,?,?,?,?,?,?,?)");
@@ -130,15 +124,11 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
-	public Vector<DataConsultas> listarConsultas(Transaccion trn)
-			throws PersistenciaException {
+	public Vector<DataConsultas> listarConsultas(Transaccion trn)throws PersistenciaException {
 		Vector<DataConsultas> consultas  = new Vector<DataConsultas>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("select c.idConsultorio, CONCAT(m.nombre,' ',m.apellido) as nomMed, c.horario from consultas c, medicos m where turno = 0 and fecha=? and c.idmedico=m.id");
@@ -173,7 +163,6 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return consultas;

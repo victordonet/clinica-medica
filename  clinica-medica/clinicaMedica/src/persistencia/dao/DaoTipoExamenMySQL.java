@@ -12,7 +12,7 @@ import excepciones.PersistenciaException;
 public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 
 	public void agregar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
-		System.out.println("Insertando tipo examen: "+ tex.getId());
+		
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into TipoExamenes values (?,?)");
 			pst.setInt(1, tex.getId());
@@ -20,15 +20,12 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
 		}
 	}
 
 	public void modificar(Transaccion trn, DataTipoExamen tex) throws PersistenciaException {
-		System.out.println("Modificando tipo de examen: "+tex.getId());
+		
 		try {
 			PreparedStatement pst = trn.preparedStatement("update TipoExamenes set nombre=? where id=?");
 			pst.setString(1, tex.getNombre());
@@ -36,13 +33,12 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public Vector<DataTipoExamen> listarTipoEx(Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando Tipos de exámenes");
+		
 		Vector<DataTipoExamen> resultado = new Vector<DataTipoExamen>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre from TipoExamenes");
@@ -57,7 +53,6 @@ public class DaoTipoExamenMySQL implements IDaoTipoExamen {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}

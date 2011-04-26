@@ -12,7 +12,6 @@ import excepciones.PersistenciaException;
 public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 
 	public void altaDisponibilidad(Transaccion trn, DataDisp dataDsip) throws PersistenciaException {
-		System.out.println("Insertando disponibilidad del medico en el dao: "+dataDsip.getIdMed());
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Disponibilidad values (?,?,?)");
 			pst.setString(1, dataDsip.getIdMed());
@@ -22,10 +21,7 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			pst.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
 		}
 	}
 	public void eliminarDisponibilidad(Transaccion trn, String idMed) throws PersistenciaException {
@@ -36,7 +32,6 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -58,7 +53,6 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -80,7 +74,6 @@ public class DaoDisponibilidadMySQL implements IDaoDisponibilidad {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}

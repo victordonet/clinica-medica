@@ -28,7 +28,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 
 		} catch (SQLException e) {
-
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 
@@ -45,7 +44,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -60,7 +58,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -87,7 +84,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -107,8 +103,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			rst.close();
 			pst.close();
 			return vosLogin;
-		} catch (SQLException e) {
-		
+		} catch (SQLException e) {		
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}
@@ -130,8 +125,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			}
 			rst.close();
 			pst.close();
-		}catch (SQLException e) {
-		
+		}catch (SQLException e) {		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
@@ -149,8 +143,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.setInt(4, idTex);
 			pst.executeUpdate();
 			pst.close();
-		} catch (SQLException e) {
-		
+		} catch (SQLException e) {		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -188,8 +181,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 			rst.close();
 			return resultado;
-		} catch (SQLException e) {
-		
+		} catch (SQLException e) {		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -209,8 +201,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			rst.close();
 			pst.close();
 			return data;
-		} catch (SQLException e) {
-		
+		} catch (SQLException e) {		
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}

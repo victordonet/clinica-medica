@@ -36,7 +36,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 	
 		} catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -59,7 +58,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 
 		} catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -77,7 +75,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 
 		} catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -112,7 +109,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 			return resultado;
 		} catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -139,7 +135,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		
 
 		}catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
@@ -178,7 +173,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		pst.close();
 		return resultado;
 		} catch (SQLException e) {
-		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -190,8 +184,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		Boolean fonasa = null;
 		DataAfiliado af = null;
 		try {
-		
-
 			PreparedStatement pst = trn.preparedStatement("SELECT U.CONTRASENA, U.TIPO, A.NOMBRE, A.APELLIDO, A.CI, " +
 														"A.MAIL, A.DIRECCION, A.TELEFONO, A.FECHAINGRESO, A.FONASA, A.ESTADO " +
 														"FROM AFILIADOS A, USUARIOS U " +
@@ -214,7 +206,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 			}
 			rst.close();
 			pst.close();
-			//IDaoExamen daoEx = new DaoExamenMySQL();
 			af = new DataAfiliado(idAfil, ci, nombre, apellido, email, direccion, telefono, estado, fechaIng, fonasa);
 		
 
@@ -245,7 +236,6 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 
 			return vosLogin;
 		} catch (SQLException e) {
-			
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}

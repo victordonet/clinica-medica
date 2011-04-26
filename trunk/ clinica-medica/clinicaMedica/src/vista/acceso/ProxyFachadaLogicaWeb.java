@@ -7,7 +7,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -15,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import logica.Medico;
 import logica.fachada.IfachadaLogica;
 import logica.observer.IObserver;
@@ -25,7 +23,6 @@ import vista.dataobjet.DataCantConsu;
 import vista.dataobjet.DataCargo;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;
-import vista.dataobjet.DataConsulta;
 import vista.dataobjet.DataConsultas;
 import vista.dataobjet.DataConsultorio;
 import vista.dataobjet.DataDisp;
@@ -306,6 +303,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
 		return fachada.listarConsFecha(fecha);
 	}
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
+		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
+	}
 	public void elimConsulta(String idAfi)	throws PersistenciaException, RemoteException {
 		fachada.elimConsulta(idAfi);
 	}
@@ -337,14 +337,4 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
 	}
-
-	@Override
-	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde,
-			Calendar fHasta, String idMed) throws PersistenciaException,
-			RemoteException {
-		
-		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
-	}
-
-
 }

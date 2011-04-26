@@ -1545,6 +1545,20 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 		return resultado;
 	}
+	public boolean validarUsuarioWeb(String clave,String pass) throws PersistenciaException, RemoteException{
+		Transaccion trn = pool.obtenerTrn(8);
+		boolean resultado = false;
+		try {
+			resultado = iDaoU.validarUsuarioWeb(clave, pass, trn);
+			trn.finalizarTrn(true);
+			pool.liberarTrn(trn);
+		} catch (PersistenciaException e) {
+			trn.finalizarTrn(false);
+			pool.liberarTrn(trn);
+			throw new PersistenciaException(e.getMessage());
+		}
+		return resultado;
+	}
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		try {

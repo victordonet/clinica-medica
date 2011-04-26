@@ -32,12 +32,11 @@ public class svtIngreso extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	HttpSession session = request.getSession();
     	ServletContext sc = getServletContext();
-    	
     	int control = (Integer) sc.getAttribute("control");
 	    if(control==0){
 	    	String msg = "ERROR: No se encontro el servidor.";
 	    	response.sendRedirect("errores.jsp?msg"+msg);
-	    }else{	    
+	    }else{
 	    	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
 	    	String usu = request.getParameter("usuario");
 	    	String pass = request.getParameter("passEncript");
@@ -49,18 +48,20 @@ public class svtIngreso extends HttpServlet {
 		    	response.sendRedirect("login.jsp?msg="+msg);
 		    }else {
 				try {
-					usuOk = mod.validarUsuario(usu, pass);
+					usuOk = mod.validarUsuarioWeb(usu, pass);
 					if(usuOk){
 						String tipo = mod.getTipo(usu);
 		    			if (tipo.equals("ME")){
 		    				VosLogin dMed = mod.getDataMedico(usu);
 							String nombre = "Dr. "+dMed.getNombre()+" "+dMed.getApellido();	
+					    	session.setAttribute("usuario", usu);
 					    	session.setAttribute("nombre", nombre);
 					    	response.sendRedirect("menuMedico.jsp");
 		    			}else {
 		    				if (tipo.equals("AF")){
 			    				VosLogin dAf = mod.getDataAfiliado(usu);
-								String nombre = dAf.getNombre()+" "+dAf.getApellido();	
+			    				String nombre = dAf.getNombre()+" "+dAf.getApellido();
+			    				session.setAttribute("usuario", usu);
 						    	session.setAttribute("nombre", nombre);
 						    	response.sendRedirect("menuAfiliado.jsp");				
 		    				}

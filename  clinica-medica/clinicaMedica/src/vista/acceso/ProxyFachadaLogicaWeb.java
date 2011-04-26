@@ -14,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
+
 import logica.Medico;
 import logica.fachada.IfachadaLogica;
 import logica.observer.IObserver;
@@ -57,17 +59,25 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 
 		ServletContext sc = config.getServletContext();
 		String ruta = config.getInitParameter("SERVER-RMI");
-
-		 try {
+		int control = 1;
+		
+		try {
+			sc.setAttribute("control", control);
 			fachada = (IfachadaLogica) Naming.lookup(ruta+"logica");
 			sc.setAttribute("modeloProxy", fachada);
 		} catch (MalformedURLException e) {
+			control = 0;
+			sc.setAttribute("control", control);
 			new LogicaException("Publicación del servidor incorrecta");
 			e.printStackTrace();
 		} catch (NotBoundException e) {
+			control = 0;
+			sc.setAttribute("control", control);
 			new LogicaException("Error Bound Exception");
 			e.printStackTrace();
 		}catch (RemoteException e) {
+			control = 0;
+			sc.setAttribute("control", control);
 			new LogicaException("Error Remote Exception");
 			e.printStackTrace();
 		}
@@ -315,6 +325,9 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 		fachada.altaUsuario(usu);
 	}
 	public boolean validarUsuario(String clave,String pass) throws PersistenciaException, RemoteException {
+		return fachada.validarUsuario(clave, pass);
+	}
+	public boolean validarUsuarioWeb(String clave,String pass) throws PersistenciaException, RemoteException {
 		return fachada.validarUsuario(clave, pass);
 	}
 	public void modifContrasena(String clave, String pass) throws PersistenciaException, RemoteException {

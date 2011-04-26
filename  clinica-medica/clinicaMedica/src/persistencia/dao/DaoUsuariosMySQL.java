@@ -60,7 +60,35 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		}
 		return respuesta;
 	}
-
+	
+	public boolean validarUsuarioWeb(String id, String pass, Transaccion trn) throws PersistenciaException {
+		System.out.println("Validando usuario: "+id);
+		boolean respuesta = false;
+		int encontre = 0;
+		try {
+			PreparedStatement pst = trn.preparedStatement("Select count(*) as Encontre from Usuarios where id=? and contrasena=?");
+			pst.setString(1, id);
+			pst.setString(2, pass);
+			ResultSet rst = pst.executeQuery();
+			while(rst.next()){
+				encontre = rst.getInt("Encontre");
+			}
+			if (encontre==0)
+				respuesta=false;
+			else
+				respuesta=true;
+			System.out.println("Validado: "+respuesta);
+			rst.close();
+			pst.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return respuesta;
+	}
+	
 	public void modifContrasena(String clave, String pass, Transaccion trn) throws PersistenciaException {
 
 		try {

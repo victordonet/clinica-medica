@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.fachada.IfachadaLogica;
-import vista.dataobjet.DataConsFecha;
+import vista.dataobjet.DataConsAfi;
 import excepciones.PersistenciaException;
 
 /**
  * Servlet implementation class svtAltaEspecialidad
  */
-public class svtListadoConsultasMed extends HttpServlet {
+public class svtListadoConsultasAfi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IfachadaLogica mod;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public svtListadoConsultasMed() {
+    public svtListadoConsultasAfi() {
         super();
     }
 
@@ -35,44 +35,27 @@ public class svtListadoConsultasMed extends HttpServlet {
 		HttpSession session = request.getSession();
     	ServletContext sc = getServletContext();
     	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
-    	String idMed = (String) session.getAttribute("usuario");
-		//Fecha Desde
-    	String fDesde = request.getParameter("fechaDesde");	
-	    Calendar fechaD = Calendar.getInstance();
-	    int ano = Integer.parseInt(fDesde.substring(6, 10));
-	    int mes = Integer.parseInt(fDesde.substring(3, 5));
-	    int dia = Integer.parseInt(fDesde.substring(0, 2));
-	    fechaD.set(ano, mes-1, dia);
-		//Fecha Hasta	    
-	    String fHasta = request.getParameter("fechaHasta");
-	    Calendar fechaH = Calendar.getInstance();
-	    ano = Integer.parseInt(fHasta.substring(6, 10));
-	    mes = Integer.parseInt(fHasta.substring(3, 5));
-	    dia = Integer.parseInt(fHasta.substring(0, 2));
-	    fechaH.set(ano, mes-1, dia);
-
-	    Vector<DataConsFecha> listado = new Vector<DataConsFecha>();
-    	Vector<String> fechas = new Vector<String>();
-    	Vector<String> afiliados = new Vector<String>();
-    	Vector<Integer> consultorios = new Vector<Integer>();
-    	Vector<Integer> turnos = new Vector<Integer>();
     	
+    	String id = (String) session.getAttribute("usuario");
+    	
+    	Vector<DataConsAfi> listado = new Vector<DataConsAfi>();
+    	Vector<String> fechas = new Vector<String>();
+    	Vector<String> nombres = new Vector<String>();
+    	Vector<String> apellidos = new Vector<String>();
 	    try {
-			listado = mod.listarConsFechasMed(fechaD, fechaH, idMed);
+			listado = mod.listarConsultasAfi(id);
 			Calendar fecha = Calendar.getInstance();
 	    	for (int i = 0; i < listado.size(); i++) {
-	    		DataConsFecha cons = listado.get(i);
+	    		DataConsAfi cons = listado.get(i);
 	    		fecha = cons.getFecha();	
 	    		fechas.add(fecha.get(Calendar.DATE)+"/"+(fecha.get(Calendar.MONTH)+1)+"/"+fecha.get(Calendar.YEAR));
-	    		afiliados.add(cons.getNomAfi()+" "+cons.getApeAfil());
-	    		consultorios.add(cons.getIdConsultorio());
-	    		turnos.add(cons.getTurno());
+	    		nombres.add(cons.getNomMed());
+	    		apellidos.add(cons.getApeMed());
 	    	}
     		session.setAttribute("listFechas", fechas);
-    		session.setAttribute("listAfiliados", afiliados);
-    		session.setAttribute("listConsultorios", consultorios);
-    		session.setAttribute("listTurnos", turnos);
-			response.sendRedirect("listarConsultasMed.jsp");
+    		session.setAttribute("listNombres", nombres);
+    		session.setAttribute("listApellidos", apellidos);
+			response.sendRedirect("listarConsultasAfi.jsp");
 		} catch (PersistenciaException e) {
 			String msg = "ERROR: No se pudo acceder a la información almacenada.";
 			request.setAttribute("msg", msg);

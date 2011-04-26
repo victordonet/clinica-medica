@@ -77,14 +77,14 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 				respuesta=false;
 			else
 				respuesta=true;
-			System.out.println("Validado: "+respuesta);
+
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
+//Catcheamos esta exception que se puede lanzar al aplicar el metodo md5 en la password			
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error al encriptar clave ");
 		}
 		return respuesta;
 	}

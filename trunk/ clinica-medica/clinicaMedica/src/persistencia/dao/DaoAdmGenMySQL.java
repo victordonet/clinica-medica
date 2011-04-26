@@ -28,13 +28,13 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 
 		} catch (SQLException e) {
-			throw new PersistenciaException("Error de conexion con la base de datos");
+			throw new PersistenciaException("Error de conexion con la base de datos ");
 		}
 
 	}
 
 	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo, String estado) throws PersistenciaException {
-		System.out.println("Modificando administrativo: "+id);
+		
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=?, estado=? where id=?");
 			pst.setString (1, nom);

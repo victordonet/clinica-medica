@@ -36,7 +36,7 @@ public class MainServidorRMI
 			Configuracion conf = new Configuracion();
 			String ruta = conf.getValor("SERVER-RMI");
 			Naming.rebind(ruta+"logica", facade);
-			System.out.println("Servidor iniciado");
+
 			
 			
 			TimerTask tarea = new TimerTask() {

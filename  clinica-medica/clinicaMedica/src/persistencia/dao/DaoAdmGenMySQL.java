@@ -17,7 +17,6 @@ import excepciones.PersistenciaException;
 public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
-
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Administrativos values (?,?,?,?)");
 			pst.setString (1, adm.getId().toString());
@@ -28,13 +27,12 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 
 		} catch (SQLException e) {
-			throw new PersistenciaException("Error de conexion con la base de datos ");
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 
 	}
 
 	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo, String estado) throws PersistenciaException {
-		
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Administrativos set nombre=?, idcargo=?, estado=? where id=?");
 			pst.setString (1, nom);
@@ -49,7 +47,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	}
 
 	public void bajaAdmin(Transaccion trn, String id) throws PersistenciaException {
-		System.out.println("Baja del administrativo: "+id);
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Administrativos set estado=? WHERE id=?");
 			// I = inactivo
@@ -63,7 +60,6 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	}
 
 	public Vector<DataAdmin> listarAdmin(Transaccion trn) throws PersistenciaException {
-		
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
 		try {
 			System.out.println("paso0");

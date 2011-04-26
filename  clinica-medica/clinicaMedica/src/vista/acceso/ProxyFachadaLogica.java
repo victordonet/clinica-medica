@@ -6,7 +6,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import logica.Configuracion;
 import logica.Medico;
 import logica.fachada.IfachadaLogica;
@@ -278,6 +277,9 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector<DataConsFecha> listarConsFecha(Calendar fecha) throws PersistenciaException, RemoteException {
 		return fachada.listarConsFecha(fecha);
 	}
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde, Calendar fHasta, String idMed) throws PersistenciaException, RemoteException {
+		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
+	}
 	public void elimConsulta(String idAfi)	throws PersistenciaException, RemoteException {
 		fachada.elimConsulta(idAfi);
 	}
@@ -309,15 +311,4 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
 	}
-
-	@Override
-	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde,
-			Calendar fHasta, String idMed) throws PersistenciaException,
-			RemoteException {
-		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
-	}
-
-
-
-
 }

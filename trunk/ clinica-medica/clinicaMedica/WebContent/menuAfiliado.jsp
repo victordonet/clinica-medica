@@ -2,7 +2,8 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
 <title>Menu</title>
 
 <SCRIPT LANGUAGE="Javascript">

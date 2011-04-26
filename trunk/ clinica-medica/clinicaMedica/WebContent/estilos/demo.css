@@ -1,0 +1,228 @@
+P {
+	
+}
+H1 {
+	
+}
+H2 {
+	
+}
+H3 {
+	
+}
+A {
+	
+}
+A:visited {
+	
+}
+A:active {
+	
+}
+A:hover {
+	
+}
+BODY {
+	BACKGROUND-REPEAT: 1;
+}
+.linkbarra {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-DECORATION: none
+}
+.linkbarra:hover {
+	FONT-SIZE: 11px; COLOR: white
+}
+.linkbarra2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: black; LINE-HEIGHT: 6pt; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-DECORATION: none
+}
+.linkbarra2:hover {
+	FONT-SIZE: 11px; COLOR: blue
+}
+.seposc {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 11px;
+	COLOR: #336699;
+	FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.sepcla {
+	FONT-SIZE: 11px; COLOR: aqua; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+SELECT {
+	FONT-SIZE: 10pt; FONT-FAMILY: Tahoma, Verdana
+}
+OPTION {
+	FONT-SIZE: 10pt; FONT-FAMILY: Tahoma, Verdana
+}
+INPUT {
+	FONT-FAMILY: Arial
+}
+A {
+	FONT-SIZE: 9pt; COLOR: #0000ff; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtnormal {
+	COLOR: #5020aa; FONT-FAMILY: Serif
+}
+.txttitulo {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10pt;
+	COLOR: #FFFFFF;
+	FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txttitTabla {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND: #000033; COLOR: #ffffff; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabTabla {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; BACKGROUND: #003366; COLOR: #ffffff; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabital {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #003366; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabitalNeg {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezado {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadoch {
+	FONT-SIZE: 8pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadochinput {
+	FONT-SIZE: 8pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-ALIGN: right
+}
+.txtencabezadoB {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadoBch {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtLink {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #545f9c; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-DECORATION: none
+}
+.txtLink:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #868fd9; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-DECORATION: none
+}
+.txtencabb {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000066; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabchico {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadob {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #111111; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadoNeg {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtencabezadobNeg {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #ff0000; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtNo {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDato1 {
+	FONT-SIZE: 10pt; BACKGROUND: #dddddd; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDato0 {
+	FONT-SIZE: 10pt; BACKGROUND: #c7c7c7; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDatoS1 {
+	FONT-SIZE: 9pt; BACKGROUND: #dddddd; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDatoS0 {
+	FONT-SIZE: 9pt; BACKGROUND: #c7c7c7; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDatito {
+	FONT-SIZE: 8pt; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDatito1 {
+	FONT-SIZE: 8pt; BACKGROUND: #dddddd; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDatito0 {
+	FONT-SIZE: 8pt; BACKGROUND: #c7c7c7; COLOR: black; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDato1Neg {
+	FONT-SIZE: 10pt; BACKGROUND: #dddddd; COLOR: #ff0000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtDato0Neg {
+	FONT-SIZE: 10pt; BACKGROUND: #c7c7c7; COLOR: #ff0000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtMensajeError {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #990000; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtMensajeAviso {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #003366; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.txtselect {
+	FONT-SIZE: 8pt; FONT-FAMILY: Tahoma,Verdana
+}
+.txtselect2 {
+	FONT-SIZE: 10pt; FONT-FAMILY: Tahoma, Verdana
+}
+.txtInput {
+	FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Arial
+}
+.titulo {
+	FONT-WEIGHT: bolder; FONT-SIZE: 11pt; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.textoTyC {
+	FONT-SIZE: 10pt; COLOR: #000099; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+}
+.f1 {
+	FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Courier New
+}
+.f2 {
+	FONT-SIZE: 6pt; LINE-HEIGHT: 6pt; FONT-FAMILY: Lucida Console
+}
+.f3 {
+	FONT-SIZE: 6pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Lucida Console, 'Courier New'
+}
+.f9 {
+	FONT-SIZE: 70%; WIDTH: 90%; LINE-HEIGHT: normal; FONT-FAMILY: Courier New, 'Lucida Console'
+}
+.f11 {
+	FONT-SIZE: 7pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Lucida Console
+}
+.f13 {
+	FONT-SIZE: 8pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Courier New
+}
+.f23 {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Lucida Console
+}
+.f25 {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f27 {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Courier New
+}
+.f178 {
+	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f191 {
+	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f194 {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f195 {
+	FONT-WEIGHT: bold; FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Courier New
+}
+.f196 {
+	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f210 {
+	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+}
+.f213 {
+	FONT-WEIGHT: bold; FONT-SIZE: 7pt; LINE-HEIGHT: 6pt; FONT-FAMILY: Courier New
+}
+PRE {
+	FONT-SIZE: 8pt; FONT-FAMILY: Lucida Console
+}
+.limite {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #0065ce; FONT-FAMILY: Tahoma,Verdana
+}
+.f111 {
+	FONT-SIZE: 1pt; LINE-HEIGHT: 2pt
+}
+.newpage {
+	PAGE-BREAK-BEFORE: always
+}

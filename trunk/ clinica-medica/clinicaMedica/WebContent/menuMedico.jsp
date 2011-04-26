@@ -2,7 +2,8 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
 <title>Menu</title>
 
 <SCRIPT LANGUAGE="Javascript">
@@ -54,7 +55,7 @@ String nombre = (String) session.getValue("nombre");
 </tr>
 <tr height="100%">
     <td width="43%" height="53">&nbsp;</td>
-    <td valign="top"><input type="button" name="Listado" value="Listado de Consultas" style="height:50px; width:200px" onClick="window.location='listadoConsultasMed.jsp'"></td>
+    <td valign="top"><input type="button" name="Listado" value="Listado de Consultas" style="height:50px; width:200px" onClick="window.location='filtroFechas.jsp'"></td>
     <td width="11%" height="53">&nbsp;</td>
 </tr>
 <tr height="100%">

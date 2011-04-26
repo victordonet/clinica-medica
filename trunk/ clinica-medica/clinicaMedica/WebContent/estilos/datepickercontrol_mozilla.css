@@ -1,0 +1,150 @@
+/**
+ * Style sheet for CalendarPickerControl
+ * Mozilla's home - like theme
+ */
+
+div.calendarbutton{
+	position: absolute;
+	width: 15px;
+	height: 16px;
+	background: transparent url("calendar_icon.png") no-repeat center;
+}
+
+#CalendarPickerControl{
+	background-color: transparent;
+	width: 250px;
+	height: 200px;
+}
+
+#CalendarPickerControl table.calframe{
+	width: 100%;
+	border: 1px solid #519CD3;
+	background-color: #BAD8ED;
+	text-align: center;
+}
+
+#CalendarPickerControl td.monthname{
+	width: 100%;
+	font: normal 13px Verdana;
+	color: #519CD3;
+	font-weight: bold;
+	background-color: #E8F2F9;
+}
+
+#CalendarPickerControl table.navigation{
+	width: 100%;
+	text-align: center;
+}
+
+#CalendarPickerControl td.navbutton{
+	font: normal 11px Verdana;
+	color: #519CD3;
+	font-weight: bold;
+	background-color: #BAD8ED;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #519CD3;
+	cursor: pointer;
+}
+
+#CalendarPickerControl td.navbutton:hover{
+	text-decoration: underline;
+	border-color: #283043 #A6AFBB #A6AFBB #283043;
+	background-color: #9097A2;
+}
+
+#CalendarPickerControl span.yearbutton{
+	cursor: pointer;
+}
+
+#CalendarPickerControl span.yearbutton:hover{
+	text-decoration: underline;
+}
+
+#CalendarPickerControl td.dayname{
+	font: normal 11px Verdana;
+	color: #519CD3;
+	font-weight: bold;
+	background-color: #E8F2F9;
+}
+
+#CalendarPickerControl td.today{
+	font: normal 11px Verdana;
+	background-color: #E8F2F9;
+	color: #FF9900;
+	text-decoration: none;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #E8F2F9;
+}
+
+#CalendarPickerControl td.today:hover{
+	text-decoration: underline;
+//	border-color: #283043 #A6AFBB #A6AFBB #283043;
+	background-color: #9097A2;
+}
+
+#CalendarPickerControl td.current{
+	font: normal 11px Verdana;
+	font-weight: bold;
+	background-color: #E8F2F9;
+	color: #0A5D9A;
+	text-decoration: none;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #0A5D9A;
+}
+
+#CalendarPickerControl td.current:hover{
+	text-decoration: underline;
+}
+
+#CalendarPickerControl td.day{
+	font: normal 11px Verdana;
+	background-color: #519CD3;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #BAD8ED;
+}
+
+#CalendarPickerControl td.day:hover{
+	text-decoration: underline;
+	border-color: #283043 #A6AFBB #A6AFBB #283043;
+	background-color: #9097A2;
+}
+
+#CalendarPickerControl td.weekend{
+	font: normal 11px Verdana;
+	color: #0A5D9A;
+	text-decoration: none;
+	background-color: #519CD3;
+	font-style: italic;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #BAD8ED;
+}
+
+#CalendarPickerControl td.weekend:hover{
+	text-decoration: underline;
+	border-color: #283043 #A6AFBB #A6AFBB #283043;
+	background-color: #9097A2;
+}
+
+#CalendarPickerControl td.dayothermonth{
+	font:normal 11px Verdana;
+	background-color: #BAD8ED;
+	color: #FFFFFF;
+}
+
+#CalendarPickerControl td.weeknumber{
+	font:normal 9px Verdana;
+	background-color: #BAD8ED;
+	color: #FFFFFF;
+	border-width: 0px;
+}

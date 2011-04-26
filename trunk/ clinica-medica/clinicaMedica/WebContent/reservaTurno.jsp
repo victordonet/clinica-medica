@@ -4,9 +4,9 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
 <title>Reserva de Turno</title>
-
 </head>
 
 <%
@@ -18,6 +18,7 @@ List listNomEsp = (List) session.getValue("listNomEsp");
 List listIdMed = (List) session.getValue("listMed");
 List listNomMed = (List) session.getValue("listNomMed");
 List consultasDisp = (List) session.getValue("listConsultas");
+Vector consultasDisp = (Vector) session.getValue("listConsultas");
 %>
 
 <script>  
@@ -86,7 +87,7 @@ function cargaConsulta(i) {
         	<tr>
             	<td height="20">Especialidad</td>
             	<td height="20">
-                    <select name="especialidad" onChange="listarMed.jsp">
+                    <select name="especialidad" onChange="listarMedEsp.jsp">
                     <%for (int i = 0; i < listIdEsp.size(); i++) {%>
                         <option value="<%=listIdEsp.get(i)%>" onClick="cargoIdEsp(this.value)"><%=listNomEsp.get(i)%></option>
                     <%}%>
@@ -98,7 +99,7 @@ function cargaConsulta(i) {
         	<tr>
             	<td height="20">Médico</td>
             	<td height="20">
-                    <select name="medico" onFocus="" onChange="listarConsultas.jsp">
+                    <select name="medico" onFocus="" onChange="listarConsultasDisp.jsp">
 						<%for (int i = 0; i < listIdMed.size(); i++) {%>
                             <option value="<%=listIdMed.get(i)%>" onClick="cargoIdMed(this.value)"><%=listNomMed.get(i)%></option>
                         <%}%>

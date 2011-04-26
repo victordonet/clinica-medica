@@ -4,15 +4,14 @@
 
 <head>
 <meta http-equiv="Content-Language" content="es">
-<LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
-<script language="javascript" type="text/javascript" src="funciones.js"></script>
+<LINK REL="stylesheet" TYPE="text/css" HREF="estilos/estilos.css">
+<script language="javascript" type="text/javascript" src="funciones/funciones.js"></script>
 <title>Listado de Consultas</title>
 </head>
 
 <%
 String nombre = (String) session.getValue("nombre");
 List fechas = (List) session.getValue("listFechas");
-List medicos = (List) session.getValue("listMedicos");
 List afiliados = (List) session.getValue("listAfiliados");
 List consultorios = (List) session.getValue("listConsultorios");
 List turnos = (List) session.getValue("listTurnos");
@@ -46,7 +45,7 @@ List turnos = (List) session.getValue("listTurnos");
 				<td width="36%" height="87">
 					<table width="109%" height="51" h>
 						<tr>
-							<td width="27%" height="65" align="right"><a href="menu.jsp"><img
+							<td width="27%" height="65" align="right"><a href="menuMedico.jsp"><img
 									src="imagenes/botonMenu.jpg" alt="volver al menú" border="0">
 							</a>
 							</td>
@@ -72,20 +71,18 @@ List turnos = (List) session.getValue("listTurnos");
 					<table width="100%" border="1" bordercolor="#666666"
 						class="BaseTablas">
 						<tr bgcolor="#999999" align="center" bordercolor="#666666">
-							<td height="20" width="15%">Fecha</td>
-							<td height="20" width="65%">M&eacute;dico</td>
-							<td height="20" width="20%">Afiliado</td>
-							<td height="20" width="65%">Consultorio</td>
-							<td height="20" width="20%">Turno</td>
-						</tr>
+							<td height="20" width="22%">Fecha</td>
+						  <td height="20" width="50%">Afiliado</td>
+						  <td height="20" width="17%">Consultorio</td>
+						  <td height="20" width="11%">Turno</td>
+					  </tr>
 						<%for (int i = 0; i < fechas.size(); i++) {%>
 						<tr bordercolor="#666666">
-							<td height="20" width="15%"><%=fechas.get(i)%></td>
-							<td height="20" width="65%"><%=medicos.get(i)%></td>
-							<td height="20" width="20%"><%=afiliados.get(i)%></td>
-							<td height="20" width="65%"><%=consultorios.get(i)%></td>
-							<td height="20" width="20%"><%=turnos.get(i)%></td>
-						</tr>
+							<td height="20" width="22%"><%=fechas.get(i)%></td>
+						  <td height="20" width="50%"><%=afiliados.get(i)%></td>
+						  <td height="20" width="17%"><%=consultorios.get(i)%></td>
+						  <td height="20" width="11%"><%=turnos.get(i)%></td>
+					  </tr>
 						<%}%>
 					</table></td>
 				<td>&nbsp;</td>

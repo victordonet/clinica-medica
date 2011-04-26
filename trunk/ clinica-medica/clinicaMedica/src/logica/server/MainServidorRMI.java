@@ -60,8 +60,8 @@ public class MainServidorRMI
 			};
 			Timer temporizador = new Timer();
 			//temporizador.schedule(tarea, 60*1000,24*60*60*1000);
-			temporizador.schedule(tarea, 60*1000,60*1000);
-			JOptionPane.showMessageDialog(null,"Servidor iniciado");
+			//temporizador.schedule(tarea, 60*1000,60*1000);
+			//JOptionPane.showMessageDialog(null,"Servidor iniciado");
 			
 		} 
 		catch (RemoteException e) 

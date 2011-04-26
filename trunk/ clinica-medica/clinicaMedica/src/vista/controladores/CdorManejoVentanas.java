@@ -35,7 +35,6 @@ public abstract class CdorManejoVentanas {
 		voy.setUsu(vengo.getUsu());
 		voy.setId(vengo.getId());
 		voy.habilitarVentana();
-		System.out.println("En el manejador de ventana = "+vengo.toString());
 		vengo.cerrar();
 	}
 	

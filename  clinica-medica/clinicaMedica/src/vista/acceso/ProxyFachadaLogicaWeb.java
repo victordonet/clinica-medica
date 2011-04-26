@@ -1,4 +1,4 @@
-package logica.fachada;
+package vista.acceso;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logica.Medico;
+import logica.fachada.IfachadaLogica;
 import logica.observer.IObserver;
 import vista.dataobjet.DataAdmin;
 import vista.dataobjet.DataAfiliado;
@@ -335,6 +336,14 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	}
 	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
 		return fachada.listarConsultorios();
+	}
+
+	@Override
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde,
+			Calendar fHasta, String idMed) throws PersistenciaException,
+			RemoteException {
+		
+		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
 	}
 
 

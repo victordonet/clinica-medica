@@ -17,7 +17,7 @@ import excepciones.PersistenciaException;
 public class DaoAdmGenMySQL implements IDaoAdmGen {
 
 	public void altaAdmin(Transaccion trn, DataAdmin adm) throws PersistenciaException {
-		System.out.println("Insertando administrativo: "+ adm.getId());
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Administrativos values (?,?,?,?)");
 			pst.setString (1, adm.getId().toString());
@@ -28,11 +28,10 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
 		}
+
 	}
 
 	public void modificarAdmin(Transaccion trn, String id, String nom, String cargo, String estado) throws PersistenciaException {
@@ -46,7 +45,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -61,13 +60,13 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public Vector<DataAdmin> listarAdmin(Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando Administrativos");
+		
 		Vector<DataAdmin> resultado = new Vector<DataAdmin>();
 		try {
 			System.out.println("paso0");
@@ -88,7 +87,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
+
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -109,7 +108,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 			return vosLogin;
 		} catch (SQLException e) {
-			e.printStackTrace();
+		
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}
@@ -132,14 +131,14 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			rst.close();
 			pst.close();
 		}catch (SQLException e) {
-			e.printStackTrace();
+		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
 	}
 
 	public void modifEx(Transaccion trn, String idAfil, Calendar fIni, int idTex, Calendar fRes) throws PersistenciaException {
-		System.out.println("Modificando examen");
+		
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Examenes set FECHARESULTADO=? where IDAFILIADO=? AND FECHAINICIO=? AND IDTIPOEXAMEN=?");
 			Date fechaRes = new java.sql.Date(fRes.getTimeInMillis());
@@ -151,13 +150,13 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public Vector<DataExamen> listarExPend(Transaccion trn, String idAdmin) throws PersistenciaException {
-		System.out.println("Listando examenes pendientes de resolución");
+		
 		Vector<DataExamen> resultado = new Vector<DataExamen>();
 		Date  fechaInicio, fechaResultado;
 		Calendar fechaIni = Calendar.getInstance();
@@ -190,7 +189,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			rst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
+		
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -211,7 +210,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 			pst.close();
 			return data;
 		} catch (SQLException e) {
-			e.printStackTrace();
+		
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}

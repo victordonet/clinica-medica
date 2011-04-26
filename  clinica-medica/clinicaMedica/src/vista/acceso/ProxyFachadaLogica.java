@@ -310,6 +310,13 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 		return fachada.listarConsultorios();
 	}
 
+	@Override
+	public Vector<DataConsFecha> listarConsFechasMed(Calendar fDesde,
+			Calendar fHasta, String idMed) throws PersistenciaException,
+			RemoteException {
+		return fachada.listarConsFechasMed(fDesde, fHasta, idMed);
+	}
+
 
 
 

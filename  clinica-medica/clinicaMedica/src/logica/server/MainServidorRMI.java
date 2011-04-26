@@ -44,13 +44,13 @@ public class MainServidorRMI
 		}catch (RemoteException e) {
 			System.out.println("No es posible iniciar el Servidor");
 			JOptionPane.showMessageDialog(null,"No es posible iniciar el Servidor");
-			e.printStackTrace();
+			
 		} 
 		catch (MalformedURLException e)
 		{
 			System.out.println("URL de publicacion incorrecta");
-			JOptionPane.showMessageDialog(null,"URL mal");
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
+			
 		} catch (LogicaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class MainServidorRMI
 					//int ultimoDia = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
 					//int hoy = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 					//if (hoy == ultimoDia){
-					System.out.println("Voy con el demonio");
+					
 					facade.altaConsultaProxMes();
 					//}
 				} catch (RemoteException e) {
@@ -79,9 +79,11 @@ public class MainServidorRMI
 			}
 		};
 		Timer temporizador = new Timer();
+// este temporizador es el definitivo y se ejecuta cada 24 horas
 		//temporizador.schedule(tarea, 60*1000,24*60*60*1000);
+// este temporizador es de pruebas y se ejecuta cada 1 minuto
 		//temporizador.schedule(tarea, 60*1000,60*1000);
-		//JOptionPane.showMessageDialog(null,"Servidor iniciado");
+		JOptionPane.showMessageDialog(null,"Servidor iniciado");
 		
 	}
 

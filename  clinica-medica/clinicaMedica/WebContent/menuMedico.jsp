@@ -33,7 +33,7 @@ String nombre = (String) session.getValue("nombre");
 %>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
-<body class="Base" background="imagenes/menuMedico.jpg">
+<body class="Base" background="imagenes/menuMedico.JPG">
 <form name="form1" method="post" action="listadoConsultas.jsp">
 <center>
 

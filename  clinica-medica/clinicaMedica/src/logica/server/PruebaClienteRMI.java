@@ -23,7 +23,7 @@ public class PruebaClienteRMI {
 			
 			IfachadaLogica facade = new ProxyFachadaLogica();
 			
-			JOptionPane.showMessageDialog(null,"Hizo el lookup");
+			
 			/*CdorAltaMedico ctrl = new CdorAltaMedico();
 			FrmAltaMedico frm = new FrmAltaMedico(ctrl);
 			
@@ -33,7 +33,8 @@ public class PruebaClienteRMI {
 			CdorLogin cdorLogin = new CdorLogin();
 			cdorLogin.desplegarVentana(cdorLogin);
 //			ctrl.setMod(facade);
-//			ctrl.desplegarVentana(ctrl);	
+//			ctrl.desplegarVentana(ctrl);
+			JOptionPane.showMessageDialog(null,"Hizo el lookup");
 		} catch (RemoteException e) {
 			e.printStackTrace();			
 			JOptionPane.showMessageDialog(null,"Error de conexion con el Servidor");

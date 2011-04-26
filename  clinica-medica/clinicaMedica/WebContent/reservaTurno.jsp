@@ -18,23 +18,22 @@ List listNomEsp = (List) session.getValue("listNomEsp");
 List listIdMed = (List) session.getValue("listMed");
 List listNomMed = (List) session.getValue("listNomMed");
 List consultasDisp = (List) session.getValue("listConsultas");
-Vector consultasDisp = (Vector) session.getValue("listConsultas");
 %>
 
 <script>  
 function cargoIdEsp(especialidad) {
 	document.getElementById("idEsp").value=especialidad;
 }
-function cargoIdMed(medico) {
+/*function cargoIdMed(medico) {
 	document.getElementById("idMed").value=medico;
-}
-function cargaConsulta(i) {
-	document.getElementById("fecha").value=<%=fechas.get(i)%>;
-	document.getElementById("dia").value=<%=dias.get(i)%>;
-	document.getElementById("horario").value=<%=horarios.get(i)%>;
-	document.getElementById("consultorio").value=<%=consultorios.get(i)%>;
-	document.getElementById("turno").value=<%=turnos.get(i)%>;
-}
+}*/
+/*function cargaConsulta(i) {
+	document.getElementById("fecha").value=</%=fechas.get(i)%>;
+	document.getElementById("dia").value=</%=dias.get(i)%>;
+	document.getElementById("horario").value=</%=horarios.get(i)%>;
+	document.getElementById("consultorio").value=</%=consultorios.get(i)%>;
+	document.getElementById("turno").value=</%=turnos.get(i)%>;
+}*/
 </script>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
@@ -100,7 +99,7 @@ function cargaConsulta(i) {
             	<td height="20">Médico</td>
             	<td height="20">
                     <select name="medico" onFocus="" onChange="listarConsultasDisp.jsp">
-						<%for (int i = 0; i < listIdMed.size(); i++) {%>
+						</td><%for (int i = 0; i < listIdMed.size(); i++) {%>
                             <option value="<%=listIdMed.get(i)%>" onClick="cargoIdMed(this.value)"><%=listNomMed.get(i)%></option>
                         <%}%>
                     </select>
@@ -119,15 +118,15 @@ function cargaConsulta(i) {
                           <td width="22%">Consultorio</td>
                           <td width="11%">Turno</td>
                       </tr>
-                      <%for (int i = 0; i < consultasDisp.size(); i++) {%>
-                       <tr bordercolor="#666666" onClick="cargaConsulta(<%=i%>)">
-                            <td width="21%"><%=fechas.get(i)%></td>
-                          	<td width="22%"><%=dias.get(i)%></td>
-                            <td width="24%"><%=horarios.get(i)%></td>
-                            <td width="22%"><%=consultorios.get(i)%></td>
-                            <td width="11%"><%=turnos.get(i)%></td>
+                      <%//for (int i = 0; i < consultasDisp.size(); i++) {%>
+                       <tr onClick="cargaConsulta()">
+                            <td width="21%"><%//=fechas.get(i)%></td>
+                          	<td width="22%"><%//=dias.get(i)%></td>
+                            <td width="24%"><%//=horarios.get(i)%></td>
+                            <td width="22%"><%//=consultorios.get(i)%></td>
+                            <td width="11%"><%//=turnos.get(i)%></td>
                       </tr>
-                      <%}%>
+                      <%//}%>
                     </table>
 				</td>
             </tr>

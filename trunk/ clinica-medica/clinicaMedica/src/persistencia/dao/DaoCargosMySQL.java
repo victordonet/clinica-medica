@@ -28,7 +28,6 @@ public class DaoCargosMySQL implements IDaoCargos {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}

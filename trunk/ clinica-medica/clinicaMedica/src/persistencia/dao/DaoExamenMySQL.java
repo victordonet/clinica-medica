@@ -19,7 +19,7 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public int getCantExPagos(Transaccion trn, Calendar fini, Calendar ffin) throws PersistenciaException {
-		System.out.println("Listando cantidad de exámenes pagos");
+		
 		int resultado = 0;
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select count(*) as cantidad from Examenes where COBRATIMBRE='S'");
@@ -31,13 +31,11 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public int getCantExam(Transaccion trn, String idAfi) throws PersistenciaException {
-		System.out.println("Listando cantidad de exámenes");
 		int resultado = 0;
 		Calendar calHoy = Calendar.getInstance();
 		Date hoy = new java.sql.Date(calHoy.getTimeInMillis());
@@ -53,13 +51,11 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public void regEx(Transaccion trn, DataExamen ex, String idAfil) throws PersistenciaException {
-		System.out.println("Registrando nuevo examen");
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Examenes(IDAFILIADO,FECHAINICIO,IDTIPOEXAMEN,ENVIAMAIL,COBRATIMBRE) values (?,?,?,?,?)");
 			pst.setString(1, idAfil);
@@ -71,11 +67,8 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public Vector<Examen> listarExamAfil(String idAfil, Transaccion trn) throws PersistenciaException {
@@ -112,7 +105,6 @@ public class DaoExamenMySQL implements IDaoExamen, Serializable{
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}

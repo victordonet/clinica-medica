@@ -32,7 +32,6 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return cantidadConsulta;
@@ -54,7 +53,6 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return cantidadConsulta;
@@ -80,7 +78,6 @@ public class DaoTotConsultaMySQL implements IDaoTotConsulta {
 			rst.close();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException(e.getMessage());
 		}
 		return consultas;

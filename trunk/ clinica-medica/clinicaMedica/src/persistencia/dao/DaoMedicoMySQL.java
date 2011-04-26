@@ -25,7 +25,7 @@ import excepciones.PersistenciaException;
 public class DaoMedicoMySQL implements IDaoMedico {
 
 	public void altaMedico(Transaccion trn, DataMed med) throws PersistenciaException {
-		System.out.println("Insertando medico: "+med.getId());
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("insert into Medicos values (?,?,?,?,?,?,?)");
 			pst.setString (1, med.getId());
@@ -38,15 +38,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
-		} catch (PersistenciaException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void modifMedico(Transaccion trn, String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado) throws PersistenciaException {
-		System.out.println("Modificando medico: "+ id);
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Medicos set nombre=?, apellido=?, ci=?, telefono=?, idEspecialidad=?, estado=? where id=?");
 			pst.setString (1, nom);
@@ -59,13 +56,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public void bajarMedico(Transaccion trn, String id) throws PersistenciaException {
-		System.out.println("Baja del médico: "+id);
+
 		try {
 			PreparedStatement pst = trn.preparedStatement("update Medicos set estado=? WHERE id=?");
 			// I = inactivo
@@ -74,13 +70,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.executeUpdate();
 			pst.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public Vector<DataMed> listarMedicos(Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando Medicos");
+
 		Vector<DataMed> resultado = new Vector<DataMed>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, telefono, idEspecialidad, estado from Medicos");
@@ -100,13 +95,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
 
 	public Vector<VoMedEsp> listarMedEsp(int idEsp, Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando medicos con especialidad = "+idEsp);
+
 		Vector<VoMedEsp> resultado = new Vector<VoMedEsp>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido from Medicos where idEspecialidad=?");
@@ -123,7 +117,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -157,7 +150,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			med = new Medico(id, pass, tipo, estado, nombre, apellido, ci, tel, esp, daoDisp, daoConsultas);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return med;
 	}
@@ -180,7 +173,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			return vosLogin;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");			
 		}
 	}
@@ -203,14 +195,12 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			rst.close();
 			pst.close();
 		}catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return validar;
 	}
 
 	public Vector<DataSalario> listarSalarios(Transaccion trn, Calendar fDesde, Calendar fHasta) throws PersistenciaException {
-		System.out.println("Listando salarios");
 		Vector<DataSalario> resultado = new Vector<DataSalario>();
 		IDaoConsultas daoCon = new DaoConsultasMySQL();
 		try {
@@ -231,7 +221,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -273,14 +262,14 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 	
 	public Vector<DataDisp> listarDispMed(String idMed, Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando disponibilidades por medico");
+		
 		Medico med = this.getMedico(trn, idMed);
 		IDaoDisponibilidad disp = med.getDisp();
 		return disp.listarDispMedico(idMed, trn);
 	}
 
 	public void cargaConsultasProxMes(Transaccion trn, String id, int totalConsultorios) throws PersistenciaException {
-		System.out.println("Cargando consultas del los proximos meses.");
+		
 		Medico med = this.getMedico(trn, id);
 		Vector<DataDisp> horarios = this.listarDispMed(id, trn);
 		IDaoConsultas daoCons = med.getDaoConsultas();
@@ -329,7 +318,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 	}
 
 	public Vector<VoTurnosDisp> listarConsultasDisp(Transaccion trn) throws PersistenciaException {
-		System.out.println("Listando consultas disponibles");
+		
 		Vector<VoTurnosDisp> resultado = new Vector<VoTurnosDisp>();
 		int cantTurno = 0, dia =0,hora =0,cons =0;
 		Date fecha;
@@ -393,7 +382,6 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			pst.close();
 			return resultado;
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 	}
@@ -418,7 +406,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 			med = new DataMed(id, nombre, apellido, ci, tel, estado, idEsp);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new PersistenciaException("Error de conexion con la base de datos");
 		}
 		return med;
 	}

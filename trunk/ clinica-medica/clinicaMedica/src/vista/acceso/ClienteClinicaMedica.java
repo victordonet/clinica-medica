@@ -1,4 +1,4 @@
-package logica.server;
+package vista.acceso;
 
 
 
@@ -8,7 +8,7 @@ import vista.controladores.CdorLogin;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
-public class PruebaClienteRMI {
+public class ClienteClinicaMedica {
 	public static void main(String[] args) throws LogicaException, PersistenciaException {
 		try 
 		{

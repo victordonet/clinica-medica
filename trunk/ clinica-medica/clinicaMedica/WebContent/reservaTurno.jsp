@@ -13,39 +13,48 @@
 </head>
 
 <%
-String usu = (String) session.getValue("usuario");
-String nombre = (String) session.getValue("nombre");
-String idEsp = (String) request.getParameter("idEsp");
-if(idEsp==null){
-	idEsp="0";
+String usu = (String) session.getAttribute("usuario");
+String nombre = (String) session.getAttribute("nombre");
+String esp = (String) session.getAttribute("idEsp");
+int idEsp;
+if(esp==null){
+	esp="0";
+	idEsp = 0;
+}else{
+	idEsp = Integer.parseInt(esp);
 }
-String idMed = (String) request.getParameter("idMed");
+String idMed = (String) session.getAttribute("idMed");
 if(idMed==null){
 	idMed="0";
 }
-String timbre = (String) session.getValue("timbre");
+String timbre = (String) session.getAttribute("timbre");
 List listIdEsp = (List) session.getValue("listIdEsp");
 List listNomEsp = (List) session.getValue("listNomEsp");
 List listIdMed = (List) session.getValue("listIdMed");
 List listNomMed = (List) session.getValue("listNomMed");
 Vector<VoTurnosDisp> consultasDisp = (Vector) session.getValue("listConsultas");
+String msg = (String) request.getParameter("msg");
+if (msg==null)
+	msg="";
 %>
 
-<script>  
+<script>
+function validar(form) {
+	return f_numeros(form.afiliado, "Nro.afiliado") && f_numeros(form.idEsp, "Especialidad") && f_numeros(form.idMed, "Medico") && f_msg(form.idCons, "Consulta") && f_msg(form.timbre, "Timbre");
+}
+
 function cargoIdEsp(valor) {
 	window.location='listarMedEsp.jsp?idEsp='+valor;
 }
+
 function cargoIdMed(valor) {
 	window.location='listarConsultasDisp.jsp?idMed='+valor;
-}
-function cargoIdConsultas(valor) {
-	document.getElementById("idCons").value=valor;
 }
 </script>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
 <body class="Base" background="imagenes/fondoGrl.jpg">
-<form name="form1" method="post" action="aplicarReserva.jsp">
+<form name="form" method="get" action="aplicarReserva.jsp">
 <center>
 
 <table align="center" width="99%">
@@ -95,8 +104,8 @@ function cargoIdConsultas(valor) {
             	<td height="20">
                     <select name="especialidad" onChange="cargoIdEsp(this.value)">
                     <%for (int i = 0; i < listIdEsp.size(); i++) {
-                    	String idLista = (String) listIdEsp.get(i).toString(); 
-                    	if (idLista.equals(idEsp)==true){
+                    	int idLista = (Integer) listIdEsp.get(i); 
+                    	if (idLista==idEsp){
                     	%>
                         	<option value="<%=idLista%>" selected><%=listNomEsp.get(i)%></option>
                     <%}else{%>    	
@@ -105,7 +114,6 @@ function cargoIdConsultas(valor) {
                     }%>
                     </select>
                     <input type="hidden" name="idEsp" value="<%=idEsp%>">
-                    <!--input type="button" name="buscarEsp" value="Buscar" style="height:21px; width:55px" onClick="window.location='listarMedEsp.jsp?idEsp='+idEsp.value"-->
                 </td>
             </tr>
         	<tr>
@@ -115,8 +123,7 @@ function cargoIdConsultas(valor) {
 						<% if (listIdMed!=null){
 							for (int i = 0; i < listIdMed.size(); i++) {
 	                    	String idLista = (String) listIdMed.get(i).toString(); 
-	                    	if (idLista.equals(idMed)==true){
-	                    	%>
+	                    	if (idLista.equals(idMed)==true){%>
                             <option value="<%=idLista%>" selected><%=listNomMed.get(i)%></option>
                     	<%}else{%>    	
                         	<option value="<%=idLista%>"><%=listNomMed.get(i)%></option>
@@ -124,8 +131,7 @@ function cargoIdConsultas(valor) {
 						}
 					}%>
                     </select>
-                    <input type="text" name="idMed" value="<%=idMed%>">
-                    <!--input type="button" name="buscarMed" value="Buscar" style="height:21px; width:55px" onClick="window.location='listarConsultasDisp.jsp?idMed='+idMed.value"-->
+                    <input type="hidden" name="idMed" value="<%=idMed%>">
                 </td>
             </tr>
         	<tr>
@@ -145,7 +151,7 @@ function cargoIdConsultas(valor) {
                     	  VoTurnosDisp vo = consultasDisp.get(i);
                       %>
                        <tr onClick="cargaConsulta()">
-                       		<td width="22%"><input type="radio" name="radio" value="<%=vo%>" onClick="cargoIdConsultas(this.value)"></td>
+                       		<td width="22%"><input type="radio" name="radio" value="<%=vo%>" onClick="<%session.setAttribute("dataConsulta",vo);%>"></td>
                             <td width="21%"><%=vo.getFecha().get(Calendar.DATE)+"/"+(vo.getFecha().get(Calendar.MONTH)+1)+"/"+vo.getFecha().get(Calendar.YEAR)%></td>
                           	<td width="22%"><%=vo.getDia()%></td>
                             <td width="24%"><%=vo.getHorario()%></td>
@@ -162,10 +168,16 @@ function cargoIdConsultas(valor) {
             </td>
             </tr>
 		</table>
-        <input type="text" name="idCons" disabled>
+        <input type="hidden" name="idCons" value="0">
     </td>
     <td>&nbsp;</td>
     <td width="8%" height="238">&nbsp;</td>
+</tr>
+<tr height="100%">
+  <td height="36">&nbsp;</td>
+  <td align="center"><font size="+1" color="#FF9900"><%=msg%></font></td>
+  <td height="36">&nbsp;</td>
+  <td>&nbsp;</td>
 </tr>
 <tr height="100%">
   <td height="36">&nbsp;</td>

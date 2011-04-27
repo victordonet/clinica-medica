@@ -17,7 +17,8 @@ public class Pool {
 	private LinkedList <Connection> conexionesLibres;
 
 		
-	private Pool(Configuracion conf) throws Exception, IllegalAccessException, Throwable{
+	private Pool(Configuracion conf) throws InstantiationException, IllegalAccessException, ClassNotFoundException 
+	{
 		
 		super();
 		this.url = conf.getValor("URL");
@@ -33,21 +34,17 @@ public class Pool {
 
 	public static Pool getInstance(Configuracion conf) throws PersistenciaException{
 		if (poolTrn ==null){
-			try {
-				poolTrn = new Pool(conf);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new PersistenciaException("Sin acceso...");
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new PersistenciaException("Exception menos idea");
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				throw new PersistenciaException("throwable ...");
-			}
+
+				try {
+					poolTrn = new Pool(conf);
+				} catch (InstantiationException e) {
+					throw new PersistenciaException("Error al instanciar el Driver de acceso: Pool de conexiones");
+				} catch (IllegalAccessException e) {
+					throw new PersistenciaException("Error de acceso a el Driver: Pool de conexiones");
+				} catch (ClassNotFoundException e) {
+					throw new PersistenciaException("No se encuentra Driver de acceso: Pool de conexiones");
+				}
+			
 		}
 		
 		return poolTrn;
@@ -56,41 +53,26 @@ public class Pool {
 	public synchronized Transaccion obtenerTrn(int nivel) throws  PersistenciaException {
 		Transaccion trn = null;
 		if(conexionesLibres.size()>0){
-			try {
-				
-				trn = new Transaccion(conexionesLibres.getFirst(), nivel);
-				conexionesLibres.removeFirst();
-				
-			} 
-			catch (PersistenciaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			trn = new Transaccion(conexionesLibres.getFirst(), nivel);
+			conexionesLibres.removeFirst();
 		}
 		else {
 			if (cantActu < cantMax) {
-				
 				try {
 					Connection con = DriverManager.getConnection(url,usuario,pass);
 					cantActu ++;
 					trn = new Transaccion(con, nivel);
-					
 					} 
 				catch (SQLException e){
-					throw new PersistenciaException("Error de conexion");
+					throw new PersistenciaException("Error de conexion en la base de datos: Pool de conexiones");
 				} 
-				catch (PersistenciaException e){
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			
 			}
 			else{
 				try {
 					wait();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					throw new PersistenciaException("Error de mierda de concurrencia");
+					throw new PersistenciaException("Error de concurrencia:  Pool de conexiones");
 				}
 			}
 		}

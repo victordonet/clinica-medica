@@ -74,7 +74,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		conf = new Configuracion();
 		
 		String fb = conf.getValor("FABRICA");
-		System.out.println(conf.getValor("FABRICA"));
+		
 		
 		try {
 			
@@ -95,16 +95,13 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			iDaoCargos = fabrica.crearDaoCargos();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
-			throw new LogicaException("No es poSsible crear la instancia necesaria para persistir");
+			throw new LogicaException("No es posible crear la instancia necesaria para persistir");
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 			throw new LogicaException("Sin acceso a la persistencia");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new LogicaException("Error en configuracion de la persistencia");
-		} catch (Throwable e) {
-			e.printStackTrace();
-			throw new PersistenciaException("Exception Throwable");
 		} 
 
 	}

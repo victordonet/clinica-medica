@@ -59,7 +59,12 @@ public class CdorSelectMed extends CdorManejoVentanas {
 	public ModeloTablaListMed listarMed(){
 		ModeloTablaListMed modelo = null;
 		try {
-			vMed = super.getMod().listarMedicos();
+			if(ventanaVoy.getClass()==CdorModifMedico.class){
+				vMed = super.getMod().listarMedicos("I");
+			}
+			else{
+				vMed = super.getMod().listarMedicos("A");
+			}
 			modelo = new ModeloTablaListMed(vMed);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");

@@ -21,7 +21,7 @@ import vista.controladores.ModeloTablaListConsultas;
 public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 
 	private static final long serialVersionUID = 1L;
-	private JFrame frm = new JFrame();  //  @jve:decl-index=0:visual-constraint="-18,58"
+	private JFrame frm = new JFrame();  
 	private PanelConImagen jContentPane = null;
 	private JLabel jLabel = null;
 	private ModeloTablaListConsultas modelo = null;
@@ -112,14 +112,18 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 	}
 
 	public void update() throws RemoteException {
-		
-		try {
-			initialize();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		modelo = cdor.listarConsultas();
+		jTable.setModel(modelo);
+		jTable.setVisible(true);
+		//jTable.setSelectionMode(0);
+
+		//		try {
+//			initialize();
+//		} catch (ClassNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (Throwable e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	public JFrame getVentana(){

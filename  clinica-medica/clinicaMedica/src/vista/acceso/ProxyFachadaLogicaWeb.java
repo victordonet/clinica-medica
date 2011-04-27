@@ -159,8 +159,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException {
 		fachada.bajaAdmin(id);
 	}
-	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException {
-		return fachada.listarAdmin();
+	public Vector<DataAdmin> listarAdmin(String est) throws PersistenciaException, RemoteException {
+		return fachada.listarAdmin(est);
 	}
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException {
 		return fachada.getDataAdmin(id);
@@ -249,8 +249,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
  	public void bajarMedico(String id)  throws PersistenciaException, RemoteException {
  		fachada.bajarMedico(id);
  	}
- 	public Vector<DataMed> listarMedicos()  throws PersistenciaException, RemoteException {
- 		return fachada.listarMedicos();
+ 	public Vector<DataMed> listarMedicos(String est)  throws PersistenciaException, RemoteException {
+ 		return fachada.listarMedicos(est);
  	}
  	public Vector<VoMedEsp> listarMedEsp(int idEsp)  throws PersistenciaException, RemoteException {
  		return fachada.listarMedEsp(idEsp);

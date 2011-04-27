@@ -56,7 +56,7 @@ public class CdorListadoMed extends CdorManejoVentanas {
 	public ModeloTablaListMed listarMed(){
 		ModeloTablaListMed modelo = null;
 		try {
-			modelo = new ModeloTablaListMed(super.getMod().listarMedicos());
+			modelo = new ModeloTablaListMed(super.getMod().listarMedicos("A"));
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 	

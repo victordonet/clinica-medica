@@ -63,7 +63,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 		frm.setVisible(true);		
 		frm.addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent e) {
-				frmCerrar();
+				cdor.actionCerrar();
 			}
 		});		
 	}
@@ -78,9 +78,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 		frm.setFocusable(true);
 	}
 	
-	public void frmCerrar(){
-		frm.dispose();
-	}
+
 	
 	/**
 	 * This method initializes ContentPane

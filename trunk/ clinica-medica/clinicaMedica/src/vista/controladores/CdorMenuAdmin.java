@@ -70,7 +70,8 @@ public class CdorMenuAdmin extends CdorManejoVentanas {
 	}
 
 	public void cerrar() {
-		ventana.frmCerrar();
+		ventana.getVentana().dispose();
+		System.exit(0);
 	}
 
 	public void deshabilitarVentana() {

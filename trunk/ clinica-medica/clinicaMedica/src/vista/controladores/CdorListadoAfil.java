@@ -71,7 +71,7 @@ public class CdorListadoAfil extends CdorManejoVentanas {
 	public ModeloTablaListAfil listarAfil(){
 		ModeloTablaListAfil modelo = null;
 		try {
-			vAfi = super.getMod().listarAfiliados();
+			vAfi = super.getMod().listarAfiliados("Z");
 			modelo = new ModeloTablaListAfil(vAfi);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");

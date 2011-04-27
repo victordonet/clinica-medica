@@ -30,12 +30,8 @@ public class CdorAltaEsp extends CdorManejoVentanas {
 		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-
-		
-
 		}catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null,"El campo Codigo y monto no pueden estar vacios ");
-			e.printStackTrace();
 		}
 	}
 

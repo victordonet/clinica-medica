@@ -33,10 +33,8 @@ public class CdorAltaMedico extends CdorManejoVentanas {
 			actionCerrar();
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-		
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-
 		}
 	}
 	

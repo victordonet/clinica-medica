@@ -74,11 +74,9 @@ public class CdorBajaConultorio extends CdorManejoVentanas {
 			super.getMod().bajaConsultorio(id);
 			actionCerrar();
 		} catch (RemoteException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
 		}
 	}
 

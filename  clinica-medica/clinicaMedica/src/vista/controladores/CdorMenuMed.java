@@ -38,6 +38,7 @@ public class CdorMenuMed extends CdorManejoVentanas {
 
 	public void cerrar() {
 		ventana.dispose();
+		System.exit(0);
 	}
 
 	public void deshabilitarVentana() {

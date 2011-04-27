@@ -42,21 +42,20 @@ public class MainServidorRMI
 
 
 		}catch (RemoteException e) {
-			System.out.println("No es posible iniciar el Servidor");
 			JOptionPane.showMessageDialog(null,"No es posible iniciar el Servidor");
+			System.exit(0);
 			
 		} 
 		catch (MalformedURLException e)
 		{
-			System.out.println("URL de publicacion incorrecta");
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			
+			System.exit(0);
 		} catch (LogicaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			System.exit(0);
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			e.printStackTrace();
+			System.exit(0);
 		}
 	
 		TimerTask tarea = new TimerTask() {
@@ -70,11 +69,7 @@ public class MainServidorRMI
 					facade.altaConsultaProxMes();
 					//}
 				} catch (RemoteException e) {
-					JOptionPane.showMessageDialog(null,e.getMessage());
-					e.printStackTrace();
 				} catch (PersistenciaException e) {
-					JOptionPane.showMessageDialog(null,e.getMessage());
-					e.printStackTrace();
 				}
 			}
 		};

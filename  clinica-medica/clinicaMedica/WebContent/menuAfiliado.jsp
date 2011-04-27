@@ -60,7 +60,7 @@ String nombre = (String) session.getValue("nombre");
 </tr>
 <tr height="100%">
   <td height="91">&nbsp;</td>
-  <td><br><br><input type="button" name="Reservas" value="Reservar Turno" style="height:50px; width:200px" onClick="window.location='reservaTurno.jsp'"></td>
+  <td><br><br><input type="button" name="Reservas" value="Reservar Turno" style="height:50px; width:200px" onClick="window.location='listadoEspecialidades.jsp'"></td>
   <td height="91">&nbsp;</td>
 </tr>
 </table>

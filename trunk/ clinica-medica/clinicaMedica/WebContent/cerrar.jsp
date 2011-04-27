@@ -1,7 +1,5 @@
 <%@ page import="javax.servlet.http.HttpSession"%>
-<%@ page import="com.topsystems.homebanking.util.*" %>
 <%@ page import="java.util.*"%>
-<%@ page import="topsystems.jbank.rpc.*" %>
 <html>
 <head>
     <META HTTP-EQUIV="Expires" CONTENT="-1">
@@ -16,36 +14,7 @@
     </script>
 </head>
 <%
-HttpSession eb_session = request.getSession();
-String lStUsuario=(String) eb_session.getAttribute("usuario");
-String url=(String) eb_session.getAttribute("url");
-int puerto =((Integer) eb_session.getAttribute("puerto")).intValue();
-String usuTopaz=(String) eb_session.getAttribute("usuTopaz");
-String passTopaz=(String) eb_session.getAttribute("passTopaz");
-ServiceConnection connection = null;
-String resultado="";
-try {
-	connection = ServiceConnectionFactory.createSocketConnection(url,puerto);
-	connection.connect(usuTopaz,passTopaz);
-				
-	ServiceCall serviceCall = connection.createCall("Oper4006");		
-	Request req = serviceCall.createRequest();				
-	//Cargo los Campos
-	req.addField(new Field("TipoSolicitud", "Cierre"));
-	req.addField(new Field("Usuario", lStUsuario));
-	req.addField(new Field("Conectado", "N"));
-	req.addField(new Field("Reintentos", "0"));
-	//Obtengo datos response
-	serviceCall.setProperty(ProtocolConstants.PACK_TYPE_PROPERTY, "XML");
-	serviceCall.setProperty(ProtocolConstants.PACK_VERSION_PROPERTY,new Integer(1));		
-	Response respon = serviceCall.invoke(req);
-	DataTable datatable = respon.getDataTable();
-	int i=datatable.getRowCount();
-	int h=0;
-	for (h = 0; h < i; h++){
-		resultado=(String) datatable.getValueAt(h,0);
-	}
-	if(resultado.equals("OK")){
+		HttpSession eb_session = request.getSession();
 		response.setHeader("Cache-Control","no-cache");
 		response.setHeader("Cache-Control","no-store");
 		response.setDateHeader("Expires", 0);

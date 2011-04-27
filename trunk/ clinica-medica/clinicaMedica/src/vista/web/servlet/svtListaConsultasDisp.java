@@ -11,19 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import excepciones.PersistenciaException;
 import logica.fachada.IfachadaLogica;
-import vista.dataobjet.DataEsp;
+import vista.dataobjet.VoMedEsp;
+import vista.dataobjet.VoTurnosDisp;
 
 /**
  * Servlet implementation class svtAltaEspecialidad
  */
-public class svtListadoEspecialidades extends HttpServlet {
+public class svtListaConsultasDisp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IfachadaLogica mod;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public svtListadoEspecialidades() {
+    public svtListaConsultasDisp() {
         super();
     }
 
@@ -34,26 +35,13 @@ public class svtListadoEspecialidades extends HttpServlet {
 		HttpSession session = request.getSession();
     	ServletContext sc = getServletContext();
     	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
-    	String id = (String) session.getAttribute("usuario");
-    	
-    	Vector<DataEsp> listadoDataEsp = new Vector<DataEsp>();
-    	Vector<Integer> codigos = new Vector<Integer>();
-    	Vector<String> descripciones = new Vector<String>();
+
+    	String idMed = (String) request.getParameter("idMed");
+    	Vector<VoTurnosDisp> listado = new Vector<VoTurnosDisp>();
 	    try {
-			listadoDataEsp = mod.listarEspecialidades();
-	    	for (int i = 0; i < listadoDataEsp.size(); i++) {
-	    		DataEsp esp = listadoDataEsp.get(i);
-	    		codigos.add(esp.getCodigo());
-	    		descripciones.add(esp.getDescripcion());
-	    	}
-	    	boolean tim = mod.cobraTimbre(id);
-	    	if(tim){
-	    		session.setAttribute("timbre", "S");
-	    	}else{
-	    		session.setAttribute("timbre", "N");
-	    	}
-    		session.setAttribute("listIdEsp", codigos);
-    		session.setAttribute("listNomEsp", descripciones);
+	    	listado = mod.listarConsultasDisp(idMed);
+    		session.setAttribute("listConsultas", listado);
+    		session.setAttribute("idMed", idMed);
 			response.sendRedirect("reservaTurno.jsp");
 		} catch (PersistenciaException e) {
 			String msg = "ERROR: No se pudo acceder a la información almacenada.";

@@ -32,16 +32,14 @@ public class Transaccion {
 		try {
 		if(fin){
 			conexion.commit();
-			System.out.println("hago el comit");
+			
 			} 
 		else{
 			conexion.rollback();
-			System.out.println("hago el rollback");
+			
 			}
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 			throw new PersistenciaException("No pudo realizar consulta");
 		}
 	}
@@ -52,9 +50,7 @@ public class Transaccion {
 			return conexion.prepareStatement(sql);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			
-			e.printStackTrace();
 			throw new PersistenciaException("No pudo obtener el prepared");
 		}
 		

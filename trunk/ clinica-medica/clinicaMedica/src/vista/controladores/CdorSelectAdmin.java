@@ -82,8 +82,12 @@ public class CdorSelectAdmin extends CdorManejoVentanas {
 
 		ModeloTablaListAdmin modelo =null;
 		try {
-			vAdmin = super.getMod().listarAdmin();
-			System.out.println(vAdmin.toString());
+			if(ventanaVoy.getClass()==CdorModifAdmin.class){
+				vAdmin = super.getMod().listarAdmin("I");
+			}
+			else{
+				vAdmin = super.getMod().listarAdmin("A");
+			}
 			modelo = new ModeloTablaListAdmin(vAdmin);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");

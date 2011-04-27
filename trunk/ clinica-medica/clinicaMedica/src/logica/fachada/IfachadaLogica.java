@@ -45,7 +45,7 @@ public interface IfachadaLogica extends IObservable{
 	public void altaAdmin(DataAdmin adm) throws PersistenciaException, RemoteException;
 	public void modificarAdmin(String id, String nom, String cargo, String estado) throws PersistenciaException, RemoteException;
 	public void bajaAdmin(String id) throws PersistenciaException, RemoteException;
-	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException;
+	public Vector<DataAdmin> listarAdmin(String est) throws PersistenciaException, RemoteException;
 	public VosLogin getDataAdmin(String id) throws PersistenciaException, RemoteException;
 	public boolean validarAdmin(String id) throws PersistenciaException, RemoteException;
 	public void modifEx(String idAfil,Calendar fIni,int idTex,Calendar fRes) throws PersistenciaException, RemoteException;
@@ -83,7 +83,7 @@ public interface IfachadaLogica extends IObservable{
  	public void altaMedico(DataMed med) throws PersistenciaException, RemoteException;
  	public void modifMedico(String id, String nom, String apell, String ci, String tel, DataEsp esp, String estado) throws PersistenciaException, RemoteException;
  	public void bajarMedico(String id) throws PersistenciaException, RemoteException;
- 	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException;
+ 	public Vector<DataMed> listarMedicos(String est) throws PersistenciaException, RemoteException;
  	public Vector<VoMedEsp> listarMedEsp(int idEsp) throws PersistenciaException, RemoteException;
  	public Medico getMedico(String id) throws PersistenciaException, RemoteException;
  	public VosLogin getDataMedico(String id) throws PersistenciaException, RemoteException;

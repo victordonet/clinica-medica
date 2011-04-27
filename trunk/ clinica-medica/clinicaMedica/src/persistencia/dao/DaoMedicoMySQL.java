@@ -74,11 +74,14 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		}
 	}
 
-	public Vector<DataMed> listarMedicos(Transaccion trn) throws PersistenciaException {
+	public Vector<DataMed> listarMedicos(Transaccion trn, String est) throws PersistenciaException {
 
 		Vector<DataMed> resultado = new Vector<DataMed>();
 		try {
-			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, telefono, idEspecialidad, estado from Medicos");
+			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, telefono, idEspecialidad, estado from Medicos where estado in (?,?)");
+			
+			pst.setString(1, "A");
+			pst.setString(2, est);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");
@@ -230,7 +233,7 @@ public class DaoMedicoMySQL implements IDaoMedico {
 		IDaoConsultas daoCon = new DaoConsultasMySQL();
 		DataCantConsu medicoPremiado= new DataCantConsu();
 
-		Vector<DataMed> medicos = this.listarMedicos(trn);
+		Vector<DataMed> medicos = this.listarMedicos(trn, "A");
 		for (int i = 0; i < medicos.size(); i++) {
 			String id = medicos.get(i).getId();
 			int cant = daoCon.getCantidadConsultas(trn, fDesde, fHasta, id);

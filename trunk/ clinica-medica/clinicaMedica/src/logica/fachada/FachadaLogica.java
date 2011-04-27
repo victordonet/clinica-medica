@@ -356,11 +356,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 
 	}
-	public Vector<DataAdmin> listarAdmin() throws PersistenciaException, RemoteException {
+	public Vector<DataAdmin> listarAdmin(String est) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<DataAdmin> resultado = null;
 		try {
-			resultado = iDaoAdmin.listarAdmin(trn);
+			resultado = iDaoAdmin.listarAdmin(trn, est);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		}catch (PersistenciaException e) {
@@ -521,7 +521,7 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		Calendar hasta = Calendar.getInstance();
 		hasta.add(hasta.MONTH, 3);
 		try {
-			Vector <DataMed> medicos = iDaoM.listarMedicos(trn);
+			Vector <DataMed> medicos = iDaoM.listarMedicos(trn, "A");
 			for (DataMed medi:medicos){
 				Vector <DataDisp> dispoDelMedico = iDaoD.listarDispMedico(medi.getId(), trn);
 				Calendar desde = Calendar.getInstance();
@@ -1223,11 +1223,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 			throw new RemoteException(e.getMessage());	
 		}
  	}
- 	public Vector<DataMed> listarMedicos() throws PersistenciaException, RemoteException {
+ 	public Vector<DataMed> listarMedicos(String est) throws PersistenciaException, RemoteException {
  		Transaccion trn = pool.obtenerTrn(8);
 		Vector<DataMed> resultado = null;
 		try {
-			resultado = iDaoM.listarMedicos(trn);
+			resultado = iDaoM.listarMedicos(trn, est);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		} catch (PersistenciaException e) {

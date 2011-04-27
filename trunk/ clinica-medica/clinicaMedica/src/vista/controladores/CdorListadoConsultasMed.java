@@ -19,11 +19,12 @@ public class CdorListadoConsultasMed extends CdorManejoVentanas{
 	
 	public void desplegarVentana (CdorManejoVentanas vino){
 			this.vino = vino;
-		try {
-			ventana = new FrmListadoConsultasMed(this);
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+			try {
+				ventana = new FrmListadoConsultasMed(this);
+			} catch (Throwable e) {
+				JOptionPane.showMessageDialog(null,"Error interno del sistema, por favor contacte al admnistrador.");
+			}
+		
 	}
 
 	public FrmListadoConsultasMed getVentana() {
@@ -41,10 +42,8 @@ public class CdorListadoConsultasMed extends CdorManejoVentanas{
 			modelo = new ModeloTablaListadoConsultasMed(vec);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-			e.printStackTrace();
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,"Error al intentar acceder a la persistencia");
-			e.printStackTrace();
 		}
 		return modelo;
 

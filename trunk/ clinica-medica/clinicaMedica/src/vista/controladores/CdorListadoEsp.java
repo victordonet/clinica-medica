@@ -25,8 +25,7 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 		try {
 			ventana = new FrmListadoEspecialidades(this);
 		} catch (Throwable e) {
-			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");
-		
+			JOptionPane.showMessageDialog(null,"Error interno del sistema. Por favor contacte al administrador");	
 		}
 	}
 
@@ -46,10 +45,8 @@ public class CdorListadoEsp extends CdorManejoVentanas{
 			modelo = new ModeloTablaListEsp(vec);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
-	
 		} catch (PersistenciaException e) {
-			JOptionPane.showMessageDialog(null,e.getMessage());
-			
+			JOptionPane.showMessageDialog(null,e.getMessage());		
 		}
 		return modelo;
 

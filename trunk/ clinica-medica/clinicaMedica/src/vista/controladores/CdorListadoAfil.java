@@ -61,9 +61,9 @@ public class CdorListadoAfil extends CdorManejoVentanas {
 		try {
 			cdor.setdAfil(super.getMod().getAfiliado(super.getId()));
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		this.cambioVentana(this, cdor);
 	}
@@ -74,9 +74,9 @@ public class CdorListadoAfil extends CdorManejoVentanas {
 			vAfi = super.getMod().listarAfiliados();
 			modelo = new ModeloTablaListAfil(vAfi);
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null,e.getMessage());
 		}
 		return modelo;
 	}

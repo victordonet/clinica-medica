@@ -417,22 +417,27 @@ public class FrmAltaAfiliado extends JFrame{
 			jButton2.setText("Aceptar");
 			jButton2.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Aceptar Alta Afiliado.");
 					if(jTextField2.getText().equals("") || jTextField.getText().equals("") || jTextField3.getText().equals("") || calendar.getDate()==null){
 						JOptionPane.showMessageDialog(null, "Debe ingresar los campos obligatorios identificados con *.");
-
 					}
 					else{
 						if(!validateEmail(jTextField5.getText())){
 							JOptionPane.showMessageDialog(null, "Formato de E-mail incorrecto");
 						}
 						else{
+							Calendar fechaActual = Calendar.getInstance();
+							Date fechaActualDate = fechaActual.getTime();
 							Date fecha = calendar.getDate();
 							Calendar fechaIngr = Calendar.getInstance();
 							fechaIngr.setTime(fecha);
-							boolean fona = jCheckBox.isSelected();
-							cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
-							cdor.actionCerrar();
+								if(fecha.compareTo(fechaActualDate)>0){
+									JOptionPane.showMessageDialog(null, "La fecha ingresada no puede ser mayor a la fecha actual.");
+									}
+								else{
+									boolean fona = jCheckBox.isSelected();
+									cdor.altaAfil(jTextField1.getText(), jTextField3.getText(), jTextField2.getText(), jTextField.getText(), jTextField5.getText(), jTextField6.getText(), jTextField4.getText(), "A", fechaIngr, fona);
+									cdor.actionCerrar();
+									}
 						}
 					}
 				}

@@ -127,8 +127,8 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 	public void bajaAfil(String id) throws PersistenciaException, RemoteException {
 		fachada.bajaAfil(id);
 	}
-	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException {
-		return fachada.listarAfiliados();
+	public Vector<DataAfiliado> listarAfiliados(String est) throws PersistenciaException, RemoteException {
+		return fachada.listarAfiliados(est);
 	}
 	public VosLogin getDataAfiliado(String id) throws PersistenciaException, RemoteException {
 		return fachada.getDataAfiliado(id);

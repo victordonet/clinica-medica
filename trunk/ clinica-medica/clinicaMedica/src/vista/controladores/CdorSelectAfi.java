@@ -59,7 +59,12 @@ public class CdorSelectAfi extends CdorManejoVentanas {
 	public ModeloTablaListAfil listarAfi(){
 		ModeloTablaListAfil modelo = null;
 		try {
-			vAfi = super.getMod().listarAfiliados();
+			if(ventanaVoy.getClass()==CdorModifAfil.class){
+				vAfi = super.getMod().listarAfiliados("I");
+			}
+			else{
+				vAfi = super.getMod().listarAfiliados("A");
+			}
 			modelo = new ModeloTablaListAfil(vAfi);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");

@@ -16,6 +16,72 @@ var Meses=new vector("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","A
 var Dias= new vector("Lunes","Martes","Mi&eacute;rcoles","Jueves","Viernes","S&aacute;bado","Domingo");
 Dias[0]="Domingo";
 
+//-------------------------------------------------------------------
+// Elimina los espacios en blanco al principio de una cadena
+//-------------------------------------------------------------------
+function u_ltrim(cadena) {	
+
+	var i = 0;
+	for (i = 0; ((i<cadena.length)&&(cadena.charAt(i)==" ")); i++);
+
+	return cadena.substr(i);
+}
+
+//-------------------------------------------------------------------
+/**
+* Validacion de campos
+**/
+function f_msg(campo, etiqueta) {	
+
+	if (u_ltrim(campo.value)=="") {
+		alert("Por favor, ingrese datos en el campo "+etiqueta);
+		campo.focus();
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+//-------------------------------------------------------------------
+/**
+* Validación números.
+**/
+function f_numeros(campo, etiqueta) {	
+
+	if (u_ltrim(campo.value)=="") {
+		alert("Por favor, ingrese datos en el campo "+etiqueta);
+		campo.focus();
+		return false;
+	}
+	else {
+		var salida = "";
+		var cadena = campo.value;
+		var OK = true;	// Resultado de conversion
+		validas = "1234567890"+String.fromCharCode(10, 13);
+		var c;
+		for (var i = 0; i < cadena.length; i ++ ) {
+			var caracter = cadena.charAt( i );
+			var codigo   = cadena.charCodeAt( i );
+			if (validas.indexOf(caracter)!=-1) {
+				salida += caracter;
+			}
+			else	{
+						OK = false;
+						alert("Por favor, ingrese Números en el campo "+etiqueta);
+						campo.focus();
+						return false;
+					}
+		} // for
+	
+		if (OK) {
+			campo.value=salida;
+		}	
+  		return OK;
+	}
+}
+
+//-------------------------------------------------------------------
 /**
 *  MD5 (Message-Digest Algorithm)
 **/

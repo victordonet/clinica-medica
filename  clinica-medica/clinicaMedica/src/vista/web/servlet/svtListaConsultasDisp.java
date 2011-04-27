@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import excepciones.PersistenciaException;
 import logica.fachada.IfachadaLogica;
-import vista.dataobjet.VoMedEsp;
 import vista.dataobjet.VoTurnosDisp;
 
 /**
@@ -35,7 +34,7 @@ public class svtListaConsultasDisp extends HttpServlet {
 		HttpSession session = request.getSession();
     	ServletContext sc = getServletContext();
     	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
-
+    	
     	String idMed = (String) request.getParameter("idMed");
     	Vector<VoTurnosDisp> listado = new Vector<VoTurnosDisp>();
 	    try {

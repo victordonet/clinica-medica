@@ -1,9 +1,6 @@
 package vista.web.servlet;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Vector;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.fachada.IfachadaLogica;
-import vista.dataobjet.DataMed;
 import vista.dataobjet.DataReservaTurno;
+import vista.dataobjet.VoTurnosDisp;
 import excepciones.PersistenciaException;
 
 /**
@@ -37,31 +34,38 @@ public class svtReservaTurno extends HttpServlet {
     	ServletContext sc = getServletContext();
     	mod = (IfachadaLogica) sc.getAttribute("modeloProxy");
     	
-		String id = request.getParameter("afiliado");
-	    int indexEsp = Integer.parseInt(request.getParameter("especialidad"));
-	    int indexMed = Integer.parseInt(request.getParameter("medico"));
-	    String fecha = request.getParameter("fecha");
-	    String diaSem = request.getParameter("dia");
-	    String horario = request.getParameter("horario");
-	    int consultorio = Integer.parseInt(request.getParameter("consultorio"));
-	    int turno = Integer.parseInt(request.getParameter("turno"));
-	    String timbre = request.getParameter("timbre");
-
-	    if (id.trim()=="" || indexEsp==0 || indexMed==0 || fecha.isEmpty() || diaSem.trim()=="" || horario.trim()=="" || consultorio==0 || turno==0){
+		String id = (String) session.getAttribute("usuario");
+		String esp = (String) session.getAttribute("idEsp");
+		int idEsp;
+		if(esp==null){
+			esp="";
+			idEsp = 0;
+	    }else{
+	    	idEsp = Integer.parseInt(esp);
+	    }
+	    String idMed = (String) session.getAttribute("idMed");
+		if(idMed==null){
+			idMed="";
+	    }
+	    String timbre = (String) session.getAttribute("timbre");
+	    VoTurnosDisp vo = (VoTurnosDisp) session.getAttribute("dataConsulta");
+		if(vo==null){
+			vo = new VoTurnosDisp(null, "", "", 0, 0);
+	    }
+	    System.out.println("id="+id);
+	    System.out.println("esp="+esp);
+	    System.out.println("idEsp="+idEsp);
+	    System.out.println("idMed="+idMed);
+	    System.out.println("timbre="+timbre);
+	    System.out.println("conultorio="+vo.getIdConsultorio());
+	    
+	    if (id.trim()=="" || idEsp==0 || idMed.trim()=="" || timbre.trim()=="" || vo.getIdConsultorio()==0){
 	    	String msg = "ERROR: Debe cargar todos los campos del formulario.";
-	    	session.setAttribute("id", id);
-	    	session.setAttribute("esp", indexEsp);
-	    	session.setAttribute("medico", indexMed);
-	    	session.setAttribute("timbre", timbre);
 	    	response.sendRedirect("reservaTurno.jsp?msg="+msg);
 	    }else{
 	    	try{
-	    		Vector<DataMed> vMed = mod.listarMedicos();
-	    		String idMed = vMed.get(indexMed).getId();
-	    		Date date = new Date(fecha);
-	    		Calendar fechaRes = Calendar.getInstance();
-	    		fechaRes.setTime(date);
 		    	int dia = 0;
+		    	String diaSem = vo.getDia();
 				if(diaSem.equals("Domingo")) {
 					dia = 1;}
 				if(diaSem.equals("Lunes")) {
@@ -77,6 +81,7 @@ public class svtReservaTurno extends HttpServlet {
 				if(diaSem.equals("Sábado")) {
 					dia = 7;}
 				int hora = 0;
+				String horario = vo.getHorario();
 				if(horario.equals("00 a 02")) {
 					hora = 1;}
 				if(horario.equals("02 a 04")) {
@@ -101,15 +106,13 @@ public class svtReservaTurno extends HttpServlet {
 					hora = 11;}
 				if(horario.equals("22 a 24")) {
 					hora = 12;}
-				//String idMed = vMEsp.get(selecMed).getId();
-				DataReservaTurno dataResTurno = new DataReservaTurno(fechaRes, dia, hora, id, consultorio, idMed, turno);
+				DataReservaTurno dataResTurno = new DataReservaTurno(vo.getFecha(), dia, hora, id, vo.getIdConsultorio(), idMed, vo.getTurno());
 				mod.altaConsulta(dataResTurno);
 			} catch (PersistenciaException e) {
 				String msg = "ERROR: No se pudo acceder a la información almacenada.";
 		    	response.sendRedirect("errores.jsp?msg"+msg);
 				e.printStackTrace();
 			}
-			
 			response.sendRedirect("menu.jsp");
 	    }
 	}

@@ -49,8 +49,8 @@ public class svtListadoMedicosEsp extends HttpServlet {
 	    	}
     		session.setAttribute("listIdMed", codigos);
     		session.setAttribute("listNomMed", nombres);
-    		session.setAttribute("idEsp", idEsp);
-			response.sendRedirect("reservaTurno.jsp?");
+    		session.setAttribute("idEsp", idEsp+"");
+			response.sendRedirect("reservaTurno.jsp");
 		} catch (PersistenciaException e) {
 			String msg = "ERROR: No se pudo acceder a la información almacenada.";
 			request.setAttribute("msg", msg);

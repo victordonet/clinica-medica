@@ -79,13 +79,14 @@ public class DaoAfiliadoMySQL implements IDaoAfiliado {
 		}
 	}
 
-	public Vector<DataAfiliado> listarAfiliados(Transaccion trn) throws PersistenciaException {
+	public Vector<DataAfiliado> listarAfiliados(Transaccion trn, String est) throws PersistenciaException {
 		
 		Vector<DataAfiliado> resultado = new Vector<DataAfiliado>();
 		try {
 			PreparedStatement pst = trn.preparedStatement("Select id, nombre, apellido, ci, mail, direccion, telefono, " +
-															"fechaingreso, fonasa, estado from Afiliados");
-		
+															"fechaingreso, fonasa, estado from Afiliados where estado in (?,?)");
+			pst.setString(1, "A");
+			pst.setString(2, est);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){
 				String id = rst.getString("Id");

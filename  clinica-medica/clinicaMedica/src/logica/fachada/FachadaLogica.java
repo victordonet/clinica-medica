@@ -180,11 +180,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		}
 
 	}
-	public Vector<DataAfiliado> listarAfiliados() throws PersistenciaException, RemoteException {
+	public Vector<DataAfiliado> listarAfiliados(String est) throws PersistenciaException, RemoteException {
 		Transaccion trn = pool.obtenerTrn(8);
 		Vector<DataAfiliado> resultado = null;
 		try {
-			resultado = iDaoAfil.listarAfiliados(trn);
+			resultado = iDaoAfil.listarAfiliados(trn, est);
 			trn.finalizarTrn(true);
 			pool.liberarTrn(trn);
 		}catch (PersistenciaException e) {

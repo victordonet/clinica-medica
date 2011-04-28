@@ -68,13 +68,13 @@ function cargoIdMed(valor) {
     <td width="31%" height="39" valign="bottom"><font color="#FFFFFF">Bienvenido! <%=nombre%></font></td>
     <td width="46%" height="39">&nbsp;</td>
     <td width="15%" height="39">&nbsp;</td>
-    <td width="8%" height="39" align="right" valign="bottom"><font color="#FFFFFF">cerrar sesi&oacute;n</font></td>
+    <td width="8%" height="39" align="right" valign="bottom"><a href="cerrar.jsp"><font color="#FFFFFF">cerrar sesi&oacute;n</font></a></td>
 </tr>
 <tr height="100%">
     <td width="31%" height="87">
     <table width="101%" height="51">
         <tr>
-            <td width="37%" height="65" align="right"><a href="menuAfiliado.jsp"><img src="imagenes/botonMenu.jpg" alt="volver al menú" border="0"></a></td>
+            <td width="37%" height="65" align="right"><a href="menuAfiliado.jsp"><img src="imagenes/botonMenu.jpg" alt="volver al menú" border="0" onclick="<%session.setAttribute("dataConsulta", null);%>"></a></td>
             <td width="5%" height="65"></td>
             <td width="58%"><p><font size="+3">Reserva de Turno</font></p>
             </td>
@@ -139,7 +139,7 @@ function cargoIdMed(valor) {
             	<td height="20" valign="top">
                     <table width="100%" border="1" bordercolor="#666666" class="BaseTablas">
                         <tr bgcolor="#999999" align="center" bordercolor="#666666">
-                          <td width="21%">#</td>
+                          <td width="21%">Seleccion</td>
                           <td width="21%">Fecha</td>
                           <td width="22%">Dia</td>
                           <td width="24%">Horario</td>
@@ -148,10 +148,9 @@ function cargoIdMed(valor) {
                       </tr>
                       <%if (consultasDisp!=null){
                       for (int i = 0; i < consultasDisp.size(); i++) { 
-                    	  VoTurnosDisp vo = consultasDisp.get(i);
-                      %>
+                    	  VoTurnosDisp vo = consultasDisp.get(i);%>
                        <tr onClick="cargaConsulta()">
-                       		<td width="22%"><input type="radio" name="radio" value="<%=vo%>" onClick="<%session.setAttribute("dataConsulta",vo);%>"></td>
+                       		<td width="22%"><input type="radio" name="radio" value="<%=vo%>" onClick="<%session.setAttribute("dataConsulta",vo);%>" checked></td>
                             <td width="21%"><%=vo.getFecha().get(Calendar.DATE)+"/"+(vo.getFecha().get(Calendar.MONTH)+1)+"/"+vo.getFecha().get(Calendar.YEAR)%></td>
                           	<td width="22%"><%=vo.getDia()%></td>
                             <td width="24%"><%=vo.getHorario()%></td>

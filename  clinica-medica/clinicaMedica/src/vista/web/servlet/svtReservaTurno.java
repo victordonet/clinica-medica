@@ -52,12 +52,6 @@ public class svtReservaTurno extends HttpServlet {
 		if(vo==null){
 			vo = new VoTurnosDisp(null, "", "", 0, 0);
 	    }
-	    System.out.println("id="+id);
-	    System.out.println("esp="+esp);
-	    System.out.println("idEsp="+idEsp);
-	    System.out.println("idMed="+idMed);
-	    System.out.println("timbre="+timbre);
-	    System.out.println("conultorio="+vo.getIdConsultorio());
 	    
 	    if (id.trim()=="" || idEsp==0 || idMed.trim()=="" || timbre.trim()=="" || vo.getIdConsultorio()==0){
 	    	String msg = "ERROR: Debe cargar todos los campos del formulario.";
@@ -113,7 +107,11 @@ public class svtReservaTurno extends HttpServlet {
 		    	response.sendRedirect("errores.jsp?msg"+msg);
 				e.printStackTrace();
 			}
-			response.sendRedirect("menu.jsp");
+			session.setAttribute("idEsp", null);
+			session.setAttribute("idMed", null);
+			session.setAttribute("listConsultas", null);
+			session.setAttribute("dataConsulta", null);
+			response.sendRedirect("menuAfiliado.jsp");
 	    }
 	}
 

@@ -46,7 +46,7 @@ String nombre = (String) session.getValue("nombre");
 <tr valign="Middle" height="100%">
     <td width="43%" height="45" valign="bottom"><font color="#FFFFFF">Bienvenido! <%=nombre%></font></td>
     <td width="46%" height="45">&nbsp;</td>
-    <td width="11%" height="45" align="right" valign="bottom"><font color="#FFFFFF">cerrar sesi&oacute;n</font></td>
+    <td width="11%" height="45" align="right" valign="bottom"><a href="cerrar.jsp"><font color="#FFFFFF">cerrar sesi&oacute;n</font></a></td>
 </tr>
 <tr height="100%">
     <td width="43%" height="106">&nbsp;</td>

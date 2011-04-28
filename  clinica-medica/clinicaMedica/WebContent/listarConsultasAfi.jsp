@@ -35,14 +35,11 @@ List apellidos = (List) session.getValue("listApellidos");
 				</td>
 				<td width="47%" height="39">&nbsp;</td>
 				<td width="9%" height="39">&nbsp;</td>
-				<td width="8%" height="39" align="right" valign="bottom"><font
-					color="#FFFFFF"><a href="login.jsp">cerrar sesi&oacute;n</a>
-				</font>
-				</td>
+				<td width="8%" height="39" align="right" valign="bottom"><a href="cerrar.jsp"><font color="#FFFFFF">cerrar sesi&oacute;n</font></a></td>
 			</tr>
 			<tr height="100%">
 				<td width="36%" height="87">
-					<table width="109%" height="51" h>
+					<table width="109%" height="51">
 						<tr>
 							<td width="27%" height="65" align="right"><a href="menuAfiliado.jsp"><img
 									src="imagenes/botonMenu.jpg" alt="volver al menú" border="0">

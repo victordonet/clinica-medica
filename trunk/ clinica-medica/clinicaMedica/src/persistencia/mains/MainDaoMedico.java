@@ -41,7 +41,7 @@ public class MainDaoMedico {
 		fachada.altaUsuario(usuMed2);
 
 		//Listar
-		Vector<DataMed> listMed = fachada.listarMedicos();
+		Vector<DataMed> listMed = fachada.listarMedicos("A");
 		for (int i = 0; i < listMed.size(); i++) {
 			DataMed me = listMed.get(i);
 			System.out.println("Listado medicos, Nombre = "+me.getNombre());

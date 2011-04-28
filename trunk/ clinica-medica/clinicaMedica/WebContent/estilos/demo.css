@@ -101,7 +101,7 @@ A {
 	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #868fd9; FONT-FAMILY: Tahoma, Arial, Helvetica; TEXT-DECORATION: none
 }
 .txtencabb {
-	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000066; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #000066; FONT-STYLE: normal; FONT-FAMILY: Calibri
 }
 .txtencabchico {
 	FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: #000066; FONT-FAMILY: Tahoma, Arial, Helvetica
@@ -167,52 +167,52 @@ A {
 	FONT-SIZE: 10pt; COLOR: #000099; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-FAMILY: Tahoma, Arial, Helvetica
 }
 .f1 {
-	FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Calibri
 }
 .f2 {
 	FONT-SIZE: 6pt; LINE-HEIGHT: 6pt; FONT-FAMILY: Lucida Console
 }
 .f3 {
-	FONT-SIZE: 6pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Lucida Console, 'Courier New'
+	FONT-SIZE: 6pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Lucida Console, 'Calibri'
 }
 .f9 {
-	FONT-SIZE: 70%; WIDTH: 90%; LINE-HEIGHT: normal; FONT-FAMILY: Courier New, 'Lucida Console'
+	FONT-SIZE: 70%; WIDTH: 90%; LINE-HEIGHT: normal; FONT-FAMILY: Calibri, 'Lucida Console'
 }
 .f11 {
 	FONT-SIZE: 7pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Lucida Console
 }
 .f13 {
-	FONT-SIZE: 8pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 8pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Calibri
 }
 .f23 {
 	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Lucida Console
 }
 .f25 {
-	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f27 {
-	FONT-WEIGHT: bold; FONT-SIZE: 9pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Courier New
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; LINE-HEIGHT: 8pt; FONT-FAMILY: Calibri
 }
 .f178 {
-	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f191 {
-	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f194 {
-	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f195 {
-	FONT-WEIGHT: bold; FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Courier New
+	FONT-WEIGHT: bold; FONT-SIZE: 6pt; LINE-HEIGHT: 5pt; FONT-FAMILY: Calibri
 }
 .f196 {
-	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 71%; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f210 {
-	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Courier New
+	FONT-SIZE: 8pt; LINE-HEIGHT: 7pt; FONT-FAMILY: Calibri
 }
 .f213 {
-	FONT-WEIGHT: bold; FONT-SIZE: 7pt; LINE-HEIGHT: 6pt; FONT-FAMILY: Courier New
+	FONT-WEIGHT: bold; FONT-SIZE: 7pt; LINE-HEIGHT: 6pt; FONT-FAMILY: Calibri
 }
 PRE {
 	FONT-SIZE: 8pt; FONT-FAMILY: Lucida Console

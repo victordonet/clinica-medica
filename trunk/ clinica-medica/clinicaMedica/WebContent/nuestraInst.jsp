@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="Base" background="imagenes/inicio.jpg">
+<body class="Base" background="imagenes/nuestraInst.jpg">
 
 	<center>
 

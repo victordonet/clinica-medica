@@ -114,20 +114,17 @@ if (msg==null)
 									</table>
 									<table width="100%">
                                     	<tr>
-											<td width="191" height="24" align="right" valign="top"><BR>Teclado Virtual:
-                                            <div align="right" class="txtencabezado">
-                                            May&uacute;s<input type="radio" name="Mayus" value="S" id="Mayus_0" checked onClick="marcador('contenedor','pass',this.value);">
-                                            <BR>
-                                            Min&uacute;s<input type="radio" name="Mayus" value="N" id="Mayus_1" onClick="marcador('contenedor','pass',this.value);">
-                                            </div>
+											<td width="191" height="24" align="right" valign="top">
                                             </td>
 											<td width="20">&nbsp;</td>
-											<td width="530">
+											<td width="530" align="center">
                                             <br>
-											<table border="1" bordercolordark="#99CCFF">
+											<table>
                                                 <tr>
                                                     <td align="center" valign="Top">
-                                                        <div id="contenedor"></div>
+                                                    <div id="contenedor" align="center"></div>
+                                                    May&uacute;s<input type="radio" name="Mayus" value="S" id="Mayus_0" checked onClick="marcador('contenedor','pass',this.value);">
+                                                    <input type="radio" name="Mayus" value="N" id="Mayus_1" onClick="marcador('contenedor','pass',this.value);">Min&uacute;s	
                                                     </td>
                                                 </tr>
                                               </table>

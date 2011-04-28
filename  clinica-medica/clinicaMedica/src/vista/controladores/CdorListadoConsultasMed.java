@@ -16,15 +16,15 @@ public class CdorListadoConsultasMed extends CdorManejoVentanas{
 	public CdorListadoConsultasMed(){
 		super();
 	}
-	
+
 	public void desplegarVentana (CdorManejoVentanas vino){
-			this.vino = vino;
-			try {
-				ventana = new FrmListadoConsultasMed(this);
-			} catch (Throwable e) {
-				JOptionPane.showMessageDialog(null,"Error interno del sistema, por favor contacte al admnistrador.");
-			}
-		
+		this.vino = vino;
+		try {
+			ventana = new FrmListadoConsultasMed(this);
+		} catch (Throwable e) {
+			JOptionPane.showMessageDialog(null,"Error interno del sistema, por favor contacte al admnistrador.");
+		}
+
 	}
 
 	public FrmListadoConsultasMed getVentana() {

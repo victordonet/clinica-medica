@@ -165,6 +165,20 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 		return fachada.listarConsultas();
 	}
 	
+	//CONSULTORIOS
+	public boolean validarConsultorio(int id) throws PersistenciaException,RemoteException {
+		return fachada.validarConsultorio(id);
+	}
+	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException{
+		fachada.altaConsultorio(consultorio);
+	}
+	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException {
+		fachada.bajaConsultorio(idConsultorio);
+	}
+	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
+		return fachada.listarConsultorios();
+	}
+	
 	//DISPONIBILIDAD
 	public void modificarDisponibilidad(boolean[][] dataDsip, String idMed) throws PersistenciaException, RemoteException {
 		fachada.modificarDisponibilidad(dataDsip, idMed);
@@ -178,6 +192,7 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	public boolean[][] obtenerDispoDiaHoraMedico(String idMedico)throws PersistenciaException, RemoteException {
 		return fachada.obtenerDispoDiaHoraMedico(idMedico);
 	}
+	
 	//ESPECIALIDADES
 	public void altaEspecialidad(DataEsp datEsp) throws RemoteException, PersistenciaException {
 			fachada.altaEspecialidad(datEsp);
@@ -246,11 +261,8 @@ public class ProxyFachadaLogica implements IfachadaLogica {
  	public DataMed getDataMed(String id)  throws PersistenciaException, RemoteException {
  		return fachada.getDataMed(id);
  	}
-	
-	public void modifConsultasMedFuturas(String idMed)
-			throws PersistenciaException, RemoteException {
+	public void modifConsultasMedFuturas(String idMed) throws PersistenciaException, RemoteException {
 		fachada.modifConsultasMedFuturas(idMed);
-			
 	}
 	
 	//TIPO DE EXAMEN
@@ -299,19 +311,5 @@ public class ProxyFachadaLogica implements IfachadaLogica {
 	}
 	public String getTipo(String idUsuario) throws PersistenciaException, RemoteException {
 		return fachada.getTipo(idUsuario);
-	}
-
-	//CONSULTORIOS
-	public boolean validarConsultorio(int id) throws PersistenciaException,RemoteException {
-		return fachada.validarConsultorio(id);
-	}
-	public void altaConsultorio(DataConsultorio consultorio) throws PersistenciaException, RemoteException{
-		fachada.altaConsultorio(consultorio);
-	}
-	public void bajaConsultorio(int idConsultorio) throws PersistenciaException, RemoteException {
-		fachada.bajaConsultorio(idConsultorio);
-	}
-	public Vector<DataConsultorio> listarConsultorios() throws PersistenciaException, RemoteException {
-		return fachada.listarConsultorios();
 	}
 }

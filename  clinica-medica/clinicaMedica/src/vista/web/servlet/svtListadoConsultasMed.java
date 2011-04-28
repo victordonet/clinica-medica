@@ -3,7 +3,6 @@ package vista.web.servlet;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Vector;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
-
 import logica.fachada.IfachadaLogica;
 import vista.dataobjet.DataConsFecha;
 import excepciones.PersistenciaException;

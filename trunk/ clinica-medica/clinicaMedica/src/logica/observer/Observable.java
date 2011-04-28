@@ -4,11 +4,11 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.LinkedList;
 
-
-
 public class Observable extends UnicastRemoteObject implements IObservable
 {
-    private LinkedList colMenuGA, colReservaTurno, colDispoMed;
+
+	private static final long serialVersionUID = 1L;
+	private LinkedList colMenuGA, colReservaTurno, colDispoMed;
 
     public Observable() throws RemoteException
     {
@@ -59,18 +59,13 @@ public class Observable extends UnicastRemoteObject implements IObservable
     	}
     }
 
-
 	public void addObsDispMed(IObserver obs) throws RemoteException {
-
 		colDispoMed.add(obs);
 	}
 
-
 	public void remObsDispMed(IObserver obs) throws RemoteException {
-
 		colDispoMed.remove(obs);
 	}
-
 
 	public void notificarDispMed() throws RemoteException {
 		if(colDispoMed.size()>0){ 
@@ -81,6 +76,4 @@ public class Observable extends UnicastRemoteObject implements IObservable
 			}
 		}
 	}
-
-	
 }

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataAfiliado;
 import vista.dataobjet.DataExamen;

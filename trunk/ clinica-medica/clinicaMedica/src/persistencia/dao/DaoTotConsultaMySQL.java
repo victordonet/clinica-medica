@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Vector;
-
-import javax.swing.JOptionPane;
-
 import persistencia.transacciones.Transaccion;
 import vista.dataobjet.DataConsAfi;
 import vista.dataobjet.DataConsFecha;

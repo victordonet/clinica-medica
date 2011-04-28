@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 function AsignaValor(Nombre,Valor){
     var Campo = document.getElementById(Nombre);
     if(Valor==""){
@@ -50,7 +45,7 @@ function marcador(Div,Nombre,Mayus){
             ini = j;
             fin = ini + 7;
         }else if(j==27){
-            resultado += "<td bgcolor='#0A5D9A' colspan='4' align='center' style='cursor:pointer;' onclick=\"AsignaValor('"+Nombre+"','')\" class='Button'><font face='Verdana, Arial, Helvetica, sans-serif' color='#FFFFFF' size='2'><B>Limpiar</B></font></td>";
+            resultado += "<td bgcolor='#336699' colspan='4' align='center' style='cursor:pointer;' onclick=\"AsignaValor('"+Nombre+"','')\"><font face='Calibri' color='#FFFFFF' size='2'><B>Limpiar</B></font></td>";
         }
         resultado += "</tr>";
     }

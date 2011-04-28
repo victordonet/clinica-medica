@@ -48,9 +48,9 @@ div.calendarbutton{
 }
 
 #CalendarPickerControl td.navbutton:hover{
-	text-decoration: underline;
 	border-color: #283043 #A6AFBB #A6AFBB #283043;
-	background-color: #9097A2;
+	color: #FFFFFF;
+	background-color: #99CC66;
 }
 
 #CalendarPickerControl span.yearbutton{
@@ -70,8 +70,9 @@ div.calendarbutton{
 
 #CalendarPickerControl td.today{
 	font: normal 11px Verdana;
+	font-weight: bold;
 	background-color: #E8F2F9;
-	color: #FF9900;
+	color: #FF6633;
 	text-decoration: none;
 	cursor: pointer;
 	border-width: 1px;
@@ -81,15 +82,15 @@ div.calendarbutton{
 
 #CalendarPickerControl td.today:hover{
 	text-decoration: underline;
-//	border-color: #283043 #A6AFBB #A6AFBB #283043;
-	background-color: #9097A2;
+	color: #FFFFFF;
+	background-color: #669900;
 }
 
 #CalendarPickerControl td.current{
 	font: normal 11px Verdana;
 	font-weight: bold;
-	background-color: #E8F2F9;
-	color: #0A5D9A;
+	background-color: #FF6633;
+	color: #FFFFFF;
 	text-decoration: none;
 	cursor: pointer;
 	border-width: 1px;
@@ -115,7 +116,7 @@ div.calendarbutton{
 #CalendarPickerControl td.day:hover{
 	text-decoration: underline;
 	border-color: #283043 #A6AFBB #A6AFBB #283043;
-	background-color: #9097A2;
+	background-color: #99CC66;
 }
 
 #CalendarPickerControl td.weekend{
@@ -133,7 +134,8 @@ div.calendarbutton{
 #CalendarPickerControl td.weekend:hover{
 	text-decoration: underline;
 	border-color: #283043 #A6AFBB #A6AFBB #283043;
-	background-color: #9097A2;
+	background-color: #FFCC33;
+	color: #FFFFFF;
 }
 
 #CalendarPickerControl td.dayothermonth{
@@ -145,6 +147,6 @@ div.calendarbutton{
 #CalendarPickerControl td.weeknumber{
 	font:normal 9px Verdana;
 	background-color: #BAD8ED;
-	color: #FFFFFF;
+	color: #BAD8ED;
 	border-width: 0px;
 }

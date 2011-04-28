@@ -30,7 +30,7 @@ public class MainDaoAfiliados {
 		fachada.altaUsuario(usuAf);
 		
 		//Listar
-		Vector<DataAfiliado> listAfiliados = fachada.listarAfiliados();
+		Vector<DataAfiliado> listAfiliados = fachada.listarAfiliados(usuAf.getId());
 		for (int i = 0; i < listAfiliados.size(); i++) {
 			DataAfiliado af = listAfiliados.get(i);
 			System.out.println("Listado afiliados, Nombre = "+af.getNombre());

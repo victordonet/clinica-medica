@@ -254,13 +254,9 @@ public class FrmMantDisp extends UnicastRemoteObject implements IObserver{
 
 
 	public void update() throws RemoteException {
-		try {
-			
-			initialize();
-	
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		modelo = cdor.obtenerDisp();
+		jTable1.setModel(modelo);
+		jTable1.setVisible(true);
 	}
 
 		

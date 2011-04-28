@@ -115,15 +115,7 @@ public class FrmMenuGerente extends UnicastRemoteObject implements IObserver{
 		modelo = cdor.listarConsultas();
 		jTable.setModel(modelo);
 		jTable.setVisible(true);
-		//jTable.setSelectionMode(0);
 
-		//		try {
-//			initialize();
-//		} catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (Throwable e) {
-//			e.printStackTrace();
-//		}
 	}
 
 	public JFrame getVentana(){

@@ -50,5 +50,6 @@ function marcador(Div,Nombre,Mayus){
         resultado += "</tr>";
     }
     resultado += "</table><br>";
+    document.form.usuario.focus();
     document.getElementById(Div).innerHTML=resultado;
 }

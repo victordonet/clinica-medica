@@ -14,13 +14,21 @@
 	{
 		 input = document.getElementById(inputid);
 	}
+
+	function validar(form) {
+		return f_msg(form.DPC_calendar1, "Fecha Desde") && f_msg(form.DPC_calendar2, "Fecha Hasta");
+	}
 </SCRIPT>
 
 <%
 String nombre = (String) session.getValue("nombre");
+
+String msg = (String) request.getParameter("msg");
+if (msg==null)
+	msg="";
 %>
 
-<body class="Base" background="imagenes/fondoGrl.jpg" OnLoad="document.form.id.focus();">
+<body class="Base" background="imagenes/fondoGrl.jpg" OnLoad="document.form.DPC_calendar1.focus();">
 <form name="form" method="get" onSubmit="return validar(document.form)" action="listadoConsultasMed.jsp">
     <input type="hidden" id="DPC_TODAY_TEXT" value="Hoy">
     <input type="hidden" id="DPC_BUTTON_TITLE" value="Abrir calendario...">
@@ -69,6 +77,7 @@ String nombre = (String) session.getValue("nombre");
 	<tr height="100%">
 		<td width="31%" height="238">&nbsp;</td>
 		<td width="46%" height="238" valign="top">
+		<br><br>
 		<table width="100%">
 			<tr>
 				<td width="18%" height="20">Fecha Desde</td>
@@ -79,8 +88,10 @@ String nombre = (String) session.getValue("nombre");
 				<td height="20"><input type="text" id="DPC_calendar2" name="fechaHasta" size="8" maxlength="10" class="dateDefault">&nbsp;</td>
 			</tr>
 		</table>
+		<br>
+		<font size="+1" color="#FF9900"><%=msg%></font>
 		</td>
-		<td>&nbsp;</td>
+		<td></td>
 		<td width="8%" height="238">&nbsp;</td>
 	</tr>
 	<tr height="100%">

@@ -34,7 +34,7 @@ if (msg==null)
 			</tr>
 			<tr height="100%">
 				<td width="36%" height="87">
-					<table width="109%" height="51" h>
+					<table width="109%" height="51">
 						<tr>
 							<td width="27%" height="65">&nbsp;</td>
 							<td width="5%" height="65">&nbsp;</td>

@@ -1,6 +1,8 @@
 package vista.web.servlet;
 
 import java.io.IOException;
+import java.util.Vector;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +50,9 @@ public class svtReservaTurno extends HttpServlet {
 			idMed="";
 	    }
 	    String timbre = (String) session.getAttribute("timbre");
-	    VoTurnosDisp vo = (VoTurnosDisp) session.getAttribute("dataConsulta");
+	    Vector<VoTurnosDisp> vec = (Vector<VoTurnosDisp>) session.getAttribute("listConsultas");
+	    VoTurnosDisp vo = vec.get(Integer.parseInt(request.getParameter("radio").toString()));
+	    //VoTurnosDisp vo = (VoTurnosDisp) session.getAttribute("dataConsulta");
 		if(vo==null){
 			vo = new VoTurnosDisp(null, "", "", 0, 0);
 	    }

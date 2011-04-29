@@ -50,6 +50,7 @@ function cargoIdEsp(valor) {
 function cargoIdMed(valor) {
 	window.location='listarConsultasDisp.jsp?idMed='+valor;
 }
+
 </script>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
@@ -150,7 +151,7 @@ function cargoIdMed(valor) {
                       for (int i = 0; i < consultasDisp.size(); i++) { 
                     	  VoTurnosDisp vo = consultasDisp.get(i);%>
                        <tr onClick="cargaConsulta()">
-                       		<td width="22%"><input type="radio" name="radio" value="<%=vo%>" onClick="<%session.setAttribute("dataConsulta",vo);%>" checked></td>
+                       		<td width="22%"><input type="radio" name="radio" value="<%=i%>" checked></td>
                             <td width="21%"><%=vo.getFecha().get(Calendar.DATE)+"/"+(vo.getFecha().get(Calendar.MONTH)+1)+"/"+vo.getFecha().get(Calendar.YEAR)%></td>
                           	<td width="22%"><%=vo.getDia()%></td>
                             <td width="24%"><%=vo.getHorario()%></td>
@@ -167,7 +168,6 @@ function cargoIdMed(valor) {
             </td>
             </tr>
 		</table>
-        <input type="hidden" name="idCons" value="0">
     </td>
     <td>&nbsp;</td>
     <td width="8%" height="238">&nbsp;</td>

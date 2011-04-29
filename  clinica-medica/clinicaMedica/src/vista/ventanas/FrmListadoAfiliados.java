@@ -147,13 +147,6 @@ public class FrmListadoAfiliados extends JFrame{
 							filtroNombre.setRowFilter(RowFilter.regexFilter(text,1));
 						}
 					}
-					
-					//Controlar el largo del text
-					String s = jTextField1.getText();
-					int n=s.length();
-					if(n >= 20){
-						e.consume();  // ignorar el evento de teclado
-					}
 				}
 			});
 		}
@@ -186,13 +179,6 @@ public class FrmListadoAfiliados extends JFrame{
 							//se le agrega al sorter el filtro en otra columna 3
 							filtroApellido.setRowFilter(RowFilter.regexFilter(text,2));
 						}
-					}
-					
-					//Controlar el largo del text
-					String s = jTextField2.getText();
-					int n=s.length();
-					if(n >= 20){
-						e.consume();  // ignorar el evento de teclado
 					}
 				}
 			});
@@ -235,13 +221,6 @@ public class FrmListadoAfiliados extends JFrame{
 					if(((caracter < '0') ||(caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
 					{
 						e.consume();  // ignorar el evento de teclado
-					}
-
-					//Controlar el largo del text
-					String s = jTextField.getText();
-					int n=s.length();
-					if(n >= 10){
-						e.consume();
 					}
 				}
 			});

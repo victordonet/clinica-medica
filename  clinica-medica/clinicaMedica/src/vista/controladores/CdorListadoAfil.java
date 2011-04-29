@@ -60,6 +60,7 @@ public class CdorListadoAfil extends CdorManejoVentanas {
 		CdorListadoDetalleAfiliado cdor = new CdorListadoDetalleAfiliado();
 		try {
 			cdor.setdAfil(super.getMod().getAfiliado(super.getId()));
+			cdor.desplegarVentana(cdor);
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexión con el server.");
 		} catch (PersistenciaException e) {

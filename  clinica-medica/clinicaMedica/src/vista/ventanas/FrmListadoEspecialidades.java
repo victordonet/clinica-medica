@@ -150,6 +150,12 @@ public class FrmListadoEspecialidades extends UnicastRemoteObject implements IOb
 			jButton2.setFont(new Font("Arial", Font.BOLD, 12));
 			jButton2.setText("Cancelar");
 			jButton2.setBackground(Color.lightGray);
+			jButton2.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					
+					cdor.actionCerrar();
+				}
+			});
 		}
 		return jButton2;
 	}

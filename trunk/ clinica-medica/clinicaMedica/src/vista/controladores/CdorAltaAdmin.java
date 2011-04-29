@@ -56,7 +56,7 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
 			super.getMod().altaAdmin(da);
-			DataUsuario usu = new DataUsuario(id, nombre, "AD", "A");
+			DataUsuario usu = new DataUsuario(id, id, "AD", "A");
 			super.getMod().altaUsuario(usu);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();

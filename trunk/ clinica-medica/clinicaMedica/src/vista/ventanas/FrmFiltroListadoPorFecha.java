@@ -116,7 +116,7 @@ public class FrmFiltroListadoPorFecha extends JFrame {
 			jButton1.setText("Cancelar");
 			jButton1.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					System.out.println("Cancelar Filtro Listado por Fechas.");
+					
 					cdor.actionCerrar();
 				}
 			});

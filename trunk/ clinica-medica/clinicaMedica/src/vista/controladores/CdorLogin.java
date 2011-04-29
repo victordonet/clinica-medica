@@ -30,12 +30,14 @@ public class CdorLogin extends CdorManejoVentanas {
 			super.setMod(new ProxyFachadaLogica());
 		} catch (RemoteException e) {
 			JOptionPane.showMessageDialog(null,"Error de conexion con el server");
+			System.exit(0);
 	
 		} catch (PersistenciaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
-			
+			System.exit(0);
 		} catch (LogicaException e) {
 			JOptionPane.showMessageDialog(null,e.getMessage());
+			System.exit(0);
 		}
 	}
 	

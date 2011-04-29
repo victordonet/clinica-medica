@@ -1,6 +1,8 @@
 package vista.dataobjet;
 
-public class DataUsu {
+import java.io.Serializable;
+
+public class DataUsu implements Serializable{
 
 	private String idUsu, tipo;
 

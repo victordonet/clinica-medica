@@ -7,15 +7,18 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.swing.JOptionPane;
+
 import logica.Configuracion;
 import logica.fachada.FachadaLogica;
+import logica.fachada.IfachadaLogica;
 import excepciones.LogicaException;
 import excepciones.PersistenciaException;
 
 public class MainServidorRMI 
 {
-	private static FachadaLogica facade; 
+	private static IfachadaLogica facade; 
 
 	public static void main(String[] args) {
 		try 

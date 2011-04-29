@@ -76,7 +76,12 @@ public class CdorMenuGerente extends CdorManejoVentanas {
 	}
 
 	public void cerrar() {
+		try {
+			super.getMod().remObsMenuGA(ventana);
+		} catch (RemoteException e) {
+		}
 		ventana.getVentana().dispose();
+		
 		System.exit(0);
 	}
 

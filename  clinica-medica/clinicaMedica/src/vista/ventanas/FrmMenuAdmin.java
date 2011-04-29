@@ -110,13 +110,10 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 
 	public void update() throws RemoteException {
 		
-		try {
-			initialize();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
+		modelo = cdor.listarConsultas();
+		jTable.setModel(modelo);
+		jTable.setVisible(true);
+		
 	}
 
 	public JFrame getVentana(){
@@ -261,11 +258,11 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JScrollPane	
 	 */
 	private JScrollPane getJScrollPane() {
-		if (jScrollPane == null) {
+		
 			jScrollPane = new JScrollPane();
 			jScrollPane.setBounds(new Rectangle(90, 440, 245, 155));
 			jScrollPane.setViewportView(getJTable());
-		}
+		
 		return jScrollPane;
 	}
 
@@ -275,9 +272,9 @@ public class FrmMenuAdmin extends UnicastRemoteObject implements IObserver{
 	 * @return javax.swing.JTable	
 	 */
 	private JTable getJTable() {
-		if (jTable == null) {
-			jTable = new JTable(modelo);
-		}
+		
+		modelo = cdor.listarConsultas();
+		jTable = new JTable(modelo);
 		return jTable;
 	}
 }

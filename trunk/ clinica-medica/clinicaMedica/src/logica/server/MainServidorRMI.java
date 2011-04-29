@@ -68,7 +68,7 @@ public class MainServidorRMI
 		// este temporizador es el definitivo y se ejecuta cada 24 horas
 		//temporizador.schedule(tarea, 60*1000,24*60*60*1000);
 		//este temporizador es de pruebas y se ejecuta cada 1 minuto
-		//temporizador.schedule(tarea, 60*1000,60*1000);
+		temporizador.schedule(tarea, 60*1000,60*1000);
 		JOptionPane.showMessageDialog(null,"Servidor iniciado");
 	}
 }

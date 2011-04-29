@@ -97,7 +97,9 @@ public class DaoConsultasMySQL implements IDaoConsultas {
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(fecha);
 				VoTurnosDisp data = new VoTurnosDisp(cal, diaSem, horario, proxTurno, idConsultorio);
+				if (data.getTurno()<11){
 				consultas.add(data);
+				}
 			}
 			rst.close();
 			pst.close();

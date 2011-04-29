@@ -54,7 +54,7 @@ function cargoIdMed(valor) {
 </script>
 
 <LINK REL="stylesheet" TYPE="text/css" HREF="estilos.css">
-<body class="Base" background="imagenes/fondoGrl.jpg">
+<body class="Base" background="imagenes/fondoReserva.jpg">
 <form name="form" method="get" action="aplicarReserva.jsp">
 <center>
 

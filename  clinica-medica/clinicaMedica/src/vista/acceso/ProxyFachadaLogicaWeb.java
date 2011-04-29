@@ -58,7 +58,6 @@ public class ProxyFachadaLogicaWeb extends HttpServlet implements IfachadaLogica
 		ServletContext sc = config.getServletContext();
 		String ruta = config.getInitParameter("SERVER-RMI");
 		int control = 1;
-		System.out.println("ruta"+ruta);
 		try {
 			sc.setAttribute("control", control);
 			fachada = (IfachadaLogica) Naming.lookup(ruta+"logica");

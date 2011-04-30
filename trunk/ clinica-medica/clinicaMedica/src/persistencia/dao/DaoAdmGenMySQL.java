@@ -87,7 +87,7 @@ public class DaoAdmGenMySQL implements IDaoAdmGen {
 	public VosLogin getDataAdmin(Transaccion trn, String id) throws PersistenciaException {
 		VosLogin vosLogin = null;
 		try{
-			PreparedStatement pst = trn.preparedStatement("Select A.nombre, U.contrasena, U.tipo from Administrativos A, Usuarios U WHERE A.id=U.id and id=?");
+			PreparedStatement pst = trn.preparedStatement("Select A.nombre, U.contrasena, U.tipo from Administrativos A, Usuarios U WHERE A.id=U.id and A.id=?");
 			pst.setString (1, id);
 			ResultSet rst = pst.executeQuery();
 			while(rst.next()){

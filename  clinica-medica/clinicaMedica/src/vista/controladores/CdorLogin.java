@@ -1,8 +1,12 @@
 package vista.controladores;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import vista.acceso.ProxyFachadaLogica;
 import vista.dataobjet.DataUsu;
@@ -14,6 +18,7 @@ public class CdorLogin extends CdorManejoVentanas {
 	
 	private FrmLogin ventana;
 	private CdorManejoVentanas vino;
+	Calendar fechaHoy;
 	
 	public void desplegarVentana(CdorManejoVentanas vino){
 		this.vino = vino;
@@ -26,6 +31,8 @@ public class CdorLogin extends CdorManejoVentanas {
 	}
 	
 	public CdorLogin() {
+		fechaHoy = Calendar.getInstance();
+		//fechaHoy.setTime(Calendar.getInstance().getTime());
 		try {
 			super.setMod(new ProxyFachadaLogica());
 		} catch (RemoteException e) {
@@ -57,13 +64,20 @@ public class CdorLogin extends CdorManejoVentanas {
 	    				this.setUsu(dUsu);
 	    				cdorMenu.setUsu(dUsu);
 	    				this.cambioVentana(this, cdorMenu);
+	    				JOptionPane.showMessageDialog(new JPanel(),"Bienvenido !!! " +
+	    						"Dr. "+super.getMod().getDataMedico(usu).getNombre()+" "+super.getMod().getDataMedico(usu).getApellido()+" "+
+	    								fechaHoy.get(Calendar.DATE)+"/"+(fechaHoy.get(Calendar.MONTH)+1)+"/"+fechaHoy.get(Calendar.YEAR));
+	    				
 	    			}else {
 	    				if (tipo.equals("AF")){
 	    					CdorMenuAfil cdorMenu = new CdorMenuAfil();
 		    				DataUsu dUsu = new DataUsu(usu, tipo);
 		    				this.setUsu(dUsu);
 		    				cdorMenu.setUsu(dUsu);
-	    					this.cambioVentana(this, cdorMenu);						
+	    					this.cambioVentana(this, cdorMenu);
+	    					JOptionPane.showMessageDialog(new JPanel(),"Bienvenido !!! " +
+		    						super.getMod().getDataAfiliado(usu).getNombre()+" "+super.getMod().getDataAfiliado(usu).getApellido()+" "+
+		    								fechaHoy.get(Calendar.DATE)+"/"+(fechaHoy.get(Calendar.MONTH)+1)+"/"+fechaHoy.get(Calendar.YEAR));
 	    				}else {
 	    					if (tipo.equals("AD")){
 	    						CdorMenuAdmin cdorMenu = new CdorMenuAdmin();
@@ -71,6 +85,9 @@ public class CdorLogin extends CdorManejoVentanas {
     		    				this.setUsu(dUsu);
     		    				cdorMenu.setUsu(dUsu);
 	    						this.cambioVentana(this, cdorMenu);
+	    						JOptionPane.showMessageDialog(new JPanel(),"Bienvenido !!! " +
+	    	    						super.getMod().getDataAdmin(usu).getNombre()+" "+
+	    	    								fechaHoy.get(Calendar.DATE)+"/"+(fechaHoy.get(Calendar.MONTH)+1)+"/"+fechaHoy.get(Calendar.YEAR));
 	    					}else{
 	    						if (tipo.equals("GE")){
 	    							CdorMenuGerente cdorMenu = new CdorMenuGerente();
@@ -78,6 +95,9 @@ public class CdorLogin extends CdorManejoVentanas {
 	    		    				this.setUsu(dUsu);
 	    		    				cdorMenu.setUsu(dUsu);
 	    							this.cambioVentana(this, cdorMenu);
+	    							JOptionPane.showMessageDialog(new JPanel(),"Bienvenido !!! " +
+		    	    						super.getMod().getDataAdmin(usu).getNombre()+" "+
+		    	    								fechaHoy.get(Calendar.DATE)+"/"+(fechaHoy.get(Calendar.MONTH)+1)+"/"+fechaHoy.get(Calendar.YEAR));
 	    						}
 	    					}
 	    				}

@@ -301,6 +301,11 @@ public class FachadaLogica extends Observable implements IfachadaLogica {
 		try {
 			if (iDaoAdmin.validarAdmin(trn, id)){
 				iDaoAdmin.modificarAdmin(trn, id, nom, cargo, estado);
+				String tipo = "AD";
+				if(cargo.equals("1")){
+					tipo="GE";
+				}
+				iDaoU.modificarTipo(trn, id, tipo);
 				trn.finalizarTrn(true);
 				pool.liberarTrn(trn);
 			}

@@ -66,8 +66,7 @@ public class CdorModifAdmin extends CdorManejoVentanas {
 	
 	public void modifAdmin(String id, String nom, int selCargo, String estado){
 		try {
-			selCargo = selCargo+1;
-			String cargo = String.valueOf(selCargo);
+			String cargo = String.valueOf(selCargo+1);
 			super.getMod().modificarAdmin(id, nom, cargo, estado);
 			actionCerrar();
 		} catch (RemoteException e) {
@@ -81,7 +80,7 @@ public class CdorModifAdmin extends CdorManejoVentanas {
 		vCargos = new Vector<String>();
 		vCargos.add("Gerente");
 		vCargos.add("Administrador");
-		vCargos.add("Cajero");
+
 		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
 		for (int i = 0; i < vCargos.size(); i++) {
 			boxMod.addElement(vCargos.get(i));

@@ -144,4 +144,15 @@ public class DaoUsuariosMySQL implements IDaoUsuarios {
 		}
 		return tipo;	
 	}
+	public void modificarTipo(Transaccion trn, String id, String tipo) throws PersistenciaException {
+		try {
+			PreparedStatement pst = trn.preparedStatement("update Usuarios set tipo=? where id=?");
+			pst.setString (1, tipo);
+			pst.setString(2, id);
+			pst.executeUpdate();
+			pst.close();
+		} catch (SQLException e) {
+			throw new PersistenciaException("Error de conexion con la base de datos");
+		}
+	}
 }

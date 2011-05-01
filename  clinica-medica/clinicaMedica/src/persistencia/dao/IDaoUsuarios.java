@@ -11,4 +11,5 @@ public interface IDaoUsuarios {
 	public boolean validarUsuarioWeb(String clave,String pass, Transaccion trn) throws PersistenciaException;
 	public void modifContrasena(String clave, String pass, Transaccion trn) throws PersistenciaException;
 	public String getTipo(Transaccion trn, String idUsuario) throws PersistenciaException;
+	public void modificarTipo(Transaccion trn, String id, String tipo) throws PersistenciaException;
 }

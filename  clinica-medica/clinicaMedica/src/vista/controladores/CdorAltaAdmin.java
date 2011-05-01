@@ -56,7 +56,12 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		DataAdmin da = new DataAdmin(id, nombre, cargo+1, "A");
 		try {
 			super.getMod().altaAdmin(da);
-			DataUsuario usu = new DataUsuario(id, id, "AD", "A");
+			String tipo = "AD";
+			if (cargo+1==1){
+				tipo = "GE";
+			}
+			
+			DataUsuario usu = new DataUsuario(id, id,tipo , "A");
 			super.getMod().altaUsuario(usu);
 			JOptionPane.showMessageDialog(null,"Alta ok");
 			actionCerrar();
@@ -74,7 +79,6 @@ public class CdorAltaAdmin extends CdorManejoVentanas {
 		DefaultComboBoxModel boxMod = new DefaultComboBoxModel();
 		boxMod.addElement("Gerente");
 		boxMod.addElement("Administrador");
-		boxMod.addElement("Cajero");
 		return boxMod;
 	}
 }

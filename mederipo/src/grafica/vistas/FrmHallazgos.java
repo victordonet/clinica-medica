@@ -140,8 +140,8 @@ public class FrmHallazgos extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(1026,642));
-		this.setLocation(210,40);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -358,7 +358,7 @@ public class FrmHallazgos extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(966, 560, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -373,7 +373,7 @@ public class FrmHallazgos extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(916, 560, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {

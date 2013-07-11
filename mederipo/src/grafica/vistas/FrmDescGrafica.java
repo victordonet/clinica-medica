@@ -29,8 +29,8 @@ public class FrmDescGrafica extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(433,342));
-		this.setLocation(520,190);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -54,7 +54,7 @@ public class FrmDescGrafica extends JFrame {
 	
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
-		panelFondo = new PanelConImagen("./src/imagenes/DescGrafica.jpg");
+		panelFondo = new PanelConImagen("./src/imagenes/fondoDescGrafica.jpg");
 		panelFondo.setLayout(null);
 		panelFondo.setBackground(new java.awt.Color(80,80,80));
 		panelFondo.add(getbtGuardar(), null);
@@ -68,7 +68,6 @@ public class FrmDescGrafica extends JFrame {
 	private JTextArea getTxtObs() {
 		if (txtObs == null) {
 			txtObs = new JTextArea();
-			txtObs.setBounds(new Rectangle(14, 90, 400, 155));
 			txtObs.setFont(new Font("Calibri", Font.PLAIN, 13));
 			txtObs.addKeyListener(new KeyAdapter()
 			{
@@ -94,7 +93,7 @@ public class FrmDescGrafica extends JFrame {
 	private JScrollPane getJScrollObs() {
 		if (jScrollObs == null) {
 			jScrollObs = new JScrollPane();
-			jScrollObs.setBounds(new Rectangle(14, 90, 400, 155));
+			jScrollObs.setBounds(new Rectangle(90, 105, 976, 166));
 			jScrollObs.setViewportView(getTxtObs());
 		}
 		return jScrollObs;
@@ -103,7 +102,7 @@ public class FrmDescGrafica extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(375, 265, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +117,7 @@ public class FrmDescGrafica extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(325, 265, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {

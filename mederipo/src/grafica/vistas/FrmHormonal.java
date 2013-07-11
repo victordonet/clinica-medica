@@ -73,8 +73,8 @@ public class FrmHormonal extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(433,518));
-		this.setLocation(520,105);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -99,47 +99,47 @@ public class FrmHormonal extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 			lblmeses_Med = new JLabel();
-			lblmeses_Med.setBounds(new Rectangle(316, 279, 46, 16));
+			lblmeses_Med.setBounds(new Rectangle(329, 341, 46, 16));
 			lblmeses_Med.setText("en meses");
 			lblmeses_Med.setFont(new Font("Calibri", Font.PLAIN, 11));
 			lblUso_Med = new JLabel();
-			lblUso_Med.setBounds(new Rectangle(321, 265, 32, 23));
+			lblUso_Med.setBounds(new Rectangle(334, 327, 32, 23));
 			lblUso_Med.setText("USO");
 			lblUso_Med.setFont(new Font("Calibri", Font.PLAIN, 12));
 			lblCese_1_2 = new JLabel();
-			lblCese_1_2.setBounds(new Rectangle(316, 132, 46, 16));
+			lblCese_1_2.setBounds(new Rectangle(327, 160, 46, 16));
 			lblCese_1_2.setText("en meses");
 			lblCese_1_2.setFont(new Font("Calibri", Font.PLAIN, 11));
 			lblCese_1 = new JLabel();
-			lblCese_1.setBounds(new Rectangle(321, 118, 32, 23));
+			lblCese_1.setBounds(new Rectangle(332, 146, 32, 23));
 			lblCese_1.setText("CESE");
 			lblCese_1.setFont(new Font("Calibri", Font.PLAIN, 12));
 			lblmeses_horm = new JLabel();
-			lblmeses_horm.setBounds(new Rectangle(264, 132, 52, 16));
+			lblmeses_horm.setBounds(new Rectangle(275, 160, 52, 16));
 			lblmeses_horm.setText("en meses");
 			lblmeses_horm.setFont(new Font("Calibri", Font.PLAIN, 11));
 			lblUso_Horm = new JLabel();
-			lblUso_Horm.setBounds(new Rectangle(274, 118, 31, 23));
+			lblUso_Horm.setBounds(new Rectangle(285, 146, 31, 23));
 			lblUso_Horm.setText("USO");
 			lblUso_Horm.setFont(new Font("Calibri", Font.PLAIN, 12));
 			lblAdm = new JLabel();
-			lblAdm.setBounds(new Rectangle(215, 132, 47, 16));
+			lblAdm.setBounds(new Rectangle(226, 160, 47, 16));
 			lblAdm.setText("de adm.");
 			lblAdm.setFont(new Font("Calibri", Font.PLAIN, 11));
 			lblReg = new JLabel();
-			lblReg.setBounds(new Rectangle(209, 118, 56, 23));
+			lblReg.setBounds(new Rectangle(220, 146, 56, 23));
 			lblReg.setText("REGIMEN");
 			lblReg.setFont(new Font("Calibri", Font.PLAIN, 12));
 			lblOtros = new JLabel();
-			lblOtros.setBounds(new Rectangle(14, 204, 48, 22));
+			lblOtros.setBounds(new Rectangle(25, 232, 48, 22));
 			lblOtros.setText("OTROS");
 			lblOtros.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lblTHR = new JLabel();
-			lblTHR.setBounds(new Rectangle(14, 177, 39, 22));
+			lblTHR.setBounds(new Rectangle(25, 205, 39, 22));
 			lblTHR.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lblTHR.setText("THR");
 			lblACO = new JLabel();
-			lblACO.setBounds(new Rectangle(14, 150, 39, 22));
+			lblACO.setBounds(new Rectangle(25, 178, 39, 22));
 			lblACO.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lblACO.setText("ACO");
 			panelFondo = new PanelConImagen("./src/imagenes/fondoHormonal.jpg");
@@ -201,7 +201,7 @@ public class FrmHormonal extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(381, 442, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +216,7 @@ public class FrmHormonal extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(331, 442, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +232,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_4() {
 		if (rdoMed_4 == null) {
 			rdoMed_4 = new JRadioButton();
-			rdoMed_4.setBounds(new Rectangle(11, 365, 198, 22));
+			rdoMed_4.setBounds(new Rectangle(24, 427, 198, 22));
 			rdoMed_4.setText("ANTIACIDOS ANTIHEMETICOS");
 			rdoMed_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_4.setBackground(new java.awt.Color(204,204,204));
@@ -261,7 +261,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_5() {
 		if (rdoMed_5 == null) {
 			rdoMed_5 = new JRadioButton();
-			rdoMed_5.setBounds(new Rectangle(11, 388, 147, 22));
+			rdoMed_5.setBounds(new Rectangle(24, 450, 147, 22));
 			rdoMed_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_5.setText("ANTICOAGULANTES");
 			rdoMed_5.setBackground(new Color(204, 204, 204));
@@ -290,7 +290,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_6() {
 		if (rdoMed_6 == null) {
 			rdoMed_6 = new JRadioButton();
-			rdoMed_6.setBounds(new Rectangle(11, 411, 70, 22));
+			rdoMed_6.setBounds(new Rectangle(24, 473, 70, 22));
 			rdoMed_6.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_6.setText("A.A.S.");
 			rdoMed_6.setBackground(new Color(204, 204, 204));
@@ -319,7 +319,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_7() {
 		if (rdoMed_7 == null) {
 			rdoMed_7 = new JRadioButton();
-			rdoMed_7.setBounds(new Rectangle(11, 435, 68, 22));
+			rdoMed_7.setBounds(new Rectangle(24, 497, 68, 22));
 			rdoMed_7.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_7.setText("OTROS");
 			rdoMed_7.setBackground(new Color(204, 204, 204));
@@ -348,7 +348,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtOtra() {
 		if (txtOtra == null) {
 			txtOtra = new JTextField();
-			txtOtra.setBounds(new Rectangle(81, 435, 223, 22));
+			txtOtra.setBounds(new Rectangle(44, 521, 324, 22));
 			txtOtra.setFont(new Font("Calibri", Font.PLAIN, 14));
 			//txtOtra.setEditable(false);
 			txtOtra.addKeyListener(new KeyAdapter()
@@ -371,7 +371,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_1() {
 		if (rdoMed_1 == null) {
 			rdoMed_1 = new JRadioButton();
-			rdoMed_1.setBounds(new Rectangle(11, 295, 117, 22));
+			rdoMed_1.setBounds(new Rectangle(24, 357, 117, 22));
 			rdoMed_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_1.setText("DIGITALICOS");
 			rdoMed_1.setBackground(new Color(204, 204, 204));
@@ -400,7 +400,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_2() {
 		if (rdoMed_2 == null) {
 			rdoMed_2 = new JRadioButton();
-			rdoMed_2.setBounds(new Rectangle(11, 318, 122, 22));
+			rdoMed_2.setBounds(new Rectangle(24, 380, 122, 22));
 			rdoMed_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_2.setText("CORTICOIDES");
 			rdoMed_2.setBackground(new Color(204, 204, 204));
@@ -429,7 +429,7 @@ public class FrmHormonal extends JFrame {
 	private JRadioButton getRdoMed_3() {
 		if (rdoMed_3 == null) {
 			rdoMed_3 = new JRadioButton();
-			rdoMed_3.setBounds(new Rectangle(11, 341, 129, 22));
+			rdoMed_3.setBounds(new Rectangle(24, 403, 129, 22));
 			rdoMed_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMed_3.setText("PSICOFARMACOS");
 			rdoMed_3.setBackground(new Color(204, 204, 204));
@@ -463,7 +463,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtOtros() {
 		if (txtOtros == null) {
 			txtOtros = new JTextField();
-			txtOtros.setBounds(new Rectangle(56, 205, 140, 22));
+			txtOtros.setBounds(new Rectangle(67, 233, 140, 22));
 			txtOtros.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -489,7 +489,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtTHR() {
 		if (txtTHR == null) {
 			txtTHR = new JTextField();
-			txtTHR.setBounds(new Rectangle(56, 177, 140, 22));
+			txtTHR.setBounds(new Rectangle(67, 205, 140, 22));
 			txtTHR.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -515,7 +515,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtACO() {
 		if (txtACO == null) {
 			txtACO = new JTextField();
-			txtACO.setBounds(new Rectangle(56, 150, 140, 22));
+			txtACO.setBounds(new Rectangle(67, 178, 140, 22));
 			txtACO.addKeyListener(new KeyAdapter()
 			{
 			   public void keyTyped(KeyEvent e)
@@ -541,7 +541,7 @@ public class FrmHormonal extends JFrame {
 	private JCheckBox getChk_Med() {
 		if (chk_Med == null) {
 			chk_Med = new JCheckBox();
-			chk_Med.setBounds(new Rectangle(11, 268, 52, 22));
+			chk_Med.setBounds(new Rectangle(24, 330, 52, 22));
 			chk_Med.setText("NO");
 			chk_Med.setBackground(new Color(204, 204, 204));
 			chk_Med.addMouseListener(new MouseAdapter() {
@@ -598,7 +598,7 @@ public class FrmHormonal extends JFrame {
 	private JCheckBox getChk_Horm() {
 		if (chk_Horm == null) {
 			chk_Horm = new JCheckBox();
-			chk_Horm.setBounds(new Rectangle(11, 122, 51, 21));
+			chk_Horm.setBounds(new Rectangle(22, 150, 51, 21));
 			chk_Horm.setText("NO");
 			chk_Horm.setBackground(new Color(204, 204, 204));
 			chk_Horm.addMouseListener(new MouseAdapter() {
@@ -656,7 +656,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtACO_Reg() {
 		if (txtACO_Reg == null) {
 			txtACO_Reg = new JTextField();
-			txtACO_Reg.setBounds(new Rectangle(224, 150, 20, 22));
+			txtACO_Reg.setBounds(new Rectangle(235, 178, 20, 22));
 			txtACO_Reg.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -690,7 +690,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtTHR_Reg() {
 		if (txtTHR_Reg == null) {
 			txtTHR_Reg = new JTextField();
-			txtTHR_Reg.setBounds(new Rectangle(224, 177, 20, 22));
+			txtTHR_Reg.setBounds(new Rectangle(235, 205, 20, 22));
 			txtTHR_Reg.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -724,7 +724,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtOtros_Reg() {
 		if (txtOtros_Reg == null) {
 			txtOtros_Reg = new JTextField();
-			txtOtros_Reg.setBounds(new Rectangle(224, 205, 20, 22));
+			txtOtros_Reg.setBounds(new Rectangle(235, 233, 20, 22));
 			txtOtros_Reg.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -758,7 +758,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtACO_Uso() {
 		if (txtACO_Uso == null) {
 			txtACO_Uso = new JTextField();
-			txtACO_Uso.setBounds(new Rectangle(270, 150, 32, 22));
+			txtACO_Uso.setBounds(new Rectangle(281, 178, 32, 22));
 			txtACO_Uso.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -792,7 +792,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtACO_Cese() {
 		if (txtACO_Cese == null) {
 			txtACO_Cese = new JTextField();
-			txtACO_Cese.setBounds(new Rectangle(321, 150, 32, 22));
+			txtACO_Cese.setBounds(new Rectangle(332, 178, 32, 22));
 			txtACO_Cese.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -826,7 +826,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtTHR_Uso() {
 		if (txtTHR_Uso == null) {
 			txtTHR_Uso = new JTextField();
-			txtTHR_Uso.setBounds(new Rectangle(270, 177, 32, 22));
+			txtTHR_Uso.setBounds(new Rectangle(281, 205, 32, 22));
 			txtTHR_Uso.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -860,7 +860,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtTHR_Cese() {
 		if (txtTHR_Cese == null) {
 			txtTHR_Cese = new JTextField();
-			txtTHR_Cese.setBounds(new Rectangle(321, 177, 32, 22));
+			txtTHR_Cese.setBounds(new Rectangle(332, 205, 32, 22));
 			txtTHR_Cese.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -894,7 +894,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtOtros_Uso() {
 		if (txtOtros_Uso == null) {
 			txtOtros_Uso = new JTextField();
-			txtOtros_Uso.setBounds(new Rectangle(270, 205, 32, 22));
+			txtOtros_Uso.setBounds(new Rectangle(281, 233, 32, 22));
 			txtOtros_Uso.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -928,7 +928,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtOtros_Cese() {
 		if (txtOtros_Cese == null) {
 			txtOtros_Cese = new JTextField();
-			txtOtros_Cese.setBounds(new Rectangle(321, 205, 32, 22));
+			txtOtros_Cese.setBounds(new Rectangle(332, 233, 32, 22));
 			txtOtros_Cese.addKeyListener(new KeyAdapter()
 			{
 				   public void keyTyped(KeyEvent e)
@@ -962,7 +962,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtDig() {
 		if (txtDig == null) {
 			txtDig = new JTextField();
-			txtDig.setBounds(new Rectangle(321, 295, 36, 22));
+			txtDig.setBounds(new Rectangle(334, 357, 36, 22));
 			//txtDig.setEditable(false);
 			txtDig.addKeyListener(new KeyAdapter()
 			{
@@ -997,7 +997,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtCort() {
 		if (txtCort == null) {
 			txtCort = new JTextField();
-			txtCort.setBounds(new Rectangle(321, 318, 36, 22));
+			txtCort.setBounds(new Rectangle(334, 380, 36, 22));
 			//txtCort.setEditable(false);
 			txtCort.addKeyListener(new KeyAdapter()
 			{
@@ -1032,7 +1032,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtPsic() {
 		if (txtPsic == null) {
 			txtPsic = new JTextField();
-			txtPsic.setBounds(new Rectangle(321, 341, 36, 22));
+			txtPsic.setBounds(new Rectangle(334, 403, 36, 22));
 			//txtPsic.setEditable(false);
 			txtPsic.addKeyListener(new KeyAdapter()
 			{
@@ -1067,7 +1067,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtAcid() {
 		if (txtAcid == null) {
 			txtAcid = new JTextField();
-			txtAcid.setBounds(new Rectangle(321, 365, 36, 22));
+			txtAcid.setBounds(new Rectangle(334, 427, 36, 22));
 			//txtAcid.setEditable(false);
 			txtAcid.addKeyListener(new KeyAdapter()
 			{
@@ -1102,7 +1102,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtCoag() {
 		if (txtCoag == null) {
 			txtCoag = new JTextField();
-			txtCoag.setBounds(new Rectangle(321, 388, 36, 22));
+			txtCoag.setBounds(new Rectangle(334, 450, 36, 22));
 			//txtCoag.setEditable(false);
 			txtCoag.addKeyListener(new KeyAdapter()
 			{
@@ -1137,7 +1137,7 @@ public class FrmHormonal extends JFrame {
 	private JTextField getTxtAAS() {
 		if (txtAAS == null) {
 			txtAAS = new JTextField();
-			txtAAS.setBounds(new Rectangle(321, 411, 36, 22));
+			txtAAS.setBounds(new Rectangle(334, 473, 36, 22));
 			//txtAAS.setEditable(false);
 			txtAAS.addKeyListener(new KeyAdapter()
 			{

@@ -28,8 +28,8 @@ public class FrmMenuHist extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(300	,550));
-		this.setLocation(210,80);
+		this.setSize(new java.awt.Dimension(300	,576));
+		this.setLocation(205,70);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");

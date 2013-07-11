@@ -158,8 +158,8 @@ public class FrmAntecedentes extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(1026,700));
-		this.setLocation(210,20);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -456,7 +456,7 @@ public class FrmAntecedentes extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(970, 622, 40, 40));
+			btGuardar.setBounds(new Rectangle(1102, 623, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -471,7 +471,7 @@ public class FrmAntecedentes extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(920, 622, 40, 40));
+			btCancelar.setBounds(new Rectangle(1052, 623, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -1378,10 +1378,10 @@ public class FrmAntecedentes extends JFrame {
 	
 	private JPanel getJPanelFUM() {
 		if (jPanelFUM == null) {
-			GridLayout gridLayout1 = new GridLayout();
-			gridLayout1.setRows(1);
+			GridLayout gridLayout = new GridLayout();
+			gridLayout.setRows(1);
 			jPanelFUM = new JPanel();
-			jPanelFUM.setLayout(gridLayout1);
+			jPanelFUM.setLayout(gridLayout);
 			jPanelFUM.setBounds(new Rectangle(362, 202, 100, 22));
 			jPanelFUM.add(calendarFUM, null);
 		}

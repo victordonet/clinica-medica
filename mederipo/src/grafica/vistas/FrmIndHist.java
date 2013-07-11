@@ -54,8 +54,8 @@ public class FrmIndHist extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(433,461));
-		this.setLocation(520,120);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -80,99 +80,99 @@ public class FrmIndHist extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 			lbl_0 = new JLabel();
-			lbl_0.setBounds(new Rectangle(21, 79, 129, 22));
+			lbl_0.setBounds(new Rectangle(32, 135, 129, 22));
 			lbl_0.setText("0. SE DESCONOCE");
 			lbl_0.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_23 = new JLabel();
-			lbl_23.setBounds(new Rectangle(241, 303, 71, 22));
+			lbl_23.setBounds(new Rectangle(26, 599, 60, 22));
 			lbl_23.setText("23. OTRA");
 			lbl_23.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_22 = new JLabel();
-			lbl_22.setBounds(new Rectangle(241, 283, 115, 22));
+			lbl_22.setBounds(new Rectangle(26, 579, 115, 22));
 			lbl_22.setText("22. CA. CERVICAL");
 			lbl_22.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_21 = new JLabel();
-			lbl_21.setBounds(new Rectangle(241, 263, 146, 22));
+			lbl_21.setBounds(new Rectangle(26, 559, 146, 22));
 			lbl_21.setText("21. POLIPO CERVICAL");
 			lbl_21.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_20 = new JLabel();
-			lbl_20.setBounds(new Rectangle(241, 243, 73, 22));
+			lbl_20.setBounds(new Rectangle(26, 539, 73, 22));
 			lbl_20.setText("20. MOLA");
 			lbl_20.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_19 = new JLabel();
-			lbl_19.setBounds(new Rectangle(241, 223, 154, 22));
+			lbl_19.setBounds(new Rectangle(26, 519, 154, 22));
 			lbl_19.setText("19. RESTOS OVULARES");
 			lbl_19.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_18 = new JLabel();
-			lbl_18.setBounds(new Rectangle(241, 203, 149, 22));
+			lbl_18.setBounds(new Rectangle(26, 499, 149, 22));
 			lbl_18.setText("18. MIOMATOSIS");
 			lbl_18.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_17 = new JLabel();
-			lbl_17.setBounds(new Rectangle(241, 183, 151, 20));
+			lbl_17.setBounds(new Rectangle(26, 479, 151, 20));
 			lbl_17.setText("17. DISMENORREA");
 			lbl_17.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_16 = new JLabel();
-			lbl_16.setBounds(new Rectangle(241, 163, 146, 22));
+			lbl_16.setBounds(new Rectangle(26, 459, 146, 22));
 			lbl_16.setText("16. MALFORMACIONES");
 			lbl_16.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_15 = new JLabel();
-			lbl_15.setBounds(new Rectangle(241, 143, 149, 22));
+			lbl_15.setBounds(new Rectangle(26, 439, 149, 22));
 			lbl_15.setText("15. TAMOXIFENO");
 			lbl_15.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_14 = new JLabel();
-			lbl_14.setBounds(new Rectangle(241, 123, 142, 22));
+			lbl_14.setBounds(new Rectangle(26, 419, 142, 22));
 			lbl_14.setText("14. CONTROL THR");
 			lbl_14.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_13 = new JLabel();
-			lbl_13.setBounds(new Rectangle(15, 343, 85, 22));
+			lbl_13.setBounds(new Rectangle(26, 399, 85, 22));
 			lbl_13.setText("13. PRE THR");
 			lbl_13.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_12 = new JLabel();
-			lbl_12.setBounds(new Rectangle(15, 323, 144, 22));
+			lbl_12.setBounds(new Rectangle(26, 379, 144, 22));
 			lbl_12.setText("12. PREOPERATORIA");
 			lbl_12.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_11 = new JLabel();
-			lbl_11.setBounds(new Rectangle(15, 303, 121, 22));
+			lbl_11.setBounds(new Rectangle(26, 359, 121, 22));
 			lbl_11.setText("11. HIPERPLASIA");
 			lbl_11.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_10 = new JLabel();
-			lbl_10.setBounds(new Rectangle(15, 283, 171, 22));
+			lbl_10.setBounds(new Rectangle(26, 339, 171, 22));
 			lbl_10.setText("10. IMAGEN ECOGRAFICA");
 			lbl_10.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_9 = new JLabel();
-			lbl_9.setBounds(new Rectangle(21, 263, 187, 22));
+			lbl_9.setBounds(new Rectangle(32, 319, 187, 22));
 			lbl_9.setText("9. ENDOMETRIO ENGROSADO");
 			lbl_9.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_8 = new JLabel();
-			lbl_8.setBounds(new Rectangle(21, 243, 153, 22));
+			lbl_8.setBounds(new Rectangle(32, 299, 153, 22));
 			lbl_8.setText("8. POLIPO ENDOMETRIO");
 			lbl_8.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_7 = new JLabel();
-			lbl_7.setBounds(new Rectangle(21, 223, 122, 22));
+			lbl_7.setBounds(new Rectangle(32, 279, 122, 22));
 			lbl_7.setText("7. D.I.U. PERDIDO");
 			lbl_7.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_6 = new JLabel();
-			lbl_6.setBounds(new Rectangle(21, 203, 116, 22));
+			lbl_6.setBounds(new Rectangle(32, 259, 116, 22));
 			lbl_6.setText("6. ESTERILIDAD");
 			lbl_6.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_5 = new JLabel();
-			lbl_5.setBounds(new Rectangle(21, 183, 99, 22));
+			lbl_5.setBounds(new Rectangle(32, 239, 99, 22));
 			lbl_5.setText("5. AMENORREA");
 			lbl_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_4 = new JLabel();
-			lbl_4.setBounds(new Rectangle(21, 163, 135, 22));
+			lbl_4.setBounds(new Rectangle(32, 219, 135, 22));
 			lbl_4.setText("4. OTROS SANGRADOS");
 			lbl_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_3 = new JLabel();
-			lbl_3.setBounds(new Rectangle(21, 143, 176, 22));
+			lbl_3.setBounds(new Rectangle(32, 199, 176, 22));
 			lbl_3.setText("3. MET. POSTMENOPAUSIA");
 			lbl_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_2 = new JLabel();
-			lbl_2.setBounds(new Rectangle(21, 123, 190, 22));
+			lbl_2.setBounds(new Rectangle(32, 179, 190, 22));
 			lbl_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_2.setText("2. MET. PARAMENOPAUSIA");
 			lbl_1 = new JLabel();
-			lbl_1.setBounds(new Rectangle(21, 103, 190, 22));
+			lbl_1.setBounds(new Rectangle(32, 159, 190, 22));
 			lbl_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lbl_1.setText("1. METORRAGIA EDAD FERTIL");
 			panelFondo = new PanelConImagen("./src/imagenes/fondoIndicacionesHist.jpg");
@@ -216,7 +216,7 @@ public class FrmIndHist extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(375, 383, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -231,7 +231,7 @@ public class FrmIndHist extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(325, 383, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +247,7 @@ public class FrmIndHist extends JFrame {
 	private JTextField getTxtOtra() {
 		if (txt_1 == null) {
 			txt_1 = new JTextField();
-			txt_1.setBounds(new Rectangle(257, 82, 30, 22));
+			txt_1.setBounds(new Rectangle(66, 99, 30, 22));
 			txt_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txt_1.addKeyListener(new KeyAdapter()
 			{
@@ -282,7 +282,7 @@ public class FrmIndHist extends JFrame {
 	private JTextField getTxt_2() {
 		if (txt_2 == null) {
 			txt_2 = new JTextField();
-			txt_2.setBounds(new Rectangle(297, 82, 30, 22));
+			txt_2.setBounds(new Rectangle(106, 99, 30, 22));
 			txt_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txt_2.addKeyListener(new KeyAdapter()
 			{
@@ -317,7 +317,7 @@ public class FrmIndHist extends JFrame {
 	private JTextField getTxt_3() {
 		if (txt_3 == null) {
 			txt_3 = new JTextField();
-			txt_3.setBounds(new Rectangle(337, 82, 30, 22));
+			txt_3.setBounds(new Rectangle(146, 99, 30, 22));
 			txt_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txt_3.addKeyListener(new KeyAdapter()
 			{
@@ -352,7 +352,7 @@ public class FrmIndHist extends JFrame {
 	private JTextField getTxtOtros_1() {
 		if (txtOtros_1 == null) {
 			txtOtros_1 = new JTextField();
-			txtOtros_1.setBounds(new Rectangle(260, 325, 154, 22));
+			txtOtros_1.setBounds(new Rectangle(84, 601, 319, 22));
 			txtOtros_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtros_1.addKeyListener(new KeyAdapter()
 			{

@@ -48,7 +48,6 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton rdoMediPre_2 = null;
 	private JRadioButton rdoMediPre_3 = null;
 	private JRadioButton rdoMediPre_4 = null;
-	private JRadioButton rdoMediPre_5 = null;
 	private JTextField txtOtraMedi = null;
 	private JRadioButton rdoMediPost_1 = null;
 	private JRadioButton rdoMediPost_2 = null;
@@ -56,6 +55,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton rdoMediPost_4 = null;
 	private JLabel lblPre = null;
 	private JLabel lblPost = null;
+	private JLabel lblOtros = null;
 	
 	public FrmTecnica(CdorTecnica cdor) {
 		super();
@@ -64,8 +64,8 @@ public class FrmTecnica extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(645,379));
-		this.setLocation(520,160);
+		this.setSize(new java.awt.Dimension(1163,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -89,12 +89,16 @@ public class FrmTecnica extends JFrame {
 	
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
+			lblOtros = new JLabel();
+			lblOtros.setBounds(new Rectangle(760, 242, 48, 22));
+			lblOtros.setFont(new Font("Calibri", Font.PLAIN, 14));
+			lblOtros.setText("OTROS");
 			lblPost = new JLabel();
-			lblPost.setBounds(new Rectangle(480, 121, 31, 17));
+			lblPost.setBounds(new Rectangle(779, 129, 31, 17));
 			lblPost.setText("POST");
 			lblPost.setFont(new Font("Calibri", Font.PLAIN, 11));
 			lblPre = new JLabel();
-			lblPre.setBounds(new Rectangle(455, 121, 22, 17));
+			lblPre.setBounds(new Rectangle(754, 129, 22, 17));
 			lblPre.setText("PRE");
 			lblPre.setFont(new Font("Calibri", Font.PLAIN, 11));
 			panelFondo = new PanelConImagen("./src/imagenes/fondoTecnica.jpg");
@@ -123,7 +127,6 @@ public class FrmTecnica extends JFrame {
 			panelFondo.add(getRdoMediPre_2(), null);
 			panelFondo.add(getRdoMediPre_3(), null);
 			panelFondo.add(getRdoMediPre_4(), null);
-			panelFondo.add(getRdoMediPre_5(), null);
 			panelFondo.add(getTxtOtraMedi(), null);
 			panelFondo.add(getRdoMediPost_1(), null);
 			panelFondo.add(getRdoMediPost_2(), null);
@@ -131,6 +134,7 @@ public class FrmTecnica extends JFrame {
 			panelFondo.add(getRdoMediPost_4(), null);
 			panelFondo.add(lblPre, null);
 			panelFondo.add(lblPost, null);
+			panelFondo.add(lblOtros, null);
 			panelFondo.add(getbtGuardar(), null);
 			grpDistencion.add(rdoDist_1);
 			grpDistencion.add(rdoDist_2);
@@ -163,7 +167,7 @@ public class FrmTecnica extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(587, 301, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +182,7 @@ public class FrmTecnica extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(537, 301, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +198,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoDist_1() {
 		if (rdoDist_1 == null) {
 			rdoDist_1 = new JRadioButton();
-			rdoDist_1.setBounds(new Rectangle(165, 134, 100, 22));
+			rdoDist_1.setBounds(new Rectangle(264, 142, 100, 22));
 			rdoDist_1.setText("CO2");
 			rdoDist_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDist_1.setBackground(new java.awt.Color(204,204,204));
@@ -211,7 +215,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoDist_2() {
 		if (rdoDist_2 == null) {
 			rdoDist_2 = new JRadioButton();
-			rdoDist_2.setBounds(new Rectangle(165, 159, 130, 22));
+			rdoDist_2.setBounds(new Rectangle(264, 167, 130, 22));
 			rdoDist_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDist_2.setText("CRISTALOIDES");
 			rdoDist_2.setBackground(new Color(204, 204, 204));
@@ -228,7 +232,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoDist_3() {
 		if (rdoDist_3 == null) {
 			rdoDist_3 = new JRadioButton();
-			rdoDist_3.setBounds(new Rectangle(165, 184, 140, 22));
+			rdoDist_3.setBounds(new Rectangle(264, 192, 140, 22));
 			rdoDist_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDist_3.setText("AGUA BIDESTILADA");
 			rdoDist_3.setBackground(new Color(204, 204, 204));
@@ -245,7 +249,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoDist_5() {
 		if (rdoDist_5 == null) {
 			rdoDist_5 = new JRadioButton();
-			rdoDist_5.setBounds(new Rectangle(165, 234, 100, 22));
+			rdoDist_5.setBounds(new Rectangle(264, 242, 100, 22));
 			rdoDist_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDist_5.setText("OTROS");
 			rdoDist_5.setBackground(new Color(204, 204, 204));
@@ -261,7 +265,7 @@ public class FrmTecnica extends JFrame {
 	private JTextField getTxtOtraDist() {
 		if (txtOtraDist == null) {
 			txtOtraDist = new JTextField();
-			txtOtraDist.setBounds(new Rectangle(165, 257, 125, 22));
+			txtOtraDist.setBounds(new Rectangle(264, 265, 208, 22));
 			txtOtraDist.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtraDist.setEditable(false);
 			txtOtraDist.addKeyListener(new KeyAdapter()
@@ -284,7 +288,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoProc_1() {
 		if (rdoProc_1 == null) {
 			rdoProc_1 = new JRadioButton();
-			rdoProc_1.setBounds(new Rectangle(10, 134, 130, 22));
+			rdoProc_1.setBounds(new Rectangle(13, 142, 130, 22));
 			rdoProc_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoProc_1.setText("DIAGNOSTICA");
 			rdoProc_1.setBackground(new Color(204, 204, 204));
@@ -295,7 +299,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoProc_2() {
 		if (rdoProc_2 == null) {
 			rdoProc_2 = new JRadioButton();
-			rdoProc_2.setBounds(new Rectangle(10, 159, 130, 22));
+			rdoProc_2.setBounds(new Rectangle(13, 167, 130, 22));
 			rdoProc_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoProc_2.setText("TERAPEUTICA");
 			rdoProc_2.setBackground(new Color(204, 204, 204));
@@ -306,7 +310,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoProc_3() {
 		if (rdoProc_3 == null) {
 			rdoProc_3 = new JRadioButton();
-			rdoProc_3.setBounds(new Rectangle(10, 184, 130, 22));
+			rdoProc_3.setBounds(new Rectangle(13, 192, 130, 22));
 			rdoProc_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoProc_3.setText("QUIRURGICA");
 			rdoProc_3.setBackground(new Color(204, 204, 204));
@@ -322,7 +326,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoProc_4() {
 		if (rdoProc_4 == null) {
 			rdoProc_4 = new JRadioButton();
-			rdoProc_4.setBounds(new Rectangle(10, 209, 130, 22));
+			rdoProc_4.setBounds(new Rectangle(13, 217, 130, 22));
 			rdoProc_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoProc_4.setText("VAGINOSCOPICA");
 			rdoProc_4.setBackground(new Color(204, 204, 204));
@@ -338,7 +342,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoProc_5() {
 		if (rdoProc_5 == null) {
 			rdoProc_5 = new JRadioButton();
-			rdoProc_5.setBounds(new Rectangle(10, 234, 140, 22));
+			rdoProc_5.setBounds(new Rectangle(13, 242, 140, 22));
 			rdoProc_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoProc_5.setText("HISTERO. LAPARO.");
 			rdoProc_5.setBackground(new Color(204, 204, 204));
@@ -354,7 +358,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoDist_4() {
 		if (rdoDist_4 == null) {
 			rdoDist_4 = new JRadioButton();
-			rdoDist_4.setBounds(new Rectangle(165, 209, 102, 23));
+			rdoDist_4.setBounds(new Rectangle(264, 217, 102, 23));
 			rdoDist_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDist_4.setText("GLICINA");
 			rdoDist_4.setBackground(new Color(204, 204, 204));
@@ -376,7 +380,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoAnes_1() {
 		if (rdoAnes_1 == null) {
 			rdoAnes_1 = new JRadioButton();
-			rdoAnes_1.setBounds(new Rectangle(318, 134, 130, 22));
+			rdoAnes_1.setBounds(new Rectangle(510, 142, 130, 22));
 			rdoAnes_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAnes_1.setText("NINGUNA");
 			rdoAnes_1.setBackground(new Color(204, 204, 204));
@@ -398,7 +402,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoAnes_2() {
 		if (rdoAnes_2 == null) {
 			rdoAnes_2 = new JRadioButton();
-			rdoAnes_2.setBounds(new Rectangle(318, 159, 130, 22));
+			rdoAnes_2.setBounds(new Rectangle(510, 167, 130, 22));
 			rdoAnes_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAnes_2.setText("PARACERVICAL");
 			rdoAnes_2.setBackground(new Color(204, 204, 204));
@@ -420,7 +424,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoAnes_3() {
 		if (rdoAnes_3 == null) {
 			rdoAnes_3 = new JRadioButton();
-			rdoAnes_3.setBounds(new Rectangle(318, 184, 130, 22));
+			rdoAnes_3.setBounds(new Rectangle(510, 192, 130, 22));
 			rdoAnes_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAnes_3.setText("CERVICAL");
 			rdoAnes_3.setBackground(new Color(204, 204, 204));
@@ -442,7 +446,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoAnes_4() {
 		if (rdoAnes_4 == null) {
 			rdoAnes_4 = new JRadioButton();
-			rdoAnes_4.setBounds(new Rectangle(318, 209, 130, 22));
+			rdoAnes_4.setBounds(new Rectangle(510, 217, 130, 22));
 			rdoAnes_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAnes_4.setText("GENERAL");
 			rdoAnes_4.setBackground(new Color(204, 204, 204));
@@ -464,7 +468,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoAnes_5() {
 		if (rdoAnes_5 == null) {
 			rdoAnes_5 = new JRadioButton();
-			rdoAnes_5.setBounds(new Rectangle(318, 234, 130, 22));
+			rdoAnes_5.setBounds(new Rectangle(510, 242, 130, 22));
 			rdoAnes_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAnes_5.setText("OTRA");
 			rdoAnes_5.setBackground(new Color(204, 204, 204));
@@ -485,7 +489,7 @@ public class FrmTecnica extends JFrame {
 	private JTextField getTxtOtraAnes() {
 		if (txtOtraAnes == null) {
 			txtOtraAnes = new JTextField();
-			txtOtraAnes.setBounds(new Rectangle(318, 257, 125, 22));
+			txtOtraAnes.setBounds(new Rectangle(510, 265, 211, 22));
 			txtOtraAnes.setEditable(false);
 			txtOtraAnes.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtraAnes.addKeyListener(new KeyAdapter()
@@ -513,7 +517,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPre_1() {
 		if (rdoMediPre_1 == null) {
 			rdoMediPre_1 = new JRadioButton();
-			rdoMediPre_1.setBounds(new Rectangle(458, 134, 20, 22));
+			rdoMediPre_1.setBounds(new Rectangle(757, 142, 20, 22));
 			rdoMediPre_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPre_1.setText("");
 			rdoMediPre_1.setBackground(new Color(204, 204, 204));
@@ -529,7 +533,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPre_2() {
 		if (rdoMediPre_2 == null) {
 			rdoMediPre_2 = new JRadioButton();
-			rdoMediPre_2.setBounds(new Rectangle(458, 159, 22, 22));
+			rdoMediPre_2.setBounds(new Rectangle(757, 167, 22, 22));
 			rdoMediPre_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPre_2.setText("");
 			rdoMediPre_2.setBackground(new Color(204, 204, 204));
@@ -545,7 +549,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPre_3() {
 		if (rdoMediPre_3 == null) {
 			rdoMediPre_3 = new JRadioButton();
-			rdoMediPre_3.setBounds(new Rectangle(458, 184, 22, 22));
+			rdoMediPre_3.setBounds(new Rectangle(757, 192, 22, 22));
 			rdoMediPre_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPre_3.setText("");
 			rdoMediPre_3.setBackground(new Color(204, 204, 204));
@@ -561,33 +565,12 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPre_4() {
 		if (rdoMediPre_4 == null) {
 			rdoMediPre_4 = new JRadioButton();
-			rdoMediPre_4.setBounds(new Rectangle(458, 209, 22, 22));
+			rdoMediPre_4.setBounds(new Rectangle(757, 217, 22, 22));
 			rdoMediPre_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPre_4.setText("");
 			rdoMediPre_4.setBackground(new Color(204, 204, 204));
 		}
 		return rdoMediPre_4;
-	}
-
-	/**
-	 * This method initializes rdoMediPre_5	
-	 * 	
-	 * @return javax.swing.JRadioButton	
-	 */
-	private JRadioButton getRdoMediPre_5() {
-		if (rdoMediPre_5 == null) {
-			rdoMediPre_5 = new JRadioButton();
-			rdoMediPre_5.setBounds(new Rectangle(458, 234, 130, 22));
-			rdoMediPre_5.setFont(new Font("Calibri", Font.PLAIN, 14));
-			rdoMediPre_5.setText("OTROS");
-			rdoMediPre_5.setBackground(new Color(204, 204, 204));
-			rdoMediPre_5.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					txtOtraMedi.setEditable(true);
-				}
-			});
-		}
-		return rdoMediPre_5;
 	}
 
 	/**
@@ -598,8 +581,7 @@ public class FrmTecnica extends JFrame {
 	private JTextField getTxtOtraMedi() {
 		if (txtOtraMedi == null) {
 			txtOtraMedi = new JTextField();
-			txtOtraMedi.setBounds(new Rectangle(458, 257, 125, 22));
-			txtOtraMedi.setEditable(false);
+			txtOtraMedi.setBounds(new Rectangle(808, 242, 249, 22));
 			txtOtraMedi.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtraMedi.addKeyListener(new KeyAdapter()
 			{
@@ -626,7 +608,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPost_1() {
 		if (rdoMediPost_1 == null) {
 			rdoMediPost_1 = new JRadioButton();
-			rdoMediPost_1.setBounds(new Rectangle(483, 134, 130, 22));
+			rdoMediPost_1.setBounds(new Rectangle(782, 142, 130, 22));
 			rdoMediPost_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPost_1.setText("NINGUNA");
 			rdoMediPost_1.setBackground(new Color(204, 204, 204));
@@ -642,7 +624,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPost_2() {
 		if (rdoMediPost_2 == null) {
 			rdoMediPost_2 = new JRadioButton();
-			rdoMediPost_2.setBounds(new Rectangle(483, 159, 130, 22));
+			rdoMediPost_2.setBounds(new Rectangle(782, 167, 130, 22));
 			rdoMediPost_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPost_2.setText("SEDACION");
 			rdoMediPost_2.setBackground(new Color(204, 204, 204));
@@ -658,7 +640,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPost_3() {
 		if (rdoMediPost_3 == null) {
 			rdoMediPost_3 = new JRadioButton();
-			rdoMediPost_3.setBounds(new Rectangle(483, 184, 130, 22));
+			rdoMediPost_3.setBounds(new Rectangle(782, 192, 130, 22));
 			rdoMediPost_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPost_3.setText("ANALGESICOS");
 			rdoMediPost_3.setBackground(new Color(204, 204, 204));
@@ -674,7 +656,7 @@ public class FrmTecnica extends JFrame {
 	private JRadioButton getRdoMediPost_4() {
 		if (rdoMediPost_4 == null) {
 			rdoMediPost_4 = new JRadioButton();
-			rdoMediPost_4.setBounds(new Rectangle(483, 209, 130, 22));
+			rdoMediPost_4.setBounds(new Rectangle(782, 217, 130, 22));
 			rdoMediPost_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediPost_4.setText("ANTIBIOTICOS");
 			rdoMediPost_4.setBackground(new Color(204, 204, 204));

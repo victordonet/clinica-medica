@@ -42,8 +42,8 @@ public class FrmExamenClinico extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(433,342));
-		this.setLocation(520,190);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -68,11 +68,11 @@ public class FrmExamenClinico extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 			lblTamano = new JLabel();
-			lblTamano.setBounds(new Rectangle(195, 130, 80, 22));
+			lblTamano.setBounds(new Rectangle(23, 316, 80, 22));
 			lblTamano.setFont(new Font("Calibri", Font.BOLD, 14));
 			lblTamano.setText("TAMAÑO");
 			lblPosicion = new JLabel();
-			lblPosicion.setBounds(new Rectangle(15, 130, 80, 22));
+			lblPosicion.setBounds(new Rectangle(23, 165, 80, 22));
 			lblPosicion.setFont(new Font("Calibri", Font.BOLD, 14));
 			lblPosicion.setText("POSICION");
 			panelFondo = new PanelConImagen("./src/imagenes/fondoExamen.jpg");
@@ -106,7 +106,7 @@ public class FrmExamenClinico extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(375, 265, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class FrmExamenClinico extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(325, 265, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +137,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoAVF() {
 		if (rdoAVF == null) {
 			rdoAVF = new JRadioButton();
-			rdoAVF.setBounds(new Rectangle(30, 160, 100, 22));
+			rdoAVF.setBounds(new Rectangle(38, 195, 100, 22));
 			rdoAVF.setText("A.V.F.");
 			rdoAVF.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoAVF.setBackground(new java.awt.Color(204,204,204));
@@ -154,7 +154,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoRVF() {
 		if (rdoRVF == null) {
 			rdoRVF = new JRadioButton();
-			rdoRVF.setBounds(new Rectangle(30, 185, 100, 22));
+			rdoRVF.setBounds(new Rectangle(38, 220, 100, 22));
 			rdoRVF.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoRVF.setText("R.V.F.");
 			rdoRVF.setBackground(new Color(204, 204, 204));
@@ -171,7 +171,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoPRO() {
 		if (rdoPRO == null) {
 			rdoPRO = new JRadioButton();
-			rdoPRO.setBounds(new Rectangle(30, 210, 100, 22));
+			rdoPRO.setBounds(new Rectangle(38, 245, 100, 22));
 			rdoPRO.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoPRO.setText("PROLAPSO");
 			rdoPRO.setBackground(new Color(204, 204, 204));
@@ -188,7 +188,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoOtro() {
 		if (rdoOtro == null) {
 			rdoOtro = new JRadioButton();
-			rdoOtro.setBounds(new Rectangle(30, 235, 100, 22));
+			rdoOtro.setBounds(new Rectangle(38, 270, 57, 22));
 			rdoOtro.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoOtro.setText("OTRA");
 			rdoOtro.setBackground(new Color(204, 204, 204));
@@ -204,7 +204,7 @@ public class FrmExamenClinico extends JFrame {
 	private JTextField getTxtOtra() {
 		if (txtOtra == null) {
 			txtOtra = new JTextField();
-			txtOtra.setBounds(new Rectangle(30, 260, 160, 22));
+			txtOtra.setBounds(new Rectangle(99, 270, 323, 22));
 			txtOtra.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtra.setEditable(false);
 			txtOtra.addKeyListener(new KeyAdapter()
@@ -227,7 +227,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoNoEsp() {
 		if (rdoNoEsp == null) {
 			rdoNoEsp = new JRadioButton();
-			rdoNoEsp.setBounds(new Rectangle(210, 160, 130, 22));
+			rdoNoEsp.setBounds(new Rectangle(38, 346, 130, 22));
 			rdoNoEsp.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoNoEsp.setText("NO ESPECIFICADO");
 			rdoNoEsp.setBackground(new Color(204, 204, 204));
@@ -238,7 +238,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoMenor() {
 		if (rdoMenor == null) {
 			rdoMenor = new JRadioButton();
-			rdoMenor.setBounds(new Rectangle(210, 185, 100, 22));
+			rdoMenor.setBounds(new Rectangle(38, 371, 100, 22));
 			rdoMenor.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMenor.setText("< 2 MESES");
 			rdoMenor.setBackground(new Color(204, 204, 204));
@@ -249,7 +249,7 @@ public class FrmExamenClinico extends JFrame {
 	private JRadioButton getRdoMayor() {
 		if (rdoMayor == null) {
 			rdoMayor = new JRadioButton();
-			rdoMayor.setBounds(new Rectangle(210, 210, 100, 22));
+			rdoMayor.setBounds(new Rectangle(38, 396, 100, 22));
 			rdoMayor.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMayor.setText("> 2 MESES");
 			rdoMayor.setBackground(new Color(204, 204, 204));

@@ -62,8 +62,8 @@ public class FrmHisteroscopia extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(717,379));
-		this.setLocation(520,160);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -88,19 +88,19 @@ public class FrmHisteroscopia extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 			lblRetiro = new JLabel();
-			lblRetiro.setBounds(new Rectangle(459, 258, 54, 21));
+			lblRetiro.setBounds(new Rectangle(559, 266, 54, 21));
 			lblRetiro.setText("RETIRO");
 			lblRetiro.setFont(new Font("Calibri", Font.BOLD, 14));
 			lblTiempo = new JLabel();
-			lblTiempo.setBounds(new Rectangle(459, 209, 100, 23));
+			lblTiempo.setBounds(new Rectangle(559, 217, 100, 23));
 			lblTiempo.setText("TIEMPO DE USO");
 			lblTiempo.setFont(new Font("Calibri", Font.BOLD, 14));
 			lblTipo = new JLabel();
-			lblTipo.setBounds(new Rectangle(459, 126, 38, 22));
+			lblTipo.setBounds(new Rectangle(559, 134, 38, 22));
 			lblTipo.setText("TIPO");
 			lblTipo.setFont(new Font("Calibri", Font.BOLD, 14));
 			lblAnatomia = new JLabel();
-			lblAnatomia.setBounds(new Rectangle(18, 176, 161, 22));
+			lblAnatomia.setBounds(new Rectangle(24, 189, 161, 22));
 			lblAnatomia.setText("ANATOMIA PATOLOGICA");
 			lblAnatomia.setFont(new Font("Calibri", Font.BOLD, 14));
 			panelFondo = new PanelConImagen("./src/imagenes/fondoHistPrevia.jpg");
@@ -154,7 +154,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(662, 302, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +169,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(612, 302, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_1() {
 		if (rdoQuir_1 == null) {
 			rdoQuir_1 = new JRadioButton();
-			rdoQuir_1.setBounds(new Rectangle(235, 123, 56, 22));
+			rdoQuir_1.setBounds(new Rectangle(292, 135, 56, 22));
 			rdoQuir_1.setText("NO");
 			rdoQuir_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_1.setBackground(new java.awt.Color(204,204,204));
@@ -196,7 +196,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_2() {
 		if (rdoQuir_2 == null) {
 			rdoQuir_2 = new JRadioButton();
-			rdoQuir_2.setBounds(new Rectangle(235, 148, 130, 22));
+			rdoQuir_2.setBounds(new Rectangle(292, 160, 130, 22));
 			rdoQuir_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_2.setText("POLIPECTOMIA");
 			rdoQuir_2.setBackground(new Color(204, 204, 204));
@@ -207,7 +207,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_3() {
 		if (rdoQuir_3 == null) {
 			rdoQuir_3 = new JRadioButton();
-			rdoQuir_3.setBounds(new Rectangle(235, 173, 140, 22));
+			rdoQuir_3.setBounds(new Rectangle(292, 185, 140, 22));
 			rdoQuir_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_3.setText("MIOMECTOMIA");
 			rdoQuir_3.setBackground(new Color(204, 204, 204));
@@ -218,7 +218,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_5() {
 		if (rdoQuir_5 == null) {
 			rdoQuir_5 = new JRadioButton();
-			rdoQuir_5.setBounds(new Rectangle(235, 223, 137, 22));
+			rdoQuir_5.setBounds(new Rectangle(292, 235, 137, 22));
 			rdoQuir_5.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_5.setText("RESECC. TABIQUE");
 			rdoQuir_5.setBackground(new Color(204, 204, 204));
@@ -229,7 +229,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JTextField getTxtAnat_1() {
 		if (txtAnat_1 == null) {
 			txtAnat_1 = new JTextField();
-			txtAnat_1.setBounds(new Rectangle(79, 210, 30, 22));
+			txtAnat_1.setBounds(new Rectangle(85, 223, 30, 22));
 			txtAnat_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtAnat_1.addKeyListener(new KeyAdapter()
 			{
@@ -259,7 +259,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoDiag_1() {
 		if (rdoDiag_1 == null) {
 			rdoDiag_1 = new JRadioButton();
-			rdoDiag_1.setBounds(new Rectangle(13, 122, 130, 22));
+			rdoDiag_1.setBounds(new Rectangle(19, 135, 130, 22));
 			rdoDiag_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDiag_1.setText("NO");
 			rdoDiag_1.setBackground(new Color(204, 204, 204));
@@ -270,7 +270,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoDiag_2() {
 		if (rdoDiag_2 == null) {
 			rdoDiag_2 = new JRadioButton();
-			rdoDiag_2.setBounds(new Rectangle(13, 147, 130, 22));
+			rdoDiag_2.setBounds(new Rectangle(19, 160, 130, 22));
 			rdoDiag_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDiag_2.setText("SI");
 			rdoDiag_2.setBackground(new Color(204, 204, 204));
@@ -286,7 +286,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_4() {
 		if (rdoQuir_4 == null) {
 			rdoQuir_4 = new JRadioButton();
-			rdoQuir_4.setBounds(new Rectangle(235, 198, 117, 23));
+			rdoQuir_4.setBounds(new Rectangle(292, 210, 117, 23));
 			rdoQuir_4.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_4.setText("ADHESIOLISIS");
 			rdoQuir_4.setBackground(new Color(204, 204, 204));
@@ -302,7 +302,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoDiu_1() {
 		if (rdoDiu_1 == null) {
 			rdoDiu_1 = new JRadioButton();
-			rdoDiu_1.setBounds(new Rectangle(502, 127, 78, 22));
+			rdoDiu_1.setBounds(new Rectangle(602, 135, 78, 22));
 			rdoDiu_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDiu_1.setText("LIPPES");
 			rdoDiu_1.setBackground(new Color(204, 204, 204));
@@ -318,7 +318,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoDiu_2() {
 		if (rdoDiu_2 == null) {
 			rdoDiu_2 = new JRadioButton();
-			rdoDiu_2.setBounds(new Rectangle(502, 152, 67, 22));
+			rdoDiu_2.setBounds(new Rectangle(602, 160, 67, 22));
 			rdoDiu_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDiu_2.setText("T.Cu");
 			rdoDiu_2.setBackground(new Color(204, 204, 204));
@@ -334,7 +334,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoDiu_3() {
 		if (rdoDiu_3 == null) {
 			rdoDiu_3 = new JRadioButton();
-			rdoDiu_3.setBounds(new Rectangle(502, 177, 75, 22));
+			rdoDiu_3.setBounds(new Rectangle(602, 185, 75, 22));
 			rdoDiu_3.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoDiu_3.setText("OTRO");
 			rdoDiu_3.setBackground(new Color(204, 204, 204));
@@ -350,7 +350,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoRet_1() {
 		if (rdoRet_1 == null) {
 			rdoRet_1 = new JRadioButton();
-			rdoRet_1.setBounds(new Rectangle(508, 258, 74, 22));
+			rdoRet_1.setBounds(new Rectangle(608, 266, 74, 22));
 			rdoRet_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoRet_1.setText("< 1 año");
 			rdoRet_1.setBackground(new Color(204, 204, 204));
@@ -366,7 +366,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoRet_2() {
 		if (rdoRet_2 == null) {
 			rdoRet_2 = new JRadioButton();
-			rdoRet_2.setBounds(new Rectangle(508, 283, 73, 22));
+			rdoRet_2.setBounds(new Rectangle(608, 291, 73, 22));
 			rdoRet_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoRet_2.setText("> 1 año");
 			rdoRet_2.setBackground(new Color(204, 204, 204));
@@ -382,7 +382,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JTextField getTxtAnat_2() {
 		if (txtAnat_2 == null) {
 			txtAnat_2 = new JTextField();
-			txtAnat_2.setBounds(new Rectangle(115, 210, 30, 22));
+			txtAnat_2.setBounds(new Rectangle(121, 223, 30, 22));
 			txtAnat_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtAnat_2.addKeyListener(new KeyAdapter()
 			{
@@ -417,7 +417,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoMediTiempo_1() {
 		if (rdoMediTiempo_1 == null) {
 			rdoMediTiempo_1 = new JRadioButton();
-			rdoMediTiempo_1.setBounds(new Rectangle(559, 210, 89, 22));
+			rdoMediTiempo_1.setBounds(new Rectangle(659, 218, 89, 22));
 			rdoMediTiempo_1.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediTiempo_1.setText("< 6 meses");
 			rdoMediTiempo_1.setBackground(new Color(204, 204, 204));
@@ -433,7 +433,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoMediTiempo_2() {
 		if (rdoMediTiempo_2 == null) {
 			rdoMediTiempo_2 = new JRadioButton();
-			rdoMediTiempo_2.setBounds(new Rectangle(559, 233, 87, 22));
+			rdoMediTiempo_2.setBounds(new Rectangle(659, 241, 87, 22));
 			rdoMediTiempo_2.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoMediTiempo_2.setText("> 6 meses");
 			rdoMediTiempo_2.setBackground(new Color(204, 204, 204));
@@ -449,7 +449,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JRadioButton getRdoQuir_6() {
 		if (rdoQuir_6 == null) {
 			rdoQuir_6 = new JRadioButton();
-			rdoQuir_6.setBounds(new Rectangle(235, 248, 158, 22));
+			rdoQuir_6.setBounds(new Rectangle(292, 260, 158, 22));
 			rdoQuir_6.setFont(new Font("Calibri", Font.PLAIN, 14));
 			rdoQuir_6.setText("ENDOMETRECTOMIA");
 			rdoQuir_6.setBackground(new Color(204, 204, 204));
@@ -465,7 +465,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JCheckBox getChkNo() {
 		if (chkNo == null) {
 			chkNo = new JCheckBox();
-			chkNo.setBounds(new Rectangle(15, 210, 49, 22));
+			chkNo.setBounds(new Rectangle(21, 223, 49, 22));
 			chkNo.setText("NO");
 			chkNo.setBackground(new Color(204, 204, 204));
 			chkNo.addMouseListener(new MouseAdapter() {
@@ -495,7 +495,7 @@ public class FrmHisteroscopia extends JFrame {
 	private JButton getBtnCodigos() {
 		if (btnCodigos == null) {
 			btnCodigos = new JButton();
-			btnCodigos.setBounds(new Rectangle(115, 234, 77, 21));
+			btnCodigos.setBounds(new Rectangle(156, 223, 77, 22));
 			btnCodigos.setText("Códigos");
 			btnCodigos.setFont(new Font("Calibri", Font.PLAIN, 12));
 			btnCodigos.setBackground(new Color(179, 179, 179));

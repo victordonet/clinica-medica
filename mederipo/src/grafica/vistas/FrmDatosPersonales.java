@@ -70,8 +70,8 @@ public class FrmDatosPersonales extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(new java.awt.Dimension(520	,630));
-		this.setLocation(210,45);
+		this.setSize(new java.awt.Dimension(1164,732));
+		this.setLocation(200,0);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/imagenes/miniMederi.png"));
 		this.setResizable(false);
 		this.setTitle("MEDERI-PRO");
@@ -96,82 +96,82 @@ public class FrmDatosPersonales extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 		lbFUM = new JLabel();
-		lbFUM.setBounds(new Rectangle(29, 510, 115, 22));
+		lbFUM.setBounds(new Rectangle(390, 517, 115, 22));
 		lbFUM.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbFUM.setText("F.U.M.");
 		lbFUM.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbNroOrden = new JLabel();
-		lbNroOrden.setBounds(new Rectangle(29, 460, 115, 22));
+		lbNroOrden.setBounds(new Rectangle(390, 467, 115, 22));
 		lbNroOrden.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNroOrden.setText("N° Orden:");
 		lbNroOrden.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbFecha = new JLabel();
-		lbFecha.setBounds(new Rectangle(29, 485, 115, 22));
+		lbFecha.setBounds(new Rectangle(390, 492, 115, 22));
 		lbFecha.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbFecha.setText("Fecha:");
 		lbFecha.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbNroVideo = new JLabel();
-		lbNroVideo.setBounds(new Rectangle(29, 435, 115, 22));
+		lbNroVideo.setBounds(new Rectangle(390, 442, 115, 22));
 		lbNroVideo.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNroVideo.setText("N° Video:");
 		lbNroVideo.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbNroCaso = new JLabel();
-		lbNroCaso.setBounds(new Rectangle(29, 410, 115, 22));
+		lbNroCaso.setBounds(new Rectangle(390, 417, 115, 22));
 		lbNroCaso.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNroCaso.setText("N° Caso:");
 		lbNroCaso.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbNroRegistro = new JLabel();
-		lbNroRegistro.setBounds(new Rectangle(29, 385, 115, 22));
+		lbNroRegistro.setBounds(new Rectangle(390, 392, 115, 22));
 		lbNroRegistro.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNroRegistro.setText("N° Registro:");
 		lbNroRegistro.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbInstitucion = new JLabel();
-		lbInstitucion.setBounds(new Rectangle(29, 360, 115, 22));
+		lbInstitucion.setBounds(new Rectangle(390, 367, 115, 22));
 		lbInstitucion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbInstitucion.setText("Institución:");
 		lbInstitucion.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbFechaIng = new JLabel();
-		lbFechaIng.setBounds(new Rectangle(30, 297, 115, 22));
+		lbFechaIng.setBounds(new Rectangle(391, 304, 115, 22));
 		lbFechaIng.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbFechaIng.setText("Fecha Ingreso:");
 		lbFechaIng.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbAmbulatorio = new JLabel();
-		lbAmbulatorio.setBounds(new Rectangle(30, 247, 115, 22));
+		lbAmbulatorio.setBounds(new Rectangle(391, 254, 115, 22));
 		lbAmbulatorio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbAmbulatorio.setText("Atención");
 		lbAmbulatorio.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbIndicacion = new JLabel();
-		lbIndicacion.setBounds(new Rectangle(30, 222, 115, 22));
+		lbIndicacion.setBounds(new Rectangle(391, 229, 115, 22));
 		lbIndicacion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbIndicacion.setText("Indicación:");
 		lbIndicacion.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbMedico = new JLabel();
-		lbMedico.setBounds(new Rectangle(30, 197, 115, 22));
+		lbMedico.setBounds(new Rectangle(391, 204, 115, 22));
 		lbMedico.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbMedico.setText("Médico Tratante:");
 		lbMedico.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbTelefono = new JLabel();
-		lbTelefono.setBounds(new Rectangle(300, 172, 65, 22));
+		lbTelefono.setBounds(new Rectangle(661, 179, 65, 22));
 		lbTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbTelefono.setText("Teléfono:");
 		lbTelefono.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbCiudad = new JLabel();
-		lbCiudad.setBounds(new Rectangle(29, 172, 115, 22));
+		lbCiudad.setBounds(new Rectangle(390, 179, 115, 22));
 		lbCiudad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbCiudad.setText("Ciudad:");
 		lbCiudad.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbDireccion = new JLabel();
-		lbDireccion.setBounds(new Rectangle(30, 147, 115, 22));
+		lbDireccion.setBounds(new Rectangle(391, 154, 115, 22));
 		lbDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbDireccion.setText("Dirección:");
 		lbDireccion.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbEdad = new JLabel();
-		lbEdad.setBounds(new Rectangle(415, 122, 40, 22));
+		lbEdad.setBounds(new Rectangle(776, 129, 40, 22));
 		lbEdad.setText("Edad:");
 		lbEdad.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbEdad.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNombre = new JLabel();
-		lbNombre.setBounds(new Rectangle(30, 122, 115, 22));
+		lbNombre.setBounds(new Rectangle(391, 129, 115, 22));
 		lbNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lbNombre.setFont(new Font("Calibri", Font.PLAIN, 14));
 		lbNombre.setText("Nombre:");
@@ -223,7 +223,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JButton getbtGuardar() {
 		if (btGuardar == null) {
 			btGuardar = new JButton();
-			btGuardar.setBounds(new Rectangle(460, 550, 40, 40));
+			btGuardar.setBounds(new Rectangle(1101, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnGuardar.jpg");
 			btGuardar.setIcon(icono);
 			btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +238,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JButton getbtCancelar() {
 		if (btCancelar == null) {
 			btCancelar = new JButton();
-			btCancelar.setBounds(new Rectangle(410, 550, 40, 40));
+			btCancelar.setBounds(new Rectangle(1051, 621, 40, 40));
 			ImageIcon icono = new ImageIcon("./src/imagenes/BtnCancelar.jpg");
 			btCancelar.setIcon(icono);
 			btCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -259,7 +259,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtNombre() {
 		if (txtNombre == null) {
 			txtNombre = new JTextField();
-			txtNombre.setBounds(new Rectangle(150, 122, 260, 22));
+			txtNombre.setBounds(new Rectangle(511, 129, 260, 22));
 			txtNombre.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtNombre.addKeyListener(new KeyAdapter()
 			{
@@ -286,7 +286,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtEdad() {
 		if (txtEdad == null) {
 			txtEdad = new JTextField();
-			txtEdad.setBounds(new Rectangle(456, 122, 35, 22));
+			txtEdad.setBounds(new Rectangle(817, 129, 35, 22));
 			txtEdad.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtEdad.addKeyListener(new KeyAdapter()
 			{
@@ -321,7 +321,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtDireccion() {
 		if (txtDireccion == null) {
 			txtDireccion = new JTextField();
-			txtDireccion.setBounds(new Rectangle(150, 147, 340, 22));
+			txtDireccion.setBounds(new Rectangle(511, 154, 340, 22));
 			txtDireccion.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtDireccion.addKeyListener(new KeyAdapter()
 			{
@@ -348,7 +348,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtCiudad() {
 		if (txtCiudad == null) {
 			txtCiudad = new JTextField();
-			txtCiudad.setBounds(new Rectangle(150, 172, 150, 22));
+			txtCiudad.setBounds(new Rectangle(511, 179, 150, 22));
 			txtCiudad.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtCiudad.addKeyListener(new KeyAdapter()
 			{
@@ -375,7 +375,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtTelefono() {
 		if (txtTelefono == null) {
 			txtTelefono = new JTextField();
-			txtTelefono.setBounds(new Rectangle(368, 172, 122, 22));
+			txtTelefono.setBounds(new Rectangle(729, 179, 122, 22));
 			txtTelefono.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtTelefono.addKeyListener(new KeyAdapter()
 			{
@@ -410,7 +410,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtMedico() {
 		if (txtMedico == null) {
 			txtMedico = new JTextField();
-			txtMedico.setBounds(new Rectangle(150, 197, 340, 22));
+			txtMedico.setBounds(new Rectangle(511, 204, 340, 22));
 			txtMedico.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtMedico.addKeyListener(new KeyAdapter()
 			{
@@ -437,7 +437,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtIndicacion() {
 		if (txtIndicacion == null) {
 			txtIndicacion = new JTextField();
-			txtIndicacion.setBounds(new Rectangle(150, 222, 340, 22));
+			txtIndicacion.setBounds(new Rectangle(511, 229, 340, 22));
 			txtIndicacion.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtIndicacion.addKeyListener(new KeyAdapter()
 			{
@@ -464,7 +464,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtInstitucion() {
 		if (txtInstitucion == null) {
 			txtInstitucion = new JTextField();
-			txtInstitucion.setBounds(new Rectangle(149, 360, 165, 22));
+			txtInstitucion.setBounds(new Rectangle(510, 367, 341, 22));
 			txtInstitucion.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtInstitucion.addKeyListener(new KeyAdapter()
 			{
@@ -491,7 +491,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtNroRegistro() {
 		if (txtNroRegistro == null) {
 			txtNroRegistro = new JTextField();
-			txtNroRegistro.setBounds(new Rectangle(149, 385, 100, 22));
+			txtNroRegistro.setBounds(new Rectangle(510, 392, 100, 22));
 			txtNroRegistro.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtNroRegistro.addKeyListener(new KeyAdapter()
 			{
@@ -526,7 +526,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtNroCaso() {
 		if (txtNroCaso == null) {
 			txtNroCaso = new JTextField();
-			txtNroCaso.setBounds(new Rectangle(149, 410, 50, 22));
+			txtNroCaso.setBounds(new Rectangle(510, 417, 50, 22));
 			txtNroCaso.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtNroCaso.addKeyListener(new KeyAdapter()
 			{
@@ -561,7 +561,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtNroVideo() {
 		if (txtNroVideo == null) {
 			txtNroVideo = new JTextField();
-			txtNroVideo.setBounds(new Rectangle(149, 435, 35, 22));
+			txtNroVideo.setBounds(new Rectangle(510, 442, 35, 22));
 			txtNroVideo.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtNroVideo.addKeyListener(new KeyAdapter()
 			{
@@ -596,7 +596,7 @@ public class FrmDatosPersonales extends JFrame {
 	private JTextField getTxtNroOrden() {
 		if (txtNroOrden == null) {
 			txtNroOrden = new JTextField();
-			txtNroOrden.setBounds(new Rectangle(149, 460, 25, 22));
+			txtNroOrden.setBounds(new Rectangle(510, 467, 25, 22));
 			txtNroOrden.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtNroOrden.addKeyListener(new KeyAdapter()
 			{
@@ -629,7 +629,7 @@ public class FrmDatosPersonales extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFechaIng = new JPanel();
 			jPanelFechaIng.setLayout(gridLayout1);
-			jPanelFechaIng.setBounds(new Rectangle(150, 297, 100, 22));
+			jPanelFechaIng.setBounds(new Rectangle(511, 304, 100, 22));
 			jPanelFechaIng.add(calendarIng, null);
 		}
 		return jPanelFechaIng;
@@ -641,7 +641,7 @@ public class FrmDatosPersonales extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFecha = new JPanel();
 			jPanelFecha.setLayout(gridLayout1);
-			jPanelFecha.setBounds(new Rectangle(150, 485, 100, 22));
+			jPanelFecha.setBounds(new Rectangle(511, 492, 100, 22));
 			jPanelFecha.add(calendar, null);
 		}
 		return jPanelFecha;
@@ -653,7 +653,7 @@ public class FrmDatosPersonales extends JFrame {
 			gridLayout1.setRows(1);
 			jPanelFUM = new JPanel();
 			jPanelFUM.setLayout(gridLayout1);
-			jPanelFUM.setBounds(new Rectangle(150, 510, 100, 22));
+			jPanelFUM.setBounds(new Rectangle(511, 517, 100, 22));
 			jPanelFUM.add(calendarFUM, null);
 		}
 		return jPanelFUM;
@@ -669,7 +669,7 @@ public class FrmDatosPersonales extends JFrame {
 			jRadio_1 = new JRadioButton();
 			jRadio_1.setText("Ambulatorio");
 			jRadio_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-			jRadio_1.setBounds(new Rectangle(150, 247, 114, 21));
+			jRadio_1.setBounds(new Rectangle(511, 254, 114, 21));
 			jRadio_1.setBackground(new java.awt.Color(204,204,204));
 		}
 		return jRadio_1;
@@ -680,7 +680,7 @@ public class FrmDatosPersonales extends JFrame {
 			jRadio_2 = new JRadioButton();
 			jRadio_2.setText("Hospitalización");
 			jRadio_2.setFont(new Font("Calibri", Font.PLAIN, 14));
-			jRadio_2.setBounds(new Rectangle(150, 274, 117, 22));
+			jRadio_2.setBounds(new Rectangle(511, 278, 117, 22));
 			jRadio_2.setBackground(new java.awt.Color(204,204,204));
 		}
 		return jRadio_2;

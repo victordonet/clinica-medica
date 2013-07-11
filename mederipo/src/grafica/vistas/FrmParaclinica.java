@@ -91,7 +91,7 @@ public class FrmParaclinica extends JFrame {
 	private PanelConImagen getJContentPane() {
 		if (panelFondo == null) {
 			lblOtras = new JLabel();
-			lblOtras.setBounds(new Rectangle(78, 438, 41, 20));
+			lblOtras.setBounds(new Rectangle(78, 440, 41, 20));
 			lblOtras.setText("OTRAS");
 			lblOtras.setFont(new Font("Calibri", Font.PLAIN, 14));
 			lblImagen = new JLabel();
@@ -364,7 +364,7 @@ public class FrmParaclinica extends JFrame {
 	private JTextField getTxtOtras() {
 		if (txtOtras == null) {
 			txtOtras = new JTextField();
-			txtOtras.setBounds(new Rectangle(120, 438, 301, 22));
+			txtOtras.setBounds(new Rectangle(120, 440, 301, 22));
 			txtOtras.setFont(new Font("Calibri", Font.PLAIN, 14));
 			txtOtras.addKeyListener(new KeyAdapter()
 			{
